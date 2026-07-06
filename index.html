@@ -248,6 +248,12 @@
       background: #8c1d13;
     }
 
+    .btn.reported {
+      background: var(--ok-soft);
+      color: var(--ok);
+      border: 1px solid #7ec8ac;
+    }
+
     .btn.ghost {
       background: transparent;
       color: var(--brand-dark);
@@ -350,6 +356,40 @@
 
     .timer.low {
       background: var(--bad);
+    }
+
+    .difficulty-chip,
+    .mode-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 5px 8px;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1;
+      white-space: nowrap;
+      border: 1px solid rgba(255, 255, 255, .42);
+      background: rgba(255, 255, 255, .14);
+      color: #fff;
+    }
+
+    .difficulty-easy {
+      background: var(--ok-soft);
+      color: var(--ok);
+      border-color: #8fd2b7;
+    }
+
+    .difficulty-medium {
+      background: var(--warn-soft);
+      color: var(--warn);
+      border-color: #f0ca7a;
+    }
+
+    .difficulty-hard {
+      background: var(--bad-soft);
+      color: var(--bad);
+      border-color: #f1a7a0;
     }
 
     .question-body {
@@ -930,7 +970,8 @@
       border-color: #916500;
     }
 
-    .practice-feedback {
+    .practice-feedback,
+    .training-feedback {
       margin-top: 14px;
       border-radius: 8px;
       padding: 12px 14px;
@@ -938,14 +979,60 @@
       border: 1px solid var(--line);
     }
 
-    .practice-feedback.ok {
+    .practice-feedback.ok,
+    .training-feedback.ok {
       background: var(--ok-soft);
       border-color: #8fd2b7;
     }
 
-    .practice-feedback.bad {
+    .practice-feedback.bad,
+    .training-feedback.bad {
       background: var(--bad-soft);
       border-color: #f1a7a0;
+    }
+
+    .feedback-answer {
+      display: grid;
+      gap: 5px;
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    .report-summary {
+      border-top: 1px solid var(--line);
+      margin-top: 14px;
+      padding-top: 12px;
+    }
+
+    .report-panel {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid #d7c27a;
+      background: #fff8e5;
+    }
+
+    .report-panel label {
+      display: block;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: #4a3a10;
+    }
+
+    .report-panel textarea {
+      width: 100%;
+      min-height: 92px;
+      border: 1px solid #d7c27a;
+      border-radius: 8px;
+      padding: 10px 12px;
+      resize: vertical;
+      font: inherit;
+      background: #fff;
+      color: var(--ink);
+    }
+
+    .report-panel .button-row {
+      margin-top: 10px;
     }
 
     .results-layout {
@@ -3652,15 +3739,20 @@
       }
     ];
 
+    const REPORTS_STORAGE_KEY = "autoTheorieBQuestionReports";
     const app = document.getElementById("app");
     const state = {
       phase: "intro",
+      mode: "exam",
       practiceIndex: 0,
       practiceAnswers: {},
       practiceChecked: false,
       index: 0,
       answers: {},
       flagged: {},
+      trainingChecked: {},
+      reports: loadReports(),
+      reportTarget: null,
       remaining: 30 * 60,
       timerId: null,
       filterMisses: false,
@@ -3696,6 +3788,68 @@
 
     function totalQuestionBankSize() {
       return examQuestions.length + hardExamQuestions.length + extraExamQuestions.length;
+    }
+
+    function loadReports() {
+      try {
+        const raw = window.localStorage.getItem(REPORTS_STORAGE_KEY);
+        const parsed = raw ? JSON.parse(raw) : [];
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function saveReports() {
+      try {
+        window.localStorage.setItem(REPORTS_STORAGE_KEY, JSON.stringify(state.reports));
+      } catch (error) {
+        window.alert("Melding kon niet lokaal worden opgeslagen. Controleer je browserinstellingen.");
+      }
+    }
+
+    function difficultyInfo(q) {
+      const explicit = q.difficulty ? String(q.difficulty).toLowerCase() : "";
+      if (explicit === "makkelijk") return { label: "Makkelijk", className: "difficulty-easy" };
+      if (explicit === "gemiddeld") return { label: "Gemiddeld", className: "difficulty-medium" };
+      if (explicit === "moeilijk") return { label: "Moeilijk", className: "difficulty-hard" };
+      if (q.id && q.id.charAt(0) === "p") return { label: "Makkelijk", className: "difficulty-easy" };
+      if (q.id && q.id.charAt(0) === "h") return { label: "Moeilijk", className: "difficulty-hard" };
+      if (q.id && q.id.charAt(0) === "e") {
+        return q.kind === "single"
+          ? { label: "Gemiddeld", className: "difficulty-medium" }
+          : { label: "Moeilijk", className: "difficulty-hard" };
+      }
+      if (q.kind === "multi" || q.kind === "order" || q.kind === "hotspot") {
+        return { label: "Gemiddeld", className: "difficulty-medium" };
+      }
+      return { label: "Makkelijk", className: "difficulty-easy" };
+    }
+
+    function renderDifficultyChip(q) {
+      const difficulty = difficultyInfo(q);
+      return `<span class="difficulty-chip ${difficulty.className}">${difficulty.label}</span>`;
+    }
+
+    function isTrainingMode() {
+      return state.mode === "training";
+    }
+
+    function autoChecksTraining(q) {
+      return q.kind === "single" || q.kind === "hotspot";
+    }
+
+    function isReported(q) {
+      return state.reports.some(function (report) { return report.id === q.id; });
+    }
+
+    function currentVisibleQuestion() {
+      return state.phase === "practice" ? practiceQuestions[state.practiceIndex] : currentQuestion();
+    }
+
+    function findQuestionById(questionId) {
+      return activeQuestions().find(function (q) { return q.id === questionId; })
+        || practiceQuestions.find(function (q) { return q.id === questionId; });
     }
 
     function cloneQuestionForSession(question) {
@@ -3747,6 +3901,7 @@
 
     function startPractice(variant) {
       clearTimer();
+      state.mode = "exam";
       if (variant) {
         state.variant = variant;
       }
@@ -3755,12 +3910,14 @@
       state.practiceIndex = 0;
       state.practiceAnswers = {};
       state.practiceChecked = false;
+      state.reportTarget = null;
       render();
       scrollToPageTop();
     }
 
     function startExam(variant) {
       clearTimer();
+      state.mode = "exam";
       if (variant) {
         state.variant = variant;
       }
@@ -3769,6 +3926,8 @@
       state.index = 0;
       state.answers = {};
       state.flagged = {};
+      state.trainingChecked = {};
+      state.reportTarget = null;
       state.remaining = 30 * 60;
       state.filterMisses = false;
       state.timerId = setInterval(function () {
@@ -3782,6 +3941,33 @@
       }, 1000);
       render();
       scrollToPageTop();
+    }
+
+    function startTraining(variant) {
+      clearTimer();
+      state.mode = "training";
+      if (variant) {
+        state.variant = variant;
+      }
+      state.sessionQuestions = buildExamQuestions(state.variant);
+      state.phase = "exam";
+      state.index = 0;
+      state.answers = {};
+      state.flagged = {};
+      state.trainingChecked = {};
+      state.reportTarget = null;
+      state.remaining = 30 * 60;
+      state.filterMisses = false;
+      render();
+      scrollToPageTop();
+    }
+
+    function restartSession() {
+      if (isTrainingMode()) {
+        startTraining(state.variant);
+      } else {
+        startExam(state.variant);
+      }
     }
 
     function clearTimer() {
@@ -3829,6 +4015,9 @@
       getAnswerStore()[questionId] = value;
       if (state.phase === "practice") {
         state.practiceChecked = false;
+      } else if (isTrainingMode()) {
+        const q = currentQuestion();
+        state.trainingChecked[questionId] = autoChecksTraining(q);
       }
       render();
     }
@@ -3845,6 +4034,8 @@
       store[questionId] = current;
       if (state.phase === "practice") {
         state.practiceChecked = false;
+      } else if (isTrainingMode()) {
+        state.trainingChecked[questionId] = false;
       }
       render();
     }
@@ -3853,6 +4044,10 @@
       getAnswerStore()[questionId] = value;
       if (state.phase === "practice") {
         state.practiceChecked = false;
+      } else if (isTrainingMode()) {
+        state.trainingChecked[questionId] = false;
+        const feedback = document.querySelector("[data-training-feedback]");
+        if (feedback) feedback.remove();
       }
       updateOverviewOnly();
     }
@@ -3962,8 +4157,72 @@
       store[questionId] = current;
       if (state.phase === "practice") {
         state.practiceChecked = false;
+      } else if (isTrainingMode()) {
+        state.trainingChecked[questionId] = false;
       }
       render();
+    }
+
+    function checkTrainingAnswer() {
+      if (!isTrainingMode()) return;
+      const q = currentQuestion();
+      ensureOrderAnswer(q);
+      if (!hasAnswer(q, state.answers)) return;
+      state.trainingChecked[q.id] = true;
+      render();
+    }
+
+    function reportQuestion(questionId) {
+      const q = questionId ? findQuestionById(questionId) : currentVisibleQuestion();
+      if (!q) return;
+      state.reportTarget = state.reportTarget === q.id ? null : q.id;
+      render();
+    }
+
+    function saveQuestionReport(questionId) {
+      const q = findQuestionById(questionId);
+      if (!q) return;
+      const field = document.querySelector("[data-report-note]");
+      const note = field ? field.value : "";
+      const cleaned = note.trim();
+      if (!cleaned) return;
+      const report = {
+        id: q.id,
+        variant: state.variant,
+        topic: q.topic,
+        difficulty: difficultyInfo(q).label,
+        type: questionTypeLabel(q),
+        prompt: q.prompt,
+        note: cleaned,
+        updatedAt: new Date().toISOString()
+      };
+      const index = state.reports.findIndex(function (item) { return item.id === q.id; });
+      if (index >= 0) {
+        state.reports[index] = report;
+      } else {
+        state.reports.push(report);
+      }
+      saveReports();
+      state.reportTarget = null;
+      render();
+    }
+
+    function cancelQuestionReport() {
+      state.reportTarget = null;
+      render();
+    }
+
+    function downloadReports() {
+      if (!state.reports.length) return;
+      const blob = new Blob([JSON.stringify(state.reports, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "auto-theorie-vraagmeldingen.json";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
     }
 
     function checkPractice() {
@@ -4075,7 +4334,10 @@
               <div class="stat"><strong>44+</strong><span>goed is geslaagd</span></div>
               <div class="stat"><strong>30:00</strong><span>minuten examentijd</span></div>
               <div class="stat"><strong>Mix</strong><span>volgorde en opties wisselen</span></div>
+              <div class="stat"><strong>Labels</strong><span>makkelijk, gemiddeld en moeilijk</span></div>
+              <div class="stat"><strong>${state.reports.length}</strong><span>vraagmeldingen lokaal opgeslagen</span></div>
             </div>
+            <p class="side-note">Examenmodus werkt met timer en eindscore. Leerstand geeft tijdens het oefenen direct uitleg na het controleren van je antwoord.</p>
             <div class="button-row">
               <button class="btn" type="button" onclick="startPractice('normal')">Start normaal</button>
               <button class="btn" type="button" onclick="startPractice('hard')">Start moeilijk</button>
@@ -4083,6 +4345,10 @@
               <button class="btn secondary" type="button" onclick="startExam('normal')">Normaal direct</button>
               <button class="btn secondary" type="button" onclick="startExam('hard')">Moeilijk direct</button>
               <button class="btn secondary" type="button" onclick="startExam('mix')">Mix direct</button>
+              <button class="btn ghost" type="button" onclick="startTraining('normal')">Leerstand normaal</button>
+              <button class="btn ghost" type="button" onclick="startTraining('hard')">Leerstand moeilijk</button>
+              <button class="btn ghost" type="button" onclick="startTraining('mix')">Leerstand mix</button>
+              ${state.reports.length ? `<button class="btn secondary" type="button" onclick="downloadReports()">Download meldingen</button>` : ""}
             </div>
           </div>
           <aside class="panel exam-preview" aria-label="Voorbeeld van het oefenscherm">
@@ -4127,6 +4393,7 @@
               <div class="exam-meta">
                 <strong>${escapeHtml(variantLabel())} - oefenvraag ${state.practiceIndex + 1} van ${practiceQuestions.length}</strong>
                 <span>${escapeHtml(questionTypeLabel(q))}</span>
+                ${renderDifficultyChip(q)}
               </div>
               <span>Deze telt niet mee</span>
               <span class="timer">Oefenen</span>
@@ -4136,8 +4403,12 @@
               <strong>${correct ? "Goed." : "Nog niet goed."}</strong>
               ${escapeHtml(q.explanation)}
             </div>` : ""}
+            ${renderReportForm(q)}
             <div class="question-footer">
-              <button class="btn secondary" type="button" onclick="state.phase='intro'; render()">Terug</button>
+              <div class="button-row">
+                <button class="btn secondary" type="button" onclick="state.phase='intro'; render()">Terug</button>
+                ${renderReportButton(q)}
+              </div>
               <div class="button-row">
                 ${checked
                   ? `<button class="btn" type="button" onclick="nextPractice()">${state.practiceIndex === practiceQuestions.length - 1 ? "Start examen" : "Volgende oefenvraag"}</button>`
@@ -4153,32 +4424,76 @@
       `;
     }
 
+    function renderReportButton(q) {
+      const reported = isReported(q);
+      return `<button class="btn ${reported ? "reported" : "ghost"}" type="button" onclick="reportQuestion('${q.id}')">${reported ? "Melding opgeslagen" : "Meld vraag"}</button>`;
+    }
+
+    function renderReportForm(q) {
+      if (state.reportTarget !== q.id) return "";
+      const existing = state.reports.find(function (report) { return report.id === q.id; });
+      return `
+        <div class="report-panel">
+          <label for="report-${escapeHtml(q.id)}">Wat klopt er niet of wat is onduidelijk?</label>
+          <textarea id="report-${escapeHtml(q.id)}" data-report-note placeholder="Bijvoorbeeld: antwoord lijkt onduidelijk, afbeelding past niet, uitleg kan beter...">${escapeHtml(existing ? existing.note : "")}</textarea>
+          <div class="button-row">
+            <button class="btn" type="button" onclick="saveQuestionReport('${escapeHtml(q.id)}')">Melding opslaan</button>
+            <button class="btn secondary" type="button" onclick="cancelQuestionReport()">Annuleren</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderTrainingFeedback(q) {
+      if (!isTrainingMode() || !state.trainingChecked[q.id]) return "";
+      const answer = state.answers[q.id];
+      if (!hasAnswer(q, state.answers)) return "";
+      const correct = isCorrect(q, answer);
+      return `
+        <div class="training-feedback ${correct ? "ok" : "bad"}" data-training-feedback>
+          <strong>${correct ? "Goed." : "Nog niet goed."}</strong>
+          <div class="feedback-answer">
+            <span><strong>Jouw antwoord:</strong> ${escapeHtml(answerToText(q, answer))}</span>
+            <span><strong>Juiste antwoord:</strong> ${escapeHtml(correctToText(q))}</span>
+          </div>
+          <p>${escapeHtml(q.explanation)}</p>
+        </div>
+      `;
+    }
+
     function renderExam() {
       const questions = activeQuestions();
       const q = currentQuestion();
       ensureOrderAnswer(q);
       const answeredCount = questions.filter(function (item) { return hasAnswer(item, state.answers); }).length;
+      const training = isTrainingMode();
       app.innerHTML = `
         <section class="exam-layout">
           <article class="panel exam-card">
             <div class="exam-header">
               <div class="exam-meta">
-                <strong>Tafel 1 - ${escapeHtml(variantLabel())}</strong>
+                <strong>${training ? "Leerstand" : "Tafel 1"} - ${escapeHtml(variantLabel())}</strong>
                 <span>Vraag ${state.index + 1} van ${questions.length}</span>
                 <span>${escapeHtml(questionTypeLabel(q))}</span>
+                ${renderDifficultyChip(q)}
+                ${training ? `<span class="mode-chip">Directe uitleg</span>` : ""}
               </div>
               <span>${answeredCount}/${questions.length} beantwoord</span>
-              <span class="timer ${state.remaining <= 300 ? "low" : ""}" data-timer>${formatTime(state.remaining)}</span>
+              <span class="timer ${!training && state.remaining <= 300 ? "low" : ""}" data-timer>${training ? "Leerstand" : formatTime(state.remaining)}</span>
             </div>
             ${renderQuestionBody(q, state.answers)}
+            ${renderTrainingFeedback(q)}
+            ${renderReportForm(q)}
             <div class="question-footer">
               <div class="button-row">
                 <button class="btn secondary" type="button" onclick="previousQuestion()" ${state.index === 0 ? "disabled" : ""}>Vorige</button>
                 <button class="btn secondary" type="button" onclick="toggleFlag()">${state.flagged[q.id] ? "Markering weg" : "Markeer vraag"}</button>
+                ${renderReportButton(q)}
               </div>
               <div class="button-row">
+                ${training && !autoChecksTraining(q) ? `<button class="btn secondary" type="button" onclick="checkTrainingAnswer()">Controleer antwoord</button>` : ""}
                 ${state.index === questions.length - 1
-                  ? `<button class="btn danger" type="button" onclick="finishExam()">Examen inleveren</button>`
+                  ? `<button class="btn danger" type="button" onclick="finishExam()">${training ? "Leerstand afronden" : "Examen inleveren"}</button>`
                   : `<button class="btn" type="button" onclick="nextQuestion()">Volgende</button>`}
               </div>
             </div>
@@ -4196,7 +4511,7 @@
       const flaggedCount = Object.keys(state.flagged).filter(function (key) { return state.flagged[key]; }).length;
       return `
         <h3>Vraagoverzicht</h3>
-        <p class="side-note">${escapeHtml(variantLabel())}: ${answeredCount} beantwoord, ${flaggedCount} gemarkeerd. Je mag terugbladeren tot je inlevert of de tijd op is.</p>
+        <p class="side-note">${isTrainingMode() ? "Leerstand" : escapeHtml(variantLabel())}: ${answeredCount} beantwoord, ${flaggedCount} gemarkeerd. Je mag terugbladeren tot je afrondt.</p>
         <div class="overview-grid">
           ${questions.map(function (q, index) {
             const classes = [
@@ -4214,7 +4529,11 @@
           <span><i class="dot flag"></i>markering</span>
         </div>
         <div class="button-row" style="margin-top:16px">
-          <button class="btn danger" type="button" onclick="finishExam()">Inleveren</button>
+          <button class="btn danger" type="button" onclick="finishExam()">${isTrainingMode() ? "Leerstand afronden" : "Inleveren"}</button>
+        </div>
+        <div class="report-summary">
+          <p class="side-note">${state.reports.length} vraagmelding${state.reports.length === 1 ? "" : "en"} lokaal opgeslagen.</p>
+          ${state.reports.length ? `<button class="btn secondary" type="button" onclick="downloadReports()">Download meldingen</button>` : ""}
         </div>
       `;
     }
@@ -4389,6 +4708,7 @@
       const score = scoreExam();
       const degree = Math.round((score.correct / score.total) * 360);
       const stats = topicStats();
+      const training = isTrainingMode();
       const review = questions.filter(function (q) {
         if (!state.filterMisses) return true;
         if (q.counts === false) return false;
@@ -4398,17 +4718,18 @@
       app.innerHTML = `
         <section class="results-layout">
           <aside class="panel score-panel">
-            <span class="result-badge ${score.passed ? "pass" : "fail"}">${score.passed ? "Geslaagd voor deze oefenronde" : "Nog niet geslaagd"}</span>
+            <span class="result-badge ${training || score.passed ? "pass" : "fail"}">${training ? "Leerstand afgerond" : (score.passed ? "Geslaagd voor deze oefenronde" : "Nog niet geslaagd")}</span>
             <div class="score-circle" style="--score-deg:${degree}deg"><strong>${score.correct}/${score.total}</strong></div>
-            <p class="side-note">${escapeHtml(variantLabel())}: je had ${score.correct} van de ${score.total} meetellende vragen goed. In deze oefenset telden 2 testvragen niet mee. Slaaggrens: 44 goed.</p>
+            <p class="side-note">${escapeHtml(variantLabel())}: je had ${score.correct} van de ${score.total} meetellende vragen goed. ${training ? "Gebruik de uitleg hieronder om gericht te leren." : "In deze oefenset telden 2 testvragen niet mee. Slaaggrens: 44 goed."}</p>
             <div class="topic-list">
               ${Object.keys(stats).sort().map(function (topic) {
                 return `<div class="topic-row"><span>${escapeHtml(topic)}</span><strong>${stats[topic].correct}/${stats[topic].total}</strong></div>`;
               }).join("")}
             </div>
             <div class="button-row">
-              <button class="btn" type="button" onclick="startExam()">Opnieuw starten</button>
+              <button class="btn" type="button" onclick="restartSession()">Opnieuw starten</button>
               <button class="btn secondary" type="button" onclick="state.phase='intro'; render()">Startscherm</button>
+              ${state.reports.length ? `<button class="btn secondary" type="button" onclick="downloadReports()">Download meldingen</button>` : ""}
             </div>
           </aside>
           <article class="panel review-panel">
@@ -4435,13 +4756,17 @@
       const test = q.counts === false;
       return `
         <section class="review-item ${test ? "test" : (correct ? "good" : "miss")}">
-          <div class="review-meta">Vraag ${originalIndex + 1} - ${escapeHtml(q.topic)} - ${escapeHtml(questionTypeLabel(q))}${test ? " - testvraag, niet meegeteld" : ""}</div>
+          <div class="review-meta">Vraag ${originalIndex + 1} - ${escapeHtml(q.topic)} - ${escapeHtml(questionTypeLabel(q))} - ${escapeHtml(difficultyInfo(q).label)}${test ? " - testvraag, niet meegeteld" : ""}</div>
           <h3>${escapeHtml(q.prompt)}</h3>
           <div class="answer-line">
             <span><strong>Jouw antwoord:</strong> ${escapeHtml(answerToText(q, answer))}</span>
             <span><strong>Juiste antwoord:</strong> ${escapeHtml(correctToText(q))}</span>
           </div>
           <p class="explanation">${escapeHtml(q.explanation)}</p>
+          ${renderReportForm(q)}
+          <div class="button-row" style="margin-top:12px">
+            <button class="btn ${isReported(q) ? "reported" : "ghost"}" type="button" onclick="reportQuestion('${escapeHtml(q.id)}')">${isReported(q) ? "Melding opgeslagen" : "Meld deze vraag"}</button>
+          </div>
         </section>
       `;
     }

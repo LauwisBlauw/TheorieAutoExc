@@ -15,6 +15,9 @@ Open `index.html` in je browser om te oefenen.
 - Vraagsoorten: meerkeuze, ja/nee-achtige meerkeuze, multiple response, invulvraag, hotspotvraag en sleepvraag-simulatie.
 - Echte foto-assets per verkeerssituatie, lokaal opgeslagen in `assets/images`.
 - AI-gegenereerde situatiebeelden voor visuele hotspotvragen, lokaal opgeslagen in `assets/generated`.
+- Moeilijkheidslabel per vraag: makkelijk, gemiddeld of moeilijk.
+- Leerstand met directe uitleg tijdens het oefenen.
+- Meldknop per vraag; meldingen worden lokaal opgeslagen en kunnen als JSON worden gedownload.
 - Uitslag met uitleg per vraag.
 - Android-vriendelijke bediening met grote knoppen, foto boven de vraag en sticky navigatie op kleine schermen.
 

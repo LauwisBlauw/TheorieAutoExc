@@ -1370,7 +1370,9 @@
       <details>
         <summary>Fotobronnen</summary>
         <p>
-          Foto's komen van Wikimedia Commons en staan lokaal in `assets/images`:
+          Basisfoto's komen van Wikimedia Commons en staan lokaal in `assets/images`.
+          Extra AI-gegenereerde situatiebeelden voor hotspotvragen staan lokaal in `assets/generated`.
+          Wikimedia-bronnen:
           Traffic jam in the Netherlands - Petra de Boevere - CC BY 2.0;
           Hauptstrassenradweg in Amsterdam - W.-D. Haberland - CC BY-SA 4.0;
           Road crossing Amsterdamseweg/Schelmseweg - Henk Monster - CC BY 3.0;
@@ -1406,12 +1408,15 @@
         kind: "hotspot",
         topic: "Gevaarherkenning",
         scene: "residential",
+        image: "assets/generated/p2-child-ball.jpg",
+        imageAlt: "AI-gegenereerde woonstraat met een kind en bal tussen geparkeerde auto's",
+        imageLabel: "AI-gegenereerde situatie: kind met bal tussen geparkeerde auto's",
         prompt: "Tik het punt aan waar je het grootste directe gevaar verwacht.",
         help: "Kijk naar de verkeerssituatie en kies het risicopunt.",
         hotspots: [
-          { id: "a", label: "Geparkeerde auto", x: 25, y: 49 },
-          { id: "b", label: "Kind bij de bal", x: 67, y: 38 },
-          { id: "c", label: "Boom naast de weg", x: 86, y: 26 }
+          { id: "a", label: "Geparkeerde auto", x: 21, y: 61 },
+          { id: "b", label: "Kind bij de bal", x: 59, y: 64 },
+          { id: "c", label: "Boom naast de weg", x: 82, y: 24 }
         ],
         correct: "b",
         explanation: "Een kind bij een bal kan onverwacht de weg op rennen. Verminder snelheid en wees klaar om te remmen."
@@ -1491,6 +1496,9 @@
         kind: "hotspot",
         topic: "Gebruik van de weg",
         scene: "motorway",
+        image: "assets/generated/motorway-hard-shoulder.jpg",
+        imageAlt: "AI-gegenereerde autosnelweg met een duidelijke vluchtstrook rechts",
+        imageLabel: "AI-gegenereerde situatie: autosnelweg met vluchtstrook rechts",
         prompt: "Tik het deel aan dat je niet als gewone rijstrook mag gebruiken.",
         hotspots: [
           { id: "a", label: "Linkerrijstrook", x: 28, y: 34 },
@@ -1620,10 +1628,13 @@
         kind: "hotspot",
         topic: "Veilig rijden en noodsituaties",
         scene: "motorway",
+        image: "assets/generated/motorway-blind-spot.jpg",
+        imageAlt: "AI-gegenereerde autosnelweg met verkeer in de rechter dode hoek",
+        imageLabel: "AI-gegenereerde situatie: rijstrookwisseling en rechter dode hoek",
         prompt: "Je wilt naar rechts wisselen. Tik het gebied aan dat je extra moet controleren.",
         hotspots: [
           { id: "a", label: "Voor je motorkap", x: 34, y: 48 },
-          { id: "b", label: "Dode hoek rechtsachter", x: 73, y: 64 },
+          { id: "b", label: "Dode hoek rechtsachter", x: 86, y: 73 },
           { id: "c", label: "Matrixbord boven links", x: 22, y: 12 }
         ],
         correct: "b",
@@ -1880,9 +1891,12 @@
         kind: "hotspot",
         topic: "Verkeerstekens en aanwijzingen",
         scene: "intersection",
+        image: "assets/generated/intersection-shark-teeth.jpg",
+        imageAlt: "AI-gegenereerd kruispunt met haaientanden op het wegdek",
+        imageLabel: "AI-gegenereerde situatie: haaientanden bij een kruispunt",
         prompt: "Tik het verkeersteken aan dat aangeeft waar je voorrang moet verlenen.",
         hotspots: [
-          { id: "a", label: "Haaientanden", x: 42, y: 66 },
+          { id: "a", label: "Haaientanden", x: 47, y: 75 },
           { id: "b", label: "Wegas", x: 50, y: 50 },
           { id: "c", label: "Straatlantaarn", x: 83, y: 24 }
         ],
@@ -2118,11 +2132,14 @@
         kind: "hotspot",
         topic: "Gevaarherkenning",
         scene: "residential",
+        image: "assets/generated/residential-30zone-child.jpg",
+        imageAlt: "AI-gegenereerde 30-zone met een kind tussen geparkeerde auto's",
+        imageLabel: "AI-gegenereerde situatie: 30-zone met kind tussen geparkeerde auto's",
         prompt: "Tik de plek aan waar je als eerste extra aandacht aan besteedt.",
         hotspots: [
-          { id: "a", label: "Auto op eigen rijstrook", x: 34, y: 58 },
-          { id: "b", label: "Kind tussen auto's", x: 69, y: 42 },
-          { id: "c", label: "Bord 30-zone", x: 18, y: 24 }
+          { id: "a", label: "Auto op eigen rijstrook", x: 44, y: 50 },
+          { id: "b", label: "Kind tussen auto's", x: 68, y: 60 },
+          { id: "c", label: "Bord 30-zone", x: 13, y: 20 }
         ],
         correct: "b",
         explanation: "Een kind tussen geparkeerde auto's is slecht zichtbaar en kan onverwacht oversteken."
@@ -2304,10 +2321,13 @@
         kind: "hotspot",
         topic: "Veilig rijden en noodsituaties",
         scene: "motorway",
+        image: "assets/generated/motorway-blind-spot.jpg",
+        imageAlt: "AI-gegenereerde autosnelweg met verkeer in de rechter dode hoek",
+        imageLabel: "AI-gegenereerde situatie: invoegen en rechter dode hoek",
         prompt: "Je wilt naar rechts invoegen. Tik het gebied aan dat je vlak voor het sturen extra controleert.",
         hotspots: [
           { id: "a", label: "Voor de auto", x: 34, y: 44 },
-          { id: "b", label: "Dode hoek rechtsachter", x: 76, y: 64 },
+          { id: "b", label: "Dode hoek rechtsachter", x: 86, y: 73 },
           { id: "c", label: "Linker berm", x: 14, y: 58 }
         ],
         correct: "b",
@@ -2808,10 +2828,13 @@
         kind: "hotspot",
         topic: "Gevaarherkenning",
         scene: "residential",
+        image: "assets/generated/p2-child-ball.jpg",
+        imageAlt: "AI-gegenereerde woonstraat met een kind en bal tussen geparkeerde auto's",
+        imageLabel: "AI-gegenereerde situatie: onverwacht gevaar tussen geparkeerde auto's",
         prompt: "Tik het punt aan waar het grootste onverwachte gevaar kan ontstaan.",
         hotspots: [
           { id: "a", label: "Vrije ruimte links", x: 18, y: 58 },
-          { id: "b", label: "Tussen geparkeerde auto's", x: 69, y: 43 },
+          { id: "b", label: "Tussen geparkeerde auto's", x: 59, y: 64 },
           { id: "c", label: "Lucht boven de woningen", x: 50, y: 14 }
         ],
         correct: "b",
@@ -2866,6 +2889,9 @@
         kind: "hotspot",
         topic: "Gebruik van de weg",
         scene: "motorway",
+        image: "assets/generated/motorway-hard-shoulder.jpg",
+        imageAlt: "AI-gegenereerde autosnelweg met een duidelijke vluchtstrook rechts",
+        imageLabel: "AI-gegenereerde situatie: vluchtstrook rechts op de autosnelweg",
         prompt: "Tik het weggedeelte aan dat je niet als gewone rijstrook gebruikt.",
         hotspots: [
           { id: "a", label: "Linkerrijstrook", x: 28, y: 34 },
@@ -3022,10 +3048,13 @@
         kind: "hotspot",
         topic: "Gevaarherkenning",
         scene: "residential",
+        image: "assets/generated/p2-child-ball.jpg",
+        imageAlt: "AI-gegenereerde woonstraat met een kind en bal tussen geparkeerde auto's",
+        imageLabel: "AI-gegenereerde situatie: iemand kan tussen geparkeerde auto's verschijnen",
         prompt: "Tik de plek aan waar iemand onverwacht de weg op kan komen.",
         hotspots: [
           { id: "a", label: "Open ruimte voor je", x: 31, y: 61 },
-          { id: "b", label: "Tussen geparkeerde auto's", x: 66, y: 44 },
+          { id: "b", label: "Tussen geparkeerde auto's", x: 59, y: 64 },
           { id: "c", label: "Dak van de woning", x: 42, y: 18 }
         ],
         correct: "b",
@@ -3234,6 +3263,9 @@
         kind: "hotspot",
         topic: "Gebruik van de weg",
         scene: "motorway",
+        image: "assets/generated/motorway-hard-shoulder.jpg",
+        imageAlt: "AI-gegenereerde autosnelweg met een duidelijke vluchtstrook rechts",
+        imageLabel: "AI-gegenereerde situatie: vluchtstrook alleen voor nood of aangegeven gebruik",
         prompt: "Tik het deel aan dat alleen bij nood of aangegeven gebruik bedoeld is.",
         hotspots: [
           { id: "a", label: "Linkerrijstrook", x: 29, y: 36 },
@@ -3459,6 +3491,9 @@
         kind: "hotspot",
         topic: "Gevaarherkenning",
         scene: "intersection",
+        image: "assets/generated/intersection-cross-traffic.jpg",
+        imageAlt: "AI-gegenereerd kruispunt met kruisend verkeer en verkeerslichten",
+        imageLabel: "AI-gegenereerde situatie: kruispuntgebied met kruisend verkeer",
         prompt: "Tik het gebied aan waar je extra op kruisend verkeer let.",
         hotspots: [
           { id: "a", label: "Kruispuntgebied", x: 50, y: 50 },
@@ -4282,14 +4317,14 @@
 
       return `
         <div class="scene photo-scene ${escapeHtml(q.scene || "city")}">
-          ${renderSceneObjects(q.scene || "city")}
+          ${renderSceneObjects(q.scene || "city", q)}
           ${hotspots}
         </div>
         ${labels}
       `;
     }
 
-    function renderSceneObjects(scene) {
+    function renderSceneObjects(scene, q) {
       const scenes = {
         city: {
           src: "assets/images/city.jpg",
@@ -4338,9 +4373,14 @@
         }
       };
       const data = scenes[scene] || scenes.city;
+      const imageData = q && q.image ? {
+        src: q.image,
+        alt: q.imageAlt || data.alt,
+        label: q.imageLabel || data.label
+      } : data;
       return `
-        <img class="scene-photo" src="${escapeHtml(data.src)}" alt="${escapeHtml(data.alt)}">
-        <div class="scene-label">${escapeHtml(data.label)}</div>
+        <img class="scene-photo" src="${escapeHtml(imageData.src)}" alt="${escapeHtml(imageData.alt)}">
+        <div class="scene-label">${escapeHtml(imageData.label)}</div>
       `;
     }
 

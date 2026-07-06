@@ -14,6 +14,7 @@ Open `index.html` in je browser om te oefenen.
 - Slaaggrens van 44 goed op 50 meetellende vragen.
 - Vraagsoorten: meerkeuze, ja/nee-achtige meerkeuze, multiple response, invulvraag, hotspotvraag en sleepvraag-simulatie.
 - Echte foto-assets per verkeerssituatie, lokaal opgeslagen in `assets/images`.
+- AI-gegenereerde situatiebeelden voor visuele hotspotvragen, lokaal opgeslagen in `assets/generated`.
 - Uitslag met uitleg per vraag.
 - Android-vriendelijke bediening met grote knoppen, foto boven de vraag en sticky navigatie op kleine schermen.
 
@@ -29,9 +30,9 @@ De willekeurige mix trekt elke keer 52 vragen uit de normale, moeilijke en extra
 
 Dit is geen officieel CBR-materiaal. De vragen zijn origineel gemaakt om te oefenen met de onderwerpen en vraagvormen. De echte CBR-vragen zijn anders en kunnen wijzigen.
 
-## Fotobronnen
+## Afbeeldingen
 
-De gebruikte foto's staan lokaal in `assets/images` en komen van Wikimedia Commons:
+De basisfoto's staan lokaal in `assets/images` en komen van Wikimedia Commons:
 
 - `motorway.jpg`: Traffic jam in the Netherlands, Petra de Boevere, CC BY 2.0.
 - `city.jpg`: Hauptstrassenradweg in Amsterdam, W.-D. Haberland, CC BY-SA 4.0.
@@ -42,6 +43,15 @@ De gebruikte foto's staan lokaal in `assets/images` en komen van Wikimedia Commo
 - `weather.jpg`: A12 mist, M.Minderhoud/Michiel1972, CC BY-SA 3.0 or GFDL.
 - `signs.jpg`: Parking zone 30 sign, Rotterdam, Donald Trung Quoc Don, CC BY-SA 4.0.
 - `rail.jpg`: HALI Amsterdam Houtrakpolder, Pbech, CC0.
+
+De hotspotvragen gebruiken daarnaast zelf gegenereerde oefenbeelden in `assets/generated`:
+
+- `p2-child-ball.jpg`: woonstraat met kind en bal tussen geparkeerde auto's.
+- `residential-30zone-child.jpg`: 30-zone met kind tussen geparkeerde auto's.
+- `motorway-hard-shoulder.jpg`: autosnelweg met vluchtstrook rechts.
+- `motorway-blind-spot.jpg`: rijstrookwisseling met rechter dode hoek.
+- `intersection-shark-teeth.jpg`: kruispunt met haaientanden.
+- `intersection-cross-traffic.jpg`: kruispuntgebied met kruisend verkeer.
 
 Gebaseerd op openbare CBR-informatie:
 

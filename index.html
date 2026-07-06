@@ -1,0 +1,4412 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Auto Theorie B Oefenexamen - Juli 2026</title>
+  <style>
+    :root {
+      --ink: #10202a;
+      --muted: #5c6f7b;
+      --bg: #eef4f5;
+      --panel: #ffffff;
+      --line: #cfdce1;
+      --brand: #0b4b63;
+      --brand-dark: #073346;
+      --brand-soft: #d7edf3;
+      --ok: #13795b;
+      --ok-soft: #dff4ec;
+      --warn: #a35c00;
+      --warn-soft: #fff1d6;
+      --bad: #b42318;
+      --bad-soft: #fde7e5;
+      --focus: #f5b301;
+      --road: #35434b;
+      --road-line: #f6f7d7;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, #f6fbfc 0%, var(--bg) 46%, #e5eef1 100%);
+      font-family: Arial, Helvetica, sans-serif;
+      letter-spacing: 0;
+      touch-action: manipulation;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: rgba(11, 75, 99, .18);
+    }
+
+    button:disabled {
+      cursor: not-allowed;
+      opacity: .55;
+    }
+
+    a {
+      color: var(--brand);
+    }
+
+    .app-shell {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topbar {
+      background: var(--brand-dark);
+      color: #fff;
+      border-bottom: 4px solid var(--focus);
+    }
+
+    .topbar-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 14px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      background: #fff;
+      color: var(--brand-dark);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      box-shadow: inset 0 -4px 0 var(--focus);
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.15;
+    }
+
+    .brand p {
+      margin: 3px 0 0;
+      color: #cfe8ef;
+      font-size: 13px;
+    }
+
+    .topbar-pill {
+      padding: 7px 10px;
+      border: 1px solid rgba(255, 255, 255, .38);
+      border-radius: 999px;
+      color: #eaf6f8;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    main {
+      flex: 1;
+      width: min(1180px, calc(100% - 32px));
+      margin: 22px auto 28px;
+    }
+
+    .intro-layout {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 12px 28px rgba(7, 51, 70, .08);
+    }
+
+    .intro-panel {
+      padding: 28px;
+    }
+
+    .intro-panel h2 {
+      margin: 0 0 10px;
+      font-size: 30px;
+      line-height: 1.08;
+    }
+
+    .intro-panel p {
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .notice {
+      border-left: 4px solid var(--focus);
+      background: #fff8e5;
+      padding: 12px 14px;
+      margin: 18px 0;
+      color: #4a3a10;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 22px 0;
+    }
+
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: #f8fbfc;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 24px;
+      color: var(--brand-dark);
+    }
+
+    .stat span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 3px;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      padding: 11px 15px;
+      cursor: pointer;
+      min-height: 42px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn:hover {
+      background: var(--brand-dark);
+    }
+
+    .btn:focus-visible,
+    .option:focus-visible,
+    .overview-button:focus-visible,
+    .hotspot:focus-visible,
+    .move-btn:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .btn.secondary {
+      background: #eef4f6;
+      color: var(--brand-dark);
+      border: 1px solid var(--line);
+    }
+
+    .btn.secondary:hover {
+      background: #dfecef;
+    }
+
+    .btn.danger {
+      background: var(--bad);
+    }
+
+    .btn.danger:hover {
+      background: #8c1d13;
+    }
+
+    .btn.ghost {
+      background: transparent;
+      color: var(--brand-dark);
+      border: 1px solid var(--line);
+    }
+
+    .exam-preview {
+      padding: 22px;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 14px;
+      overflow: hidden;
+    }
+
+    .mini-screen {
+      min-height: 320px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #f8fbfc;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      overflow: hidden;
+    }
+
+    .mini-screen-top {
+      background: var(--brand);
+      color: #fff;
+      padding: 9px 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .mini-screen-body {
+      padding: 14px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .mini-options {
+      display: grid;
+      gap: 8px;
+    }
+
+    .mini-option {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 6px;
+      padding: 9px;
+      font-size: 13px;
+    }
+
+    .mini-screen-foot {
+      border-top: 1px solid var(--line);
+      padding: 10px 12px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .exam-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .exam-card {
+      overflow: hidden;
+      min-width: 0;
+    }
+
+    .exam-header {
+      background: var(--brand);
+      color: #fff;
+      padding: 13px 18px;
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .exam-meta {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+
+    .timer {
+      background: rgba(0, 0, 0, .22);
+      padding: 8px 11px;
+      border-radius: 6px;
+      font-weight: 800;
+      min-width: 82px;
+      text-align: center;
+    }
+
+    .timer.low {
+      background: var(--bad);
+    }
+
+    .question-body {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: minmax(0, .96fr) minmax(280px, .74fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .question-copy {
+      min-width: 0;
+    }
+
+    .kicker {
+      color: var(--brand);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      margin-bottom: 8px;
+    }
+
+    .question-copy h2 {
+      margin: 0 0 18px;
+      line-height: 1.25;
+      font-size: 24px;
+    }
+
+    .question-help {
+      margin: -6px 0 16px;
+      color: var(--muted);
+      line-height: 1.45;
+      font-size: 14px;
+    }
+
+    .options {
+      display: grid;
+      gap: 10px;
+    }
+
+    .option {
+      width: 100%;
+      min-height: 48px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      border-radius: 8px;
+      padding: 12px 14px;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      align-items: center;
+      gap: 10px;
+      text-align: left;
+    }
+
+    .option:hover {
+      border-color: #8db5c2;
+      background: #f8fbfc;
+    }
+
+    .option.selected {
+      border-color: var(--brand);
+      background: var(--brand-soft);
+      box-shadow: inset 0 0 0 1px var(--brand);
+    }
+
+    .option-letter {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--brand-dark);
+      background: #e6eef1;
+      font-weight: 800;
+    }
+
+    .option.selected .option-letter {
+      color: #fff;
+      background: var(--brand);
+    }
+
+    .number-entry {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .number-entry input {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      min-height: 50px;
+      padding: 10px 12px;
+      font-size: 22px;
+      width: 170px;
+      background: #fff;
+    }
+
+    .suffix {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .order-list {
+      display: grid;
+      gap: 9px;
+    }
+
+    .order-item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      background: #fff;
+      display: grid;
+      grid-template-columns: 34px 1fr auto;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .order-rank {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--brand-soft);
+      color: var(--brand-dark);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+    }
+
+    .move-actions {
+      display: flex;
+      gap: 5px;
+    }
+
+    .move-btn {
+      border: 1px solid var(--line);
+      background: #f7fbfc;
+      border-radius: 6px;
+      min-width: 34px;
+      height: 34px;
+      cursor: pointer;
+      color: var(--brand-dark);
+      font-weight: 800;
+    }
+
+    .move-btn:disabled {
+      opacity: .4;
+      cursor: not-allowed;
+    }
+
+    .visual-panel {
+      min-width: 0;
+    }
+
+    .scene {
+      position: relative;
+      min-height: 292px;
+      border-radius: 8px;
+      border: 1px solid #bccbd1;
+      background: #d9eef2;
+      overflow: hidden;
+    }
+
+    .scene::before {
+      content: "";
+      position: absolute;
+      inset: 32px 0;
+      background: var(--road);
+    }
+
+    .scene::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      border-top: 4px dashed var(--road-line);
+      transform: translateY(-50%);
+    }
+
+    .scene.intersection::before {
+      inset: 0;
+      clip-path: polygon(0 36%, 38% 36%, 38% 0, 62% 0, 62% 36%, 100% 36%, 100% 64%, 62% 64%, 62% 100%, 38% 100%, 38% 64%, 0 64%);
+    }
+
+    .scene.intersection::after {
+      left: 0;
+      right: 0;
+      top: 50%;
+      border-top: 4px dashed var(--road-line);
+      box-shadow: 0 -64px 0 -2px transparent;
+    }
+
+    .scene.motorway::before {
+      inset: 18px 0;
+      background: #2f3f47;
+    }
+
+    .scene.motorway::after {
+      top: 36%;
+      box-shadow: 0 82px 0 0 var(--road-line);
+      border-top: 4px dashed var(--road-line);
+    }
+
+    .scene.residential {
+      background: #dcefd9;
+    }
+
+    .scene.residential::before {
+      inset: 86px 0 52px;
+    }
+
+    .scene.parking::before {
+      inset: 72px 0 72px;
+    }
+
+    .scene.dashboard {
+      background: #17242b;
+      color: #fff;
+    }
+
+    .scene.dashboard::before,
+    .scene.dashboard::after,
+    .scene.signs::before,
+    .scene.signs::after,
+    .scene.weather::after {
+      display: none;
+    }
+
+    .scene.weather {
+      background: linear-gradient(180deg, #b9cbd1, #dfe9eb);
+    }
+
+    .scene.weather::before {
+      inset: 78px 0 72px;
+      background: #4b5961;
+    }
+
+    .scene.rail::before {
+      inset: 108px 0 92px;
+    }
+
+    .scene.rail::after {
+      top: 46%;
+      border-top: 8px double #7a4a2d;
+    }
+
+    .scene.photo-scene::before,
+    .scene.photo-scene::after {
+      display: none;
+    }
+
+    .scene-photo {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .car,
+    .bike,
+    .person,
+    .bus,
+    .tram,
+    .sign,
+    .hazard,
+    .lane-x,
+    .dash-light,
+    .tree,
+    .crosswalk,
+    .parking-line {
+      position: absolute;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+    }
+
+    .car,
+    .bus,
+    .tram {
+      border-radius: 7px;
+      color: #fff;
+      box-shadow: 0 3px 0 rgba(0, 0, 0, .22);
+    }
+
+    .car {
+      width: 48px;
+      height: 30px;
+      background: #1b78a0;
+    }
+
+    .car.red {
+      background: #b42318;
+    }
+
+    .car.green {
+      background: #13795b;
+    }
+
+    .bus {
+      width: 70px;
+      height: 32px;
+      background: #d88000;
+    }
+
+    .tram {
+      width: 76px;
+      height: 32px;
+      background: #7b8794;
+    }
+
+    .bike {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #fff;
+      color: #0b4b63;
+      border: 3px solid #0b4b63;
+      font-size: 16px;
+    }
+
+    .person {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #f5b301;
+      color: #17242b;
+      font-size: 13px;
+    }
+
+    .hazard {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--bad);
+      color: #fff;
+    }
+
+    .tree {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #1d7b55;
+      color: #fff;
+    }
+
+    .sign {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 5px solid var(--bad);
+      background: #fff;
+      color: #10202a;
+      font-size: 15px;
+    }
+
+    .sign.blue {
+      border: 0;
+      background: #1b78d0;
+      color: #fff;
+    }
+
+    .sign.stop {
+      border-radius: 8px;
+      border: 0;
+      background: #c1121f;
+      color: #fff;
+      width: 64px;
+    }
+
+    .lane-x {
+      width: 54px;
+      height: 42px;
+      background: #16242b;
+      color: #ff4040;
+      border: 3px solid #8ca0aa;
+      font-size: 28px;
+    }
+
+    .crosswalk {
+      width: 90px;
+      height: 60px;
+      background: repeating-linear-gradient(90deg, #fff 0 9px, transparent 9px 18px);
+      opacity: .9;
+      transform: rotate(90deg);
+    }
+
+    .parking-line {
+      width: 90px;
+      height: 8px;
+      background: #ffd23f;
+      border-radius: 999px;
+    }
+
+    .parking-line.dashed {
+      background: repeating-linear-gradient(90deg, #ffd23f 0 18px, transparent 18px 29px);
+    }
+
+    .dash-light {
+      min-width: 56px;
+      height: 48px;
+      border-radius: 8px;
+      background: #2c3b43;
+      color: #fff;
+      border: 1px solid #55656d;
+      padding: 0 8px;
+      font-size: 12px;
+    }
+
+    .dash-light.redlight {
+      background: #7f1d1d;
+      border-color: #ffb4aa;
+    }
+
+    .dash-light.orangelight {
+      background: #7c4a03;
+      border-color: #ffd48a;
+    }
+
+    .scene-label {
+      position: absolute;
+      z-index: 3;
+      left: 12px;
+      right: 12px;
+      bottom: 10px;
+      background: rgba(255, 255, 255, .9);
+      border: 1px solid rgba(16, 32, 42, .12);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-size: 13px;
+      color: var(--ink);
+    }
+
+    .hotspot {
+      position: absolute;
+      z-index: 5;
+      width: 38px;
+      height: 38px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 3px solid #fff;
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 800;
+      box-shadow: 0 5px 12px rgba(0, 0, 0, .25);
+    }
+
+    .hotspot.selected {
+      background: var(--focus);
+      color: #10202a;
+      border-color: #10202a;
+    }
+
+    .hotspot-labels {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .hotspot-labels span {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 5px 8px;
+    }
+
+    .question-footer {
+      border-top: 1px solid var(--line);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      background: #f8fbfc;
+    }
+
+    .side-panel {
+      padding: 16px;
+      position: sticky;
+      top: 12px;
+      min-width: 0;
+    }
+
+    .side-panel h3 {
+      margin: 0 0 10px;
+      font-size: 17px;
+    }
+
+    .side-note {
+      color: var(--muted);
+      line-height: 1.42;
+      font-size: 13px;
+      margin: 0 0 14px;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 7px;
+    }
+
+    .overview-button {
+      min-height: 38px;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+      color: var(--ink);
+      font-weight: 800;
+      position: relative;
+    }
+
+    .overview-button.current {
+      border-color: var(--brand);
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .overview-button.answered:not(.current) {
+      background: var(--ok-soft);
+      border-color: #7ec8ac;
+    }
+
+    .overview-button.flagged::after {
+      content: "";
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--focus);
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, .15);
+    }
+
+    .legend {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .dot.done {
+      background: var(--ok-soft);
+      border-color: #7ec8ac;
+    }
+
+    .dot.flag {
+      background: var(--focus);
+      border-color: #916500;
+    }
+
+    .practice-feedback {
+      margin-top: 14px;
+      border-radius: 8px;
+      padding: 12px 14px;
+      line-height: 1.45;
+      border: 1px solid var(--line);
+    }
+
+    .practice-feedback.ok {
+      background: var(--ok-soft);
+      border-color: #8fd2b7;
+    }
+
+    .practice-feedback.bad {
+      background: var(--bad-soft);
+      border-color: #f1a7a0;
+    }
+
+    .results-layout {
+      display: grid;
+      grid-template-columns: 360px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .score-panel {
+      padding: 20px;
+      position: sticky;
+      top: 12px;
+    }
+
+    .score-circle {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      margin: 8px auto 18px;
+      display: grid;
+      place-items: center;
+      background: conic-gradient(var(--ok) var(--score-deg), #e6eef1 0);
+      position: relative;
+    }
+
+    .score-circle::after {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border-radius: 50%;
+      background: #fff;
+    }
+
+    .score-circle strong {
+      position: relative;
+      z-index: 1;
+      font-size: 34px;
+      color: var(--brand-dark);
+    }
+
+    .result-badge {
+      display: block;
+      text-align: center;
+      border-radius: 999px;
+      padding: 9px 12px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .result-badge.pass {
+      background: var(--ok-soft);
+      color: var(--ok);
+    }
+
+    .result-badge.fail {
+      background: var(--bad-soft);
+      color: var(--bad);
+    }
+
+    .topic-list {
+      display: grid;
+      gap: 8px;
+      margin: 14px 0;
+    }
+
+    .topic-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .review-panel {
+      overflow: hidden;
+    }
+
+    .review-head {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .review-list {
+      display: grid;
+      gap: 0;
+    }
+
+    .review-item {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .review-item:last-child {
+      border-bottom: 0;
+    }
+
+    .review-item.good {
+      border-left: 5px solid var(--ok);
+    }
+
+    .review-item.miss {
+      border-left: 5px solid var(--bad);
+    }
+
+    .review-item.test {
+      border-left-color: #7b8794;
+    }
+
+    .review-item h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+      line-height: 1.35;
+    }
+
+    .review-meta {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .answer-line {
+      display: grid;
+      gap: 5px;
+      margin-top: 10px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .answer-line strong {
+      color: var(--ink);
+    }
+
+    .explanation {
+      margin: 12px 0 0;
+      padding: 11px 12px;
+      border-radius: 8px;
+      background: #f3f8fa;
+      color: #27414d;
+      line-height: 1.45;
+      border: 1px solid #d8e7ec;
+    }
+
+    footer {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto 20px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    footer a {
+      color: var(--brand-dark);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 980px) {
+      .intro-layout,
+      .exam-layout,
+      .results-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .side-panel,
+      .score-panel {
+        position: static;
+      }
+
+      .question-body {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .topbar-inner,
+      main,
+      footer {
+        width: min(100% - 20px, 1180px);
+      }
+
+      main {
+        margin: 10px auto 18px;
+      }
+
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+        padding: 10px 0;
+      }
+
+      .brand {
+        gap: 10px;
+      }
+
+      .brand-mark {
+        width: 36px;
+        height: 36px;
+      }
+
+      .brand h1 {
+        font-size: 18px;
+      }
+
+      .brand p {
+        font-size: 12px;
+      }
+
+      .topbar-pill {
+        padding: 5px 8px;
+        font-size: 12px;
+        white-space: normal;
+      }
+
+      .intro-panel,
+      .exam-preview {
+        padding: 16px;
+      }
+
+      .intro-panel .button-row {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .intro-panel h2 {
+        font-size: 24px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .exam-header {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 10px 12px;
+        position: sticky;
+        top: 0;
+        z-index: 20;
+      }
+
+      .exam-card {
+        overflow: visible;
+      }
+
+      .exam-meta {
+        gap: 6px;
+        font-size: 13px;
+      }
+
+      .timer {
+        min-width: 76px;
+      }
+
+      .question-body {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+        padding: 14px;
+      }
+
+      .visual-panel {
+        order: -1;
+        width: 100%;
+      }
+
+      .question-copy h2 {
+        font-size: 19px;
+        margin-bottom: 14px;
+      }
+
+      .question-help {
+        margin-bottom: 14px;
+      }
+
+      .option {
+        min-height: 58px;
+        grid-template-columns: 36px 1fr;
+        padding: 14px 12px;
+      }
+
+      .option-letter {
+        width: 34px;
+        height: 34px;
+      }
+
+      .scene {
+        aspect-ratio: 16 / 10;
+        min-height: 0;
+      }
+
+      .scene-label {
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+        padding: 7px 8px;
+        font-size: 12px;
+      }
+
+      .number-entry {
+        align-items: stretch;
+      }
+
+      .number-entry input {
+        width: 100%;
+        min-height: 56px;
+        font-size: 20px;
+      }
+
+      .suffix {
+        width: 100%;
+      }
+
+      .order-item {
+        grid-template-columns: 36px 1fr;
+        align-items: start;
+      }
+
+      .move-actions {
+        grid-column: 1 / -1;
+      }
+
+      .move-btn {
+        flex: 1;
+        min-height: 44px;
+      }
+
+      .hotspot {
+        width: 46px;
+        height: 46px;
+      }
+
+      .hotspot-labels {
+        font-size: 12px;
+      }
+
+      .side-panel {
+        padding: 12px;
+        overflow: hidden;
+      }
+
+      .overview-grid {
+        display: flex;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        padding-bottom: 6px;
+        scroll-snap-type: x proximity;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .overview-button {
+        flex: 0 0 44px;
+        min-width: 44px;
+        min-height: 44px;
+        scroll-snap-align: start;
+      }
+
+      .question-footer {
+        align-items: stretch;
+        padding: 10px;
+        position: sticky;
+        bottom: 0;
+        z-index: 30;
+        box-shadow: 0 -8px 22px rgba(7, 51, 70, .12);
+      }
+
+      .button-row,
+      .question-footer .button-row,
+      .btn {
+        width: 100%;
+      }
+
+      .btn {
+        min-height: 50px;
+        padding: 12px 14px;
+      }
+
+      footer {
+        margin-bottom: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div class="brand-mark">B</div>
+          <div>
+            <h1>Auto Theorie B Oefenexamen</h1>
+            <p>Juli 2026 - CBR-achtige oefenquiz met originele vragen</p>
+          </div>
+        </div>
+        <div class="topbar-pill">Niet officieel CBR materiaal</div>
+      </div>
+    </header>
+
+    <main id="app" aria-live="polite"></main>
+
+    <footer>
+      Gebaseerd op openbare CBR-informatie die is gecontroleerd op 6 juli 2026:
+      <a href="https://www.cbr.nl/nl/rijbewijs-halen/auto/theorie-examen-auto/hoe-gaat-het-theorie-examen-auto" target="_blank" rel="noreferrer">opzet en slaaggrens</a>,
+      <a href="https://www.cbr.nl/nl/rijbewijs-halen/auto/theorie-examen-auto/soort-vragen-tijdens-theorie" target="_blank" rel="noreferrer">vraagsoorten</a>,
+      <a href="https://www.cbr.nl/nl/rijbewijs-halen/auto/theorie-examen-auto/onderwerpen-in-het-theorie-examen" target="_blank" rel="noreferrer">onderwerpen</a>
+      en de
+      <a href="https://www.cbr.nl/nl/over-het-cbr/over/laatste-nieuws/nieuws/leren-en-oefenen-voorbeeldvragen-theorie-examen-auto-1" target="_blank" rel="noreferrer">CBR-voorbeeldvragenpagina</a>.
+      De vragen hieronder zijn zelf gemaakt en geen echte examenvragen.
+      <details>
+        <summary>Fotobronnen</summary>
+        <p>
+          Foto's komen van Wikimedia Commons en staan lokaal in `assets/images`:
+          Traffic jam in the Netherlands - Petra de Boevere - CC BY 2.0;
+          Hauptstrassenradweg in Amsterdam - W.-D. Haberland - CC BY-SA 4.0;
+          Road crossing Amsterdamseweg/Schelmseweg - Henk Monster - CC BY 3.0;
+          Woonerf De Mient - Historisch Archief Haarlemmermeer - CC0;
+          20200925 parking lined perpendicular - Jeroen Hoek - CC0;
+          Dash Mazda 3 - John W/dcJohn - CC BY 2.0;
+          A12 mist - M.Minderhoud/Michiel1972 - CC BY-SA 3.0 or GFDL;
+          Parking zone 30 sign Rotterdam - Donald Trung Quoc Don - CC BY-SA 4.0;
+          HALI Amsterdam Houtrakpolder - Wikimedia Commons file page license.
+        </p>
+      </details>
+    </footer>
+  </div>
+
+  <script>
+    const practiceQuestions = [
+      {
+        id: "p1",
+        kind: "single",
+        topic: "Gebruik van de weg",
+        scene: "city",
+        prompt: "Je rijdt binnen de bebouwde kom. Er staat geen bord met een andere snelheid. Wat is de maximumsnelheid?",
+        options: [
+          { id: "a", text: "30 km/u" },
+          { id: "b", text: "50 km/u" },
+          { id: "c", text: "70 km/u" }
+        ],
+        correct: "b",
+        explanation: "Binnen de bebouwde kom geldt voor een personenauto normaal 50 km/u, behalve als borden of zones iets anders aangeven."
+      },
+      {
+        id: "p2",
+        kind: "hotspot",
+        topic: "Gevaarherkenning",
+        scene: "residential",
+        prompt: "Tik het punt aan waar je het grootste directe gevaar verwacht.",
+        help: "Kijk naar de verkeerssituatie en kies het risicopunt.",
+        hotspots: [
+          { id: "a", label: "Geparkeerde auto", x: 25, y: 49 },
+          { id: "b", label: "Kind bij de bal", x: 67, y: 38 },
+          { id: "c", label: "Boom naast de weg", x: 86, y: 26 }
+        ],
+        correct: "b",
+        explanation: "Een kind bij een bal kan onverwacht de weg op rennen. Verminder snelheid en wees klaar om te remmen."
+      }
+    ];
+
+    const examQuestions = [
+      {
+        id: "q1",
+        kind: "single",
+        topic: "Bijzondere wegen en weggedeelten",
+        scene: "residential",
+        prompt: "Je rijdt een erf in. Welke snelheid past hierbij?",
+        options: [
+          { id: "a", text: "Stapvoets, ongeveer 15 km/u" },
+          { id: "b", text: "30 km/u" },
+          { id: "c", text: "50 km/u" }
+        ],
+        correct: "a",
+        explanation: "In een erf rijden voetgangers en spelende kinderen vaak door elkaar heen. Je rijdt stapvoets."
+      },
+      {
+        id: "q2",
+        kind: "single",
+        topic: "Gebruik van de weg",
+        scene: "motorway",
+        prompt: "Je rijdt om 14:00 uur op een autosnelweg. Langs de weg staat een bord 100 met tijdvenster 6-19 uur en er is geen lagere snelheid op een matrixbord. Hoe hard mag je maximaal?",
+        options: [
+          { id: "a", text: "100 km/u" },
+          { id: "b", text: "120 km/u" },
+          { id: "c", text: "130 km/u" }
+        ],
+        correct: "a",
+        explanation: "Tussen 06.00 en 19.00 uur geldt hier de aangegeven 100 km/u. Borden en matrixborden zijn leidend; op enkele trajecten kan overdag 130 km/u gelden als dat zo is aangegeven."
+      },
+      {
+        id: "q3",
+        kind: "number",
+        topic: "Gebruik van de weg",
+        scene: "motorway",
+        prompt: "Je rijdt met een personenauto met aanhangwagen op de autosnelweg. Wat is de algemene maximumsnelheid?",
+        suffix: "km/u",
+        accepted: ["90"],
+        explanation: "Voor een personenauto met aanhangwagen geldt op autosnelwegen en autowegen normaal maximaal 90 km/u."
+      },
+      {
+        id: "q4",
+        kind: "single",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "city",
+        prompt: "Het verkeerslicht springt op geel. Wat doe je?",
+        options: [
+          { id: "a", text: "Altijd doorrijden, geel betekent vrijmaken" },
+          { id: "b", text: "Stoppen als dat veilig kan" },
+          { id: "c", text: "Alleen stoppen als er een voetganger staat" }
+        ],
+        correct: "b",
+        explanation: "Bij geel stop je, behalve als je zo dicht bij het licht bent dat veilig stoppen niet meer kan."
+      },
+      {
+        id: "q5",
+        kind: "multi",
+        topic: "Gebruik van de weg",
+        scene: "city",
+        prompt: "In welke situaties mag je niet inhalen? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Als je daarvoor een doorgetrokken streep moet overschrijden" },
+          { id: "b", text: "Vlak voor of op een voetgangersoversteekplaats" },
+          { id: "c", text: "Rechts inhalen in een file op meerdere rijstroken" },
+          { id: "d", text: "Als je door het inhalen ander verkeer hindert of in gevaar brengt" }
+        ],
+        correct: ["a", "b", "d"],
+        explanation: "Een doorgetrokken streep, een zebrapad en gevaar of hinder sluiten inhalen uit. Rechts inhalen in een file op meerdere rijstroken kan een uitzondering zijn."
+      },
+      {
+        id: "q6",
+        kind: "hotspot",
+        topic: "Gebruik van de weg",
+        scene: "motorway",
+        prompt: "Tik het deel aan dat je niet als gewone rijstrook mag gebruiken.",
+        hotspots: [
+          { id: "a", label: "Linkerrijstrook", x: 28, y: 34 },
+          { id: "b", label: "Rechterrijstrook", x: 50, y: 60 },
+          { id: "c", label: "Vluchtstrook", x: 88, y: 76 }
+        ],
+        correct: "c",
+        explanation: "De vluchtstrook is voor noodsituaties, hulpdiensten en aangewezen gebruik. Je gebruikt hem niet als gewone rijstrook."
+      },
+      {
+        id: "q7",
+        kind: "single",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        prompt: "Je nadert een gelijkwaardig kruispunt. Er komt een auto van rechts. Wie gaat eerst?",
+        options: [
+          { id: "a", text: "Jij, want je rijdt rechtdoor" },
+          { id: "b", text: "De auto van rechts" },
+          { id: "c", text: "Degene die het snelst rijdt" }
+        ],
+        correct: "b",
+        explanation: "Op een gelijkwaardig kruispunt verleen je voorrang aan bestuurders van rechts."
+      },
+      {
+        id: "q8",
+        kind: "order",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        prompt: "Zet de volgorde goed op een gelijkwaardig kruispunt.",
+        help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
+        items: [
+          { id: "you", text: "Jij" },
+          { id: "bike", text: "Fietser van rechts" },
+          { id: "tram", text: "Tram van links" }
+        ],
+        correct: ["tram", "bike", "you"],
+        explanation: "Een tram gaat op een gelijkwaardig kruispunt voor. Daarna gaat de bestuurder van rechts voor jou."
+      },
+      {
+        id: "q9",
+        kind: "single",
+        topic: "Voorrang en voor laten gaan",
+        scene: "city",
+        prompt: "Je slaat rechtsaf. Naast je rijdt een fietser rechtdoor op dezelfde weg. Wat doe je?",
+        options: [
+          { id: "a", text: "De fietser voor laten gaan" },
+          { id: "b", text: "Toeteren en eerst afslaan" },
+          { id: "c", text: "Alleen stoppen als de fietser een hand uitsteekt" }
+        ],
+        correct: "a",
+        explanation: "Rechtdoor op dezelfde weg gaat voor. Je laat de fietser rechtdoor eerst gaan."
+      },
+      {
+        id: "q10",
+        kind: "single",
+        topic: "Voorrang en voor laten gaan",
+        scene: "city",
+        prompt: "Binnen de bebouwde kom wil een bus vanaf een halte wegrijden en geeft richting aan. Wat doe je?",
+        options: [
+          { id: "a", text: "De bus laten invoegen" },
+          { id: "b", text: "Snel voorbijrijden, jij rijdt op de rijbaan" },
+          { id: "c", text: "Alleen stoppen als er passagiers oversteken" }
+        ],
+        correct: "a",
+        explanation: "Binnen de bebouwde kom moet je een bus die van een halte wil wegrijden en richting aangeeft de gelegenheid geven."
+      },
+      {
+        id: "q11",
+        kind: "single",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "motorway",
+        prompt: "Achter je nadert een ambulance met blauw zwaai- of flitslicht en sirene. Wat doe je?",
+        options: [
+          { id: "a", text: "Rustig ruimte maken zodra dat veilig kan" },
+          { id: "b", text: "Hard remmen op je rijstrook" },
+          { id: "c", text: "Je snelheid verhogen zodat de ambulance kan volgen" }
+        ],
+        correct: "a",
+        explanation: "Een voorrangsvoertuig met blauw licht en sirene laat je voorgaan. Maak voorspelbaar en veilig ruimte."
+      },
+      {
+        id: "q12",
+        kind: "single",
+        topic: "Voorrang en voor laten gaan",
+        scene: "city",
+        prompt: "Een voetganger staat bij een zebrapad en wil oversteken. Wat doe je?",
+        options: [
+          { id: "a", text: "Doorrijden als de voetganger nog op de stoep staat" },
+          { id: "b", text: "Snelheid verminderen en zo nodig stoppen" },
+          { id: "c", text: "Alleen stoppen bij een rood verkeerslicht" }
+        ],
+        correct: "b",
+        explanation: "Voetgangers op of bij een voetgangersoversteekplaats die willen oversteken laat je voorgaan."
+      },
+      {
+        id: "q13",
+        kind: "single",
+        topic: "Bijzondere manoeuvres",
+        scene: "parking",
+        prompt: "Je rijdt uit een uitrit de weg op. Wie moet je voor laten gaan?",
+        options: [
+          { id: "a", text: "Alleen verkeer van links" },
+          { id: "b", text: "Alleen voetgangers" },
+          { id: "c", text: "Al het overige verkeer" }
+        ],
+        correct: "c",
+        counts: false,
+        explanation: "Een uitrit verlaten is een bijzondere manoeuvre. Je laat al het overige verkeer voorgaan."
+      },
+      {
+        id: "q14",
+        kind: "multi",
+        topic: "Bijzondere manoeuvres",
+        scene: "parking",
+        prompt: "Je gaat achteruitrijden uit een parkeervak. Wat is juist? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Je laat al het overige verkeer voorgaan" },
+          { id: "b", text: "Je kijkt rondom en gebruikt je spiegels" },
+          { id: "c", text: "Je rijdt door omdat achteruitrijden altijd voorrang heeft" },
+          { id: "d", text: "Je stopt als je de situatie niet goed kunt overzien" }
+        ],
+        correct: ["a", "b", "d"],
+        explanation: "Achteruitrijden is een bijzondere manoeuvre. Je moet goed kijken, zo nodig stoppen en al het overige verkeer voor laten gaan."
+      },
+      {
+        id: "q15",
+        kind: "hotspot",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "motorway",
+        prompt: "Je wilt naar rechts wisselen. Tik het gebied aan dat je extra moet controleren.",
+        hotspots: [
+          { id: "a", label: "Voor je motorkap", x: 34, y: 48 },
+          { id: "b", label: "Dode hoek rechtsachter", x: 73, y: 64 },
+          { id: "c", label: "Matrixbord boven links", x: 22, y: 12 }
+        ],
+        correct: "b",
+        explanation: "Voor een rijstrookwisseling kijk je in je spiegels en controleer je de dode hoek aan de kant waar je naartoe gaat."
+      },
+      {
+        id: "q16",
+        kind: "single",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "motorway",
+        prompt: "Tussen jouw rijstrook en de rijstrook links ligt een doorgetrokken streep. Wat betekent dit?",
+        options: [
+          { id: "a", text: "Je mag de streep niet overschrijden" },
+          { id: "b", text: "Je mag alleen bij weinig verkeer overschrijden" },
+          { id: "c", text: "Je mag de streep overschrijden om sneller te rijden" }
+        ],
+        correct: "a",
+        explanation: "Een doorgetrokken streep mag je niet overschrijden, behalve als een aanwijzing of situatie dat duidelijk toestaat."
+      },
+      {
+        id: "q17",
+        kind: "single",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "parking",
+        prompt: "Langs de stoep ligt een doorgetrokken gele streep. Wat betekent dit?",
+        options: [
+          { id: "a", text: "Je mag hier niet stilstaan" },
+          { id: "b", text: "Je mag hier alleen laden en lossen" },
+          { id: "c", text: "Je mag hier parkeren met alarmlichten aan" }
+        ],
+        correct: "a",
+        explanation: "Een doorgetrokken gele streep langs de kant betekent dat stilstaan daar verboden is."
+      },
+      {
+        id: "q18",
+        kind: "single",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "parking",
+        prompt: "Langs de stoep ligt een onderbroken gele streep. Wat betekent dit?",
+        options: [
+          { id: "a", text: "Je mag hier niet parkeren" },
+          { id: "b", text: "Je mag hier niet rijden" },
+          { id: "c", text: "Je moet hier parkeren" }
+        ],
+        correct: "a",
+        explanation: "Een onderbroken gele streep betekent een parkeerverbod. Kort stilstaan kan nog wel als dat niet op een andere manier verboden is."
+      },
+      {
+        id: "q19",
+        kind: "single",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "intersection",
+        prompt: "Een verkeersregelaar geeft je een aanwijzing die afwijkt van het verkeerslicht. Wat volg je?",
+        options: [
+          { id: "a", text: "De aanwijzing van de verkeersregelaar" },
+          { id: "b", text: "Altijd het verkeerslicht" },
+          { id: "c", text: "De voorrangsregels van rechts" }
+        ],
+        correct: "a",
+        explanation: "Aanwijzingen gaan boven verkeerstekens en verkeersregels."
+      },
+      {
+        id: "q20",
+        kind: "number",
+        topic: "Voertuigkennis",
+        scene: "dashboard",
+        prompt: "Wat is de minimale profieldiepte van banden van een personenauto?",
+        suffix: "mm",
+        accepted: ["1.6", "1,6"],
+        explanation: "De wettelijke minimale profieldiepte voor autobanden is 1,6 mm. Meer profiel is veiliger, vooral bij regen."
+      },
+      {
+        id: "q21",
+        kind: "single",
+        topic: "Voertuigkennis",
+        scene: "dashboard",
+        prompt: "Tijdens het rijden gaat het rode oliedruklampje branden. Wat doe je?",
+        options: [
+          { id: "a", text: "Doorrijden tot de volgende tankbeurt" },
+          { id: "b", text: "Zo snel mogelijk veilig stoppen en de motor uitzetten" },
+          { id: "c", text: "Harder rijden zodat de motor warmer wordt" }
+        ],
+        correct: "b",
+        explanation: "Een rood oliedruklampje kan ernstige motorschade betekenen. Stop veilig en zet de motor uit."
+      },
+      {
+        id: "q22",
+        kind: "multi",
+        topic: "Voertuigkennis",
+        scene: "dashboard",
+        prompt: "Welke waarschuwingslampjes vragen om zo snel mogelijk veilig stoppen? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Rood remsysteemlampje" },
+          { id: "b", text: "Rood oliedruklampje" },
+          { id: "c", text: "Rood koelvloeistoftemperatuur-lampje" },
+          { id: "d", text: "Oranje controlelampje voor achterruitverwarming" }
+        ],
+        correct: ["a", "b", "c"],
+        explanation: "Rode waarschuwingslampjes geven meestal aan dat je direct veilig moet stoppen. Oranje lampjes vragen aandacht, maar zijn niet altijd acuut."
+      },
+      {
+        id: "q23",
+        kind: "single",
+        topic: "Wetgeving",
+        scene: "city",
+        prompt: "Je vervoert een kind dat kleiner is dan 1,35 meter. Wat is de hoofdregel?",
+        options: [
+          { id: "a", text: "Het kind gebruikt een goedgekeurd kinderbeveiligingssysteem" },
+          { id: "b", text: "Het kind mag los zitten als je langzaam rijdt" },
+          { id: "c", text: "Alleen de gewone gordel is altijd genoeg" }
+        ],
+        correct: "a",
+        explanation: "Kinderen kleiner dan 1,35 meter gebruiken in de auto een passend en goedgekeurd kinderbeveiligingssysteem."
+      },
+      {
+        id: "q24",
+        kind: "single",
+        topic: "Wetgeving",
+        scene: "city",
+        prompt: "Je telefoon gaat tijdens het rijden. Wat mag wel?",
+        options: [
+          { id: "a", text: "De telefoon vasthouden als het gesprek kort is" },
+          { id: "b", text: "Handsfree opnemen als dat veilig kan" },
+          { id: "c", text: "Appen bij lage snelheid" }
+        ],
+        correct: "b",
+        explanation: "Een mobiel elektronisch apparaat vasthouden tijdens het rijden is verboden. Handsfree kan, zolang het niet tot gevaar leidt."
+      },
+      {
+        id: "q25",
+        kind: "single",
+        topic: "Wetgeving",
+        scene: "city",
+        prompt: "Je bent beginnend bestuurder. Wat is de alcohollimiet in je bloed?",
+        options: [
+          { id: "a", text: "0,2 promille" },
+          { id: "b", text: "0,5 promille" },
+          { id: "c", text: "0,8 promille" }
+        ],
+        correct: "a",
+        explanation: "Voor beginnende bestuurders geldt de lagere alcohollimiet van 0,2 promille."
+      },
+      {
+        id: "q26",
+        kind: "single",
+        topic: "Verantwoorde verkeersdeelname",
+        scene: "dashboard",
+        prompt: "Je gebruikt medicijnen met een waarschuwing dat ze de rijvaardigheid kunnen beinvloeden. Wat doe je?",
+        options: [
+          { id: "a", text: "Gewoon rijden als je de route kent" },
+          { id: "b", text: "Niet rijden als je rijvaardigheid verminderd kan zijn" },
+          { id: "c", text: "Alleen harder rijden om eerder thuis te zijn" }
+        ],
+        correct: "b",
+        explanation: "Je mag niet rijden als alcohol, drugs of medicijnen je rijvaardigheid verminderen."
+      },
+      {
+        id: "q27",
+        kind: "single",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "weather",
+        prompt: "Wanneer mag je het mistachterlicht gebruiken?",
+        options: [
+          { id: "a", text: "Bij elke regenbui" },
+          { id: "b", text: "Bij mist of sneeuwval met zicht minder dan 50 meter" },
+          { id: "c", text: "Altijd op de autosnelweg" }
+        ],
+        correct: "b",
+        explanation: "Het mistachterlicht gebruik je bij zeer slecht zicht door mist of sneeuwval, als het zicht minder dan 50 meter is."
+      },
+      {
+        id: "q28",
+        kind: "single",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "weather",
+        prompt: "Wanneer mag je mistlichten aan de voorkant gebruiken?",
+        options: [
+          { id: "a", text: "Bij mist, sneeuwval of hevige regen die het zicht ernstig belemmert" },
+          { id: "b", text: "Altijd als dagrijverlichting" },
+          { id: "c", text: "Alleen binnen de bebouwde kom" }
+        ],
+        correct: "a",
+        explanation: "Mistlichten voor mag je gebruiken bij mist, sneeuwval of hevige regen als je zicht daardoor slecht is."
+      },
+      {
+        id: "q29",
+        kind: "single",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "weather",
+        prompt: "Je auto begint door water op de weg te glijden. Wat is de beste reactie?",
+        options: [
+          { id: "a", text: "Hard remmen en snel tegensturen" },
+          { id: "b", text: "Gas loslaten, rustig sturen en abrupte acties vermijden" },
+          { id: "c", text: "Meer gas geven om door het water heen te komen" }
+        ],
+        correct: "b",
+        explanation: "Bij aquaplaning wil je de auto rustig laten herstellen. Laat gas los en vermijd hard remmen of plots sturen."
+      },
+      {
+        id: "q30",
+        kind: "multi",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "motorway",
+        prompt: "Je krijgt pech op de autosnelweg. Wat doe je? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Zet je alarmlichten aan" },
+          { id: "b", text: "Ga met inzittenden achter de vangrail staan als dat veilig kan" },
+          { id: "c", text: "Blijf op de rijbaan om andere bestuurders te waarschuwen" },
+          { id: "d", text: "Bel hulp vanaf een veilige plek" }
+        ],
+        correct: ["a", "b", "d"],
+        explanation: "Bij pech maak je jezelf zichtbaar, breng je inzittenden in veiligheid en regel je hulp vanaf een veilige plek."
+      },
+      {
+        id: "q31",
+        kind: "number",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "motorway",
+        prompt: "Je moet een gevarendriehoek plaatsen omdat je auto niet goed zichtbaar is. Ongeveer hoeveel meter achter je auto plaats je die?",
+        suffix: "meter",
+        accepted: ["30"],
+        explanation: "Een gevarendriehoek plaats je op voldoende afstand, in de praktijk ongeveer 30 meter achter het voertuig."
+      },
+      {
+        id: "q32",
+        kind: "single",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "motorway",
+        prompt: "Boven jouw rijstrook brandt een rood kruis. Wat betekent dit?",
+        options: [
+          { id: "a", text: "Deze rijstrook niet gebruiken" },
+          { id: "b", text: "Alleen vrachtwagens mogen hier rijden" },
+          { id: "c", text: "Je mag hier inhalen" }
+        ],
+        correct: "a",
+        explanation: "Een rood kruis boven een rijstrook betekent dat die rijstrook gesloten is."
+      },
+      {
+        id: "q33",
+        kind: "single",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "intersection",
+        prompt: "Het verkeerslicht is groen, maar achter het kruispunt staat alles vast. Wat doe je?",
+        options: [
+          { id: "a", text: "Toch oprijden, groen is groen" },
+          { id: "b", text: "Wachten voor het kruispunt tot je het kunt vrijmaken" },
+          { id: "c", text: "Midden op het kruispunt stoppen" }
+        ],
+        correct: "b",
+        explanation: "Je mag een kruispunt niet blokkeren. Ook bij groen wacht je als je niet kunt doorrijden."
+      },
+      {
+        id: "q34",
+        kind: "hotspot",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "intersection",
+        prompt: "Tik het verkeersteken aan dat aangeeft waar je voorrang moet verlenen.",
+        hotspots: [
+          { id: "a", label: "Haaientanden", x: 42, y: 66 },
+          { id: "b", label: "Wegas", x: 50, y: 50 },
+          { id: "c", label: "Straatlantaarn", x: 83, y: 24 }
+        ],
+        correct: "a",
+        explanation: "Haaientanden geven aan waar je voorrang moet verlenen aan bestuurders op de kruisende weg."
+      },
+      {
+        id: "q35",
+        kind: "single",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        prompt: "Je wilt een rotonde oprijden. Voor je liggen haaientanden. Wie gaat eerst?",
+        options: [
+          { id: "a", text: "Jij, want verkeer van rechts gaat voor" },
+          { id: "b", text: "Het verkeer op de rotonde" },
+          { id: "c", text: "Degene die het eerst toetert" }
+        ],
+        correct: "b",
+        explanation: "Door de haaientanden verleen je voorrang aan verkeer op de rotonde."
+      },
+      {
+        id: "q36",
+        kind: "single",
+        topic: "Gebruik van de weg",
+        scene: "intersection",
+        prompt: "Je merkt op een meerstrooksrotonde dat je verkeerd bent voorgesorteerd. Wat doe je?",
+        options: [
+          { id: "a", text: "Plotseling van rijstrook wisselen om toch de afslag te halen" },
+          { id: "b", text: "Rustig de gekozen richting volgen en later veilig corrigeren" },
+          { id: "c", text: "Stilstaan op de rotonde" }
+        ],
+        correct: "b",
+        counts: false,
+        explanation: "Een fout in de route los je veilig op. Plotseling snijden of stoppen op een rotonde is gevaarlijk."
+      },
+      {
+        id: "q37",
+        kind: "multi",
+        topic: "Verantwoorde verkeersdeelname",
+        scene: "motorway",
+        prompt: "Bij een wegversmalling moet verkeer ritsen. Wat hoort daarbij? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Tot vlak voor de versmalling beide rijstroken gebruiken" },
+          { id: "b", text: "Om en om invoegen met aangepaste snelheid" },
+          { id: "c", text: "Een gat dicht rijden zodat niemand kan invoegen" },
+          { id: "d", text: "Op tijd richting aangeven en rekening houden met elkaar" }
+        ],
+        correct: ["a", "b", "d"],
+        explanation: "Ritsen werkt door beide rijstroken te benutten, rustig om en om in te voegen en elkaar ruimte te geven."
+      },
+      {
+        id: "q38",
+        kind: "single",
+        topic: "Bijzondere wegen en weggedeelten",
+        scene: "city",
+        prompt: "Rechts naast je ligt een busbaan. Er staat niet dat personenauto's daar mogen rijden. Wat doe je?",
+        options: [
+          { id: "a", text: "De busbaan gebruiken als het druk is" },
+          { id: "b", text: "Niet op de busbaan rijden" },
+          { id: "c", text: "Alleen op de busbaan rijden om in te halen" }
+        ],
+        correct: "b",
+        explanation: "Een busbaan is bedoeld voor voertuigen die daar volgens borden of regels mogen rijden."
+      },
+      {
+        id: "q39",
+        kind: "single",
+        topic: "Bijzondere weggebruikers en manoeuvres",
+        scene: "city",
+        prompt: "Je nadert een militaire colonne. Wat mag niet?",
+        options: [
+          { id: "a", text: "De colonne doorsnijden" },
+          { id: "b", text: "Veilige afstand houden" },
+          { id: "c", text: "Een aanwijzing van politie opvolgen" }
+        ],
+        correct: "a",
+        explanation: "Een militaire colonne mag je niet doorsnijden. Houd rekening met de hele groep."
+      },
+      {
+        id: "q40",
+        kind: "single",
+        topic: "Gebruik van de weg",
+        scene: "city",
+        prompt: "Op een smalle weg staat een geparkeerde auto aan jouw kant. Er komt tegenliggend verkeer aan. Wat doe je?",
+        options: [
+          { id: "a", text: "De tegenligger voor laten gaan" },
+          { id: "b", text: "Doorrijden, want het obstakel staat aan jouw kant" },
+          { id: "c", text: "Inhalen met groot licht aan" }
+        ],
+        correct: "a",
+        explanation: "Als het obstakel aan jouw kant staat, wacht je zodat de tegenligger veilig kan passeren."
+      },
+      {
+        id: "q41",
+        kind: "single",
+        topic: "Verantwoorde verkeersdeelname",
+        scene: "city",
+        prompt: "Je wilt een fietser inhalen op een smalle weg. Er is weinig ruimte. Wat doe je?",
+        options: [
+          { id: "a", text: "Wachten tot je met voldoende afstand kunt inhalen" },
+          { id: "b", text: "Er strak langs rijden" },
+          { id: "c", text: "Toeteren zodat de fietser de stoep op gaat" }
+        ],
+        correct: "a",
+        explanation: "Je haalt pas in als dat veilig kan en je voldoende zijdelingse afstand houdt."
+      },
+      {
+        id: "q42",
+        kind: "multi",
+        topic: "Gevaarherkenning",
+        scene: "residential",
+        prompt: "Je ziet een bal tussen geparkeerde auto's de weg op rollen. Wat doe je? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Snelheid verminderen" },
+          { id: "b", text: "Klaar zijn om te remmen" },
+          { id: "c", text: "Extra letten op kinderen bij de auto's" },
+          { id: "d", text: "Versnellen zodat je er voorlangs bent" }
+        ],
+        correct: ["a", "b", "c"],
+        explanation: "Een bal op de weg is een duidelijke waarschuwing dat er een kind kan volgen."
+      },
+      {
+        id: "q43",
+        kind: "single",
+        topic: "Bijzondere wegen en weggedeelten",
+        scene: "residential",
+        prompt: "Wat is juist in een erf?",
+        options: [
+          { id: "a", text: "Voetgangers mogen de hele breedte van de weg gebruiken" },
+          { id: "b", text: "Je mag overal parkeren" },
+          { id: "c", text: "Auto's hebben altijd voorrang op spelende kinderen" }
+        ],
+        correct: "a",
+        explanation: "In een erf mogen voetgangers de hele weg gebruiken. Parkeren mag alleen op daarvoor bestemde plaatsen."
+      },
+      {
+        id: "q44",
+        kind: "single",
+        topic: "Gebruik van de weg",
+        scene: "motorway",
+        prompt: "Je rijdt met een personenauto op een autoweg. Er staat geen andere snelheid aangegeven. Hoe hard mag je maximaal?",
+        options: [
+          { id: "a", text: "80 km/u" },
+          { id: "b", text: "100 km/u" },
+          { id: "c", text: "130 km/u" }
+        ],
+        correct: "b",
+        explanation: "Op een autoweg geldt voor een personenauto normaal maximaal 100 km/u, tenzij borden iets anders aangeven."
+      },
+      {
+        id: "q45",
+        kind: "single",
+        topic: "Gebruik van de weg",
+        scene: "city",
+        prompt: "Je rijdt buiten de bebouwde kom op een gewone weg, geen auto(snel)weg. Er staan geen andere borden. Wat is de maximumsnelheid?",
+        options: [
+          { id: "a", text: "60 km/u" },
+          { id: "b", text: "80 km/u" },
+          { id: "c", text: "100 km/u" }
+        ],
+        correct: "b",
+        explanation: "Buiten de bebouwde kom geldt op gewone wegen normaal 80 km/u, tenzij borden of zones iets anders aangeven."
+      },
+      {
+        id: "q46",
+        kind: "single",
+        topic: "Gebruik van de weg",
+        scene: "signs",
+        prompt: "Je rijdt een 30-zone in. Tot wanneer geldt deze snelheid?",
+        options: [
+          { id: "a", text: "Tot het einde van de zone of een ander geldig verkeersteken" },
+          { id: "b", text: "Alleen tot het volgende kruispunt" },
+          { id: "c", text: "Alleen als er kinderen spelen" }
+        ],
+        correct: "a",
+        explanation: "Een zonebord geldt tot het einde-zonebord of tot een ander verkeersteken de situatie wijzigt."
+      },
+      {
+        id: "q47",
+        kind: "single",
+        topic: "Stilstaan en parkeren",
+        scene: "parking",
+        prompt: "Mag je parkeren voor een in- of uitrit?",
+        options: [
+          { id: "a", text: "Nee, dat mag niet" },
+          { id: "b", text: "Ja, als je alarmlichten aan staan" },
+          { id: "c", text: "Ja, maximaal vijf minuten" }
+        ],
+        correct: "a",
+        explanation: "Parkeren voor een in- of uitrit is verboden, omdat je anderen blokkeert."
+      },
+      {
+        id: "q48",
+        kind: "number",
+        topic: "Stilstaan en parkeren",
+        scene: "parking",
+        prompt: "Binnen hoeveel meter van een kruispunt mag je niet parkeren?",
+        suffix: "meter",
+        accepted: ["5"],
+        explanation: "Binnen 5 meter van een kruispunt mag je niet parkeren, zodat het kruispunt overzichtelijk blijft."
+      },
+      {
+        id: "q49",
+        kind: "multi",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "weather",
+        prompt: "Wanneer moet je dimlicht gebruiken? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Bij nacht" },
+          { id: "b", text: "Overdag bij slecht zicht" },
+          { id: "c", text: "Alleen bij file" },
+          { id: "d", text: "Om sneller te mogen rijden" }
+        ],
+        correct: ["a", "b"],
+        explanation: "Dimlicht gebruik je bij nacht en overdag bij slecht zicht."
+      },
+      {
+        id: "q50",
+        kind: "single",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "rail",
+        prompt: "Bij een spoorwegovergang branden rode knipperlichten. Wat doe je?",
+        options: [
+          { id: "a", text: "Stoppen voor de overweg" },
+          { id: "b", text: "Doorrijden als je geen trein ziet" },
+          { id: "c", text: "Alleen stoppen als de bomen al dicht zijn" }
+        ],
+        correct: "a",
+        explanation: "Rode knipperlichten bij een spoorwegovergang betekenen stoppen. Je rijdt pas verder als het veilig en toegestaan is."
+      },
+      {
+        id: "q51",
+        kind: "hotspot",
+        topic: "Gevaarherkenning",
+        scene: "residential",
+        prompt: "Tik de plek aan waar je als eerste extra aandacht aan besteedt.",
+        hotspots: [
+          { id: "a", label: "Auto op eigen rijstrook", x: 34, y: 58 },
+          { id: "b", label: "Kind tussen auto's", x: 69, y: 42 },
+          { id: "c", label: "Bord 30-zone", x: 18, y: 24 }
+        ],
+        correct: "b",
+        explanation: "Een kind tussen geparkeerde auto's is slecht zichtbaar en kan onverwacht oversteken."
+      },
+      {
+        id: "q52",
+        kind: "order",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        prompt: "Zet de volgorde goed: jij slaat linksaf, een tegenligger gaat rechtdoor en rechts van jou steekt een fietser over op dezelfde weg.",
+        help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
+        items: [
+          { id: "you", text: "Jij slaat linksaf" },
+          { id: "oncoming", text: "Tegenligger rechtdoor" },
+          { id: "bike", text: "Fietser rechtdoor op dezelfde weg" }
+        ],
+        correct: ["oncoming", "bike", "you"],
+        explanation: "Tegenliggend verkeer dat rechtdoor gaat laat je voor. Ook rechtdoor op dezelfde weg gaat voor afslaand verkeer."
+      }
+    ];
+
+    const hardExamQuestions = [
+      {
+        id: "h1",
+        kind: "single",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "intersection",
+        prompt: "Je nadert een verkeerslicht met 50 km/u. Het licht springt op geel terwijl je zo dichtbij bent dat hard remmen gevaarlijk is. Wat doe je?",
+        options: [
+          { id: "a", text: "Altijd stoppen, geel betekent altijd stoppen" },
+          { id: "b", text: "Doorrijden en het kruispunt vlot vrijmaken" },
+          { id: "c", text: "Stilstaan midden op het kruispunt" }
+        ],
+        correct: "b",
+        explanation: "Bij geel stop je, behalve als je zo dicht bij het licht bent dat stoppen redelijkerwijs niet meer veilig kan."
+      },
+      {
+        id: "h2",
+        kind: "single",
+        topic: "Gebruik van de weg",
+        scene: "motorway",
+        prompt: "Je rijdt om 14:00 uur op de autosnelweg. Er staat een vast bord 100 met tijdvenster 6-19 uur. Boven jouw rijstrook toont het matrixbord 80. Wat is je maximumsnelheid?",
+        options: [
+          { id: "a", text: "80 km/u" },
+          { id: "b", text: "100 km/u" },
+          { id: "c", text: "130 km/u" }
+        ],
+        correct: "a",
+        explanation: "Een lagere snelheid op een matrixbord geldt op dat moment voor de rijstrook. Je volgt dus 80 km/u."
+      },
+      {
+        id: "h3",
+        kind: "number",
+        topic: "Gebruik van de weg",
+        scene: "motorway",
+        prompt: "Je rijdt met een personenauto en caravan op een autosnelweg waar 130 is aangegeven. Wat is jouw maximumsnelheid?",
+        suffix: "km/u",
+        accepted: ["90"],
+        explanation: "Met een aanhangwagen of caravan geldt op autosnelwegen en autowegen maximaal 90 km/u, ook als een hoger bord voor gewone personenauto's geldt."
+      },
+      {
+        id: "h4",
+        kind: "single",
+        topic: "Gebruik van de weg",
+        scene: "motorway",
+        prompt: "Je rijdt om 22:00 uur op een autoweg, niet op een autosnelweg. Er staat geen andere maximumsnelheid aangegeven. Hoe hard mag je maximaal?",
+        options: [
+          { id: "a", text: "80 km/u" },
+          { id: "b", text: "100 km/u" },
+          { id: "c", text: "130 km/u" }
+        ],
+        correct: "b",
+        explanation: "Op een autoweg geldt voor een personenauto normaal 100 km/u. De 130-regel hoort bij autosnelwegen, niet bij autowegen."
+      },
+      {
+        id: "h5",
+        kind: "multi",
+        topic: "Gebruik van de weg",
+        scene: "signs",
+        prompt: "Welke beweringen over snelheid zijn juist? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Een bord 100 zonder tijdvenster geldt de hele dag" },
+          { id: "b", text: "Een matrixbord met 70 gaat boven een vast bord met 100" },
+          { id: "c", text: "Een bord 100 met tijdvenster 6-19 geldt om 14:00 uur" },
+          { id: "d", text: "Op een autoweg zonder borden mag je 130 km/u" }
+        ],
+        correct: ["a", "b", "c"],
+        explanation: "Borden en matrixborden zijn leidend. Op een autoweg is de standaard voor personenauto's 100 km/u, niet 130."
+      },
+      {
+        id: "h6",
+        kind: "single",
+        topic: "Bijzondere wegen en weggedeelten",
+        scene: "residential",
+        prompt: "Je rijdt in een erf. Er lopen voetgangers op de rijbaan en er zijn geen parkeervakken vrij. Wat is juist?",
+        options: [
+          { id: "a", text: "Je rijdt stapvoets en parkeert alleen op daarvoor bestemde plaatsen" },
+          { id: "b", text: "Je mag 30 km/u rijden zolang je niemand raakt" },
+          { id: "c", text: "Je mag overal parkeren als je niemand blokkeert" }
+        ],
+        correct: "a",
+        explanation: "In een erf rijd je stapvoets. Voetgangers mogen de hele breedte gebruiken en parkeren mag alleen op aangegeven plaatsen."
+      },
+      {
+        id: "h7",
+        kind: "multi",
+        topic: "Bijzondere wegen en weggedeelten",
+        scene: "residential",
+        prompt: "Wat hoort bij rijden in een erf? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Voetgangers mogen de hele breedte van de weg gebruiken" },
+          { id: "b", text: "Je rijdt stapvoets" },
+          { id: "c", text: "Je mag parkeren waar voldoende ruimte is" },
+          { id: "d", text: "Je houdt rekening met spelende kinderen en onverwachte bewegingen" }
+        ],
+        correct: ["a", "b", "d"],
+        explanation: "In een erf rijd je stapvoets en verwacht je kwetsbare weggebruikers. Parkeren mag alleen op daarvoor bestemde plekken."
+      },
+      {
+        id: "h8",
+        kind: "order",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        prompt: "Zet de volgorde goed op een gelijkwaardig kruispunt: een tram komt van links, een auto komt van rechts en jij rijdt rechtdoor.",
+        help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
+        items: [
+          { id: "you", text: "Jij rijdt rechtdoor" },
+          { id: "rightcar", text: "Auto van rechts" },
+          { id: "tram", text: "Tram van links" }
+        ],
+        correct: ["tram", "rightcar", "you"],
+        explanation: "Een tram gaat op een gelijkwaardig kruispunt voor. Daarna verleen je voorrang aan de bestuurder van rechts."
+      },
+      {
+        id: "h9",
+        kind: "single",
+        topic: "Voorrang en voor laten gaan",
+        scene: "city",
+        prompt: "Je slaat linksaf. Een tegenligger rijdt rechtdoor en een fietser naast je gaat rechtdoor op dezelfde weg. Wie laat je voor gaan?",
+        options: [
+          { id: "a", text: "Alleen de tegenligger" },
+          { id: "b", text: "Alleen de fietser" },
+          { id: "c", text: "De tegenligger en de fietser" }
+        ],
+        correct: "c",
+        explanation: "Afslaand verkeer laat rechtdoorgaand verkeer op dezelfde weg voorgaan. Tegenliggend rechtdoorgaand verkeer laat je ook voorgaan."
+      },
+      {
+        id: "h10",
+        kind: "single",
+        topic: "Voorrang en voor laten gaan",
+        scene: "city",
+        prompt: "Binnen de bebouwde kom wil een lijnbus vanaf een halte wegrijden en geeft richting aan. Jij rijdt op dezelfde rijbaan achter de bus. Wat doe je?",
+        options: [
+          { id: "a", text: "De bus gelegenheid geven om weg te rijden" },
+          { id: "b", text: "Altijd inhalen, want jij rijdt al" },
+          { id: "c", text: "Alleen stoppen als er haaientanden liggen" }
+        ],
+        correct: "a",
+        explanation: "Binnen de bebouwde kom geef je een bus die van een halte wil wegrijden en richting aangeeft de gelegenheid om in te voegen."
+      },
+      {
+        id: "h11",
+        kind: "multi",
+        topic: "Bijzondere manoeuvres",
+        scene: "parking",
+        prompt: "Bij welke handelingen laat je al het overige verkeer voorgaan? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Achteruitrijden" },
+          { id: "b", text: "Een uitrit verlaten" },
+          { id: "c", text: "Normaal rechtdoor rijden op je rijstrook" },
+          { id: "d", text: "Wegrijden uit een parkeervak" }
+        ],
+        correct: ["a", "b", "d"],
+        explanation: "Achteruitrijden, een uitrit verlaten en wegrijden zijn bijzondere manoeuvres. Daarbij laat je al het overige verkeer voorgaan."
+      },
+      {
+        id: "h12",
+        kind: "hotspot",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "motorway",
+        prompt: "Je wilt naar rechts invoegen. Tik het gebied aan dat je vlak voor het sturen extra controleert.",
+        hotspots: [
+          { id: "a", label: "Voor de auto", x: 34, y: 44 },
+          { id: "b", label: "Dode hoek rechtsachter", x: 76, y: 64 },
+          { id: "c", label: "Linker berm", x: 14, y: 58 }
+        ],
+        correct: "b",
+        explanation: "Voor een rijstrookwisseling controleer je spiegels en de dode hoek aan de kant waar je naartoe gaat."
+      },
+      {
+        id: "h13",
+        kind: "single",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        prompt: "Je nadert een rotonde. Voor jou liggen haaientanden. Wie gaat eerst?",
+        options: [
+          { id: "a", text: "Jij, want verkeer van rechts gaat voor" },
+          { id: "b", text: "Verkeer op de rotonde" },
+          { id: "c", text: "Degene die de hoogste snelheid heeft" }
+        ],
+        correct: "b",
+        counts: false,
+        explanation: "Haaientanden betekenen dat je voorrang verleent aan verkeer op de kruisende weg of rotonde."
+      },
+      {
+        id: "h14",
+        kind: "multi",
+        topic: "Stilstaan en parkeren",
+        scene: "parking",
+        prompt: "Waar mag je niet parkeren? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Voor een in- of uitrit" },
+          { id: "b", text: "Binnen 5 meter van een kruispunt" },
+          { id: "c", text: "Langs een onderbroken gele streep" },
+          { id: "d", text: "Langs een doorgetrokken gele streep" }
+        ],
+        correct: ["a", "b", "c", "d"],
+        explanation: "Al deze plaatsen sluiten parkeren uit. Bij een doorgetrokken gele streep mag je zelfs niet stilstaan."
+      },
+      {
+        id: "h15",
+        kind: "single",
+        topic: "Stilstaan en parkeren",
+        scene: "parking",
+        prompt: "Langs de rand van de rijbaan staat een doorgetrokken gele streep. Wat betekent dit precies?",
+        options: [
+          { id: "a", text: "Niet stilstaan" },
+          { id: "b", text: "Wel stilstaan, maar niet parkeren" },
+          { id: "c", text: "Alleen parkeren met alarmlichten" }
+        ],
+        correct: "a",
+        explanation: "Een doorgetrokken gele streep betekent een stilstandsverbod."
+      },
+      {
+        id: "h16",
+        kind: "single",
+        topic: "Stilstaan en parkeren",
+        scene: "parking",
+        prompt: "Langs de rand van de rijbaan staat een onderbroken gele streep. Wat betekent dit precies?",
+        options: [
+          { id: "a", text: "Niet parkeren" },
+          { id: "b", text: "Niet stilstaan" },
+          { id: "c", text: "Verplicht parkeren" }
+        ],
+        correct: "a",
+        explanation: "Een onderbroken gele streep betekent een parkeerverbod. Kort stilstaan kan nog wel als dat verder veilig en toegestaan is."
+      },
+      {
+        id: "h17",
+        kind: "number",
+        topic: "Stilstaan en parkeren",
+        scene: "intersection",
+        prompt: "Binnen hoeveel meter van een kruispunt mag je niet parkeren?",
+        suffix: "meter",
+        accepted: ["5"],
+        explanation: "Je mag niet parkeren binnen 5 meter van een kruispunt."
+      },
+      {
+        id: "h18",
+        kind: "single",
+        topic: "Voorrang en voor laten gaan",
+        scene: "city",
+        prompt: "Een voetganger nadert zichtbaar een zebrapad en wil oversteken. Jij kunt veilig stoppen. Wat doe je?",
+        options: [
+          { id: "a", text: "Stoppen en de voetganger voor laten gaan" },
+          { id: "b", text: "Doorrijden zolang de voetganger nog op de stoep staat" },
+          { id: "c", text: "Alleen stoppen als er ook verkeerslichten zijn" }
+        ],
+        correct: "a",
+        explanation: "Voetgangers op of bij een voetgangersoversteekplaats die willen oversteken laat je voorgaan."
+      },
+      {
+        id: "h19",
+        kind: "multi",
+        topic: "Gebruik van de weg",
+        scene: "city",
+        prompt: "Wanneer is inhalen niet toegestaan of niet verantwoord? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Als je een doorgetrokken streep moet overschrijden" },
+          { id: "b", text: "Vlak voor of op een zebrapad" },
+          { id: "c", text: "Als je door het inhalen ander verkeer hindert of in gevaar brengt" },
+          { id: "d", text: "Rechts langs langzaam rijdend verkeer in een file op meerdere rijstroken" }
+        ],
+        correct: ["a", "b", "c"],
+        explanation: "Een doorgetrokken streep, een zebrapad en gevaar of hinder maken inhalen verboden of onverantwoord. Rechts passeren in een file op meerdere rijstroken kan een uitzondering zijn."
+      },
+      {
+        id: "h20",
+        kind: "single",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "motorway",
+        prompt: "Boven jouw rijstrook brandt een rood kruis. De rijstrook lijkt leeg. Wat doe je?",
+        options: [
+          { id: "a", text: "De rijstrook niet gebruiken" },
+          { id: "b", text: "Alleen kort gebruiken om in te halen" },
+          { id: "c", text: "Doorrijden als er geen wegwerker staat" }
+        ],
+        correct: "a",
+        explanation: "Een rood kruis sluit de rijstrook. Dat geldt ook als de strook op dat moment leeg lijkt."
+      },
+      {
+        id: "h21",
+        kind: "single",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "motorway",
+        prompt: "Boven jouw rijstrook toont een matrixbord 70. Langs de weg staat een vast bord 100. Wat volg je?",
+        options: [
+          { id: "a", text: "70 km/u, want het matrixbord geeft de actuele lagere limiet aan" },
+          { id: "b", text: "100 km/u, want vaste borden gaan altijd voor" },
+          { id: "c", text: "85 km/u, het gemiddelde van beide snelheden" }
+        ],
+        correct: "a",
+        explanation: "Een matrixbord geeft een actuele aanwijzing of maximumsnelheid en gaat boven het vaste bord als die lager is."
+      },
+      {
+        id: "h22",
+        kind: "single",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "intersection",
+        prompt: "Het verkeerslicht is groen, maar je ziet dat je achter het kruispunt niet kunt doorrijden. Wat doe je?",
+        options: [
+          { id: "a", text: "Wachten voor het kruispunt" },
+          { id: "b", text: "Oprijden omdat groen altijd doorgaan betekent" },
+          { id: "c", text: "Op de kruising wachten tot het verkeer beweegt" }
+        ],
+        correct: "a",
+        explanation: "Je mag een kruispunt niet blokkeren. Ook bij groen wacht je als je het kruispunt niet kunt vrijmaken."
+      },
+      {
+        id: "h23",
+        kind: "single",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "intersection",
+        prompt: "Een verkeersregelaar geeft jou een stopteken, terwijl jouw verkeerslicht groen is. Wat doe je?",
+        options: [
+          { id: "a", text: "Stoppen voor de aanwijzing van de verkeersregelaar" },
+          { id: "b", text: "Doorrijden omdat groen boven alles gaat" },
+          { id: "c", text: "Alleen stoppen als er ook een stopbord staat" }
+        ],
+        correct: "a",
+        explanation: "Aanwijzingen van bevoegde personen gaan boven verkeerstekens en verkeersregels."
+      },
+      {
+        id: "h24",
+        kind: "multi",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "motorway",
+        prompt: "Er nadert een voorrangsvoertuig met blauw licht en sirene. Wat is juist? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Maak voorspelbaar ruimte zodra dat veilig kan" },
+          { id: "b", text: "Blijf kalm en vermijd plotseling hard remmen" },
+          { id: "c", text: "Rijd door rood om ruimte te maken zonder aanwijzing" },
+          { id: "d", text: "Houd rekening met verkeer om je heen voordat je uitwijkt" }
+        ],
+        correct: ["a", "b", "d"],
+        explanation: "Je laat een voorrangsvoertuig voorgaan, maar blijft voorspelbaar en veilig. Ga niet zomaar door rood of abrupt sturen."
+      },
+      {
+        id: "h25",
+        kind: "single",
+        topic: "Bijzondere weggebruikers en manoeuvres",
+        scene: "city",
+        prompt: "Je komt bij een militaire colonne. Tussen twee voertuigen is een groot gat. Wat mag niet?",
+        options: [
+          { id: "a", text: "De colonne doorsnijden" },
+          { id: "b", text: "Afstand houden" },
+          { id: "c", text: "Een aanwijzing van politie opvolgen" }
+        ],
+        correct: "a",
+        explanation: "Een militaire colonne mag je niet doorsnijden, ook niet als er tijdelijk een gat lijkt te zijn."
+      },
+      {
+        id: "h26",
+        kind: "single",
+        topic: "Wetgeving",
+        scene: "dashboard",
+        prompt: "Je rijdt langzaam in druk verkeer en houdt je telefoon vast om een routebericht te lezen. Wat is juist?",
+        options: [
+          { id: "a", text: "Dit mag niet tijdens het rijden" },
+          { id: "b", text: "Dit mag omdat je langzaam rijdt" },
+          { id: "c", text: "Dit mag als je maar niet belt" }
+        ],
+        correct: "a",
+        explanation: "Tijdens het rijden mag je geen mobiel elektronisch apparaat vasthouden. Langzaam rijden maakt dat niet anders."
+      },
+      {
+        id: "h27",
+        kind: "single",
+        topic: "Wetgeving",
+        scene: "dashboard",
+        prompt: "Je bent beginnend bestuurder. Bij welke bloedalcoholwaarde zit je boven de toegestane grens?",
+        options: [
+          { id: "a", text: "Meer dan 0,2 promille" },
+          { id: "b", text: "Meer dan 0,5 promille" },
+          { id: "c", text: "Meer dan 0,8 promille" }
+        ],
+        correct: "a",
+        explanation: "Voor beginnende bestuurders geldt de lagere grens: je mag niet rijden met meer dan 0,2 promille alcohol in je bloed."
+      },
+      {
+        id: "h28",
+        kind: "multi",
+        topic: "Verantwoorde verkeersdeelname",
+        scene: "dashboard",
+        prompt: "Je gebruikt medicijnen die de rijvaardigheid kunnen beinvloeden. Wat is verstandig en juist? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Overleg bij twijfel met arts of apotheker" },
+          { id: "b", text: "Niet rijden als je suf, duizelig of minder alert bent" },
+          { id: "c", text: "Toch rijden als je de route goed kent" },
+          { id: "d", text: "Koffie drinken maakt rijden altijd weer veilig" }
+        ],
+        correct: ["a", "b"],
+        explanation: "Medicijnen kunnen je rijvaardigheid verminderen. Rijd niet bij bijwerkingen en overleg bij twijfel met een deskundige."
+      },
+      {
+        id: "h29",
+        kind: "single",
+        topic: "Wetgeving",
+        scene: "city",
+        prompt: "Je vervoert een kind van 1,34 meter in je auto. Wat is de hoofdregel?",
+        options: [
+          { id: "a", text: "Een passend goedgekeurd kinderbeveiligingssysteem gebruiken" },
+          { id: "b", text: "Alleen de gewone gordel is altijd genoeg" },
+          { id: "c", text: "Het kind mag zonder gordel achterin" }
+        ],
+        correct: "a",
+        explanation: "Kinderen kleiner dan 1,35 meter moeten in een goedgekeurd en passend kinderbeveiligingssysteem worden vervoerd."
+      },
+      {
+        id: "h30",
+        kind: "single",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "weather",
+        prompt: "Door hevige regen is je zicht ernstig belemmerd. Welke verlichting mag je aan de voorkant gebruiken?",
+        options: [
+          { id: "a", text: "Mistlichten aan de voorkant" },
+          { id: "b", text: "Mistachterlicht" },
+          { id: "c", text: "Geen verlichting, want het is overdag" }
+        ],
+        correct: "a",
+        explanation: "Mistlichten aan de voorkant mag je gebruiken bij mist, sneeuwval of hevige regen die het zicht ernstig belemmert."
+      },
+      {
+        id: "h31",
+        kind: "single",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "weather",
+        prompt: "Bij hevige regen is het zicht ongeveer 40 meter. Mag je het mistachterlicht gebruiken?",
+        options: [
+          { id: "a", text: "Nee, niet bij regen" },
+          { id: "b", text: "Ja, want het zicht is minder dan 50 meter" },
+          { id: "c", text: "Ja, maar alleen binnen de bebouwde kom" }
+        ],
+        correct: "a",
+        explanation: "Het mistachterlicht mag alleen bij mist of sneeuwval waardoor het zicht minder dan 50 meter is, niet bij zware regen."
+      },
+      {
+        id: "h32",
+        kind: "multi",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "weather",
+        prompt: "Wanneer moet je dimlicht gebruiken? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Bij nacht" },
+          { id: "b", text: "Overdag bij slecht zicht" },
+          { id: "c", text: "Alleen als je op de autosnelweg rijdt" },
+          { id: "d", text: "Om voorrang af te dwingen" }
+        ],
+        correct: ["a", "b"],
+        explanation: "Dimlicht gebruik je bij nacht en overdag bij slecht zicht."
+      },
+      {
+        id: "h33",
+        kind: "single",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "weather",
+        prompt: "Je auto gaat door een waterlaag glijden en reageert slecht op sturen. Wat is de beste eerste reactie?",
+        options: [
+          { id: "a", text: "Gas loslaten en abrupte stuur- of remacties vermijden" },
+          { id: "b", text: "Hard remmen tot de wielen blokkeren" },
+          { id: "c", text: "Meer gas geven om sneller door het water te gaan" }
+        ],
+        correct: "a",
+        explanation: "Bij aquaplaning laat je gas los en voorkom je plots remmen of sturen totdat de banden weer grip krijgen."
+      },
+      {
+        id: "h34",
+        kind: "single",
+        topic: "Voertuigkennis",
+        scene: "dashboard",
+        prompt: "Onder het rijden gaat het rode oliedruklampje branden. De motor klinkt nog normaal. Wat doe je?",
+        options: [
+          { id: "a", text: "Zo snel mogelijk veilig stoppen en de motor uitzetten" },
+          { id: "b", text: "Doorrijden zolang de motor normaal klinkt" },
+          { id: "c", text: "Alleen langzamer rijden tot het lampje uitgaat" }
+        ],
+        correct: "a",
+        explanation: "Een rood oliedruklampje kan ernstige motorschade betekenen. Stop veilig en zet de motor uit."
+      },
+      {
+        id: "h35",
+        kind: "multi",
+        topic: "Voertuigkennis",
+        scene: "dashboard",
+        prompt: "Welke rode waarschuwingslampjes vragen om direct veilig stoppen? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Oliedruk" },
+          { id: "b", text: "Remsysteem" },
+          { id: "c", text: "Koelvloeistoftemperatuur" },
+          { id: "d", text: "Achterruitverwarming" }
+        ],
+        correct: ["a", "b", "c"],
+        explanation: "Rode lampjes voor oliedruk, remsysteem en temperatuur wijzen op mogelijke ernstige problemen. Stop veilig."
+      },
+      {
+        id: "h36",
+        kind: "number",
+        topic: "Voertuigkennis",
+        scene: "dashboard",
+        prompt: "Wat is de wettelijke minimale profieldiepte van de hoofdgroeven van autobanden?",
+        suffix: "mm",
+        accepted: ["1.6", "1,6"],
+        counts: false,
+        explanation: "De wettelijke minimale profieldiepte is 1,6 mm. Vervangen voor die grens is veiliger, zeker bij regen."
+      },
+      {
+        id: "h37",
+        kind: "number",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "motorway",
+        prompt: "Je voertuig vormt een obstakel en je waarschuwingslichten vallen niet genoeg op. Op ongeveer hoeveel meter plaats je de gevarendriehoek?",
+        suffix: "meter",
+        accepted: ["30"],
+        explanation: "In Nederland plaats je de gevarendriehoek ongeveer 30 meter achter het voertuig, goed zichtbaar en in de richting van het verkeer waarvoor je voertuig gevaar oplevert."
+      },
+      {
+        id: "h38",
+        kind: "multi",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "motorway",
+        prompt: "Je krijgt pech op de autosnelweg. Wat is juist? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Alarmlichten aanzetten" },
+          { id: "b", text: "Met inzittenden achter de vangrail gaan als dat veilig kan" },
+          { id: "c", text: "Op de rijbaan blijven staan om te waarschuwen" },
+          { id: "d", text: "Hulp bellen vanaf een veilige plek" }
+        ],
+        correct: ["a", "b", "d"],
+        explanation: "Maak het voertuig zichtbaar, breng jezelf en inzittenden in veiligheid en regel hulp vanaf een veilige plek."
+      },
+      {
+        id: "h39",
+        kind: "single",
+        topic: "Bijzondere wegen en weggedeelten",
+        scene: "city",
+        prompt: "Rechts ligt een busbaan. Er staat niet dat personenauto's daar mogen rijden. Het is druk op jouw rijstrook. Wat doe je?",
+        options: [
+          { id: "a", text: "Niet op de busbaan rijden" },
+          { id: "b", text: "De busbaan gebruiken zolang er geen bus rijdt" },
+          { id: "c", text: "De busbaan alleen gebruiken om rechts in te halen" }
+        ],
+        correct: "a",
+        explanation: "Een busbaan is alleen voor verkeer dat daar volgens borden of regels mag rijden."
+      },
+      {
+        id: "h40",
+        kind: "single",
+        topic: "Gebruik van de weg",
+        scene: "motorway",
+        prompt: "Je wilt van rijstrook wisselen. Je hebt richting aangegeven en in je spiegel gekeken. Wat moet je vlak voor het sturen ook doen?",
+        options: [
+          { id: "a", text: "De dode hoek controleren" },
+          { id: "b", text: "Kort remmen op je rijstrook" },
+          { id: "c", text: "Toeteren zodat iedereen ruimte maakt" }
+        ],
+        correct: "a",
+        explanation: "Bij een rijstrookwisseling controleer je spiegels en dode hoek voordat je stuurt."
+      },
+      {
+        id: "h41",
+        kind: "multi",
+        topic: "Verantwoorde verkeersdeelname",
+        scene: "motorway",
+        prompt: "Bij een wegversmalling moet verkeer ritsen. Wat doe je? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Beide rijstroken benutten tot kort voor de versmalling" },
+          { id: "b", text: "Om en om invoegen met aangepaste snelheid" },
+          { id: "c", text: "Het gat dicht rijden zodat niemand kan invoegen" },
+          { id: "d", text: "Richting aangeven en rekening houden met elkaar" }
+        ],
+        correct: ["a", "b", "d"],
+        explanation: "Ritsen werkt door beide rijstroken te benutten, rustig om en om in te voegen en elkaar ruimte te geven."
+      },
+      {
+        id: "h42",
+        kind: "single",
+        topic: "Gebruik van de weg",
+        scene: "intersection",
+        prompt: "Op een meerstrooksrotonde merk je te laat dat je verkeerd bent voorgesorteerd. Wat is de veiligste keuze?",
+        options: [
+          { id: "a", text: "Je gekozen richting volgen en later veilig keren of corrigeren" },
+          { id: "b", text: "Plotseling naar de juiste rijstrook sturen" },
+          { id: "c", text: "Stilstaan op de rotonde tot iemand ruimte maakt" }
+        ],
+        correct: "a",
+        explanation: "Routefouten herstel je later veilig. Plotseling snijden of stoppen veroorzaakt gevaar."
+      },
+      {
+        id: "h43",
+        kind: "single",
+        topic: "Gebruik van de weg",
+        scene: "city",
+        prompt: "Je rijdt buiten de bebouwde kom op een gewone weg, geen autoweg en geen autosnelweg. Er staan geen snelheidsborden. Wat is de maximumsnelheid?",
+        options: [
+          { id: "a", text: "60 km/u" },
+          { id: "b", text: "80 km/u" },
+          { id: "c", text: "100 km/u" }
+        ],
+        correct: "b",
+        explanation: "Buiten de bebouwde kom geldt op gewone wegen normaal 80 km/u, tenzij borden of zones iets anders aangeven."
+      },
+      {
+        id: "h44",
+        kind: "single",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "signs",
+        prompt: "Je rijdt een 30-zone in. Na een kruispunt zie je geen nieuw bord. Wat geldt?",
+        options: [
+          { id: "a", text: "De 30-zone blijft gelden tot het einde-zonebord of een ander geldig verkeersteken" },
+          { id: "b", text: "Na elk kruispunt vervalt de zone automatisch" },
+          { id: "c", text: "De zone geldt alleen als er schoolkinderen zijn" }
+        ],
+        correct: "a",
+        explanation: "Een zonebord blijft gelden tot het einde van de zone of tot een ander geldig verkeersteken de situatie wijzigt."
+      },
+      {
+        id: "h45",
+        kind: "multi",
+        topic: "Voertuigkennis",
+        scene: "parking",
+        prompt: "Je vervoert bagage op of in de auto. Wat is juist? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "De lading moet goed vastzitten" },
+          { id: "b", text: "Kenteken en verlichting moeten zichtbaar blijven" },
+          { id: "c", text: "Losse zware spullen kunnen bij hard remmen gevaarlijk worden" },
+          { id: "d", text: "Alarmlichten maken onveilige lading toegestaan" }
+        ],
+        correct: ["a", "b", "c"],
+        explanation: "Lading moet veilig zijn vastgezet en mag kenteken, verlichting of zicht niet onveilig belemmeren."
+      },
+      {
+        id: "h46",
+        kind: "single",
+        topic: "Wetgeving",
+        scene: "city",
+        prompt: "Alle zitplaatsen in je auto hebben een autogordel. Hoeveel passagiers mag je maximaal meenemen?",
+        options: [
+          { id: "a", text: "Niet meer passagiers dan er gordels beschikbaar zijn" },
+          { id: "b", text: "Zoveel als fysiek op de achterbank passen" },
+          { id: "c", text: "Een extra kind mag op schoot met dezelfde gordel" }
+        ],
+        correct: "a",
+        explanation: "Als op alle zitplaatsen gordels aanwezig zijn, mag het aantal passagiers niet groter zijn dan het aantal gordels."
+      },
+      {
+        id: "h47",
+        kind: "multi",
+        topic: "Verantwoorde verkeersdeelname",
+        scene: "motorway",
+        prompt: "Je merkt dat je tijdens een lange rit slaperig wordt. Wat is verstandig? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Op een veilige plek stoppen en rust nemen" },
+          { id: "b", text: "Harder rijden zodat je sneller thuis bent" },
+          { id: "c", text: "Zo mogelijk de bestuurder wisselen" },
+          { id: "d", text: "Alleen het raam openzetten en doorrijden" }
+        ],
+        correct: ["a", "c"],
+        explanation: "Vermoeidheid los je niet betrouwbaar op met alleen frisse lucht. Stop veilig, rust of wissel van bestuurder."
+      },
+      {
+        id: "h48",
+        kind: "hotspot",
+        topic: "Gevaarherkenning",
+        scene: "residential",
+        prompt: "Tik het punt aan waar het grootste onverwachte gevaar kan ontstaan.",
+        hotspots: [
+          { id: "a", label: "Vrije ruimte links", x: 18, y: 58 },
+          { id: "b", label: "Tussen geparkeerde auto's", x: 69, y: 43 },
+          { id: "c", label: "Lucht boven de woningen", x: 50, y: 14 }
+        ],
+        correct: "b",
+        explanation: "Tussen geparkeerde auto's kunnen kinderen, fietsers of voetgangers plotseling tevoorschijn komen."
+      },
+      {
+        id: "h49",
+        kind: "multi",
+        topic: "Gevaarherkenning",
+        scene: "residential",
+        prompt: "Een bal rolt tussen geparkeerde auto's de weg op. Wat doe je? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Snelheid verminderen" },
+          { id: "b", text: "Klaar zijn om te remmen" },
+          { id: "c", text: "Extra letten op kinderen of voetgangers" },
+          { id: "d", text: "Versnellen om de situatie snel voorbij te zijn" }
+        ],
+        correct: ["a", "b", "c"],
+        explanation: "Een bal op de weg is een waarschuwing dat er iemand achteraan kan komen. Verminder snelheid en wees remklaar."
+      },
+      {
+        id: "h50",
+        kind: "single",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "rail",
+        prompt: "Bij een spoorwegovergang branden rode knipperlichten, maar de spoorbomen zijn nog open. Wat doe je?",
+        options: [
+          { id: "a", text: "Stoppen voor de overweg" },
+          { id: "b", text: "Doorrijden zolang de bomen open zijn" },
+          { id: "c", text: "Alleen stoppen als je een trein ziet" }
+        ],
+        correct: "a",
+        explanation: "Rode knipperlichten bij een spoorwegovergang betekenen stoppen, ook als de bomen nog open zijn."
+      },
+      {
+        id: "h51",
+        kind: "order",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        prompt: "Zet de volgorde goed: jij slaat linksaf, een tegenligger rijdt rechtdoor en een fietser naast je rijdt rechtdoor op dezelfde weg.",
+        help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
+        items: [
+          { id: "you", text: "Jij slaat linksaf" },
+          { id: "oncoming", text: "Tegenligger rechtdoor" },
+          { id: "bike", text: "Fietser rechtdoor op dezelfde weg" }
+        ],
+        correct: ["oncoming", "bike", "you"],
+        explanation: "Je laat de tegenligger rechtdoor voorgaan. Ook rechtdoor op dezelfde weg gaat voor afslaand verkeer."
+      },
+      {
+        id: "h52",
+        kind: "hotspot",
+        topic: "Gebruik van de weg",
+        scene: "motorway",
+        prompt: "Tik het weggedeelte aan dat je niet als gewone rijstrook gebruikt.",
+        hotspots: [
+          { id: "a", label: "Linkerrijstrook", x: 28, y: 34 },
+          { id: "b", label: "Rechterrijstrook", x: 52, y: 58 },
+          { id: "c", label: "Vluchtstrook", x: 88, y: 76 }
+        ],
+        correct: "c",
+        explanation: "De vluchtstrook is niet bedoeld als gewone rijstrook. Gebruik hem alleen in nood of als borden dit toestaan."
+      }
+    ];
+
+    const extraExamQuestions = [
+      {
+        id: "e1",
+        kind: "single",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "weather",
+        prompt: "Het regent hard en je rijdt achter een vrachtauto. Wat is het veiligst?",
+        options: [
+          { id: "a", text: "Meer afstand houden omdat zicht en remweg slechter zijn" },
+          { id: "b", text: "Dichter achter de vrachtauto rijden zodat je minder regen vangt" },
+          { id: "c", text: "Groot licht aanzetten en dezelfde afstand houden" }
+        ],
+        correct: "a",
+        explanation: "Bij regen worden zicht en remweg slechter. Je houdt extra afstand en past je snelheid aan."
+      },
+      {
+        id: "e2",
+        kind: "multi",
+        topic: "Gevaarherkenning",
+        scene: "residential",
+        prompt: "Je nadert een schoolomgeving met kinderen op de stoep. Wat is verstandig? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Snelheid verminderen" },
+          { id: "b", text: "Extra scannen tussen geparkeerde auto's" },
+          { id: "c", text: "Klaar zijn om te remmen" },
+          { id: "d", text: "Toeteren zodat kinderen sneller gaan lopen" }
+        ],
+        correct: ["a", "b", "c"],
+        explanation: "Kinderen kunnen onverwacht bewegen. Verminder snelheid, kijk breed en wees remklaar."
+      },
+      {
+        id: "e3",
+        kind: "single",
+        topic: "Gebruik van de weg",
+        scene: "motorway",
+        prompt: "Je rijdt op een invoegstrook de autosnelweg op. Wat is juist?",
+        options: [
+          { id: "a", text: "Snelheid aanpassen en invoegen zodra er veilig ruimte is" },
+          { id: "b", text: "Aan het einde van de invoegstrook altijd stoppen" },
+          { id: "c", text: "Verkeer op de snelweg moet altijd voor jou remmen" }
+        ],
+        correct: "a",
+        explanation: "Bij invoegen pas je je snelheid aan en voeg je pas in als dat veilig kan. Invoegen is een bijzondere manoeuvre."
+      },
+      {
+        id: "e4",
+        kind: "multi",
+        topic: "Gebruik van de weg",
+        scene: "motorway",
+        prompt: "Wat hoort bij veilig wisselen van rijstrook? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "In de spiegels kijken" },
+          { id: "b", text: "Richting aangeven" },
+          { id: "c", text: "Dode hoek controleren" },
+          { id: "d", text: "Eerst sturen en daarna pas kijken" }
+        ],
+        correct: ["a", "b", "c"],
+        explanation: "Voor het wisselen van rijstrook kijk je, geef je richting aan en controleer je de dode hoek."
+      },
+      {
+        id: "e5",
+        kind: "single",
+        topic: "Voorrang en voor laten gaan",
+        scene: "city",
+        prompt: "Buiten de bebouwde kom wil een bus bij een halte wegrijden en geeft richting aan. Wat is juist?",
+        options: [
+          { id: "a", text: "Je bent niet verplicht de bus voor te laten, maar werkt mee als dat veilig kan" },
+          { id: "b", text: "Je moet de bus altijd laten invoegen zoals binnen de bebouwde kom" },
+          { id: "c", text: "Je moet altijd hard remmen zodat de bus direct weg kan" }
+        ],
+        correct: "a",
+        explanation: "De speciale verplichting om een bus bij een halte gelegenheid te geven geldt binnen de bebouwde kom. Buiten de bebouwde kom blijf je natuurlijk wel sociaal en veilig."
+      },
+      {
+        id: "e6",
+        kind: "single",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "motorway",
+        prompt: "Achter je rijdt een hulpdienstvoertuig met blauw zwaailicht maar zonder sirene. Wat is juist?",
+        options: [
+          { id: "a", text: "Het is pas een voorrangsvoertuig met blauw licht en sirene; blijf voorspelbaar en maak ruimte als dat veilig kan" },
+          { id: "b", text: "Je moet direct de vluchtstrook op, ook als dat onveilig is" },
+          { id: "c", text: "Je mag het voertuig negeren en extra langzaam gaan rijden" }
+        ],
+        correct: "a",
+        explanation: "Een voorrangsvoertuig gebruikt blauw licht en sirene. Ook zonder sirene blijf je alert en maak je veilig ruimte als dat nodig is."
+      },
+      {
+        id: "e7",
+        kind: "single",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "intersection",
+        prompt: "Het verkeerslicht knippert geel. Wat betekent dit?",
+        options: [
+          { id: "a", text: "Je mag doorrijden, maar moet extra opletten en de gewone regels en borden volgen" },
+          { id: "b", text: "Je hebt altijd voorrang" },
+          { id: "c", text: "Je moet altijd stoppen tot het licht groen wordt" }
+        ],
+        correct: "a",
+        explanation: "Geel knipperlicht betekent gevaar of opletten. De gewone verkeersregels, borden en markeringen blijven gelden."
+      },
+      {
+        id: "e8",
+        kind: "number",
+        topic: "Wetgeving",
+        scene: "dashboard",
+        prompt: "Wat is de alcohollimiet in promille voor een ervaren bestuurder?",
+        suffix: "promille",
+        accepted: ["0.5", "0,5"],
+        explanation: "Voor ervaren bestuurders geldt 0,5 promille als grens. Voor beginnende bestuurders is dat 0,2 promille."
+      },
+      {
+        id: "e9",
+        kind: "single",
+        topic: "Verantwoorde verkeersdeelname",
+        scene: "motorway",
+        prompt: "Bij een wegversmalling rijdt iedereen al stapvoets. Waar voeg je het best in?",
+        options: [
+          { id: "a", text: "Kort voor de versmalling, om en om met het andere verkeer" },
+          { id: "b", text: "Zo vroeg mogelijk, daarna het gat dichtrijden" },
+          { id: "c", text: "Pas op het laatste moment zonder richting aan te geven" }
+        ],
+        correct: "a",
+        explanation: "Ritsen doe je kort voor de versmalling, om en om, met aangepaste snelheid en richting aangeven."
+      },
+      {
+        id: "e10",
+        kind: "multi",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "signs",
+        prompt: "Wat kan een onderbord bij een verkeersbord doen? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Aangeven voor wie het bord geldt" },
+          { id: "b", text: "Aangeven wanneer het bord geldt" },
+          { id: "c", text: "Een beperking of uitzondering geven" },
+          { id: "d", text: "Alle andere verkeersregels ongeldig maken" }
+        ],
+        correct: ["a", "b", "c"],
+        explanation: "Een onderbord kan de werking van een bord beperken, verduidelijken of uitzonderingen aangeven."
+      },
+      {
+        id: "e11",
+        kind: "hotspot",
+        topic: "Gevaarherkenning",
+        scene: "residential",
+        prompt: "Tik de plek aan waar iemand onverwacht de weg op kan komen.",
+        hotspots: [
+          { id: "a", label: "Open ruimte voor je", x: 31, y: 61 },
+          { id: "b", label: "Tussen geparkeerde auto's", x: 66, y: 44 },
+          { id: "c", label: "Dak van de woning", x: 42, y: 18 }
+        ],
+        correct: "b",
+        explanation: "Tussen geparkeerde auto's is het zicht beperkt. Daar kan een voetganger of kind plots verschijnen."
+      },
+      {
+        id: "e12",
+        kind: "order",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "motorway",
+        prompt: "Zet de handelingen bij pech op de autosnelweg in een veilige volgorde.",
+        help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
+        items: [
+          { id: "hazards", text: "Alarmlichten aan" },
+          { id: "safe", text: "Inzittenden achter de vangrail als dat veilig kan" },
+          { id: "help", text: "Hulp bellen vanaf een veilige plek" }
+        ],
+        correct: ["hazards", "safe", "help"],
+        explanation: "Eerst waarschuw je ander verkeer, daarna breng je mensen in veiligheid en regel je hulp."
+      },
+      {
+        id: "e13",
+        kind: "multi",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "rail",
+        prompt: "Wanneer stop je bij een spoorwegovergang? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Bij rode knipperlichten" },
+          { id: "b", text: "Als de spoorbomen dalen of gesloten zijn" },
+          { id: "c", text: "Als een aanwijzing aangeeft dat je moet stoppen" },
+          { id: "d", text: "Alleen als je de trein al ziet" }
+        ],
+        correct: ["a", "b", "c"],
+        explanation: "Je stopt bij rode knipperlichten, gesloten of dalende bomen en aanwijzingen. Je wacht niet tot je de trein ziet."
+      },
+      {
+        id: "e14",
+        kind: "single",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        prompt: "Een fietser komt van rechts op een gelijkwaardig kruispunt. Wat doe je?",
+        options: [
+          { id: "a", text: "De fietser voorrang verlenen" },
+          { id: "b", text: "Doorrijden, want fietsers zijn geen bestuurders" },
+          { id: "c", text: "Alleen stoppen als de fietser afstapt" }
+        ],
+        correct: "a",
+        explanation: "Fietsers zijn bestuurders. Op een gelijkwaardig kruispunt verleen je voorrang aan bestuurders van rechts."
+      },
+      {
+        id: "e15",
+        kind: "single",
+        topic: "Voorrang en voor laten gaan",
+        scene: "city",
+        prompt: "Een voetganger komt van rechts op een gelijkwaardig kruispunt zonder zebrapad. Geldt de regel 'bestuurders van rechts gaan voor' voor deze voetganger?",
+        options: [
+          { id: "a", text: "Nee, voetgangers zijn geen bestuurders" },
+          { id: "b", text: "Ja, elke weggebruiker van rechts gaat voor" },
+          { id: "c", text: "Alleen als de voetganger snel loopt" }
+        ],
+        correct: "a",
+        explanation: "De voorrangsregel op gelijkwaardige kruispunten gaat over bestuurders. Voetgangers zijn weggebruikers, maar geen bestuurders."
+      },
+      {
+        id: "e16",
+        kind: "number",
+        topic: "Wetgeving",
+        scene: "city",
+        prompt: "Tot welke lengte in meter moet een kind in de auto in principe een passend kinderbeveiligingssysteem gebruiken?",
+        suffix: "meter",
+        accepted: ["1.35", "1,35"],
+        explanation: "Kinderen kleiner dan 1,35 meter gebruiken een passend en goedgekeurd kinderbeveiligingssysteem."
+      },
+      {
+        id: "e17",
+        kind: "single",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "weather",
+        prompt: "Het is mistig en je zicht is ongeveer 80 meter. Mag je het mistachterlicht gebruiken?",
+        options: [
+          { id: "a", text: "Nee, pas bij zicht minder dan 50 meter door mist of sneeuwval" },
+          { id: "b", text: "Ja, bij elke mist" },
+          { id: "c", text: "Ja, maar alleen op de snelweg" }
+        ],
+        correct: "a",
+        explanation: "Het mistachterlicht mag bij mist of sneeuwval als het zicht minder dan 50 meter is."
+      },
+      {
+        id: "e18",
+        kind: "multi",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "weather",
+        prompt: "Wanneer is dimlicht verplicht of nodig? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Bij nacht" },
+          { id: "b", text: "Overdag bij slecht zicht" },
+          { id: "c", text: "Als dagrijverlichting onvoldoende zichtbaar maakt" },
+          { id: "d", text: "Om een voorrangspositie te krijgen" }
+        ],
+        correct: ["a", "b", "c"],
+        explanation: "Dimlicht gebruik je bij nacht en overdag bij slecht zicht. Dagrijverlichting is dan vaak niet genoeg."
+      },
+      {
+        id: "e19",
+        kind: "single",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "intersection",
+        prompt: "Je nadert een stopbord met stopstreep. Wat moet je doen?",
+        options: [
+          { id: "a", text: "Volledig stoppen bij de stopstreep en voorrang verlenen" },
+          { id: "b", text: "Alleen remmen als er verkeer aankomt" },
+          { id: "c", text: "Langzaam doorrollen als je goed kijkt" }
+        ],
+        correct: "a",
+        explanation: "Bij een stopbord stop je volledig bij de stopstreep en verleen je voorrang waar nodig."
+      },
+      {
+        id: "e20",
+        kind: "multi",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "intersection",
+        prompt: "Welke aanwijzingen of tekens kunnen voorrang regelen? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Verkeerslichten" },
+          { id: "b", text: "Haaientanden" },
+          { id: "c", text: "Voorrangsborden" },
+          { id: "d", text: "De kleur van je auto" }
+        ],
+        correct: ["a", "b", "c"],
+        explanation: "Voorrang kan geregeld worden met verkeerslichten, borden, markeringen en aanwijzingen."
+      },
+      {
+        id: "e21",
+        kind: "single",
+        topic: "Geluid en signalen",
+        scene: "city",
+        prompt: "Wanneer mag je claxonneren?",
+        options: [
+          { id: "a", text: "Om direct gevaar af te wenden" },
+          { id: "b", text: "Om iemand te begroeten" },
+          { id: "c", text: "Om te laten merken dat je haast hebt" }
+        ],
+        correct: "a",
+        explanation: "Je gebruikt de claxon om gevaar af te wenden, niet om te groeten of ergernis te tonen."
+      },
+      {
+        id: "e22",
+        kind: "multi",
+        topic: "Gebruik van de weg",
+        scene: "intersection",
+        prompt: "Wanneer geef je richting aan? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Bij afslaan" },
+          { id: "b", text: "Bij wisselen van rijstrook" },
+          { id: "c", text: "Bij wegrijden uit stilstand" },
+          { id: "d", text: "Om voorrang af te dwingen" }
+        ],
+        correct: ["a", "b", "c"],
+        explanation: "Richting aangeven doe je bij afslaan, rijstrook wisselen en wegrijden. Het geeft geen voorrang."
+      },
+      {
+        id: "e23",
+        kind: "single",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        prompt: "Je nadert een rotonde zonder haaientanden en zonder voorrangsborden. Wie heeft voorrang?",
+        options: [
+          { id: "a", text: "Bestuurders van rechts volgens de gewone regels" },
+          { id: "b", text: "Altijd verkeer op de rotonde" },
+          { id: "c", text: "Altijd verkeer dat de rotonde oprijdt" }
+        ],
+        correct: "a",
+        explanation: "Een rotonde heeft niet automatisch dezelfde voorrangssituatie. Borden en haaientanden bepalen vaak de voorrang; zonder die tekens gelden de gewone regels."
+      },
+      {
+        id: "e24",
+        kind: "multi",
+        topic: "Gebruik van de weg",
+        scene: "motorway",
+        prompt: "Wat mag je niet doen op een autosnelweg? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Achteruitrijden" },
+          { id: "b", text: "Keren" },
+          { id: "c", text: "Stilstaan zonder noodzaak" },
+          { id: "d", text: "Inhalen als dat veilig en toegestaan is" }
+        ],
+        correct: ["a", "b", "c"],
+        explanation: "Op de autosnelweg mag je niet achteruitrijden, keren of zonder noodzaak stilstaan."
+      },
+      {
+        id: "e25",
+        kind: "single",
+        topic: "Gebruik van de weg",
+        scene: "motorway",
+        prompt: "Je mist je afrit op de autosnelweg. Wat doe je?",
+        options: [
+          { id: "a", text: "Doorrijden naar de volgende afrit" },
+          { id: "b", text: "Achteruitrijden over de vluchtstrook" },
+          { id: "c", text: "Keren bij de uitvoegstrook" }
+        ],
+        correct: "a",
+        explanation: "Mis je een afrit, dan rijd je door naar een veilige mogelijkheid om de route te herstellen."
+      },
+      {
+        id: "e26",
+        kind: "hotspot",
+        topic: "Gebruik van de weg",
+        scene: "motorway",
+        prompt: "Tik het deel aan dat alleen bij nood of aangegeven gebruik bedoeld is.",
+        hotspots: [
+          { id: "a", label: "Linkerrijstrook", x: 29, y: 36 },
+          { id: "b", label: "Rechterrijstrook", x: 52, y: 58 },
+          { id: "c", label: "Vluchtstrook", x: 87, y: 76 }
+        ],
+        correct: "c",
+        explanation: "De vluchtstrook is bedoeld voor noodsituaties of als borden aangeven dat je hem mag gebruiken."
+      },
+      {
+        id: "e27",
+        kind: "single",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "signs",
+        prompt: "Je ziet een rond blauw bord met een fiets erop. Wat betekent dat voor jou als automobilist?",
+        options: [
+          { id: "a", text: "Dit is een verplicht fietspad; je rijdt daar niet met de auto" },
+          { id: "b", text: "Je mag daar rijden als er geen fietsers zijn" },
+          { id: "c", text: "Het bord geeft alleen een recreatieve fietsroute aan" }
+        ],
+        correct: "a",
+        explanation: "Een rond blauw bord met fiets geeft een verplicht fietspad aan. Een auto gebruikt dat niet."
+      },
+      {
+        id: "e28",
+        kind: "single",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "weather",
+        prompt: "Het wegdek is nat. Wat gebeurt er meestal met je remweg?",
+        options: [
+          { id: "a", text: "De remweg wordt langer" },
+          { id: "b", text: "De remweg wordt korter" },
+          { id: "c", text: "De remweg blijft altijd gelijk" }
+        ],
+        correct: "a",
+        explanation: "Op nat wegdek heb je minder grip. Daardoor wordt de remweg langer."
+      },
+      {
+        id: "e29",
+        kind: "number",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "motorway",
+        prompt: "Welke volgafstand in seconden wordt vaak als minimale vuistregel gebruikt bij normale omstandigheden?",
+        suffix: "seconden",
+        accepted: ["2"],
+        explanation: "De twee-secondenregel is een veelgebruikte minimale vuistregel. Bij slecht weer of hoge snelheid houd je meer afstand."
+      },
+      {
+        id: "e30",
+        kind: "single",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "weather",
+        prompt: "Een tegenligger nadert in het donker. Je rijdt met groot licht. Wat doe je?",
+        options: [
+          { id: "a", text: "Overschakelen naar dimlicht om niet te verblinden" },
+          { id: "b", text: "Groot licht aanhouden zodat je zelf beter ziet" },
+          { id: "c", text: "Claxonneren en groot licht blijven gebruiken" }
+        ],
+        correct: "a",
+        explanation: "Je gebruikt geen groot licht als je anderen kunt verblinden."
+      },
+      {
+        id: "e31",
+        kind: "multi",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "weather",
+        prompt: "Wanneer gebruik je geen groot licht? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Als je tegenliggers kunt verblinden" },
+          { id: "b", text: "Als je kort achter een ander voertuig rijdt" },
+          { id: "c", text: "In situaties waarin je andere weggebruikers hindert" },
+          { id: "d", text: "Nooit buiten de bebouwde kom" }
+        ],
+        correct: ["a", "b", "c"],
+        explanation: "Groot licht mag niet als je andere weggebruikers verblindt of hindert."
+      },
+      {
+        id: "e32",
+        kind: "single",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "weather",
+        prompt: "Je auto heeft dagrijverlichting. Het wordt donker en regent. Wat doe je?",
+        options: [
+          { id: "a", text: "Dimlicht inschakelen" },
+          { id: "b", text: "Alleen dagrijverlichting blijven gebruiken" },
+          { id: "c", text: "Alleen mistachterlicht gebruiken" }
+        ],
+        correct: "a",
+        explanation: "Bij donker en slecht zicht gebruik je dimlicht. Dagrijverlichting is daarvoor niet genoeg."
+      },
+      {
+        id: "e33",
+        kind: "multi",
+        topic: "Voertuigkennis",
+        scene: "dashboard",
+        prompt: "Welke controles helpen voor vertrek? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Banden controleren op spanning en zichtbare schade" },
+          { id: "b", text: "Ruiten schoon en vrij van belemmering maken" },
+          { id: "c", text: "Verlichting controleren" },
+          { id: "d", text: "Spiegels naar beneden draaien zodat je de stoep ziet" }
+        ],
+        correct: ["a", "b", "c"],
+        explanation: "Banden, ruiten, spiegels en verlichting zijn belangrijk voor veilig rijden. Spiegels stel je af voor goed zicht rondom."
+      },
+      {
+        id: "e34",
+        kind: "single",
+        topic: "Voertuigkennis",
+        scene: "dashboard",
+        prompt: "Je merkt dat je rempedaal veel verder intrapt dan normaal. Wat doe je?",
+        options: [
+          { id: "a", text: "Niet doorrijden en het probleem veilig laten controleren" },
+          { id: "b", text: "Harder rijden zodat de remmen warm worden" },
+          { id: "c", text: "Alleen de handrem gebruiken op de snelweg" }
+        ],
+        correct: "a",
+        explanation: "Een afwijkend remgevoel kan op een ernstig defect wijzen. Rijd niet verder dan veilig noodzakelijk."
+      },
+      {
+        id: "e35",
+        kind: "single",
+        topic: "Gebruik van de weg",
+        scene: "city",
+        prompt: "Je rijdt achter een fietser op een smalle weg. Inhalen kan alleen met heel weinig zijdelingse afstand. Wat doe je?",
+        options: [
+          { id: "a", text: "Wachten tot je met voldoende afstand kunt inhalen" },
+          { id: "b", text: "Er toch langs rijden omdat de weg smal is" },
+          { id: "c", text: "Lang claxonneren zodat de fietser stopt" }
+        ],
+        correct: "a",
+        explanation: "Je haalt pas in als dat veilig kan en je voldoende zijdelingse afstand kunt houden."
+      },
+      {
+        id: "e36",
+        kind: "multi",
+        topic: "Gebruik van de weg",
+        scene: "city",
+        prompt: "Wat doe je als je een fietser veilig wilt inhalen? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Voldoende zijdelingse afstand houden" },
+          { id: "b", text: "Snelheid aanpassen" },
+          { id: "c", text: "Alleen inhalen als de situatie overzichtelijk is" },
+          { id: "d", text: "Zo dicht mogelijk langs de fietser rijden" }
+        ],
+        correct: ["a", "b", "c"],
+        explanation: "Veilig inhalen betekent afstand houden, snelheid aanpassen en alleen inhalen bij voldoende overzicht."
+      },
+      {
+        id: "e37",
+        kind: "single",
+        topic: "Gebruik van de weg",
+        scene: "city",
+        prompt: "Een geparkeerde auto staat aan jouw kant van een smalle weg. Er komt een tegenligger aan. Wat is meestal juist?",
+        options: [
+          { id: "a", text: "Jij wacht, omdat het obstakel aan jouw kant staat" },
+          { id: "b", text: "De tegenligger moet altijd wachten" },
+          { id: "c", text: "Je rijdt door en gebruikt groot licht" }
+        ],
+        correct: "a",
+        explanation: "Als het obstakel aan jouw kant staat, laat je de tegenligger veilig passeren."
+      },
+      {
+        id: "e38",
+        kind: "single",
+        topic: "Wetgeving",
+        scene: "dashboard",
+        prompt: "Je gebruikt drugs of medicijnen waardoor je reactievermogen vermindert. Wat is juist?",
+        options: [
+          { id: "a", text: "Je mag niet rijden als je rijvaardigheid verminderd is" },
+          { id: "b", text: "Je mag rijden als je langzaam rijdt" },
+          { id: "c", text: "Je mag rijden als je de route kent" }
+        ],
+        correct: "a",
+        explanation: "Je mag niet rijden als alcohol, drugs of medicijnen je rijvaardigheid verminderen."
+      },
+      {
+        id: "e39",
+        kind: "multi",
+        topic: "Wetgeving",
+        scene: "city",
+        prompt: "Wat is verplicht voor inzittenden als er gordels aanwezig zijn? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "De autogordel gebruiken" },
+          { id: "b", text: "Kinderen kleiner dan 1,35 meter in een passend kinderbeveiligingssysteem vervoeren" },
+          { id: "c", text: "Niet meer passagiers meenemen dan er gordels zijn" },
+          { id: "d", text: "Een kind op schoot met dezelfde gordel vervoeren" }
+        ],
+        correct: ["a", "b", "c"],
+        explanation: "Gordels moeten worden gebruikt. Kleine kinderen gebruiken een passend systeem en je vervoert niet meer passagiers dan zitplaatsen/gordels."
+      },
+      {
+        id: "e40",
+        kind: "single",
+        topic: "Verantwoorde verkeersdeelname",
+        scene: "motorway",
+        prompt: "Je wordt boos door gedrag van een andere bestuurder. Wat is het veiligst?",
+        options: [
+          { id: "a", text: "Afstand nemen, rustig blijven en je niet laten opjagen" },
+          { id: "b", text: "Dicht achter de ander rijden om je punt te maken" },
+          { id: "c", text: "Naast de ander blijven rijden en gebaren maken" }
+        ],
+        correct: "a",
+        explanation: "Emotie vergroot risico. Houd afstand en blijf voorspelbaar."
+      },
+      {
+        id: "e41",
+        kind: "multi",
+        topic: "Verantwoorde verkeersdeelname",
+        scene: "motorway",
+        prompt: "Je wordt vermoeid tijdens een lange rit. Wat helpt echt? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Stoppen op een veilige plek en rust nemen" },
+          { id: "b", text: "Bestuurder wisselen als dat kan" },
+          { id: "c", text: "Doorrijden met het raam open als enige maatregel" },
+          { id: "d", text: "Harder rijden zodat de rit sneller voorbij is" }
+        ],
+        correct: ["a", "b"],
+        explanation: "Bij vermoeidheid neem je rust of wissel je van bestuurder. Alleen frisse lucht is niet betrouwbaar genoeg."
+      },
+      {
+        id: "e42",
+        kind: "hotspot",
+        topic: "Gevaarherkenning",
+        scene: "intersection",
+        prompt: "Tik het gebied aan waar je extra op kruisend verkeer let.",
+        hotspots: [
+          { id: "a", label: "Kruispuntgebied", x: 50, y: 50 },
+          { id: "b", label: "Lucht boven de weg", x: 52, y: 12 },
+          { id: "c", label: "Onderkant van de foto", x: 47, y: 90 }
+        ],
+        correct: "a",
+        explanation: "Bij een kruispunt let je extra op kruisend verkeer, voetgangers, fietsers en verkeerslichten."
+      },
+      {
+        id: "e43",
+        kind: "order",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        prompt: "Zet de volgorde goed: jij slaat rechtsaf, een fietser naast je gaat rechtdoor en achter jou rijdt verkeer.",
+        help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
+        items: [
+          { id: "bike", text: "Fietser rechtdoor op dezelfde weg" },
+          { id: "you", text: "Jij slaat rechtsaf" },
+          { id: "behind", text: "Achteropkomend verkeer wacht op jouw veilige manoeuvre" }
+        ],
+        correct: ["bike", "you", "behind"],
+        explanation: "Rechtdoor op dezelfde weg gaat voor afslaand verkeer. Daarna sla jij pas af als dat veilig kan."
+      },
+      {
+        id: "e44",
+        kind: "single",
+        topic: "Stilstaan en parkeren",
+        scene: "parking",
+        prompt: "Je wilt kort iemand laten uitstappen voor een inrit. Wat is het grootste risico?",
+        options: [
+          { id: "a", text: "Je kunt de in- of uitrit blokkeren en ander verkeer hinderen" },
+          { id: "b", text: "Je krijgt automatisch voorrang" },
+          { id: "c", text: "Alarmlichten maken alles toegestaan" }
+        ],
+        correct: "a",
+        explanation: "Bij in- en uitritten mag je anderen niet blokkeren of gevaar veroorzaken. Parkeren voor een in- of uitrit is verboden."
+      },
+      {
+        id: "e45",
+        kind: "multi",
+        topic: "Stilstaan en parkeren",
+        scene: "parking",
+        prompt: "Wat is juist over gele strepen langs de rijbaan? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Doorgetrokken geel betekent niet stilstaan" },
+          { id: "b", text: "Onderbroken geel betekent niet parkeren" },
+          { id: "c", text: "Gele strepen hebben niets met stoppen of parkeren te maken" },
+          { id: "d", text: "Alarmlichten heffen het verbod niet automatisch op" }
+        ],
+        correct: ["a", "b", "d"],
+        explanation: "Doorgetrokken geel is een stilstandsverbod, onderbroken geel een parkeerverbod. Alarmlichten maken verboden gedrag niet zomaar toegestaan."
+      },
+      {
+        id: "e46",
+        kind: "single",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "motorway",
+        prompt: "Je ziet een matrixbord met een rode pijl die aangeeft dat je naar rechts moet. Wat doe je?",
+        options: [
+          { id: "a", text: "Zo snel mogelijk veilig naar rechts gaan" },
+          { id: "b", text: "Op dezelfde rijstrook blijven tot de afrit" },
+          { id: "c", text: "Hard remmen en stilstaan op je rijstrook" }
+        ],
+        correct: "a",
+        explanation: "Een pijl op een matrixbord geeft aan dat je die richting moet volgen, zodra dat veilig kan."
+      },
+      {
+        id: "e47",
+        kind: "multi",
+        topic: "Gebruik van de weg",
+        scene: "motorway",
+        prompt: "Wat doe je bij invoegen vanaf een korte invoegstrook? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Vroeg kijken naar ruimte op de rijbaan" },
+          { id: "b", text: "Snelheid aanpassen aan het verkeer" },
+          { id: "c", text: "Richting aangeven" },
+          { id: "d", text: "Erop sturen zonder te kijken omdat de strook eindigt" }
+        ],
+        correct: ["a", "b", "c"],
+        explanation: "Bij een korte invoegstrook moet je vroeg plannen, snelheid aanpassen, richting aangeven en alleen invoegen als het veilig kan."
+      },
+      {
+        id: "e48",
+        kind: "single",
+        topic: "Gebruik van de weg",
+        scene: "motorway",
+        prompt: "Je rijdt op de rechterrijstrook van een autosnelweg. Er is geen verkeer voor je. Wat is normaal juist?",
+        options: [
+          { id: "a", text: "Rechts blijven rijden" },
+          { id: "b", text: "Links blijven rijden omdat dat veiliger voelt" },
+          { id: "c", text: "Midden op twee rijstroken rijden" }
+        ],
+        correct: "a",
+        explanation: "In Nederland houd je zoveel mogelijk rechts, behalve bij inhalen of als de verkeerssituatie anders vraagt."
+      },
+      {
+        id: "e49",
+        kind: "multi",
+        topic: "Voertuigkennis",
+        scene: "parking",
+        prompt: "Je neemt lading mee op een imperiaal of in de kofferbak. Wat is juist? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Lading goed vastzetten" },
+          { id: "b", text: "Zorgen dat verlichting en kenteken zichtbaar blijven" },
+          { id: "c", text: "Rekening houden met ander rijgedrag door extra gewicht" },
+          { id: "d", text: "Losse zware spullen achterin laten liggen zonder bevestiging" }
+        ],
+        correct: ["a", "b", "c"],
+        explanation: "Lading moet veilig vastzitten, niets belangrijks afdekken en kan het rijgedrag beinvloeden."
+      },
+      {
+        id: "e50",
+        kind: "single",
+        topic: "Verantwoorde verkeersdeelname",
+        scene: "weather",
+        prompt: "Je rijdt met cruisecontrol en het begint hard te regenen. Wat is verstandig?",
+        options: [
+          { id: "a", text: "Cruisecontrol uitzetten en zelf snelheid en afstand bewuster regelen" },
+          { id: "b", text: "Cruisecontrol hoger zetten zodat je sneller uit de regen bent" },
+          { id: "c", text: "Alleen mistachterlicht aanzetten en doorrijden" }
+        ],
+        correct: "a",
+        counts: false,
+        explanation: "Bij slechte omstandigheden wil je direct kunnen reageren. Cruisecontrol kan dan minder verstandig zijn."
+      },
+      {
+        id: "e51",
+        kind: "single",
+        topic: "Bijzondere wegen en weggedeelten",
+        scene: "residential",
+        prompt: "Je rijdt in een 30-zone. Wat blijft altijd belangrijk?",
+        options: [
+          { id: "a", text: "Je snelheid aanpassen aan zicht, drukte en kwetsbare weggebruikers" },
+          { id: "b", text: "Altijd precies 30 rijden, ook als dat te hard is voor de situatie" },
+          { id: "c", text: "Alleen naar verkeersborden kijken en niet naar de omgeving" }
+        ],
+        correct: "a",
+        explanation: "De maximumsnelheid is geen verplichte snelheid. Je past je snelheid altijd aan de omstandigheden aan."
+      },
+      {
+        id: "e52",
+        kind: "multi",
+        topic: "Verantwoorde verkeersdeelname",
+        scene: "city",
+        prompt: "Wat hoort bij defensief rijden? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Vooruit kijken en situaties vroeg herkennen" },
+          { id: "b", text: "Ruimte houden" },
+          { id: "c", text: "Rekening houden met fouten van anderen" },
+          { id: "d", text: "Altijd je gelijk nemen als je voorrang hebt" }
+        ],
+        correct: ["a", "b", "c"],
+        counts: false,
+        explanation: "Defensief rijden betekent anticiperen, ruimte houden en rekening houden met onverwachte fouten van anderen."
+      }
+    ];
+
+    const app = document.getElementById("app");
+    const state = {
+      phase: "intro",
+      practiceIndex: 0,
+      practiceAnswers: {},
+      practiceChecked: false,
+      index: 0,
+      answers: {},
+      flagged: {},
+      remaining: 30 * 60,
+      timerId: null,
+      filterMisses: false,
+      variant: "normal",
+      sessionQuestions: []
+    };
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function shuffleCopy(items) {
+      const copy = items.slice();
+      for (let index = copy.length - 1; index > 0; index -= 1) {
+        const swapIndex = Math.floor(Math.random() * (index + 1));
+        const current = copy[index];
+        copy[index] = copy[swapIndex];
+        copy[swapIndex] = current;
+      }
+      return copy;
+    }
+
+    function sourceQuestionsForVariant(variant) {
+      if (variant === "hard") return hardExamQuestions;
+      if (variant === "mix") return examQuestions.concat(hardExamQuestions, extraExamQuestions);
+      return examQuestions;
+    }
+
+    function totalQuestionBankSize() {
+      return examQuestions.length + hardExamQuestions.length + extraExamQuestions.length;
+    }
+
+    function cloneQuestionForSession(question) {
+      const clone = Object.assign({}, question);
+      if (Array.isArray(question.options)) {
+        clone.options = shuffleCopy(question.options.map(function (option) {
+          return Object.assign({}, option);
+        }));
+      }
+      if (Array.isArray(question.hotspots)) {
+        clone.hotspots = shuffleCopy(question.hotspots.map(function (hotspot) {
+          return Object.assign({}, hotspot);
+        }));
+      }
+      if (Array.isArray(question.items)) {
+        clone.items = shuffleCopy(question.items.map(function (item) {
+          return Object.assign({}, item);
+        }));
+        if (question.kind === "order" && clone.items.map(function (item) { return item.id; }).join("|") === question.correct.join("|")) {
+          clone.items.push(clone.items.shift());
+        }
+      }
+      return clone;
+    }
+
+    function buildExamQuestions(variant) {
+      const source = sourceQuestionsForVariant(variant);
+      if (variant === "mix") {
+        const scored = shuffleCopy(source.filter(function (question) { return question.counts !== false; })).slice(0, 50);
+        const test = shuffleCopy(source.filter(function (question) { return question.counts === false; })).slice(0, 2);
+        return shuffleCopy(scored.concat(test)).map(cloneQuestionForSession);
+      }
+      return shuffleCopy(source).map(cloneQuestionForSession);
+    }
+
+    function activeQuestions() {
+      return state.sessionQuestions.length ? state.sessionQuestions : sourceQuestionsForVariant(state.variant);
+    }
+
+    function variantLabel() {
+      if (state.variant === "hard") return "Moeilijke variant";
+      if (state.variant === "mix") return "Willekeurige mix";
+      return "Normale variant";
+    }
+
+    function scrollToPageTop() {
+      window.scrollTo({ top: 0, behavior: "auto" });
+    }
+
+    function startPractice(variant) {
+      clearTimer();
+      if (variant) {
+        state.variant = variant;
+      }
+      state.sessionQuestions = [];
+      state.phase = "practice";
+      state.practiceIndex = 0;
+      state.practiceAnswers = {};
+      state.practiceChecked = false;
+      render();
+      scrollToPageTop();
+    }
+
+    function startExam(variant) {
+      clearTimer();
+      if (variant) {
+        state.variant = variant;
+      }
+      state.sessionQuestions = buildExamQuestions(state.variant);
+      state.phase = "exam";
+      state.index = 0;
+      state.answers = {};
+      state.flagged = {};
+      state.remaining = 30 * 60;
+      state.filterMisses = false;
+      state.timerId = setInterval(function () {
+        state.remaining -= 1;
+        if (state.remaining <= 0) {
+          state.remaining = 0;
+          finishExam();
+          return;
+        }
+        updateTimerOnly();
+      }, 1000);
+      render();
+      scrollToPageTop();
+    }
+
+    function clearTimer() {
+      if (state.timerId) {
+        clearInterval(state.timerId);
+        state.timerId = null;
+      }
+    }
+
+    function finishExam() {
+      clearTimer();
+      state.phase = "result";
+      render();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function formatTime(seconds) {
+      const minutes = Math.floor(seconds / 60);
+      const rest = seconds % 60;
+      return String(minutes).padStart(2, "0") + ":" + String(rest).padStart(2, "0");
+    }
+
+    function updateTimerOnly() {
+      const timer = document.querySelector("[data-timer]");
+      if (timer) {
+        timer.textContent = formatTime(state.remaining);
+        timer.classList.toggle("low", state.remaining <= 5 * 60);
+      }
+    }
+
+    function questionTypeLabel(q) {
+      if (q.kind === "single") return "Meerkeuze";
+      if (q.kind === "multi") return "Multiple response";
+      if (q.kind === "number") return "Invulvraag";
+      if (q.kind === "order") return "Sleepvraag";
+      if (q.kind === "hotspot") return "Hotspotvraag";
+      return "Vraag";
+    }
+
+    function getAnswerStore() {
+      return state.phase === "practice" ? state.practiceAnswers : state.answers;
+    }
+
+    function setAnswer(questionId, value) {
+      getAnswerStore()[questionId] = value;
+      if (state.phase === "practice") {
+        state.practiceChecked = false;
+      }
+      render();
+    }
+
+    function toggleMulti(questionId, optionId) {
+      const store = getAnswerStore();
+      const current = Array.isArray(store[questionId]) ? store[questionId].slice() : [];
+      const index = current.indexOf(optionId);
+      if (index >= 0) {
+        current.splice(index, 1);
+      } else {
+        current.push(optionId);
+      }
+      store[questionId] = current;
+      if (state.phase === "practice") {
+        state.practiceChecked = false;
+      }
+      render();
+    }
+
+    function setNumber(questionId, value) {
+      getAnswerStore()[questionId] = value;
+      if (state.phase === "practice") {
+        state.practiceChecked = false;
+      }
+      updateOverviewOnly();
+    }
+
+    function currentQuestion() {
+      return activeQuestions()[state.index];
+    }
+
+    function hasAnswer(q, store) {
+      const answer = store[q.id];
+      if (q.kind === "multi" || q.kind === "order") {
+        return Array.isArray(answer) && answer.length > 0;
+      }
+      return answer !== undefined && answer !== null && String(answer).trim() !== "";
+    }
+
+    function normalizeText(value) {
+      return String(value || "")
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, "")
+        .replace(/km\/u/g, "")
+        .replace(/meter/g, "")
+        .replace(/mm/g, "")
+        .replace(",", ".");
+    }
+
+    function isCorrect(q, answer) {
+      if (q.kind === "single" || q.kind === "hotspot") {
+        return answer === q.correct;
+      }
+      if (q.kind === "multi") {
+        if (!Array.isArray(answer)) return false;
+        return sameSet(answer, q.correct);
+      }
+      if (q.kind === "order") {
+        if (!Array.isArray(answer)) return false;
+        return answer.join("|") === q.correct.join("|");
+      }
+      if (q.kind === "number") {
+        const normalized = normalizeText(answer);
+        return q.accepted.map(normalizeText).includes(normalized);
+      }
+      return false;
+    }
+
+    function sameSet(a, b) {
+      if (a.length !== b.length) return false;
+      const one = a.slice().sort().join("|");
+      const two = b.slice().sort().join("|");
+      return one === two;
+    }
+
+    function answerToText(q, answer) {
+      if (answer === undefined || answer === null || answer === "" || (Array.isArray(answer) && answer.length === 0)) {
+        return "Geen antwoord";
+      }
+      if (q.kind === "single" || q.kind === "multi") {
+        const ids = Array.isArray(answer) ? answer : [answer];
+        return ids.map(function (id) {
+          const option = q.options.find(function (item) { return item.id === id; });
+          return option ? option.text : id;
+        }).join(", ");
+      }
+      if (q.kind === "hotspot") {
+        const spot = q.hotspots.find(function (item) { return item.id === answer; });
+        return spot ? spot.label : answer;
+      }
+      if (q.kind === "order") {
+        return answer.map(function (id, index) {
+          const item = q.items.find(function (candidate) { return candidate.id === id; });
+          return (index + 1) + ". " + (item ? item.text : id);
+        }).join(" | ");
+      }
+      if (q.kind === "number") {
+        return String(answer) + (q.suffix ? " " + q.suffix : "");
+      }
+      return String(answer);
+    }
+
+    function correctToText(q) {
+      if (q.kind === "number") {
+        return q.accepted[0].replace(".", ",") + (q.suffix ? " " + q.suffix : "");
+      }
+      return answerToText(q, q.correct);
+    }
+
+    function ensureOrderAnswer(q) {
+      const store = getAnswerStore();
+      if (q.kind === "order" && !Array.isArray(store[q.id])) {
+        store[q.id] = q.items.map(function (item) { return item.id; });
+      }
+    }
+
+    function moveOrder(questionId, direction, index) {
+      const store = getAnswerStore();
+      const q = state.phase === "practice"
+        ? practiceQuestions[state.practiceIndex]
+        : currentQuestion();
+      ensureOrderAnswer(q);
+      const current = store[questionId].slice();
+      const target = index + direction;
+      if (target < 0 || target >= current.length) return;
+      const temp = current[index];
+      current[index] = current[target];
+      current[target] = temp;
+      store[questionId] = current;
+      if (state.phase === "practice") {
+        state.practiceChecked = false;
+      }
+      render();
+    }
+
+    function checkPractice() {
+      const q = practiceQuestions[state.practiceIndex];
+      ensureOrderAnswer(q);
+      if (!hasAnswer(q, state.practiceAnswers)) return;
+      state.practiceChecked = true;
+      render();
+    }
+
+    function nextPractice() {
+      if (state.practiceIndex < practiceQuestions.length - 1) {
+        state.practiceIndex += 1;
+        state.practiceChecked = false;
+        render();
+      } else {
+        startExam();
+      }
+    }
+
+    function goToQuestion(index) {
+      const questions = activeQuestions();
+      if (index < 0 || index >= questions.length) return;
+      state.index = index;
+      render();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function nextQuestion() {
+      const questions = activeQuestions();
+      goToQuestion(Math.min(questions.length - 1, state.index + 1));
+    }
+
+    function previousQuestion() {
+      goToQuestion(Math.max(0, state.index - 1));
+    }
+
+    function toggleFlag() {
+      const q = currentQuestion();
+      state.flagged[q.id] = !state.flagged[q.id];
+      render();
+    }
+
+    function updateOverviewOnly() {
+      const sidebar = document.querySelector("[data-overview]");
+      if (sidebar) {
+        sidebar.innerHTML = renderOverview();
+      }
+    }
+
+    function scoreExam() {
+      const questions = activeQuestions();
+      const scored = questions.filter(function (q) { return q.counts !== false; });
+      const correct = scored.filter(function (q) {
+        return isCorrect(q, state.answers[q.id]);
+      }).length;
+      const answered = questions.filter(function (q) {
+        return hasAnswer(q, state.answers);
+      }).length;
+      return {
+        correct: correct,
+        total: scored.length,
+        answered: answered,
+        passed: correct >= 44
+      };
+    }
+
+    function topicStats() {
+      const result = {};
+      activeQuestions().forEach(function (q) {
+        if (q.counts === false) return;
+        if (!result[q.topic]) {
+          result[q.topic] = { correct: 0, total: 0 };
+        }
+        result[q.topic].total += 1;
+        if (isCorrect(q, state.answers[q.id])) {
+          result[q.topic].correct += 1;
+        }
+      });
+      return result;
+    }
+
+    function render() {
+      if (state.phase === "intro") {
+        renderIntro();
+      } else if (state.phase === "practice") {
+        renderPractice();
+      } else if (state.phase === "exam") {
+        renderExam();
+      } else {
+        renderResults();
+      }
+    }
+
+    function renderIntro() {
+      app.innerHTML = `
+        <section class="intro-layout">
+          <div class="panel intro-panel">
+            <div class="kicker">Rijbewijs B oefenexamen</div>
+            <h2>Train met de nieuwste CBR-opzet: 50 telvragen, 2 testvragen, 30 minuten.</h2>
+            <p>Dit oefenexamen lijkt qua flow op het huidige auto-theorie-examen: eerst twee oefenvragen, daarna een doorlopend examen met verschillende vraagsoorten. Kies normaal, moeilijk of een willekeurige mix uit de volledige vragenbank.</p>
+            <div class="notice">
+              De echte CBR-vragen zijn niet openbaar. Deze quiz gebruikt daarom originele vragen die de actuele onderwerpen en vraagvormen nabootsen.
+            </div>
+            <div class="stats-grid">
+              <div class="stat"><strong>52</strong><span>vragen in de examensessie</span></div>
+              <div class="stat"><strong>50</strong><span>vragen tellen mee</span></div>
+              <div class="stat"><strong>${totalQuestionBankSize()}</strong><span>vragen in de totale bank</span></div>
+              <div class="stat"><strong>44+</strong><span>goed is geslaagd</span></div>
+              <div class="stat"><strong>30:00</strong><span>minuten examentijd</span></div>
+              <div class="stat"><strong>Mix</strong><span>volgorde en opties wisselen</span></div>
+            </div>
+            <div class="button-row">
+              <button class="btn" type="button" onclick="startPractice('normal')">Start normaal</button>
+              <button class="btn" type="button" onclick="startPractice('hard')">Start moeilijk</button>
+              <button class="btn" type="button" onclick="startPractice('mix')">Start mix</button>
+              <button class="btn secondary" type="button" onclick="startExam('normal')">Normaal direct</button>
+              <button class="btn secondary" type="button" onclick="startExam('hard')">Moeilijk direct</button>
+              <button class="btn secondary" type="button" onclick="startExam('mix')">Mix direct</button>
+            </div>
+          </div>
+          <aside class="panel exam-preview" aria-label="Voorbeeld van het oefenscherm">
+            <div>
+              <div class="kicker">Schermvoorbeeld</div>
+              <p class="side-note">De styling is bewust CBR-achtig, maar gebruikt geen CBR-huisstijl of echte examenvragen.</p>
+            </div>
+            <div class="mini-screen">
+              <div class="mini-screen-top">
+                <span>Tafel 1 - Vraag 18</span>
+                <span>24:12</span>
+              </div>
+              <div class="mini-screen-body">
+                <div class="scene photo-scene city">${renderSceneObjects("city")}</div>
+                <strong>Wat doe je bij geel licht?</strong>
+                <div class="mini-options">
+                  <div class="mini-option">A. Stoppen als dat veilig kan</div>
+                  <div class="mini-option">B. Altijd doorrijden</div>
+                  <div class="mini-option">C. Toeteren</div>
+                </div>
+              </div>
+              <div class="mini-screen-foot">
+                <button class="btn secondary" type="button">Vorige</button>
+                <button class="btn" type="button">Volgende</button>
+              </div>
+            </div>
+          </aside>
+        </section>
+      `;
+    }
+
+    function renderPractice() {
+      const q = practiceQuestions[state.practiceIndex];
+      ensureOrderAnswer(q);
+      const answered = hasAnswer(q, state.practiceAnswers);
+      const checked = state.practiceChecked;
+      const correct = checked && isCorrect(q, state.practiceAnswers[q.id]);
+      app.innerHTML = `
+        <section class="exam-layout">
+          <article class="panel exam-card">
+            <div class="exam-header">
+              <div class="exam-meta">
+                <strong>${escapeHtml(variantLabel())} - oefenvraag ${state.practiceIndex + 1} van ${practiceQuestions.length}</strong>
+                <span>${escapeHtml(questionTypeLabel(q))}</span>
+              </div>
+              <span>Deze telt niet mee</span>
+              <span class="timer">Oefenen</span>
+            </div>
+            ${renderQuestionBody(q, state.practiceAnswers)}
+            ${checked ? `<div class="practice-feedback ${correct ? "ok" : "bad"}">
+              <strong>${correct ? "Goed." : "Nog niet goed."}</strong>
+              ${escapeHtml(q.explanation)}
+            </div>` : ""}
+            <div class="question-footer">
+              <button class="btn secondary" type="button" onclick="state.phase='intro'; render()">Terug</button>
+              <div class="button-row">
+                ${checked
+                  ? `<button class="btn" type="button" onclick="nextPractice()">${state.practiceIndex === practiceQuestions.length - 1 ? "Start examen" : "Volgende oefenvraag"}</button>`
+                  : `<button class="btn" type="button" onclick="checkPractice()" ${answered ? "" : "disabled"}>Controleer</button>`}
+              </div>
+            </div>
+          </article>
+          <aside class="panel side-panel">
+            <h3>Waarom oefenvragen?</h3>
+            <p class="side-note">Net als bij het echte examen kun je eerst wennen aan de bediening. Hier krijg je wel meteen uitleg, zodat je de quiz snapt voordat de timer start.</p>
+          </aside>
+        </section>
+      `;
+    }
+
+    function renderExam() {
+      const questions = activeQuestions();
+      const q = currentQuestion();
+      ensureOrderAnswer(q);
+      const answeredCount = questions.filter(function (item) { return hasAnswer(item, state.answers); }).length;
+      app.innerHTML = `
+        <section class="exam-layout">
+          <article class="panel exam-card">
+            <div class="exam-header">
+              <div class="exam-meta">
+                <strong>Tafel 1 - ${escapeHtml(variantLabel())}</strong>
+                <span>Vraag ${state.index + 1} van ${questions.length}</span>
+                <span>${escapeHtml(questionTypeLabel(q))}</span>
+              </div>
+              <span>${answeredCount}/${questions.length} beantwoord</span>
+              <span class="timer ${state.remaining <= 300 ? "low" : ""}" data-timer>${formatTime(state.remaining)}</span>
+            </div>
+            ${renderQuestionBody(q, state.answers)}
+            <div class="question-footer">
+              <div class="button-row">
+                <button class="btn secondary" type="button" onclick="previousQuestion()" ${state.index === 0 ? "disabled" : ""}>Vorige</button>
+                <button class="btn secondary" type="button" onclick="toggleFlag()">${state.flagged[q.id] ? "Markering weg" : "Markeer vraag"}</button>
+              </div>
+              <div class="button-row">
+                ${state.index === questions.length - 1
+                  ? `<button class="btn danger" type="button" onclick="finishExam()">Examen inleveren</button>`
+                  : `<button class="btn" type="button" onclick="nextQuestion()">Volgende</button>`}
+              </div>
+            </div>
+          </article>
+          <aside class="panel side-panel" data-overview>
+            ${renderOverview()}
+          </aside>
+        </section>
+      `;
+    }
+
+    function renderOverview() {
+      const questions = activeQuestions();
+      const answeredCount = questions.filter(function (q) { return hasAnswer(q, state.answers); }).length;
+      const flaggedCount = Object.keys(state.flagged).filter(function (key) { return state.flagged[key]; }).length;
+      return `
+        <h3>Vraagoverzicht</h3>
+        <p class="side-note">${escapeHtml(variantLabel())}: ${answeredCount} beantwoord, ${flaggedCount} gemarkeerd. Je mag terugbladeren tot je inlevert of de tijd op is.</p>
+        <div class="overview-grid">
+          ${questions.map(function (q, index) {
+            const classes = [
+              "overview-button",
+              index === state.index ? "current" : "",
+              hasAnswer(q, state.answers) ? "answered" : "",
+              state.flagged[q.id] ? "flagged" : ""
+            ].join(" ");
+            return `<button class="${classes}" type="button" onclick="goToQuestion(${index})">${index + 1}</button>`;
+          }).join("")}
+        </div>
+        <div class="legend">
+          <span><i class="dot"></i>open</span>
+          <span><i class="dot done"></i>beantwoord</span>
+          <span><i class="dot flag"></i>markering</span>
+        </div>
+        <div class="button-row" style="margin-top:16px">
+          <button class="btn danger" type="button" onclick="finishExam()">Inleveren</button>
+        </div>
+      `;
+    }
+
+    function renderQuestionBody(q, store) {
+      return `
+        <div class="question-body">
+          <div class="question-copy">
+            <div class="kicker">${escapeHtml(q.topic)}</div>
+            <h2>${escapeHtml(q.prompt)}</h2>
+            ${q.help ? `<p class="question-help">${escapeHtml(q.help)}</p>` : ""}
+            ${renderAnswerControl(q, store)}
+          </div>
+          <div class="visual-panel">
+            ${renderVisual(q, store)}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderAnswerControl(q, store) {
+      if (q.kind === "single") {
+        return `<div class="options">${q.options.map(function (option, index) {
+          const selected = store[q.id] === option.id;
+          return `
+            <button class="option ${selected ? "selected" : ""}" type="button" onclick="setAnswer('${q.id}', '${option.id}')">
+              <span class="option-letter">${String.fromCharCode(65 + index)}</span>
+              <span>${escapeHtml(option.text)}</span>
+            </button>
+          `;
+        }).join("")}</div>`;
+      }
+
+      if (q.kind === "multi") {
+        const current = Array.isArray(store[q.id]) ? store[q.id] : [];
+        return `<div class="options">${q.options.map(function (option, index) {
+          const selected = current.includes(option.id);
+          return `
+            <button class="option ${selected ? "selected" : ""}" type="button" onclick="toggleMulti('${q.id}', '${option.id}')">
+              <span class="option-letter">${selected ? "OK" : String.fromCharCode(65 + index)}</span>
+              <span>${escapeHtml(option.text)}</span>
+            </button>
+          `;
+        }).join("")}</div>`;
+      }
+
+      if (q.kind === "number") {
+        const value = store[q.id] || "";
+        return `
+          <div class="number-entry">
+            <input type="text" inputmode="decimal" aria-label="Antwoord invullen" value="${escapeHtml(value)}" oninput="setNumber('${q.id}', this.value)">
+            <span class="suffix">${escapeHtml(q.suffix || "")}</span>
+          </div>
+        `;
+      }
+
+      if (q.kind === "order") {
+        ensureOrderAnswer(q);
+        const current = store[q.id];
+        return `
+          <div class="order-list">
+            ${current.map(function (id, index) {
+              const item = q.items.find(function (candidate) { return candidate.id === id; });
+              return `
+                <div class="order-item">
+                  <span class="order-rank">${index + 1}</span>
+                  <span>${escapeHtml(item ? item.text : id)}</span>
+                  <span class="move-actions">
+                    <button class="move-btn" type="button" onclick="moveOrder('${q.id}', -1, ${index})" ${index === 0 ? "disabled" : ""}>^</button>
+                    <button class="move-btn" type="button" onclick="moveOrder('${q.id}', 1, ${index})" ${index === current.length - 1 ? "disabled" : ""}>v</button>
+                  </span>
+                </div>
+              `;
+            }).join("")}
+          </div>
+        `;
+      }
+
+      if (q.kind === "hotspot") {
+        return `<p class="question-help">Kies je antwoord door een stip in de situatieafbeelding aan te tikken.</p>`;
+      }
+
+      return "";
+    }
+
+    function renderVisual(q, store) {
+      const answer = store[q.id];
+      const hotspots = q.kind === "hotspot" ? q.hotspots.map(function (spot, index) {
+        const selected = answer === spot.id;
+        return `<button class="hotspot ${selected ? "selected" : ""}" style="left:${spot.x}%;top:${spot.y}%;" type="button" onclick="setAnswer('${q.id}', '${spot.id}')" aria-label="${escapeHtml(spot.label)}">${String.fromCharCode(65 + index)}</button>`;
+      }).join("") : "";
+
+      const labels = q.kind === "hotspot" ? `
+        <div class="hotspot-labels">
+          ${q.hotspots.map(function (spot, index) {
+            return `<span>${String.fromCharCode(65 + index)}. ${escapeHtml(spot.label)}</span>`;
+          }).join("")}
+        </div>
+      ` : "";
+
+      return `
+        <div class="scene photo-scene ${escapeHtml(q.scene || "city")}">
+          ${renderSceneObjects(q.scene || "city")}
+          ${hotspots}
+        </div>
+        ${labels}
+      `;
+    }
+
+    function renderSceneObjects(scene) {
+      const scenes = {
+        city: {
+          src: "assets/images/city.jpg",
+          alt: "Foto van een hoofdfietsroute en straat in Amsterdam",
+          label: "Stadsverkeer met fietsers en kruisend verkeer"
+        },
+        motorway: {
+          src: "assets/images/motorway.jpg",
+          alt: "Foto van druk verkeer op een Nederlandse snelweg",
+          label: "Autosnelweg met meerdere rijstroken en druk verkeer"
+        },
+        intersection: {
+          src: "assets/images/intersection.jpg",
+          alt: "Foto van een Nederlands kruispunt met verkeerslichten",
+          label: "Kruispunt met verkeerslichten en kruisend verkeer"
+        },
+        residential: {
+          src: "assets/images/residential.jpg",
+          alt: "Foto van een Nederlands woonerf",
+          label: "Woonerf of woonstraat met weinig ruimte en geparkeerde auto's"
+        },
+        parking: {
+          src: "assets/images/parking.jpg",
+          alt: "Foto van parkeervakken in een Nederlandse woonstraat",
+          label: "Parkeersituatie in een woonstraat"
+        },
+        dashboard: {
+          src: "assets/images/dashboard.jpg",
+          alt: "Foto van een autodashboard met controlelampjes",
+          label: "Autodashboard met waarschuwingslampjes"
+        },
+        weather: {
+          src: "assets/images/weather.jpg",
+          alt: "Foto van een Nederlandse weg in dichte mist",
+          label: "Slecht zicht door mist"
+        },
+        signs: {
+          src: "assets/images/signs.jpg",
+          alt: "Foto van een zonebord in Rotterdam",
+          label: "Zonebord en verkeersborden"
+        },
+        rail: {
+          src: "assets/images/rail.jpg",
+          alt: "Foto van een spoorwegovergang in Amsterdam",
+          label: "Spoorwegovergang met lichtinstallatie"
+        }
+      };
+      const data = scenes[scene] || scenes.city;
+      return `
+        <img class="scene-photo" src="${escapeHtml(data.src)}" alt="${escapeHtml(data.alt)}">
+        <div class="scene-label">${escapeHtml(data.label)}</div>
+      `;
+    }
+
+    function renderResults() {
+      const questions = activeQuestions();
+      const score = scoreExam();
+      const degree = Math.round((score.correct / score.total) * 360);
+      const stats = topicStats();
+      const review = questions.filter(function (q) {
+        if (!state.filterMisses) return true;
+        if (q.counts === false) return false;
+        return !isCorrect(q, state.answers[q.id]);
+      });
+
+      app.innerHTML = `
+        <section class="results-layout">
+          <aside class="panel score-panel">
+            <span class="result-badge ${score.passed ? "pass" : "fail"}">${score.passed ? "Geslaagd voor deze oefenronde" : "Nog niet geslaagd"}</span>
+            <div class="score-circle" style="--score-deg:${degree}deg"><strong>${score.correct}/${score.total}</strong></div>
+            <p class="side-note">${escapeHtml(variantLabel())}: je had ${score.correct} van de ${score.total} meetellende vragen goed. In deze oefenset telden 2 testvragen niet mee. Slaaggrens: 44 goed.</p>
+            <div class="topic-list">
+              ${Object.keys(stats).sort().map(function (topic) {
+                return `<div class="topic-row"><span>${escapeHtml(topic)}</span><strong>${stats[topic].correct}/${stats[topic].total}</strong></div>`;
+              }).join("")}
+            </div>
+            <div class="button-row">
+              <button class="btn" type="button" onclick="startExam()">Opnieuw starten</button>
+              <button class="btn secondary" type="button" onclick="state.phase='intro'; render()">Startscherm</button>
+            </div>
+          </aside>
+          <article class="panel review-panel">
+            <div class="review-head">
+              <div>
+                <div class="kicker">Uitslag en uitleg</div>
+                <strong>${score.answered}/${questions.length} vragen beantwoord</strong>
+              </div>
+              <button class="btn secondary" type="button" onclick="state.filterMisses=!state.filterMisses; render()">${state.filterMisses ? "Toon alles" : "Toon alleen fouten"}</button>
+            </div>
+            <div class="review-list">
+              ${review.map(renderReviewItem).join("")}
+            </div>
+          </article>
+        </section>
+      `;
+    }
+
+    function renderReviewItem(q, index) {
+      const questions = activeQuestions();
+      const originalIndex = questions.indexOf(q);
+      const answer = state.answers[q.id];
+      const correct = isCorrect(q, answer);
+      const test = q.counts === false;
+      return `
+        <section class="review-item ${test ? "test" : (correct ? "good" : "miss")}">
+          <div class="review-meta">Vraag ${originalIndex + 1} - ${escapeHtml(q.topic)} - ${escapeHtml(questionTypeLabel(q))}${test ? " - testvraag, niet meegeteld" : ""}</div>
+          <h3>${escapeHtml(q.prompt)}</h3>
+          <div class="answer-line">
+            <span><strong>Jouw antwoord:</strong> ${escapeHtml(answerToText(q, answer))}</span>
+            <span><strong>Juiste antwoord:</strong> ${escapeHtml(correctToText(q))}</span>
+          </div>
+          <p class="explanation">${escapeHtml(q.explanation)}</p>
+        </section>
+      `;
+    }
+
+    render();
+  </script>
+</body>
+</html>

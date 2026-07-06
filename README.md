@@ -31,7 +31,19 @@ De willekeurige mix trekt elke keer 52 vragen uit de normale, moeilijke en extra
 
 ## Belangrijk
 
-Dit is geen officieel CBR-materiaal. De vragen zijn origineel gemaakt om te oefenen met de onderwerpen en vraagvormen. De echte CBR-vragen zijn anders en kunnen wijzigen.
+Dit is geen officieel CBR-materiaal. De vragen zijn origineel gemaakt om te oefenen met de onderwerpen, vraagvormen en verkeersregels. De echte CBR-vragen zijn anders en kunnen wijzigen.
+
+## Bronnen en betrouwbaarheid
+
+De inhoud is gecontroleerd op 6 juli 2026. De quiz gebruikt meerdere openbare bronnen:
+
+- CBR-bronnen voor de examenopzet, vraagsoorten, onderwerpen, slaaggrens en voorbeeldvraagstijl.
+- RVV 1990 en Rijksoverheid/Rijkswaterstaat-bronnen voor verkeersregels, verkeerstekens en maximumsnelheden.
+- Politie-bronnen voor situaties met voorrangsvoertuigen en noodsignalen.
+- RDW-bronnen voor voertuigkennis, APK, banden, verlichting en technische staat.
+- SWOV en Veilig Verkeer Nederland voor verkeersveiligheid, risico-inschatting en begrijpelijke uitleg van praktijksituaties.
+
+Antwoorden zijn met deze bronnen gespiegeld, maar blijven oefenmateriaal. Bij twijfel geldt altijd de actuele officiële bron of de instructie van een erkende rijschool.
 
 ## Afbeeldingen
 
@@ -56,9 +68,18 @@ De hotspotvragen gebruiken daarnaast zelf gegenereerde oefenbeelden in `assets/g
 - `intersection-shark-teeth.jpg`: kruispunt met haaientanden.
 - `intersection-cross-traffic.jpg`: kruispuntgebied met kruisend verkeer.
 
-Gebaseerd op openbare CBR-informatie:
+Gebaseerd op openbare bronnen:
 
 - https://www.cbr.nl/nl/rijbewijs-halen/auto/theorie-examen-auto/hoe-gaat-het-theorie-examen-auto
 - https://www.cbr.nl/nl/rijbewijs-halen/auto/theorie-examen-auto/soort-vragen-tijdens-theorie
 - https://www.cbr.nl/nl/rijbewijs-halen/auto/theorie-examen-auto/onderwerpen-in-het-theorie-examen
+- https://www.cbr.nl/nl/voor-rijscholen/nl/inhoud-theorie-examen-auto-motor-en-bromfiets
 - https://www.cbr.nl/nl/over-het-cbr/over/laatste-nieuws/nieuws/leren-en-oefenen-voorbeeldvragen-theorie-examen-auto-1
+- https://wetten.overheid.nl/BWBR0004825/
+- https://www.rijksoverheid.nl/onderwerpen/verkeersveiligheid
+- https://www.rijkswaterstaat.nl/wegen/wetten-regels-en-vergunningen/verkeerswetten
+- https://www.politie.nl/informatie/wat-u-moet-doen-als-een-politievoertuig-zwaailichten-en-sirene-gebruikt.html
+- https://www.rdw.nl/particulier/voertuigen/auto/apk
+- https://swov.nl/nl/factsheet/riskant-verkeersgedrag-verkeersagressie-en-veelplegers
+- https://swov.nl/nl/factsheet/advanced-driver-assistance-systems-adas
+- https://verkeersregels.vvn.nl/

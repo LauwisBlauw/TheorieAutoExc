@@ -41,7 +41,7 @@ De inhoud is gecontroleerd op 6 juli 2026. De quiz gebruikt meerdere openbare br
 - RVV 1990 en Rijksoverheid/Rijkswaterstaat-bronnen voor verkeersregels, verkeerstekens en maximumsnelheden.
 - Politie-bronnen voor situaties met voorrangsvoertuigen en noodsignalen.
 - RDW-bronnen voor voertuigkennis, APK, banden, verlichting en technische staat.
-- SWOV en Veilig Verkeer Nederland voor verkeersveiligheid, risico-inschatting en begrijpelijke uitleg van praktijksituaties.
+- SWOV, Veilig Verkeer Nederland en ANWB voor verkeersveiligheid, risico-inschatting en begrijpelijke uitleg van praktijksituaties.
 
 Antwoorden zijn met deze bronnen gespiegeld, maar blijven oefenmateriaal. Bij twijfel geldt altijd de actuele officiële bron of de instructie van een erkende rijschool.
 
@@ -83,3 +83,8 @@ Gebaseerd op openbare bronnen:
 - https://swov.nl/nl/factsheet/riskant-verkeersgedrag-verkeersagressie-en-veelplegers
 - https://swov.nl/nl/factsheet/advanced-driver-assistance-systems-adas
 - https://verkeersregels.vvn.nl/
+- https://www.anwb.nl/verkeer/veiligheid/verkeersregels
+- https://www.anwb.nl/verkeer/nederland/verkeersinformatie/verkeersborden-nederland
+- https://www.anwb.nl/verkeer/veiligheid/verkeersregels/voorrang
+- https://www.anwb.nl/verkeer/veiligheid/verkeersregels/snelheid
+- https://www.anwb.nl/auto/onderhoud-en-reparatie/apk/wat-is-een-apk-keuring

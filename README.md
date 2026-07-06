@@ -42,6 +42,7 @@ De inhoud is gecontroleerd op 6 juli 2026. De quiz gebruikt meerdere openbare br
 - Politie-bronnen voor situaties met voorrangsvoertuigen en noodsignalen.
 - RDW-bronnen voor voertuigkennis, APK, banden, verlichting en technische staat.
 - SWOV, Veilig Verkeer Nederland en ANWB voor verkeersveiligheid, risico-inschatting en begrijpelijke uitleg van praktijksituaties.
+- TheorieToppers als aanvullende commerciële oefen- en vergelijkingsbron voor uitleg over examenaanpak, borden en praktijksituaties.
 
 Antwoorden zijn met deze bronnen gespiegeld, maar blijven oefenmateriaal. Bij twijfel geldt altijd de actuele officiële bron of de instructie van een erkende rijschool.
 
@@ -88,3 +89,8 @@ Gebaseerd op openbare bronnen:
 - https://www.anwb.nl/verkeer/veiligheid/verkeersregels/voorrang
 - https://www.anwb.nl/verkeer/veiligheid/verkeersregels/snelheid
 - https://www.anwb.nl/auto/onderhoud-en-reparatie/apk/wat-is-een-apk-keuring
+- https://www.theorietoppers.nl/theorie-examen-oefenen/auto
+- https://www.theorietoppers.nl/blog/vernieuwde-cbr-theorie-examen-7-april-2025
+- https://www.theorietoppers.nl/verkeersborden
+- https://www.theorietoppers.nl/blog/invoegen-en-uitvoegen-snelweg
+- https://www.theorietoppers.nl/blog/woonerf-snelheid-voorrang-en-parkeren-uitgelegd

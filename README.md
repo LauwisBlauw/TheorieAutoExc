@@ -33,6 +33,14 @@ De willekeurige mix trekt elke keer 52 vragen uit de normale, moeilijke en extra
 
 Dit is geen officieel CBR-materiaal. De vragen zijn origineel gemaakt om te oefenen met de onderwerpen, vraagvormen en verkeersregels. De echte CBR-vragen zijn anders en kunnen wijzigen.
 
+## Codecontrole
+
+Controleer na code- of vraagbankwijzigingen of de app nog start en de vragenbank intern klopt:
+
+```sh
+node scripts/smoke-test.js
+```
+
 ## Bronnen en betrouwbaarheid
 
 De inhoud is gecontroleerd op 6 juli 2026. De quiz gebruikt meerdere openbare bronnen:

@@ -3786,6 +3786,20 @@
       }
     ];
 
+    const EXAM_CONFIG = Object.freeze({
+      scoredQuestionCount: 50,
+      testQuestionCount: 2,
+      durationSeconds: 30 * 60,
+      passingScore: 44,
+      lowTimeWarningSeconds: 5 * 60
+    });
+
+    const VARIANT_LABELS = Object.freeze({
+      normal: "Normale variant",
+      hard: "Moeilijke variant",
+      mix: "Willekeurige mix"
+    });
+
     const REPORTS_STORAGE_KEY = "autoTheorieBQuestionReports";
     const app = document.getElementById("app");
     const state = {
@@ -3800,7 +3814,7 @@
       trainingChecked: {},
       reports: loadReports(),
       reportTarget: null,
-      remaining: 30 * 60,
+      remaining: EXAM_CONFIG.durationSeconds,
       timerId: null,
       filterMisses: false,
       variant: "normal",
@@ -3833,24 +3847,49 @@
       return examQuestions;
     }
 
+    function applyVariant(variant) {
+      if (variant && VARIANT_LABELS[variant]) {
+        state.variant = variant;
+      }
+    }
+
     function totalQuestionBankSize() {
       return examQuestions.length + hardExamQuestions.length + extraExamQuestions.length;
     }
 
-    function loadReports() {
+    function sessionQuestionCount() {
+      return EXAM_CONFIG.scoredQuestionCount + EXAM_CONFIG.testQuestionCount;
+    }
+
+    function examDurationMinutes() {
+      return Math.round(EXAM_CONFIG.durationSeconds / 60);
+    }
+
+    function readJsonFromStorage(key, fallback) {
       try {
-        const raw = window.localStorage.getItem(REPORTS_STORAGE_KEY);
-        const parsed = raw ? JSON.parse(raw) : [];
-        return Array.isArray(parsed) ? parsed : [];
+        const raw = window.localStorage.getItem(key);
+        return raw ? JSON.parse(raw) : fallback;
       } catch (error) {
-        return [];
+        return fallback;
       }
     }
 
-    function saveReports() {
+    function writeJsonToStorage(key, value) {
       try {
-        window.localStorage.setItem(REPORTS_STORAGE_KEY, JSON.stringify(state.reports));
+        window.localStorage.setItem(key, JSON.stringify(value));
+        return true;
       } catch (error) {
+        return false;
+      }
+    }
+
+    function loadReports() {
+      const parsed = readJsonFromStorage(REPORTS_STORAGE_KEY, []);
+      return Array.isArray(parsed) ? parsed : [];
+    }
+
+    function saveReports() {
+      if (!writeJsonToStorage(REPORTS_STORAGE_KEY, state.reports)) {
         window.alert("Melding kon niet lokaal worden opgeslagen. Controleer je browserinstellingen.");
       }
     }
@@ -3925,8 +3964,8 @@
     function buildExamQuestions(variant) {
       const source = sourceQuestionsForVariant(variant);
       if (variant === "mix") {
-        const scored = shuffleCopy(source.filter(function (question) { return question.counts !== false; })).slice(0, 50);
-        const test = shuffleCopy(source.filter(function (question) { return question.counts === false; })).slice(0, 2);
+        const scored = shuffleCopy(source.filter(function (question) { return question.counts !== false; })).slice(0, EXAM_CONFIG.scoredQuestionCount);
+        const test = shuffleCopy(source.filter(function (question) { return question.counts === false; })).slice(0, EXAM_CONFIG.testQuestionCount);
         return shuffleCopy(scored.concat(test)).map(cloneQuestionForSession);
       }
       return shuffleCopy(source).map(cloneQuestionForSession);
@@ -3937,9 +3976,7 @@
     }
 
     function variantLabel() {
-      if (state.variant === "hard") return "Moeilijke variant";
-      if (state.variant === "mix") return "Willekeurige mix";
-      return "Normale variant";
+      return VARIANT_LABELS[state.variant] || VARIANT_LABELS.normal;
     }
 
     function scrollToPageTop() {
@@ -3949,9 +3986,7 @@
     function startPractice(variant) {
       clearTimer();
       state.mode = "exam";
-      if (variant) {
-        state.variant = variant;
-      }
+      applyVariant(variant);
       state.sessionQuestions = [];
       state.phase = "practice";
       state.practiceIndex = 0;
@@ -3962,12 +3997,10 @@
       scrollToPageTop();
     }
 
-    function startExam(variant) {
+    function resetQuestionSession(mode, variant) {
       clearTimer();
-      state.mode = "exam";
-      if (variant) {
-        state.variant = variant;
-      }
+      state.mode = mode;
+      applyVariant(variant);
       state.sessionQuestions = buildExamQuestions(state.variant);
       state.phase = "exam";
       state.index = 0;
@@ -3975,8 +4008,11 @@
       state.flagged = {};
       state.trainingChecked = {};
       state.reportTarget = null;
-      state.remaining = 30 * 60;
+      state.remaining = EXAM_CONFIG.durationSeconds;
       state.filterMisses = false;
+    }
+
+    function startExamTimer() {
       state.timerId = setInterval(function () {
         state.remaining -= 1;
         if (state.remaining <= 0) {
@@ -3986,25 +4022,17 @@
         }
         updateTimerOnly();
       }, 1000);
+    }
+
+    function startExam(variant) {
+      resetQuestionSession("exam", variant);
+      startExamTimer();
       render();
       scrollToPageTop();
     }
 
     function startTraining(variant) {
-      clearTimer();
-      state.mode = "training";
-      if (variant) {
-        state.variant = variant;
-      }
-      state.sessionQuestions = buildExamQuestions(state.variant);
-      state.phase = "exam";
-      state.index = 0;
-      state.answers = {};
-      state.flagged = {};
-      state.trainingChecked = {};
-      state.reportTarget = null;
-      state.remaining = 30 * 60;
-      state.filterMisses = false;
+      resetQuestionSession("training", variant);
       render();
       scrollToPageTop();
     }
@@ -4041,7 +4069,7 @@
       const timer = document.querySelector("[data-timer]");
       if (timer) {
         timer.textContent = formatTime(state.remaining);
-        timer.classList.toggle("low", state.remaining <= 5 * 60);
+        timer.classList.toggle("low", state.remaining <= EXAM_CONFIG.lowTimeWarningSeconds);
       }
     }
 
@@ -4146,6 +4174,81 @@
       const one = a.slice().sort().join("|");
       const two = b.slice().sort().join("|");
       return one === two;
+    }
+
+    function hasDuplicateValues(values) {
+      return new Set(values).size !== values.length;
+    }
+
+    function validateSelectableAnswer(q, ids, issues) {
+      if (hasDuplicateValues(ids)) {
+        issues.push(q.id + ": dubbele antwoord-id in opties");
+      }
+      if (q.kind === "single" && !ids.includes(q.correct)) {
+        issues.push(q.id + ": correct antwoord staat niet bij de opties");
+      }
+      if (q.kind === "multi") {
+        if (!Array.isArray(q.correct) || q.correct.length === 0) {
+          issues.push(q.id + ": multiple-response vraag mist correcte antwoorden");
+          return;
+        }
+        q.correct.forEach(function (id) {
+          if (!ids.includes(id)) {
+            issues.push(q.id + ": correct antwoord " + id + " staat niet bij de opties");
+          }
+        });
+      }
+    }
+
+    function collectQuestionBankIssues() {
+      const allQuestions = practiceQuestions.concat(examQuestions, hardExamQuestions, extraExamQuestions);
+      const seen = {};
+      const issues = [];
+      allQuestions.forEach(function (q) {
+        if (!q || !q.id) {
+          issues.push("Vraag zonder id gevonden");
+          return;
+        }
+        if (seen[q.id]) {
+          issues.push(q.id + ": dubbele vraag-id");
+        }
+        seen[q.id] = true;
+        if (!q.kind || !q.topic || !q.prompt || !q.explanation) {
+          issues.push(q.id + ": mist verplichte vraagvelden");
+        }
+        if (q.kind === "single" || q.kind === "multi") {
+          const ids = Array.isArray(q.options) ? q.options.map(function (option) { return option.id; }) : [];
+          if (!ids.length) {
+            issues.push(q.id + ": mist antwoordopties");
+          } else {
+            validateSelectableAnswer(q, ids, issues);
+          }
+        } else if (q.kind === "hotspot") {
+          const ids = Array.isArray(q.hotspots) ? q.hotspots.map(function (spot) { return spot.id; }) : [];
+          if (!ids.includes(q.correct)) {
+            issues.push(q.id + ": correcte hotspot bestaat niet");
+          }
+        } else if (q.kind === "order") {
+          const itemIds = Array.isArray(q.items) ? q.items.map(function (item) { return item.id; }) : [];
+          if (!Array.isArray(q.correct) || !sameSet(itemIds, q.correct)) {
+            issues.push(q.id + ": volgorde-antwoord komt niet overeen met items");
+          }
+        } else if (q.kind === "number") {
+          if (!Array.isArray(q.accepted) || q.accepted.length === 0) {
+            issues.push(q.id + ": invulvraag mist geaccepteerde antwoorden");
+          }
+        } else {
+          issues.push(q.id + ": onbekend vraagtype " + q.kind);
+        }
+      });
+      return issues;
+    }
+
+    function warnAboutQuestionBankIssues() {
+      const issues = collectQuestionBankIssues();
+      if (issues.length && window.console) {
+        console.warn("Vraagbankcontrole vond aandachtspunten:", issues);
+      }
     }
 
     function answerToText(q, answer) {
@@ -4333,7 +4436,7 @@
         correct: correct,
         total: scored.length,
         answered: answered,
-        passed: correct >= 44
+        passed: correct >= EXAM_CONFIG.passingScore
       };
     }
 
@@ -4369,17 +4472,17 @@
         <section class="intro-layout">
           <div class="panel intro-panel">
             <div class="kicker">Rijbewijs B oefenexamen</div>
-            <h2>Train met de nieuwste CBR-opzet: 50 telvragen, 2 testvragen, 30 minuten.</h2>
+            <h2>Train met de nieuwste CBR-opzet: ${EXAM_CONFIG.scoredQuestionCount} telvragen, ${EXAM_CONFIG.testQuestionCount} testvragen, ${examDurationMinutes()} minuten.</h2>
             <p>Dit oefenexamen lijkt qua flow op het huidige auto-theorie-examen: eerst twee oefenvragen, daarna een doorlopend examen met verschillende vraagsoorten. Kies normaal, moeilijk of een willekeurige mix uit de volledige vragenbank.</p>
             <div class="notice">
               De echte CBR-vragen zijn niet openbaar. Deze quiz gebruikt daarom originele vragen die de actuele onderwerpen en vraagvormen nabootsen.
             </div>
             <div class="stats-grid">
-              <div class="stat"><strong>52</strong><span>vragen in de examensessie</span></div>
-              <div class="stat"><strong>50</strong><span>vragen tellen mee</span></div>
+              <div class="stat"><strong>${sessionQuestionCount()}</strong><span>vragen in de examensessie</span></div>
+              <div class="stat"><strong>${EXAM_CONFIG.scoredQuestionCount}</strong><span>vragen tellen mee</span></div>
               <div class="stat"><strong>${totalQuestionBankSize()}</strong><span>vragen in de totale bank</span></div>
-              <div class="stat"><strong>44+</strong><span>goed is geslaagd</span></div>
-              <div class="stat"><strong>30:00</strong><span>minuten examentijd</span></div>
+              <div class="stat"><strong>${EXAM_CONFIG.passingScore}+</strong><span>goed is geslaagd</span></div>
+              <div class="stat"><strong>${formatTime(EXAM_CONFIG.durationSeconds)}</strong><span>minuten examentijd</span></div>
               <div class="stat"><strong>Mix</strong><span>volgorde en opties wisselen</span></div>
               <div class="stat"><strong>Labels</strong><span>makkelijk, gemiddeld en moeilijk</span></div>
               <div class="stat"><strong>${state.reports.length}</strong><span>vraagmeldingen lokaal opgeslagen</span></div>
@@ -4526,7 +4629,7 @@
                 ${training ? `<span class="mode-chip">Directe uitleg</span>` : ""}
               </div>
               <span>${answeredCount}/${questions.length} beantwoord</span>
-              <span class="timer ${!training && state.remaining <= 300 ? "low" : ""}" data-timer>${training ? "Leerstand" : formatTime(state.remaining)}</span>
+              <span class="timer ${!training && state.remaining <= EXAM_CONFIG.lowTimeWarningSeconds ? "low" : ""}" data-timer>${training ? "Leerstand" : formatTime(state.remaining)}</span>
             </div>
             ${renderQuestionBody(q, state.answers)}
             ${renderTrainingFeedback(q)}
@@ -4767,7 +4870,7 @@
           <aside class="panel score-panel">
             <span class="result-badge ${training || score.passed ? "pass" : "fail"}">${training ? "Leerstand afgerond" : (score.passed ? "Geslaagd voor deze oefenronde" : "Nog niet geslaagd")}</span>
             <div class="score-circle" style="--score-deg:${degree}deg"><strong>${score.correct}/${score.total}</strong></div>
-            <p class="side-note">${escapeHtml(variantLabel())}: je had ${score.correct} van de ${score.total} meetellende vragen goed. ${training ? "Gebruik de uitleg hieronder om gericht te leren." : "In deze oefenset telden 2 testvragen niet mee. Slaaggrens: 44 goed."}</p>
+            <p class="side-note">${escapeHtml(variantLabel())}: je had ${score.correct} van de ${score.total} meetellende vragen goed. ${training ? "Gebruik de uitleg hieronder om gericht te leren." : "In deze oefenset telden " + EXAM_CONFIG.testQuestionCount + " testvragen niet mee. Slaaggrens: " + EXAM_CONFIG.passingScore + " goed."}</p>
             <div class="topic-list">
               ${Object.keys(stats).sort().map(function (topic) {
                 return `<div class="topic-row"><span>${escapeHtml(topic)}</span><strong>${stats[topic].correct}/${stats[topic].total}</strong></div>`;
@@ -4818,6 +4921,7 @@
       `;
     }
 
+    warnAboutQuestionBankIssues();
     render();
   </script>
 </body>

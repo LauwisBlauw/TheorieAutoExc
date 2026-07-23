@@ -1459,7 +1459,7 @@
             <p>Juli 2026 - CBR-achtige oefenquiz met originele vragen</p>
           </div>
         </div>
-        <div class="topbar-pill">Niet officieel CBR materiaal</div>
+        <div class="topbar-pill">Niet-officieel CBR-materiaal</div>
       </div>
     </header>
 
@@ -1619,11 +1619,11 @@
         options: [
           { id: "a", text: "Als je daarvoor een doorgetrokken streep moet overschrijden" },
           { id: "b", text: "Vlak voor of op een voetgangersoversteekplaats" },
-          { id: "c", text: "Rechts inhalen in een file op meerdere rijstroken" },
+          { id: "c", text: "Rechts passeren in een file op meerdere rijstroken" },
           { id: "d", text: "Als je door het inhalen ander verkeer hindert of in gevaar brengt" }
         ],
         correct: ["a", "b", "d"],
-        explanation: "Een doorgetrokken streep, een zebrapad en gevaar of hinder sluiten inhalen uit. Rechts inhalen in een file op meerdere rijstroken kan een uitzondering zijn."
+        explanation: "Een doorgetrokken streep, een zebrapad en gevaar of hinder sluiten inhalen uit. Rechts passeren in een file op meerdere rijstroken geldt niet als inhalen."
       },
       {
         id: "q6",
@@ -1863,7 +1863,7 @@
         options: [
           { id: "a", text: "Rood remsysteemlampje" },
           { id: "b", text: "Rood oliedruklampje" },
-          { id: "c", text: "Rood koelvloeistoftemperatuur-lampje" },
+          { id: "c", text: "Rood lampje voor de koelvloeistoftemperatuur" },
           { id: "d", text: "Oranje controlelampje voor achterruitverwarming" }
         ],
         correct: ["a", "b", "c"],
@@ -1916,7 +1916,7 @@
         kind: "single",
         topic: "Verantwoorde verkeersdeelname",
         scene: "dashboard",
-        prompt: "Je gebruikt medicijnen met een waarschuwing dat ze de rijvaardigheid kunnen beinvloeden. Wat doe je?",
+        prompt: "Je gebruikt medicijnen met een waarschuwing dat ze de rijvaardigheid kunnen beïnvloeden. Wat doe je?",
         options: [
           { id: "a", text: "Gewoon rijden als je de route kent" },
           { id: "b", text: "Niet rijden als je rijvaardigheid verminderd kan zijn" },
@@ -2502,21 +2502,21 @@
         kind: "single",
         topic: "Stilstaan en parkeren",
         scene: "parking",
-        prompt: "Langs de rand van de rijbaan staat een doorgetrokken gele streep. Wat betekent dit precies?",
+        prompt: "Langs de rand van de rijbaan ligt een doorgetrokken gele streep. Wat betekent dit precies?",
         options: [
           { id: "a", text: "Niet stilstaan" },
           { id: "b", text: "Wel stilstaan, maar niet parkeren" },
           { id: "c", text: "Alleen parkeren met alarmlichten" }
         ],
         correct: "a",
-        explanation: "Een doorgetrokken gele streep betekent een stilstandsverbod."
+        explanation: "Een doorgetrokken gele streep betekent een stopverbod: je mag daar niet stilstaan."
       },
       {
         id: "h16",
         kind: "single",
         topic: "Stilstaan en parkeren",
         scene: "parking",
-        prompt: "Langs de rand van de rijbaan staat een onderbroken gele streep. Wat betekent dit precies?",
+        prompt: "Langs de rand van de rijbaan ligt een onderbroken gele streep. Wat betekent dit precies?",
         options: [
           { id: "a", text: "Niet parkeren" },
           { id: "b", text: "Niet stilstaan" },
@@ -2682,7 +2682,7 @@
         kind: "multi",
         topic: "Verantwoorde verkeersdeelname",
         scene: "dashboard",
-        prompt: "Je gebruikt medicijnen die de rijvaardigheid kunnen beinvloeden. Wat is verstandig en juist? Kies alle juiste antwoorden.",
+        prompt: "Je gebruikt medicijnen die de rijvaardigheid kunnen beïnvloeden. Wat is verstandig en juist? Kies alle juiste antwoorden.",
         options: [
           { id: "a", text: "Overleg bij twijfel met arts of apotheker" },
           { id: "b", text: "Niet rijden als je suf, duizelig of minder alert bent" },
@@ -3103,7 +3103,7 @@
         scene: "city",
         prompt: "Buiten de bebouwde kom wil een bus bij een halte wegrijden en geeft richting aan. Wat is juist?",
         options: [
-          { id: "a", text: "Je bent niet verplicht de bus voor te laten, maar werkt mee als dat veilig kan" },
+          { id: "a", text: "Je bent niet verplicht de bus voor te laten gaan, maar je werkt mee als dat veilig kan" },
           { id: "b", text: "Je moet de bus altijd laten invoegen zoals binnen de bebouwde kom" },
           { id: "c", text: "Je moet altijd hard remmen zodat de bus direct weg kan" }
         ],
@@ -3117,7 +3117,7 @@
         scene: "motorway",
         prompt: "Achter je rijdt een hulpdienstvoertuig met blauw zwaailicht maar zonder sirene. Wat is juist?",
         options: [
-          { id: "a", text: "Het is pas een voorrangsvoertuig met blauw licht en sirene; blijf voorspelbaar en maak ruimte als dat veilig kan" },
+          { id: "a", text: "Het is pas een voorrangsvoertuig bij blauw licht én sirene; blijf voorspelbaar en maak ruimte als dat veilig kan" },
           { id: "b", text: "Je moet direct de vluchtstrook op, ook als dat onveilig is" },
           { id: "c", text: "Je mag het voertuig negeren en extra langzaam gaan rijden" }
         ],
@@ -3589,7 +3589,7 @@
           { id: "d", text: "Een kind op schoot met dezelfde gordel vervoeren" }
         ],
         correct: ["a", "b", "c"],
-        explanation: "Gordels moeten worden gebruikt. Kleine kinderen gebruiken een passend systeem en je vervoert niet meer passagiers dan zitplaatsen/gordels."
+        explanation: "Gordels moeten worden gebruikt. Kleine kinderen gebruiken een passend systeem en je vervoert niet meer passagiers dan er gordels beschikbaar zijn."
       },
       {
         id: "e40",
@@ -3679,21 +3679,21 @@
           { id: "d", text: "Alarmlichten heffen het verbod niet automatisch op" }
         ],
         correct: ["a", "b", "d"],
-        explanation: "Doorgetrokken geel is een stilstandsverbod, onderbroken geel een parkeerverbod. Alarmlichten maken verboden gedrag niet zomaar toegestaan."
+        explanation: "Doorgetrokken geel is een stopverbod, onderbroken geel een parkeerverbod. Alarmlichten maken verboden gedrag niet zomaar toegestaan."
       },
       {
         id: "e46",
         kind: "single",
         topic: "Verkeerstekens en aanwijzingen",
         scene: "motorway",
-        prompt: "Je ziet een matrixbord met een rode pijl die aangeeft dat je naar rechts moet. Wat doe je?",
+        prompt: "Boven jouw rijstrook toont een matrixbord een witte pijl schuin omlaag naar rechts. Wat doe je?",
         options: [
-          { id: "a", text: "Zo snel mogelijk veilig naar rechts gaan" },
+          { id: "a", text: "Zo snel mogelijk veilig naar de rijstrook rechts van je gaan" },
           { id: "b", text: "Op dezelfde rijstrook blijven tot de afrit" },
           { id: "c", text: "Hard remmen en stilstaan op je rijstrook" }
         ],
         correct: "a",
-        explanation: "Een pijl op een matrixbord geeft aan dat je die richting moet volgen, zodra dat veilig kan."
+        explanation: "Een witte pijl schuin omlaag betekent dat je deze rijstrook moet verlaten in de aangegeven richting. Verderop staat vaak een rood kruis; dan is de strook helemaal dicht."
       },
       {
         id: "e47",
@@ -3737,7 +3737,7 @@
           { id: "d", text: "Losse zware spullen achterin laten liggen zonder bevestiging" }
         ],
         correct: ["a", "b", "c"],
-        explanation: "Lading moet veilig vastzitten, niets belangrijks afdekken en kan het rijgedrag beinvloeden."
+        explanation: "Lading moet veilig vastzitten, niets belangrijks afdekken en kan het rijgedrag beïnvloeden."
       },
       {
         id: "e50",
@@ -4472,7 +4472,7 @@
         <section class="intro-layout">
           <div class="panel intro-panel">
             <div class="kicker">Rijbewijs B oefenexamen</div>
-            <h2>Train met de nieuwste CBR-opzet: ${EXAM_CONFIG.scoredQuestionCount} telvragen, ${EXAM_CONFIG.testQuestionCount} testvragen, ${examDurationMinutes()} minuten.</h2>
+            <h2>Train met de nieuwste CBR-opzet: ${EXAM_CONFIG.scoredQuestionCount} meetellende vragen, ${EXAM_CONFIG.testQuestionCount} testvragen, ${examDurationMinutes()} minuten.</h2>
             <p>Dit oefenexamen lijkt qua flow op het huidige auto-theorie-examen: eerst twee oefenvragen, daarna een doorlopend examen met verschillende vraagsoorten. Kies normaal, moeilijk of een willekeurige mix uit de volledige vragenbank.</p>
             <div class="notice">
               De echte CBR-vragen zijn niet openbaar. Deze quiz gebruikt daarom originele vragen die de actuele onderwerpen en vraagvormen nabootsen.
@@ -4482,7 +4482,7 @@
               <div class="stat"><strong>${EXAM_CONFIG.scoredQuestionCount}</strong><span>vragen tellen mee</span></div>
               <div class="stat"><strong>${totalQuestionBankSize()}</strong><span>vragen in de totale bank</span></div>
               <div class="stat"><strong>${EXAM_CONFIG.passingScore}+</strong><span>goed is geslaagd</span></div>
-              <div class="stat"><strong>${formatTime(EXAM_CONFIG.durationSeconds)}</strong><span>minuten examentijd</span></div>
+              <div class="stat"><strong>${examDurationMinutes()}</strong><span>minuten examentijd</span></div>
               <div class="stat"><strong>Mix</strong><span>volgorde en opties wisselen</span></div>
               <div class="stat"><strong>Labels</strong><span>makkelijk, gemiddeld en moeilijk</span></div>
               <div class="stat"><strong>${state.reports.length}</strong><span>vraagmeldingen lokaal opgeslagen</span></div>

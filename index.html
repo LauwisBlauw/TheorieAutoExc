@@ -6,23 +6,119 @@
   <title>Auto Theorie B Oefenexamen - Juli 2026</title>
   <style>
     :root {
+      color-scheme: light;
       --ink: #10202a;
-      --muted: #5c6f7b;
+      --muted: #51636e;
       --bg: #eef4f5;
+      --bg-top: #f6fbfc;
+      --bg-bottom: #e5eef1;
       --panel: #ffffff;
+      --panel-soft: #f6fafb;
+      --panel-sunken: #eef4f6;
       --line: #cfdce1;
+      --line-strong: #9fb7c1;
       --brand: #0b4b63;
       --brand-dark: #073346;
       --brand-soft: #d7edf3;
-      --ok: #13795b;
+      --brand-ink: #ffffff;
+      --on-brand: #ffffff;
+      --on-brand-dim: #cfe8ef;
+      --ok: #0f6b50;
       --ok-soft: #dff4ec;
-      --warn: #a35c00;
+      --ok-line: #79c6a7;
+      --warn: #8a4d00;
       --warn-soft: #fff1d6;
-      --bad: #b42318;
+      --warn-line: #e2bd72;
+      --bad: #a5170e;
       --bad-soft: #fde7e5;
+      --bad-line: #eb9a92;
       --focus: #f5b301;
+      --ring: #0b4b63;
       --road: #35434b;
       --road-line: #f6f7d7;
+      --shadow: 0 12px 28px rgba(7, 51, 70, .08);
+      --shadow-sm: 0 1px 2px rgba(7, 51, 70, .07), 0 3px 8px rgba(7, 51, 70, .05);
+      --radius: 12px;
+      --radius-sm: 8px;
+      --scene-sky: #d9eef2;
+      --scene-edge: #bccbd1;
+    }
+
+    :root[data-theme="dark"],
+    :root:not([data-theme="light"]) {
+      color-scheme: light;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --ink: #e7f1f4;
+        --muted: #a3b6bf;
+        --bg: #0e1a20;
+        --bg-top: #101f27;
+        --bg-bottom: #0a151a;
+        --panel: #16262e;
+        --panel-soft: #1b2f38;
+        --panel-sunken: #12212a;
+        --line: #2c4450;
+        --line-strong: #476776;
+        --brand: #4fb3d4;
+        --brand-dark: #0d2831;
+        --brand-soft: #123746;
+        --brand-ink: #06171e;
+        --on-brand: #eaf7fb;
+        --on-brand-dim: #a7cfdd;
+        --ok: #5fd6ab;
+        --ok-soft: #10352b;
+        --ok-line: #2f7a63;
+        --warn: #f0b45c;
+        --warn-soft: #3a2a10;
+        --warn-line: #7d5b21;
+        --bad: #ff9a90;
+        --bad-soft: #3d1a17;
+        --bad-line: #8b3a33;
+        --focus: #ffc63d;
+        --ring: #7fd0ec;
+        --shadow: 0 14px 32px rgba(0, 0, 0, .45);
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, .35), 0 3px 8px rgba(0, 0, 0, .25);
+        --scene-sky: #1b3038;
+        --scene-edge: #2c4450;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --ink: #e7f1f4;
+      --muted: #a3b6bf;
+      --bg: #0e1a20;
+      --bg-top: #101f27;
+      --bg-bottom: #0a151a;
+      --panel: #16262e;
+      --panel-soft: #1b2f38;
+      --panel-sunken: #12212a;
+      --line: #2c4450;
+      --line-strong: #476776;
+      --brand: #4fb3d4;
+      --brand-dark: #0d2831;
+      --brand-soft: #123746;
+      --brand-ink: #06171e;
+      --on-brand: #eaf7fb;
+      --on-brand-dim: #a7cfdd;
+      --ok: #5fd6ab;
+      --ok-soft: #10352b;
+      --ok-line: #2f7a63;
+      --warn: #f0b45c;
+      --warn-soft: #3a2a10;
+      --warn-line: #7d5b21;
+      --bad: #ff9a90;
+      --bad-soft: #3d1a17;
+      --bad-line: #8b3a33;
+      --focus: #ffc63d;
+      --ring: #7fd0ec;
+      --shadow: 0 14px 32px rgba(0, 0, 0, .45);
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, .35), 0 3px 8px rgba(0, 0, 0, .25);
+      --scene-sky: #1b3038;
+      --scene-edge: #2c4450;
     }
 
     * {
@@ -38,10 +134,51 @@
       min-height: 100vh;
       color: var(--ink);
       background:
-        linear-gradient(180deg, #f6fbfc 0%, var(--bg) 46%, #e5eef1 100%);
-      font-family: Arial, Helvetica, sans-serif;
+        linear-gradient(180deg, var(--bg-top) 0%, var(--bg) 46%, var(--bg-bottom) 100%);
+      background-attachment: fixed;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       letter-spacing: 0;
       touch-action: manipulation;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 100;
+      background: var(--panel);
+      color: var(--ink);
+      padding: 12px 16px;
+      border-radius: 0 0 var(--radius-sm) 0;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+    }
+
+    .skip-link:focus {
+      left: 0;
+    }
+
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
 
     button,
@@ -95,9 +232,9 @@
     .brand-mark {
       width: 42px;
       height: 42px;
-      border-radius: 8px;
-      background: #fff;
-      color: var(--brand-dark);
+      border-radius: 10px;
+      background: var(--on-brand);
+      color: #073346;
       display: grid;
       place-items: center;
       font-weight: 800;
@@ -112,7 +249,7 @@
 
     .brand p {
       margin: 3px 0 0;
-      color: #cfe8ef;
+      color: var(--on-brand-dim);
       font-size: 13px;
     }
 
@@ -120,7 +257,7 @@
       padding: 7px 10px;
       border: 1px solid rgba(255, 255, 255, .38);
       border-radius: 999px;
-      color: #eaf6f8;
+      color: var(--on-brand);
       font-size: 13px;
       white-space: nowrap;
     }
@@ -141,8 +278,8 @@
     .panel {
       background: var(--panel);
       border: 1px solid var(--line);
-      border-radius: 8px;
-      box-shadow: 0 12px 28px rgba(7, 51, 70, .08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
     }
 
     .intro-panel {
@@ -162,10 +299,11 @@
 
     .notice {
       border-left: 4px solid var(--focus);
-      background: #fff8e5;
+      background: var(--warn-soft);
       padding: 12px 14px;
       margin: 18px 0;
-      color: #4a3a10;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      color: var(--ink);
     }
 
     .stats-grid {
@@ -177,15 +315,15 @@
 
     .stat {
       border: 1px solid var(--line);
-      border-radius: 8px;
+      border-radius: var(--radius-sm);
       padding: 14px;
-      background: #f8fbfc;
+      background: var(--panel-soft);
     }
 
     .stat strong {
       display: block;
       font-size: 24px;
-      color: var(--brand-dark);
+      color: var(--ink);
     }
 
     .stat span {
@@ -203,41 +341,55 @@
     }
 
     .btn {
-      border: 0;
-      border-radius: 6px;
+      border: 1px solid transparent;
+      border-radius: var(--radius-sm);
       background: var(--brand);
-      color: #fff;
-      padding: 11px 15px;
+      color: var(--brand-ink);
+      padding: 11px 16px;
       cursor: pointer;
-      min-height: 42px;
+      min-height: 44px;
       font-weight: 700;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
+      transition: background-color .12s ease, border-color .12s ease, transform .08s ease;
     }
 
     .btn:hover {
-      background: var(--brand-dark);
+      filter: brightness(1.08);
+    }
+
+    .btn:active:not(:disabled) {
+      transform: translateY(1px);
     }
 
     .btn:focus-visible,
     .option:focus-visible,
     .overview-button:focus-visible,
     .hotspot:focus-visible,
-    .move-btn:focus-visible {
-      outline: 3px solid var(--focus);
+    .move-btn:focus-visible,
+    .theme-toggle:focus-visible,
+    .switch:focus-visible {
+      outline: 3px solid var(--ring);
       outline-offset: 2px;
+      border-radius: var(--radius-sm);
+    }
+
+    .exam-header .btn:focus-visible,
+    .topbar :focus-visible {
+      outline-color: var(--focus);
     }
 
     .btn.secondary {
-      background: #eef4f6;
-      color: var(--brand-dark);
+      background: var(--panel-sunken);
+      color: var(--ink);
       border: 1px solid var(--line);
     }
 
     .btn.secondary:hover {
-      background: #dfecef;
+      background: var(--brand-soft);
+      border-color: var(--line-strong);
     }
 
     .btn.danger {
@@ -245,19 +397,24 @@
     }
 
     .btn.danger:hover {
-      background: #8c1d13;
+      filter: brightness(.88);
     }
 
     .btn.reported {
       background: var(--ok-soft);
       color: var(--ok);
-      border: 1px solid #7ec8ac;
+      border: 1px solid var(--ok-line);
     }
 
     .btn.ghost {
       background: transparent;
-      color: var(--brand-dark);
+      color: var(--ink);
       border: 1px solid var(--line);
+    }
+
+    .btn.ghost:hover {
+      background: var(--panel-sunken);
+      border-color: var(--line-strong);
     }
 
     .exam-preview {
@@ -272,7 +429,7 @@
       min-height: 320px;
       border-radius: 8px;
       border: 1px solid var(--line);
-      background: #f8fbfc;
+      background: var(--panel-soft);
       display: grid;
       grid-template-rows: auto 1fr auto;
       overflow: hidden;
@@ -280,7 +437,7 @@
 
     .mini-screen-top {
       background: var(--brand);
-      color: #fff;
+      color: var(--brand-ink);
       padding: 9px 12px;
       display: flex;
       justify-content: space-between;
@@ -302,7 +459,7 @@
 
     .mini-option {
       border: 1px solid var(--line);
-      background: #fff;
+      background: var(--panel);
       border-radius: 6px;
       padding: 9px;
       font-size: 13px;
@@ -329,7 +486,7 @@
 
     .exam-header {
       background: var(--brand);
-      color: #fff;
+      color: var(--brand-ink);
       padding: 13px 18px;
       display: grid;
       grid-template-columns: 1fr auto auto;
@@ -346,7 +503,7 @@
     }
 
     .timer {
-      background: rgba(0, 0, 0, .22);
+      background: rgba(0, 0, 0, .26);
       padding: 8px 11px;
       border-radius: 6px;
       font-weight: 800;
@@ -369,27 +526,27 @@
       font-weight: 800;
       line-height: 1;
       white-space: nowrap;
-      border: 1px solid rgba(255, 255, 255, .42);
-      background: rgba(255, 255, 255, .14);
-      color: #fff;
+      border: 1px solid currentColor;
+      background: transparent;
+      color: inherit;
     }
 
     .difficulty-easy {
       background: var(--ok-soft);
       color: var(--ok);
-      border-color: #8fd2b7;
+      border-color: var(--ok-line);
     }
 
     .difficulty-medium {
       background: var(--warn-soft);
       color: var(--warn);
-      border-color: #f0ca7a;
+      border-color: var(--warn-line);
     }
 
     .difficulty-hard {
       background: var(--bad-soft);
       color: var(--bad);
-      border-color: #f1a7a0;
+      border-color: var(--bad-line);
     }
 
     .question-body {
@@ -433,23 +590,25 @@
 
     .option {
       width: 100%;
-      min-height: 48px;
+      min-height: 52px;
       border: 1px solid var(--line);
-      background: #fff;
+      background: var(--panel);
       color: var(--ink);
-      border-radius: 8px;
+      border-radius: var(--radius-sm);
       padding: 12px 14px;
       cursor: pointer;
       display: grid;
-      grid-template-columns: 32px 1fr;
+      grid-template-columns: 32px 1fr auto;
       align-items: center;
       gap: 10px;
       text-align: left;
+      line-height: 1.4;
+      transition: border-color .12s ease, background-color .12s ease, box-shadow .12s ease;
     }
 
-    .option:hover {
-      border-color: #8db5c2;
-      background: #f8fbfc;
+    .option:hover:not(:disabled) {
+      border-color: var(--line-strong);
+      background: var(--panel-soft);
     }
 
     .option.selected {
@@ -464,14 +623,17 @@
       border-radius: 50%;
       display: grid;
       place-items: center;
-      color: var(--brand-dark);
-      background: #e6eef1;
+      color: var(--ink);
+      background: var(--panel-sunken);
+      border: 1px solid var(--line);
       font-weight: 800;
+      font-size: 14px;
     }
 
     .option.selected .option-letter {
-      color: #fff;
+      color: var(--brand-ink);
       background: var(--brand);
+      border-color: var(--brand);
     }
 
     .number-entry {
@@ -483,12 +645,19 @@
 
     .number-entry input {
       border: 1px solid var(--line);
-      border-radius: 8px;
-      min-height: 50px;
+      border-radius: var(--radius-sm);
+      min-height: 52px;
       padding: 10px 12px;
       font-size: 22px;
       width: 170px;
-      background: #fff;
+      background: var(--panel);
+      color: var(--ink);
+    }
+
+    .number-entry input:focus-visible {
+      outline: 3px solid var(--ring);
+      outline-offset: 1px;
+      border-color: var(--brand);
     }
 
     .suffix {
@@ -503,9 +672,9 @@
 
     .order-item {
       border: 1px solid var(--line);
-      border-radius: 8px;
+      border-radius: var(--radius-sm);
       padding: 10px;
-      background: #fff;
+      background: var(--panel);
       display: grid;
       grid-template-columns: 34px 1fr auto;
       gap: 10px;
@@ -517,7 +686,7 @@
       height: 32px;
       border-radius: 50%;
       background: var(--brand-soft);
-      color: var(--brand-dark);
+      color: var(--ink);
       display: grid;
       place-items: center;
       font-weight: 800;
@@ -530,13 +699,19 @@
 
     .move-btn {
       border: 1px solid var(--line);
-      background: #f7fbfc;
+      background: var(--panel-soft);
       border-radius: 6px;
-      min-width: 34px;
-      height: 34px;
+      min-width: 40px;
+      height: 40px;
       cursor: pointer;
-      color: var(--brand-dark);
+      color: var(--ink);
       font-weight: 800;
+      font-size: 16px;
+    }
+
+    .move-btn:hover:not(:disabled) {
+      background: var(--brand-soft);
+      border-color: var(--line-strong);
     }
 
     .move-btn:disabled {
@@ -551,9 +726,9 @@
     .scene {
       position: relative;
       min-height: 292px;
-      border-radius: 8px;
-      border: 1px solid #bccbd1;
-      background: #d9eef2;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--scene-edge);
+      background: var(--scene-sky);
       overflow: hidden;
     }
 
@@ -822,12 +997,12 @@
       left: 12px;
       right: 12px;
       bottom: 10px;
-      background: rgba(255, 255, 255, .9);
-      border: 1px solid rgba(16, 32, 42, .12);
+      background: rgba(255, 255, 255, .93);
+      border: 1px solid rgba(16, 32, 42, .18);
       border-radius: 6px;
       padding: 8px 10px;
       font-size: 13px;
-      color: var(--ink);
+      color: #10202a;
     }
 
     .hotspot {
@@ -862,7 +1037,7 @@
 
     .hotspot-labels span {
       border: 1px solid var(--line);
-      background: #fff;
+      background: var(--panel);
       border-radius: 999px;
       padding: 5px 8px;
     }
@@ -875,7 +1050,7 @@
       justify-content: space-between;
       gap: 12px;
       flex-wrap: wrap;
-      background: #f8fbfc;
+      background: var(--panel-soft);
     }
 
     .side-panel {
@@ -904,9 +1079,9 @@
     }
 
     .overview-button {
-      min-height: 38px;
+      min-height: 40px;
       border: 1px solid var(--line);
-      background: #fff;
+      background: var(--panel);
       border-radius: 6px;
       cursor: pointer;
       color: var(--ink);
@@ -914,15 +1089,34 @@
       position: relative;
     }
 
+    .overview-button:hover {
+      border-color: var(--line-strong);
+      background: var(--panel-soft);
+    }
+
     .overview-button.current {
       border-color: var(--brand);
       background: var(--brand);
-      color: #fff;
+      color: var(--brand-ink);
+      box-shadow: 0 0 0 2px var(--brand-soft);
     }
 
     .overview-button.answered:not(.current) {
       background: var(--ok-soft);
-      border-color: #7ec8ac;
+      border-color: var(--ok-line);
+      color: var(--ink);
+    }
+
+    .overview-button.revealed-good:not(.current) {
+      background: var(--ok-soft);
+      border-color: var(--ok);
+      color: var(--ok);
+    }
+
+    .overview-button.revealed-bad:not(.current) {
+      background: var(--bad-soft);
+      border-color: var(--bad);
+      color: var(--bad);
     }
 
     .overview-button.flagged::after {
@@ -956,18 +1150,19 @@
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: #fff;
-      border: 1px solid var(--line);
+      background: var(--panel);
+      border: 1px solid var(--line-strong);
+      flex: none;
     }
 
     .dot.done {
       background: var(--ok-soft);
-      border-color: #7ec8ac;
+      border-color: var(--ok-line);
     }
 
     .dot.flag {
       background: var(--focus);
-      border-color: #916500;
+      border-color: var(--warn);
     }
 
     .practice-feedback,
@@ -982,13 +1177,13 @@
     .practice-feedback.ok,
     .training-feedback.ok {
       background: var(--ok-soft);
-      border-color: #8fd2b7;
+      border-color: var(--ok-line);
     }
 
     .practice-feedback.bad,
     .training-feedback.bad {
       background: var(--bad-soft);
-      border-color: #f1a7a0;
+      border-color: var(--bad-line);
     }
 
     .feedback-answer {
@@ -1007,28 +1202,33 @@
     .report-panel {
       margin-top: 14px;
       padding: 12px 14px;
-      border-radius: 8px;
-      border: 1px solid #d7c27a;
-      background: #fff8e5;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--warn-line);
+      background: var(--warn-soft);
     }
 
     .report-panel label {
       display: block;
       font-weight: 800;
       margin-bottom: 8px;
-      color: #4a3a10;
+      color: var(--ink);
     }
 
     .report-panel textarea {
       width: 100%;
       min-height: 92px;
-      border: 1px solid #d7c27a;
-      border-radius: 8px;
+      border: 1px solid var(--warn-line);
+      border-radius: var(--radius-sm);
       padding: 10px 12px;
       resize: vertical;
       font: inherit;
-      background: #fff;
+      background: var(--panel);
       color: var(--ink);
+    }
+
+    .report-panel textarea:focus-visible {
+      outline: 3px solid var(--ring);
+      outline-offset: 1px;
     }
 
     .report-panel .button-row {
@@ -1055,7 +1255,7 @@
       margin: 8px auto 18px;
       display: grid;
       place-items: center;
-      background: conic-gradient(var(--ok) var(--score-deg), #e6eef1 0);
+      background: conic-gradient(var(--ok) var(--score-deg), var(--panel-sunken) 0);
       position: relative;
     }
 
@@ -1064,14 +1264,14 @@
       position: absolute;
       inset: 14px;
       border-radius: 50%;
-      background: #fff;
+      background: var(--panel);
     }
 
     .score-circle strong {
       position: relative;
       z-index: 1;
       font-size: 34px;
-      color: var(--brand-dark);
+      color: var(--ink);
     }
 
     .result-badge {
@@ -1115,7 +1315,7 @@
     .review-head {
       padding: 16px 18px;
       border-bottom: 1px solid var(--line);
-      background: #fff;
+      background: var(--panel);
       display: flex;
       justify-content: space-between;
       gap: 12px;
@@ -1131,7 +1331,7 @@
     .review-item {
       padding: 16px 18px;
       border-bottom: 1px solid var(--line);
-      background: #fff;
+      background: var(--panel);
     }
 
     .review-item:last-child {
@@ -1147,7 +1347,7 @@
     }
 
     .review-item.test {
-      border-left-color: #7b8794;
+      border-left-color: var(--line-strong);
     }
 
     .review-item h3 {
@@ -1177,11 +1377,11 @@
     .explanation {
       margin: 12px 0 0;
       padding: 11px 12px;
-      border-radius: 8px;
-      background: #f3f8fa;
-      color: #27414d;
-      line-height: 1.45;
-      border: 1px solid #d8e7ec;
+      border-radius: var(--radius-sm);
+      background: var(--panel-soft);
+      color: var(--ink);
+      line-height: 1.5;
+      border: 1px solid var(--line);
     }
 
     footer {
@@ -1193,7 +1393,7 @@
     }
 
     footer a {
-      color: var(--brand-dark);
+      color: var(--brand);
     }
 
     footer details {
@@ -1202,8 +1402,14 @@
 
     footer summary {
       cursor: pointer;
-      color: var(--brand-dark);
+      color: var(--brand);
       font-weight: 800;
+      padding: 4px 0;
+    }
+
+    footer summary:focus-visible {
+      outline: 3px solid var(--ring);
+      outline-offset: 2px;
     }
 
     footer ul {
@@ -1217,6 +1423,384 @@
 
     .hidden {
       display: none;
+    }
+
+    /* ---- Directe feedback op de antwoordopties ---- */
+
+    .option:disabled {
+      cursor: default;
+      opacity: 1;
+    }
+
+    .option.is-correct {
+      border-color: var(--ok);
+      background: var(--ok-soft);
+      box-shadow: inset 0 0 0 1px var(--ok);
+    }
+
+    .option.is-correct .option-letter {
+      background: var(--ok);
+      border-color: var(--ok);
+      color: var(--panel);
+    }
+
+    .option.is-wrong {
+      border-color: var(--bad);
+      background: var(--bad-soft);
+      box-shadow: inset 0 0 0 1px var(--bad);
+    }
+
+    .option.is-wrong .option-letter {
+      background: var(--bad);
+      border-color: var(--bad);
+      color: var(--panel);
+    }
+
+    .option.is-wrong .option-text {
+      text-decoration: line-through;
+      text-decoration-color: var(--bad-line);
+    }
+
+    .option.is-idle {
+      opacity: .72;
+    }
+
+    .order-item.is-correct {
+      border-color: var(--ok);
+      background: var(--ok-soft);
+    }
+
+    .order-item.is-correct .order-rank {
+      background: var(--ok);
+      color: var(--panel);
+    }
+
+    .order-item.is-wrong {
+      border-color: var(--bad);
+      background: var(--bad-soft);
+    }
+
+    .order-item.is-wrong .order-rank {
+      background: var(--bad);
+      color: var(--panel);
+    }
+
+    .option-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+      border-radius: 999px;
+      padding: 4px 9px;
+      line-height: 1.3;
+    }
+
+    .option-mark.good {
+      background: var(--ok);
+      color: var(--panel);
+    }
+
+    .option-mark.bad {
+      background: var(--bad);
+      color: var(--panel);
+    }
+
+    .hotspot:disabled {
+      cursor: default;
+      opacity: 1;
+    }
+
+    .hotspot.is-correct {
+      background: var(--ok);
+      color: #fff;
+      border-color: #fff;
+      box-shadow: 0 0 0 4px rgba(15, 107, 80, .35), 0 5px 12px rgba(0, 0, 0, .25);
+    }
+
+    .hotspot.is-wrong {
+      background: var(--bad);
+      color: #fff;
+      border-color: #fff;
+      box-shadow: 0 0 0 4px rgba(165, 23, 14, .35), 0 5px 12px rgba(0, 0, 0, .25);
+    }
+
+    /* Niet-gekozen stippen blijven zichtbaar, maar treden terug. */
+    .hotspot:disabled:not(.is-correct):not(.is-wrong) {
+      opacity: .5;
+    }
+
+    /* ---- Feedbackkaart ---- */
+
+    .feedback-card {
+      margin-top: 16px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--line);
+      background: var(--panel-soft);
+      overflow: hidden;
+    }
+
+    .feedback-card.ok {
+      border-color: var(--ok-line);
+      background: var(--ok-soft);
+    }
+
+    .feedback-card.bad {
+      border-color: var(--bad-line);
+      background: var(--bad-soft);
+    }
+
+    .feedback-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      font-weight: 800;
+      font-size: 17px;
+    }
+
+    .feedback-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      flex: none;
+      font-size: 17px;
+      color: var(--panel);
+    }
+
+    .feedback-card.ok .feedback-icon {
+      background: var(--ok);
+    }
+
+    .feedback-card.bad .feedback-icon {
+      background: var(--bad);
+    }
+
+    .feedback-card.ok .feedback-head {
+      color: var(--ok);
+    }
+
+    .feedback-card.bad .feedback-head {
+      color: var(--bad);
+    }
+
+    .feedback-body {
+      padding: 0 14px 14px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .feedback-answers {
+      display: grid;
+      gap: 8px;
+    }
+
+    .feedback-answer-row {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 10px;
+      align-items: baseline;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 9px 11px;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .feedback-answer-row .label {
+      font-weight: 800;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .feedback-answer-row.good {
+      border-color: var(--ok-line);
+    }
+
+    .feedback-answer-row.good .label {
+      color: var(--ok);
+    }
+
+    .feedback-answer-row.bad .label {
+      color: var(--bad);
+    }
+
+    .feedback-why {
+      margin: 0;
+      line-height: 1.55;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 11px 12px;
+    }
+
+    .feedback-why strong {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: var(--muted);
+    }
+
+    /* ---- Voortgangsbalk ---- */
+
+    .progress-wrap {
+      padding: 12px 18px 0;
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+
+    .progress-meta strong {
+      color: var(--ink);
+    }
+
+    .progress-track {
+      height: 8px;
+      border-radius: 999px;
+      background: var(--panel-sunken);
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: var(--brand);
+      border-radius: 999px;
+      transition: width .25s ease;
+    }
+
+    .progress-bar.scored {
+      background: linear-gradient(90deg, var(--ok) 0 var(--good-split), var(--bad) var(--good-split) 100%);
+    }
+
+    /* ---- Instellingen en schakelaars ---- */
+
+    .settings-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin: 18px 0 6px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--panel-soft);
+    }
+
+    .switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 999px;
+      padding: 7px 13px 7px 9px;
+      cursor: pointer;
+      font: inherit;
+      font-weight: 700;
+      color: var(--ink);
+      min-height: 44px;
+      text-align: left;
+    }
+
+    .switch:hover {
+      border-color: var(--line-strong);
+    }
+
+    .switch-track {
+      width: 42px;
+      height: 24px;
+      border-radius: 999px;
+      background: var(--panel-sunken);
+      border: 1px solid var(--line-strong);
+      position: relative;
+      flex: none;
+      transition: background-color .15s ease, border-color .15s ease;
+    }
+
+    .switch-track::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--panel);
+      border: 1px solid var(--line-strong);
+      transition: transform .15s ease;
+    }
+
+    .switch[aria-checked="true"] .switch-track {
+      background: var(--ok);
+      border-color: var(--ok);
+    }
+
+    .switch[aria-checked="true"] .switch-track::after {
+      transform: translateX(18px);
+      border-color: var(--ok);
+    }
+
+    .switch-note {
+      display: block;
+      font-weight: 400;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .theme-toggle {
+      border: 1px solid rgba(255, 255, 255, .4);
+      background: rgba(255, 255, 255, .1);
+      color: var(--on-brand);
+      border-radius: 999px;
+      min-height: 40px;
+      padding: 8px 14px;
+      cursor: pointer;
+      font: inherit;
+      font-weight: 700;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .theme-toggle:hover {
+      background: rgba(255, 255, 255, .2);
+    }
+
+    .topbar-tools {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .mode-chip {
+      background: rgba(255, 255, 255, .16);
+    }
+
+    .lock-note {
+      margin: 10px 0 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .answer-shell[data-locked="true"] {
+      position: relative;
     }
 
     @media (max-width: 980px) {
@@ -1341,13 +1925,37 @@
 
       .option {
         min-height: 58px;
-        grid-template-columns: 36px 1fr;
+        grid-template-columns: 36px minmax(0, 1fr);
         padding: 14px 12px;
       }
 
       .option-letter {
         width: 34px;
         height: 34px;
+      }
+
+      .option-mark {
+        grid-column: 2;
+        justify-self: start;
+        margin-top: 2px;
+      }
+
+      .feedback-answer-row {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .progress-wrap {
+        padding: 10px 12px 0;
+      }
+
+      .settings-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .switch {
+        width: 100%;
       }
 
       .scene {
@@ -1425,6 +2033,7 @@
       .question-footer {
         align-items: stretch;
         padding: 10px;
+        gap: 8px;
         position: sticky;
         bottom: 0;
         z-index: 30;
@@ -1442,6 +2051,35 @@
         padding: 12px 14px;
       }
 
+      /* De hulpknoppen naast elkaar, zodat de balk niet het halve scherm vult. */
+      .question-footer .button-row {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 1fr;
+        gap: 8px;
+      }
+
+      .question-footer .btn {
+        min-height: 46px;
+        padding: 10px 8px;
+        font-size: 14px;
+      }
+
+      .exam-header {
+        grid-template-columns: 1fr auto;
+        align-items: start;
+      }
+
+      .exam-header .timer {
+        grid-column: 2;
+        grid-row: 1;
+        align-self: start;
+      }
+
+      .exam-header > span:not(.timer) {
+        font-size: 13px;
+      }
+
       footer {
         margin-bottom: 14px;
       }
@@ -1449,21 +2087,29 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#app">Direct naar de inhoud</a>
   <div class="app-shell">
     <header class="topbar">
       <div class="topbar-inner">
         <div class="brand">
-          <div class="brand-mark">B</div>
+          <div class="brand-mark" aria-hidden="true">B</div>
           <div>
             <h1>Auto Theorie B Oefenexamen</h1>
             <p>Juli 2026 - CBR-achtige oefenquiz met originele vragen</p>
           </div>
         </div>
-        <div class="topbar-pill">Niet-officieel CBR-materiaal</div>
+        <div class="topbar-tools">
+          <span class="topbar-pill">Niet-officieel CBR-materiaal</span>
+          <button class="theme-toggle" type="button" data-theme-toggle onclick="cycleTheme()">
+            <span aria-hidden="true" data-theme-icon>◐</span>
+            <span data-theme-label>Thema: systeem</span>
+          </button>
+        </div>
       </div>
     </header>
 
-    <main id="app" aria-live="polite"></main>
+    <main id="app" tabindex="-1"></main>
+    <div class="visually-hidden" role="status" aria-live="polite" data-announcer></div>
 
     <footer>
       Bronnen gecontroleerd op 6 juli 2026. Deze quiz gebruikt openbare CBR-, overheid-, RDW-, Politie-, SWOV-, VVN-, ANWB- en TheorieToppers-informatie. De vragen zijn zelf gemaakt en geen echte CBR-examenvragen.
@@ -1570,7 +2216,7 @@
           { id: "c", text: "50 km/u" }
         ],
         correct: "a",
-        explanation: "In een erf rijden voetgangers en spelende kinderen vaak door elkaar heen. Je rijdt stapvoets."
+        explanation: "In een erf gaan voetgangers, spelende kinderen en rijdend verkeer door elkaar heen. Voetgangers mogen de volle breedte van de weg gebruiken, daarom rijd je stapvoets."
       },
       {
         id: "q2",
@@ -1986,11 +2632,11 @@
         id: "q31",
         kind: "number",
         topic: "Veilig rijden en noodsituaties",
-        scene: "motorway",
-        prompt: "Je moet een gevarendriehoek plaatsen omdat je auto niet goed zichtbaar is. Ongeveer hoeveel meter achter je auto plaats je die?",
+        scene: "city",
+        prompt: "Je auto staat stil en vormt een obstakel dat naderend verkeer niet op tijd opmerkt. Op ongeveer hoeveel meter achter je auto plaats je de gevarendriehoek volgens de wet?",
         suffix: "meter",
         accepted: ["30"],
-        explanation: "Een gevarendriehoek plaats je op voldoende afstand, in de praktijk ongeveer 30 meter achter het voertuig."
+        explanation: "Volgens artikel 58 RVV 1990 plaats je de gevarendriehoek op ongeveer 30 meter van je voertuig, goed zichtbaar en in de richting van het verkeer waarvoor je auto gevaar oplevert. Op wegen met hoge snelheden adviseren rijscholen en de ANWB een grotere afstand, maar de wettelijke maat blijft 30 meter."
       },
       {
         id: "q32",
@@ -2075,7 +2721,7 @@
         options: [
           { id: "a", text: "Tot vlak voor de versmalling beide rijstroken gebruiken" },
           { id: "b", text: "Om en om invoegen met aangepaste snelheid" },
-          { id: "c", text: "Een gat dicht rijden zodat niemand kan invoegen" },
+          { id: "c", text: "Een gat dichtrijden zodat niemand kan invoegen" },
           { id: "d", text: "Op tijd richting aangeven en rekening houden met elkaar" }
         ],
         correct: ["a", "b", "d"],
@@ -2216,7 +2862,7 @@
         prompt: "Mag je parkeren voor een in- of uitrit?",
         options: [
           { id: "a", text: "Nee, dat mag niet" },
-          { id: "b", text: "Ja, als je alarmlichten aan staan" },
+          { id: "b", text: "Ja, als je alarmlichten aanstaan" },
           { id: "c", text: "Ja, maximaal vijf minuten" }
         ],
         correct: "a",
@@ -2283,15 +2929,15 @@
         kind: "order",
         topic: "Voorrang en voor laten gaan",
         scene: "intersection",
-        prompt: "Zet de volgorde goed: jij slaat linksaf, een tegenligger gaat rechtdoor en rechts van jou steekt een fietser over op dezelfde weg.",
+        prompt: "Zet de volgorde goed: jij slaat linksaf, een fietser rechts naast je rijdt rechtdoor op dezelfde weg en achter jou wacht een auto die ook linksaf slaat.",
         help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
         items: [
           { id: "you", text: "Jij slaat linksaf" },
-          { id: "oncoming", text: "Tegenligger rechtdoor" },
-          { id: "bike", text: "Fietser rechtdoor op dezelfde weg" }
+          { id: "bike", text: "Fietser rechtdoor op dezelfde weg" },
+          { id: "behind", text: "Auto achter jou die ook linksaf slaat" }
         ],
-        correct: ["oncoming", "bike", "you"],
-        explanation: "Tegenliggend verkeer dat rechtdoor gaat laat je voor. Ook rechtdoor op dezelfde weg gaat voor afslaand verkeer."
+        correct: ["bike", "you", "behind"],
+        explanation: "Verkeer dat op dezelfde weg naast je rijdt en rechtdoor gaat, laat je als afslaande bestuurder voorgaan (artikel 18 RVV 1990). De auto achter jou kan pas nadat jij bent afgeslagen."
       }
     ];
 
@@ -2412,7 +3058,7 @@
         kind: "single",
         topic: "Voorrang en voor laten gaan",
         scene: "city",
-        prompt: "Je slaat linksaf. Een tegenligger rijdt rechtdoor en een fietser naast je gaat rechtdoor op dezelfde weg. Wie laat je voor gaan?",
+        prompt: "Je slaat linksaf. Een tegenligger rijdt rechtdoor en een fietser naast je gaat rechtdoor op dezelfde weg. Wie laat je voorgaan?",
         options: [
           { id: "a", text: "Alleen de tegenligger" },
           { id: "b", text: "Alleen de fietser" },
@@ -2633,7 +3279,7 @@
           { id: "d", text: "Houd rekening met verkeer om je heen voordat je uitwijkt" }
         ],
         correct: ["a", "b", "d"],
-        explanation: "Je laat een voorrangsvoertuig voorgaan, maar blijft voorspelbaar en veilig. Ga niet zomaar door rood of abrupt sturen."
+        explanation: "Je laat een voorrangsvoertuig voorgaan, maar blijft voorspelbaar en veilig. Rijd niet zomaar door rood en stuur niet abrupt."
       },
       {
         id: "h25",
@@ -2807,7 +3453,7 @@
         id: "h37",
         kind: "number",
         topic: "Veilig rijden en noodsituaties",
-        scene: "motorway",
+        scene: "city",
         prompt: "Je voertuig vormt een obstakel en je waarschuwingslichten vallen niet genoeg op. Op ongeveer hoeveel meter plaats je de gevarendriehoek?",
         suffix: "meter",
         accepted: ["30"],
@@ -2865,7 +3511,7 @@
         options: [
           { id: "a", text: "Beide rijstroken benutten tot kort voor de versmalling" },
           { id: "b", text: "Om en om invoegen met aangepaste snelheid" },
-          { id: "c", text: "Het gat dicht rijden zodat niemand kan invoegen" },
+          { id: "c", text: "Het gat dichtrijden zodat niemand kan invoegen" },
           { id: "d", text: "Richting aangeven en rekening houden met elkaar" }
         ],
         correct: ["a", "b", "d"],
@@ -3008,15 +3654,15 @@
         kind: "order",
         topic: "Voorrang en voor laten gaan",
         scene: "intersection",
-        prompt: "Zet de volgorde goed: jij slaat linksaf, een tegenligger rijdt rechtdoor en een fietser naast je rijdt rechtdoor op dezelfde weg.",
+        prompt: "Zet de volgorde goed: jij slaat linksaf, een tegenligger rijdt rechtdoor en op het fietspad van de weg waar je in gaat nadert een fietser.",
         help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
         items: [
-          { id: "you", text: "Jij slaat linksaf" },
+          { id: "you", text: "Jij maakt het afslaan af" },
           { id: "oncoming", text: "Tegenligger rechtdoor" },
-          { id: "bike", text: "Fietser rechtdoor op dezelfde weg" }
+          { id: "bike", text: "Fietser op het fietspad dat je kruist" }
         ],
         correct: ["oncoming", "bike", "you"],
-        explanation: "Je laat de tegenligger rechtdoor voorgaan. Ook rechtdoor op dezelfde weg gaat voor afslaand verkeer."
+        explanation: "Eerst laat je de tegenligger die rechtdoor gaat voorgaan (artikel 18 RVV 1990). Daarna kruis je het fietspad van de nieuwe weg en laat je die fietser voorgaan. Pas daarna maak je het afslaan af."
       },
       {
         id: "h52",
@@ -3801,24 +4447,35 @@
     });
 
     const REPORTS_STORAGE_KEY = "autoTheorieBQuestionReports";
+    const FEEDBACK_STORAGE_KEY = "autoTheorieBInstantFeedback";
+    const THEME_STORAGE_KEY = "autoTheorieBTheme";
+    const THEME_ORDER = ["system", "light", "dark"];
+    const THEME_LABELS = Object.freeze({
+      system: { icon: "◐", label: "Thema: systeem" },
+      light: { icon: "☀", label: "Thema: licht" },
+      dark: { icon: "☾", label: "Thema: donker" }
+    });
+
     const app = document.getElementById("app");
     const state = {
       phase: "intro",
       mode: "exam",
       practiceIndex: 0,
       practiceAnswers: {},
-      practiceChecked: false,
       index: 0,
       answers: {},
       flagged: {},
-      trainingChecked: {},
+      revealed: {},
+      instantFeedback: loadInstantFeedback(),
+      theme: loadTheme(),
       reports: loadReports(),
       reportTarget: null,
       remaining: EXAM_CONFIG.durationSeconds,
       timerId: null,
       filterMisses: false,
       variant: "normal",
-      sessionQuestions: []
+      sessionQuestions: [],
+      pendingFocus: false
     };
 
     function escapeHtml(value) {
@@ -3888,6 +4545,56 @@
       return Array.isArray(parsed) ? parsed : [];
     }
 
+    function loadInstantFeedback() {
+      const parsed = readJsonFromStorage(FEEDBACK_STORAGE_KEY, true);
+      return parsed !== false;
+    }
+
+    function loadTheme() {
+      const parsed = readJsonFromStorage(THEME_STORAGE_KEY, "system");
+      return THEME_ORDER.indexOf(parsed) >= 0 ? parsed : "system";
+    }
+
+    function applyTheme() {
+      const root = document.documentElement;
+      if (state.theme === "system") {
+        root.removeAttribute("data-theme");
+      } else {
+        root.setAttribute("data-theme", state.theme);
+      }
+      const info = THEME_LABELS[state.theme];
+      const icon = document.querySelector("[data-theme-icon]");
+      const label = document.querySelector("[data-theme-label]");
+      const button = document.querySelector("[data-theme-toggle]");
+      if (icon) icon.textContent = info.icon;
+      if (label) label.textContent = info.label;
+      if (button) button.setAttribute("aria-label", info.label + ". Klik om te wisselen.");
+    }
+
+    function cycleTheme() {
+      const next = (THEME_ORDER.indexOf(state.theme) + 1) % THEME_ORDER.length;
+      state.theme = THEME_ORDER[next];
+      writeJsonToStorage(THEME_STORAGE_KEY, state.theme);
+      applyTheme();
+      announce(THEME_LABELS[state.theme].label);
+    }
+
+    function toggleInstantFeedback() {
+      state.instantFeedback = !state.instantFeedback;
+      writeJsonToStorage(FEEDBACK_STORAGE_KEY, state.instantFeedback);
+      announce(state.instantFeedback
+        ? "Directe uitleg staat aan. Na elk antwoord zie je meteen goed of fout."
+        : "Directe uitleg staat uit. Je ziet de uitleg pas bij de uitslag.");
+      render();
+    }
+
+    function announce(message) {
+      const region = document.querySelector("[data-announcer]");
+      if (!region) return;
+      region.textContent = "";
+      window.setTimeout(function () { region.textContent = message; }, 60);
+    }
+
     function saveReports() {
       if (!writeJsonToStorage(REPORTS_STORAGE_KEY, state.reports)) {
         window.alert("Melding kon niet lokaal worden opgeslagen. Controleer je browserinstellingen.");
@@ -3921,8 +4628,42 @@
       return state.mode === "training";
     }
 
-    function autoChecksTraining(q) {
+    // Directe feedback staat altijd aan bij de oefenvragen en in de leerstand.
+    // In examenmodus volgt hij de instelling, die standaard aan staat.
+    function feedbackEnabled() {
+      return state.phase === "practice" || isTrainingMode() || state.instantFeedback;
+    }
+
+    // Bij deze vraagsoorten is een klik meteen het definitieve antwoord, dus
+    // kunnen we direct nakijken. De rest heeft een knop "Controleer antwoord".
+    function revealsOnSelect(q) {
       return q.kind === "single" || q.kind === "hotspot";
+    }
+
+    function isRevealed(q) {
+      return Boolean(q && state.revealed[q.id]);
+    }
+
+    // Na het nakijken ligt het antwoord vast: anders zou je het stiekem kunnen
+    // bijstellen nadat je het juiste antwoord hebt gezien.
+    function answerLocked(q) {
+      return feedbackEnabled() && isRevealed(q);
+    }
+
+    function revealQuestion(q) {
+      if (!q || !feedbackEnabled()) return;
+      const store = q.id.charAt(0) === "p" && state.phase === "practice" ? state.practiceAnswers : state.answers;
+      if (!hasAnswer(q, store)) return;
+      state.revealed[q.id] = true;
+      const good = isCorrect(q, store[q.id]);
+      announce((good ? "Goed. " : "Niet goed. ") + "Juiste antwoord: " + correctToText(q) + ". " + q.explanation);
+    }
+
+    function revealCurrentAnswer() {
+      const q = state.phase === "practice" ? practiceQuestions[state.practiceIndex] : currentQuestion();
+      ensureOrderAnswer(q);
+      revealQuestion(q);
+      render();
     }
 
     function isReported(q) {
@@ -3991,7 +4732,7 @@
       state.phase = "practice";
       state.practiceIndex = 0;
       state.practiceAnswers = {};
-      state.practiceChecked = false;
+      state.revealed = {};
       state.reportTarget = null;
       render();
       scrollToPageTop();
@@ -4006,7 +4747,7 @@
       state.index = 0;
       state.answers = {};
       state.flagged = {};
-      state.trainingChecked = {};
+      state.revealed = {};
       state.reportTarget = null;
       state.remaining = EXAM_CONFIG.durationSeconds;
       state.filterMisses = false;
@@ -4087,17 +4828,18 @@
     }
 
     function setAnswer(questionId, value) {
+      const q = currentVisibleQuestion();
+      if (answerLocked(q)) return;
       getAnswerStore()[questionId] = value;
-      if (state.phase === "practice") {
-        state.practiceChecked = false;
-      } else if (isTrainingMode()) {
-        const q = currentQuestion();
-        state.trainingChecked[questionId] = autoChecksTraining(q);
+      if (feedbackEnabled() && revealsOnSelect(q)) {
+        revealQuestion(q);
       }
       render();
     }
 
     function toggleMulti(questionId, optionId) {
+      const q = currentVisibleQuestion();
+      if (answerLocked(q)) return;
       const store = getAnswerStore();
       const current = Array.isArray(store[questionId]) ? store[questionId].slice() : [];
       const index = current.indexOf(optionId);
@@ -4107,24 +4849,24 @@
         current.push(optionId);
       }
       store[questionId] = current;
-      if (state.phase === "practice") {
-        state.practiceChecked = false;
-      } else if (isTrainingMode()) {
-        state.trainingChecked[questionId] = false;
-      }
       render();
     }
 
     function setNumber(questionId, value) {
+      const q = currentVisibleQuestion();
+      if (answerLocked(q)) return;
       getAnswerStore()[questionId] = value;
-      if (state.phase === "practice") {
-        state.practiceChecked = false;
-      } else if (isTrainingMode()) {
-        state.trainingChecked[questionId] = false;
-        const feedback = document.querySelector("[data-training-feedback]");
-        if (feedback) feedback.remove();
-      }
+      // Niet volledig hertekenen: dat zou de cursor uit het invoerveld halen.
+      syncCheckButton();
       updateOverviewOnly();
+    }
+
+    // Houdt de knop "Controleer antwoord" in de pas terwijl er getypt wordt.
+    function syncCheckButton() {
+      const button = document.querySelector("[data-check-button]");
+      if (!button) return;
+      const q = currentVisibleQuestion();
+      button.disabled = !hasAnswer(q, getAnswerStore());
     }
 
     function currentQuestion() {
@@ -4294,31 +5036,20 @@
 
     function moveOrder(questionId, direction, index) {
       const store = getAnswerStore();
-      const q = state.phase === "practice"
-        ? practiceQuestions[state.practiceIndex]
-        : currentQuestion();
+      const q = currentVisibleQuestion();
+      if (answerLocked(q)) return;
       ensureOrderAnswer(q);
       const current = store[questionId].slice();
       const target = index + direction;
       if (target < 0 || target >= current.length) return;
+      const item = q.items.find(function (candidate) { return candidate.id === current[index]; });
       const temp = current[index];
       current[index] = current[target];
       current[target] = temp;
       store[questionId] = current;
-      if (state.phase === "practice") {
-        state.practiceChecked = false;
-      } else if (isTrainingMode()) {
-        state.trainingChecked[questionId] = false;
-      }
-      render();
-    }
-
-    function checkTrainingAnswer() {
-      if (!isTrainingMode()) return;
-      const q = currentQuestion();
-      ensureOrderAnswer(q);
-      if (!hasAnswer(q, state.answers)) return;
-      state.trainingChecked[q.id] = true;
+      // Focus terugleggen op dezelfde knop, die nu op de nieuwe plek staat.
+      state.focusSelector = '[data-move="' + questionId + "|" + direction + "|" + target + '"]';
+      announce((item ? item.text : "Item") + " staat nu op plaats " + (target + 1) + " van " + current.length + ".");
       render();
     }
 
@@ -4375,21 +5106,14 @@
       URL.revokeObjectURL(url);
     }
 
-    function checkPractice() {
-      const q = practiceQuestions[state.practiceIndex];
-      ensureOrderAnswer(q);
-      if (!hasAnswer(q, state.practiceAnswers)) return;
-      state.practiceChecked = true;
-      render();
-    }
-
     function nextPractice() {
       if (state.practiceIndex < practiceQuestions.length - 1) {
         state.practiceIndex += 1;
-        state.practiceChecked = false;
+        state.pendingFocus = true;
         render();
+        scrollToPageTop();
       } else {
-        startExam();
+        startExam(state.variant);
       }
     }
 
@@ -4397,6 +5121,7 @@
       const questions = activeQuestions();
       if (index < 0 || index >= questions.length) return;
       state.index = index;
+      state.pendingFocus = true;
       render();
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -4465,6 +5190,55 @@
       } else {
         renderResults();
       }
+      applyPostRenderFocus();
+    }
+
+    // De app tekent bij elke wijziging opnieuw, dus focus moet handmatig terug.
+    function applyPostRenderFocus() {
+      if (state.focusSelector) {
+        const target = document.querySelector(state.focusSelector);
+        state.focusSelector = null;
+        if (target && !target.disabled) {
+          target.focus();
+          return;
+        }
+      }
+      if (state.pendingFocus) {
+        state.pendingFocus = false;
+        const heading = document.querySelector("[data-question-heading]");
+        if (heading) heading.focus();
+      }
+    }
+
+    // Sneltoetsen: A-F kiest een optie, cijfers springen niet mee omdat het
+    // invulveld die zelf nodig heeft.
+    function handleShortcut(event) {
+      if (event.metaKey || event.ctrlKey || event.altKey) return;
+      const tag = event.target && event.target.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA") return;
+      if (state.phase !== "exam" && state.phase !== "practice") return;
+      const q = currentVisibleQuestion();
+      if (!q) return;
+
+      if (event.key === "ArrowRight" && state.phase === "exam") {
+        event.preventDefault();
+        nextQuestion();
+        return;
+      }
+      if (event.key === "ArrowLeft" && state.phase === "exam") {
+        event.preventDefault();
+        previousQuestion();
+        return;
+      }
+      if (!q.options || answerLocked(q)) return;
+      const index = event.key.toUpperCase().charCodeAt(0) - 65;
+      if (event.key.length !== 1 || index < 0 || index >= q.options.length) return;
+      event.preventDefault();
+      if (q.kind === "single") {
+        setAnswer(q.id, q.options[index].id);
+      } else if (q.kind === "multi") {
+        toggleMulti(q.id, q.options[index].id);
+      }
     }
 
     function renderIntro() {
@@ -4487,7 +5261,18 @@
               <div class="stat"><strong>Labels</strong><span>makkelijk, gemiddeld en moeilijk</span></div>
               <div class="stat"><strong>${state.reports.length}</strong><span>vraagmeldingen lokaal opgeslagen</span></div>
             </div>
-            <p class="side-note">Examenmodus werkt met timer en eindscore. Leerstand geeft tijdens het oefenen direct uitleg na het controleren van je antwoord.</p>
+            <div class="settings-row">
+              <button class="switch" type="button" role="switch" aria-checked="${state.instantFeedback ? "true" : "false"}" onclick="toggleInstantFeedback()">
+                <span class="switch-track" aria-hidden="true"></span>
+                <span>
+                  Directe uitleg na elk antwoord
+                  <span class="switch-note">${state.instantFeedback
+                    ? "Staat aan: je ziet meteen of je goed of fout zat, met het juiste antwoord erbij."
+                    : "Staat uit: je krijgt de uitleg pas bij de uitslag, zoals op het echte examen."}</span>
+                </span>
+              </button>
+            </div>
+            <p class="side-note">Examenmodus werkt met timer en eindscore. Leerstand heeft geen timer en legt altijd meteen uit.</p>
             <div class="button-row">
               <button class="btn" type="button" onclick="startPractice('normal')">Start normaal</button>
               <button class="btn" type="button" onclick="startPractice('hard')">Start moeilijk</button>
@@ -4534,8 +5319,8 @@
       const q = practiceQuestions[state.practiceIndex];
       ensureOrderAnswer(q);
       const answered = hasAnswer(q, state.practiceAnswers);
-      const checked = state.practiceChecked;
-      const correct = checked && isCorrect(q, state.practiceAnswers[q.id]);
+      const checked = isRevealed(q);
+      const last = state.practiceIndex === practiceQuestions.length - 1;
       app.innerHTML = `
         <section class="exam-layout">
           <article class="panel exam-card">
@@ -4549,29 +5334,35 @@
               <span class="timer">Oefenen</span>
             </div>
             ${renderQuestionBody(q, state.practiceAnswers)}
-            ${checked ? `<div class="practice-feedback ${correct ? "ok" : "bad"}">
-              <strong>${correct ? "Goed." : "Nog niet goed."}</strong>
-              ${escapeHtml(q.explanation)}
-            </div>` : ""}
+            ${renderFeedback(q, state.practiceAnswers)}
             ${renderReportForm(q)}
             <div class="question-footer">
               <div class="button-row">
-                <button class="btn secondary" type="button" onclick="state.phase='intro'; render()">Terug</button>
+                <button class="btn secondary" type="button" onclick="goToIntro()">Terug</button>
                 ${renderReportButton(q)}
               </div>
               <div class="button-row">
-                ${checked
-                  ? `<button class="btn" type="button" onclick="nextPractice()">${state.practiceIndex === practiceQuestions.length - 1 ? "Start examen" : "Volgende oefenvraag"}</button>`
-                  : `<button class="btn" type="button" onclick="checkPractice()" ${answered ? "" : "disabled"}>Controleer</button>`}
+                ${!checked && !revealsOnSelect(q)
+                  ? `<button class="btn secondary" type="button" data-check-button onclick="revealCurrentAnswer()" ${answered ? "" : "disabled"}>Controleer antwoord</button>`
+                  : ""}
+                <button class="btn" type="button" onclick="nextPractice()" ${checked ? "" : "disabled"}>${last ? "Start examen" : "Volgende oefenvraag"}</button>
               </div>
             </div>
           </article>
           <aside class="panel side-panel">
             <h3>Waarom oefenvragen?</h3>
-            <p class="side-note">Net als bij het echte examen kun je eerst wennen aan de bediening. Hier krijg je wel meteen uitleg, zodat je de quiz snapt voordat de timer start.</p>
+            <p class="side-note">Net als bij het echte examen kun je eerst wennen aan de bediening. Je krijgt hier meteen te zien wat goed en fout is, zodat je de quiz snapt voordat de timer start.</p>
           </aside>
         </section>
       `;
+    }
+
+    function goToIntro() {
+      clearTimer();
+      state.phase = "intro";
+      state.reportTarget = null;
+      render();
+      scrollToPageTop();
     }
 
     function renderReportButton(q) {
@@ -4594,19 +5385,32 @@
       `;
     }
 
-    function renderTrainingFeedback(q) {
-      if (!isTrainingMode() || !state.trainingChecked[q.id]) return "";
-      const answer = state.answers[q.id];
-      if (!hasAnswer(q, state.answers)) return "";
+    // Toont na het nakijken meteen wat je koos, wat het juiste antwoord was en waarom.
+    function renderFeedback(q, store) {
+      if (!isRevealed(q) || !hasAnswer(q, store)) return "";
+      const answer = store[q.id];
       const correct = isCorrect(q, answer);
+      const yourAnswer = answerToText(q, answer);
+      const rightAnswer = correctToText(q);
       return `
-        <div class="training-feedback ${correct ? "ok" : "bad"}" data-training-feedback>
-          <strong>${correct ? "Goed." : "Nog niet goed."}</strong>
-          <div class="feedback-answer">
-            <span><strong>Jouw antwoord:</strong> ${escapeHtml(answerToText(q, answer))}</span>
-            <span><strong>Juiste antwoord:</strong> ${escapeHtml(correctToText(q))}</span>
+        <div class="feedback-card ${correct ? "ok" : "bad"}" data-feedback role="status">
+          <div class="feedback-head">
+            <span class="feedback-icon" aria-hidden="true">${correct ? "&#10003;" : "&#10007;"}</span>
+            <span>${correct ? "Goed" : "Fout"}</span>
           </div>
-          <p>${escapeHtml(q.explanation)}</p>
+          <div class="feedback-body">
+            <div class="feedback-answers">
+              <div class="feedback-answer-row ${correct ? "good" : "bad"}">
+                <span class="label">Jouw antwoord</span>
+                <span>${escapeHtml(yourAnswer)}</span>
+              </div>
+              ${correct ? "" : `<div class="feedback-answer-row good">
+                <span class="label">Juiste antwoord</span>
+                <span>${escapeHtml(rightAnswer)}</span>
+              </div>`}
+            </div>
+            <p class="feedback-why"><strong>Uitleg</strong>${escapeHtml(q.explanation)}</p>
+          </div>
         </div>
       `;
     }
@@ -4617,6 +5421,12 @@
       ensureOrderAnswer(q);
       const answeredCount = questions.filter(function (item) { return hasAnswer(item, state.answers); }).length;
       const training = isTrainingMode();
+      const feedback = feedbackEnabled();
+      const revealed = isRevealed(q);
+      const answered = hasAnswer(q, state.answers);
+      const showCheckButton = feedback && !revealed && !revealsOnSelect(q);
+      const progress = Math.round((answeredCount / questions.length) * 100);
+      const last = state.index === questions.length - 1;
       app.innerHTML = `
         <section class="exam-layout">
           <article class="panel exam-card">
@@ -4626,23 +5436,32 @@
                 <span>Vraag ${state.index + 1} van ${questions.length}</span>
                 <span>${escapeHtml(questionTypeLabel(q))}</span>
                 ${renderDifficultyChip(q)}
-                ${training ? `<span class="mode-chip">Directe uitleg</span>` : ""}
+                ${feedback ? `<span class="mode-chip">Directe uitleg</span>` : ""}
               </div>
               <span>${answeredCount}/${questions.length} beantwoord</span>
-              <span class="timer ${!training && state.remaining <= EXAM_CONFIG.lowTimeWarningSeconds ? "low" : ""}" data-timer>${training ? "Leerstand" : formatTime(state.remaining)}</span>
+              <span class="timer ${!training && state.remaining <= EXAM_CONFIG.lowTimeWarningSeconds ? "low" : ""}" data-timer ${training ? "" : 'role="timer"'} aria-label="${training ? "Leerstand, geen tijdslimiet" : "Resterende tijd " + formatTime(state.remaining)}">${training ? "Leerstand" : formatTime(state.remaining)}</span>
+            </div>
+            <div class="progress-wrap">
+              <div class="progress-meta">
+                <span><strong>${answeredCount}</strong> van ${questions.length} beantwoord</span>
+                <span>${progress}%</span>
+              </div>
+              <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="${questions.length}" aria-valuenow="${answeredCount}" aria-label="Voortgang">
+                <div class="progress-bar" style="width:${progress}%"></div>
+              </div>
             </div>
             ${renderQuestionBody(q, state.answers)}
-            ${renderTrainingFeedback(q)}
+            ${renderFeedback(q, state.answers)}
             ${renderReportForm(q)}
             <div class="question-footer">
               <div class="button-row">
                 <button class="btn secondary" type="button" onclick="previousQuestion()" ${state.index === 0 ? "disabled" : ""}>Vorige</button>
-                <button class="btn secondary" type="button" onclick="toggleFlag()">${state.flagged[q.id] ? "Markering weg" : "Markeer vraag"}</button>
+                <button class="btn secondary" type="button" onclick="toggleFlag()" aria-pressed="${state.flagged[q.id] ? "true" : "false"}">${state.flagged[q.id] ? "Markering weg" : "Markeer vraag"}</button>
                 ${renderReportButton(q)}
               </div>
               <div class="button-row">
-                ${training && !autoChecksTraining(q) ? `<button class="btn secondary" type="button" onclick="checkTrainingAnswer()">Controleer antwoord</button>` : ""}
-                ${state.index === questions.length - 1
+                ${showCheckButton ? `<button class="btn secondary" type="button" data-check-button onclick="revealCurrentAnswer()" ${answered ? "" : "disabled"}>Controleer antwoord</button>` : ""}
+                ${last
                   ? `<button class="btn danger" type="button" onclick="finishExam()">${training ? "Leerstand afronden" : "Examen inleveren"}</button>`
                   : `<button class="btn" type="button" onclick="nextQuestion()">Volgende</button>`}
               </div>
@@ -4664,13 +5483,21 @@
         <p class="side-note">${isTrainingMode() ? "Leerstand" : escapeHtml(variantLabel())}: ${answeredCount} beantwoord, ${flaggedCount} gemarkeerd. Je mag terugbladeren tot je afrondt.</p>
         <div class="overview-grid">
           ${questions.map(function (q, index) {
+            const answered = hasAnswer(q, state.answers);
+            const shown = isRevealed(q) && answered;
+            const good = shown && isCorrect(q, state.answers[q.id]);
             const classes = [
               "overview-button",
               index === state.index ? "current" : "",
-              hasAnswer(q, state.answers) ? "answered" : "",
+              answered && !shown ? "answered" : "",
+              shown ? (good ? "revealed-good" : "revealed-bad") : "",
               state.flagged[q.id] ? "flagged" : ""
-            ].join(" ");
-            return `<button class="${classes}" type="button" onclick="goToQuestion(${index})">${index + 1}</button>`;
+            ].filter(Boolean).join(" ");
+            const status = shown
+              ? (good ? "goed beantwoord" : "fout beantwoord")
+              : (answered ? "beantwoord" : "nog open");
+            const label = "Vraag " + (index + 1) + " van " + questions.length + ", " + status + (state.flagged[q.id] ? ", gemarkeerd" : "");
+            return `<button class="${classes}" type="button" onclick="goToQuestion(${index})" aria-label="${escapeHtml(label)}"${index === state.index ? ' aria-current="true"' : ""}>${index + 1}</button>`;
           }).join("")}
         </div>
         <div class="legend">
@@ -4689,13 +5516,16 @@
     }
 
     function renderQuestionBody(q, store) {
+      const hint = answerHint(q);
       return `
         <div class="question-body">
           <div class="question-copy">
             <div class="kicker">${escapeHtml(q.topic)}</div>
-            <h2>${escapeHtml(q.prompt)}</h2>
+            <h2 tabindex="-1" data-question-heading>${escapeHtml(q.prompt)}</h2>
             ${q.help ? `<p class="question-help">${escapeHtml(q.help)}</p>` : ""}
+            ${hint ? `<p class="question-help">${escapeHtml(hint)}</p>` : ""}
             ${renderAnswerControl(q, store)}
+            ${answerLocked(q) ? `<p class="lock-note">Dit antwoord is nagekeken en staat vast. Ga verder naar de volgende vraag.</p>` : ""}
           </div>
           <div class="visual-panel">
             ${renderVisual(q, store)}
@@ -4704,14 +5534,45 @@
       `;
     }
 
+    function answerHint(q) {
+      if (q.kind === "multi") return "Meerdere antwoorden kunnen goed zijn. Kies ze allemaal en druk daarna op Controleer antwoord.";
+      if (q.kind === "order") return "Zet de stappen in de juiste volgorde met de pijlknoppen en druk daarna op Controleer antwoord.";
+      if (q.kind === "number") return "Vul het getal in en druk daarna op Controleer antwoord.";
+      return "";
+    }
+
+    // Geeft per optie terug hoe hij na het nakijken getoond moet worden.
+    function optionStateFor(q, optionId, selectedIds, revealed) {
+      const selected = selectedIds.indexOf(optionId) >= 0;
+      if (!revealed) return { selected: selected, className: selected ? "selected" : "", mark: "" };
+      const correctIds = Array.isArray(q.correct) ? q.correct : [q.correct];
+      const isRight = correctIds.indexOf(optionId) >= 0;
+      if (isRight) {
+        return {
+          selected: selected,
+          className: "is-correct",
+          mark: `<span class="option-mark good">${selected ? "&#10003; Goed gekozen" : "&#10003; Juiste antwoord"}</span>`
+        };
+      }
+      if (selected) {
+        return { selected: selected, className: "is-wrong", mark: `<span class="option-mark bad">&#10007; Jouw keuze</span>` };
+      }
+      return { selected: selected, className: "is-idle", mark: "" };
+    }
+
     function renderAnswerControl(q, store) {
+      const revealed = isRevealed(q) && hasAnswer(q, store);
+      const locked = answerLocked(q);
+
       if (q.kind === "single") {
-        return `<div class="options">${q.options.map(function (option, index) {
-          const selected = store[q.id] === option.id;
+        const selectedIds = store[q.id] === undefined ? [] : [store[q.id]];
+        return `<div class="options" role="radiogroup" aria-label="Antwoordopties">${q.options.map(function (option, index) {
+          const info = optionStateFor(q, option.id, selectedIds, revealed);
           return `
-            <button class="option ${selected ? "selected" : ""}" type="button" onclick="setAnswer('${q.id}', '${option.id}')">
-              <span class="option-letter">${String.fromCharCode(65 + index)}</span>
-              <span>${escapeHtml(option.text)}</span>
+            <button class="option ${info.className}" type="button" role="radio" aria-checked="${info.selected ? "true" : "false"}" ${locked ? "disabled" : ""} onclick="setAnswer('${q.id}', '${option.id}')">
+              <span class="option-letter" aria-hidden="true">${String.fromCharCode(65 + index)}</span>
+              <span class="option-text">${escapeHtml(option.text)}</span>
+              ${info.mark}
             </button>
           `;
         }).join("")}</div>`;
@@ -4719,12 +5580,13 @@
 
       if (q.kind === "multi") {
         const current = Array.isArray(store[q.id]) ? store[q.id] : [];
-        return `<div class="options">${q.options.map(function (option, index) {
-          const selected = current.includes(option.id);
+        return `<div class="options" role="group" aria-label="Antwoordopties, meerdere mogelijk">${q.options.map(function (option, index) {
+          const info = optionStateFor(q, option.id, current, revealed);
           return `
-            <button class="option ${selected ? "selected" : ""}" type="button" onclick="toggleMulti('${q.id}', '${option.id}')">
-              <span class="option-letter">${selected ? "OK" : String.fromCharCode(65 + index)}</span>
-              <span>${escapeHtml(option.text)}</span>
+            <button class="option ${info.className}" type="button" role="checkbox" aria-checked="${info.selected ? "true" : "false"}" ${locked ? "disabled" : ""} onclick="toggleMulti('${q.id}', '${option.id}')">
+              <span class="option-letter" aria-hidden="true">${info.selected ? "&#10003;" : String.fromCharCode(65 + index)}</span>
+              <span class="option-text">${escapeHtml(option.text)}</span>
+              ${info.mark}
             </button>
           `;
         }).join("")}</div>`;
@@ -4734,7 +5596,7 @@
         const value = store[q.id] || "";
         return `
           <div class="number-entry">
-            <input type="text" inputmode="decimal" aria-label="Antwoord invullen" value="${escapeHtml(value)}" oninput="setNumber('${q.id}', this.value)">
+            <input type="text" inputmode="decimal" aria-label="Antwoord invullen${q.suffix ? " in " + q.suffix : ""}" value="${escapeHtml(value)}" ${locked ? "readonly" : ""} oninput="setNumber('${q.id}', this.value)">
             <span class="suffix">${escapeHtml(q.suffix || "")}</span>
           </div>
         `;
@@ -4747,13 +5609,16 @@
           <div class="order-list">
             ${current.map(function (id, index) {
               const item = q.items.find(function (candidate) { return candidate.id === id; });
+              const text = item ? item.text : id;
+              const rightHere = revealed && q.correct[index] === id;
+              const stateClass = revealed ? (rightHere ? "is-correct" : "is-wrong") : "";
               return `
-                <div class="order-item">
+                <div class="order-item ${stateClass}">
                   <span class="order-rank">${index + 1}</span>
-                  <span>${escapeHtml(item ? item.text : id)}</span>
+                  <span>${escapeHtml(text)}${revealed ? ` <span class="option-mark ${rightHere ? "good" : "bad"}">${rightHere ? "&#10003; juiste plek" : "&#10007; verkeerde plek"}</span>` : ""}</span>
                   <span class="move-actions">
-                    <button class="move-btn" type="button" onclick="moveOrder('${q.id}', -1, ${index})" ${index === 0 ? "disabled" : ""}>^</button>
-                    <button class="move-btn" type="button" onclick="moveOrder('${q.id}', 1, ${index})" ${index === current.length - 1 ? "disabled" : ""}>v</button>
+                    <button class="move-btn" type="button" data-move="${q.id}|-1|${index}" aria-label="${escapeHtml(text)} omhoog verplaatsen" onclick="moveOrder('${q.id}', -1, ${index})" ${index === 0 || locked ? "disabled" : ""}>&#8593;</button>
+                    <button class="move-btn" type="button" data-move="${q.id}|1|${index}" aria-label="${escapeHtml(text)} omlaag verplaatsen" onclick="moveOrder('${q.id}', 1, ${index})" ${index === current.length - 1 || locked ? "disabled" : ""}>&#8595;</button>
                   </span>
                 </div>
               `;
@@ -4771,9 +5636,24 @@
 
     function renderVisual(q, store) {
       const answer = store[q.id];
+      const revealed = isRevealed(q) && hasAnswer(q, store);
+      const locked = answerLocked(q);
       const hotspots = q.kind === "hotspot" ? q.hotspots.map(function (spot, index) {
         const selected = answer === spot.id;
-        return `<button class="hotspot ${selected ? "selected" : ""}" style="left:${spot.x}%;top:${spot.y}%;" type="button" onclick="setAnswer('${q.id}', '${spot.id}')" aria-label="${escapeHtml(spot.label)}">${String.fromCharCode(65 + index)}</button>`;
+        let stateClass = selected ? "selected" : "";
+        let suffix = "";
+        if (revealed) {
+          if (spot.id === q.correct) {
+            stateClass = "is-correct";
+            suffix = selected ? ", goed gekozen" : ", juiste antwoord";
+          } else if (selected) {
+            stateClass = "is-wrong";
+            suffix = ", jouw keuze, fout";
+          } else {
+            stateClass = "";
+          }
+        }
+        return `<button class="hotspot ${stateClass}" style="left:${spot.x}%;top:${spot.y}%;" type="button" role="radio" aria-checked="${selected ? "true" : "false"}" ${locked ? "disabled" : ""} onclick="setAnswer('${q.id}', '${spot.id}')" aria-label="${escapeHtml(spot.label + suffix)}">${String.fromCharCode(65 + index)}</button>`;
       }).join("") : "";
 
       const labels = q.kind === "hotspot" ? `
@@ -4785,7 +5665,7 @@
       ` : "";
 
       return `
-        <div class="scene photo-scene ${escapeHtml(q.scene || "city")}">
+        <div class="scene photo-scene ${escapeHtml(q.scene || "city")}"${q.kind === "hotspot" ? ' role="radiogroup" aria-label="Kies een plek in de afbeelding"' : ""}>
           ${renderSceneObjects(q.scene || "city", q)}
           ${hotspots}
         </div>
@@ -4922,6 +5802,8 @@
     }
 
     warnAboutQuestionBankIssues();
+    applyTheme();
+    document.addEventListener("keydown", handleShortcut);
     render();
   </script>
 </body>

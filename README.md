@@ -16,10 +16,28 @@ Open `index.html` in je browser om te oefenen.
 - Echte foto-assets per verkeerssituatie, lokaal opgeslagen in `assets/images`.
 - AI-gegenereerde situatiebeelden voor visuele hotspotvragen, lokaal opgeslagen in `assets/generated`.
 - Moeilijkheidslabel per vraag: makkelijk, gemiddeld of moeilijk.
-- Leerstand met directe uitleg tijdens het oefenen.
+- Directe uitleg na elk antwoord: je ziet meteen welk antwoord fout was en welk antwoord goed is, met uitleg erbij. Dit staat standaard aan en is uit te zetten op het startscherm, zodat je ook een echte examenronde zonder tussentijdse uitleg kunt draaien.
+- Leerstand zonder timer, met altijd directe uitleg.
 - Meldknop per vraag; meldingen worden lokaal opgeslagen en kunnen als JSON worden gedownload.
 - Uitslag met uitleg per vraag.
+- Licht en donker thema, standaard volgens je systeeminstelling en handmatig om te schakelen.
 - Android-vriendelijke bediening met grote knoppen, foto boven de vraag en sticky navigatie op kleine schermen.
+
+## Directe uitleg
+
+Bij meerkeuze- en hotspotvragen is een klik meteen je definitieve antwoord: de uitleg verschijnt direct. Bij multiple response, sleepvragen en invulvragen bepaal je zelf wanneer je klaar bent met de knop "Controleer antwoord".
+
+Zodra een vraag is nagekeken, ligt het antwoord vast. Je kunt het niet meer aanpassen nadat je het juiste antwoord hebt gezien, zodat je score blijft kloppen. In de antwoordlijst wordt het juiste antwoord groen gemarkeerd en je eigen foute keuze rood.
+
+## Toegankelijkheid
+
+- Antwoordopties gebruiken echte radiogroup- en checkbox-rollen, zodat schermlezers de keuzes correct aankondigen.
+- Na elk nagekeken antwoord wordt goed/fout, het juiste antwoord en de uitleg voorgelezen via een live region.
+- Zichtbare focusranden op alles wat bedienbaar is, plus een skip-link naar de inhoud.
+- Sneltoetsen: A tot en met F kiezen een antwoordoptie, pijltjes links en rechts bladeren door de vragen.
+- Bij het wisselen van vraag springt de focus naar de vraagtekst.
+- Voortgangsbalk met `progressbar`-rol en beschrijvende labels op de knoppen in het vraagoverzicht.
+- Respecteert `prefers-reduced-motion` en `prefers-color-scheme`.
 
 ## Variatie
 

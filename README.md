@@ -83,7 +83,7 @@ De basisfoto's staan lokaal in `assets/images` en komen van Wikimedia Commons:
 - `parking.jpg`: 20200925 parking lined perpendicular, Jeroen Hoek, CC0.
 - `dashboard.jpg`: Dash Mazda 3, John W/dcJohn, CC BY 2.0.
 - `weather.jpg`: A12 mist, M.Minderhoud/Michiel1972, CC BY-SA 3.0 or GFDL.
-- `signs.jpg`: Parking zone 30 sign, Rotterdam, Donald Trung Quoc Don, CC BY-SA 4.0.
+- `signs.jpg`: Parking zone 30 sign, Rotterdam, Donald Trung Quoc Don, CC BY-SA 4.0. Let op: dit is een blauw *parkeer*zonebord, geen snelheidsbord. Het wordt daarom alleen gebruikt bij vragen over onderborden, niet bij vragen over de 30 km/u-zone.
 - `rail.jpg`: HALI Amsterdam Houtrakpolder, Pbech, CC0.
 
 De hotspotvragen gebruiken daarnaast zelf gegenereerde oefenbeelden in `assets/generated`:
@@ -94,6 +94,16 @@ De hotspotvragen gebruiken daarnaast zelf gegenereerde oefenbeelden in `assets/g
 - `motorway-blind-spot.jpg`: rijstrookwisseling met rechter dode hoek.
 - `intersection-shark-teeth.jpg`: kruispunt met haaientanden.
 - `intersection-cross-traffic.jpg`: kruispuntgebied met kruisend verkeer.
+
+Alle beelden in `assets/generated` zijn 1586x992. De hotspotstippen zijn percentages van hun container, dus die container krijgt via `.hotspot-scene` exact dezelfde verhouding. Zonder dat zou `object-fit: cover` de foto bijsnijden en zouden de stippen per schermbreedte verschuiven ten opzichte van wat ze aanwijzen.
+
+## Foto's bij vragen
+
+Met negen sfeerfoto's voor 158 vragen zijn de foto's bewust illustratief, niet letterlijk. Eén regel geldt wel hard: het zichtbare bijschrift mag de vraagtekst niet tegenspreken en de kandidaat niet naar een fout antwoord duwen.
+
+Vragen waarbij geen van de beschikbare foto's past, krijgen `scene: "none"` en worden zonder beeld getoond over de volle breedte. Dat is beter dan een bijschrift dat de vraag onderuithaalt: bij een vraag over een autoweg is "Autosnelweg met meerdere rijstroken" niet neutraal maar misleidend.
+
+De smoke test bewaakt deze regel voor de gevallen die eerder misgingen.
 
 Gebaseerd op openbare bronnen:
 

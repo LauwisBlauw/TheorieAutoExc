@@ -561,6 +561,12 @@
       min-width: 0;
     }
 
+    /* Vragen zonder passende foto krijgen de volle breedte. */
+    .question-body.no-visual {
+      grid-template-columns: minmax(0, 1fr);
+      max-width: 760px;
+    }
+
     .kicker {
       color: var(--brand);
       font-size: 13px;
@@ -730,6 +736,14 @@
       border: 1px solid var(--scene-edge);
       background: var(--scene-sky);
       overflow: hidden;
+    }
+
+    /* Hotspotstippen zijn percentages van de container, terwijl object-fit:cover
+       de foto bijsnijdt. Door de container dezelfde verhouding als de beelden
+       (1586x992) te geven valt er niets weg en blijft elke stip op zijn plek. */
+    .scene.hotspot-scene {
+      aspect-ratio: 1586 / 992;
+      min-height: 0;
     }
 
     .scene::before {
@@ -2830,7 +2844,7 @@
         id: "q45",
         kind: "single",
         topic: "Gebruik van de weg",
-        scene: "city",
+        scene: "none",
         prompt: "Je rijdt buiten de bebouwde kom op een gewone weg, geen auto(snel)weg. Er staan geen andere borden. Wat is de maximumsnelheid?",
         options: [
           { id: "a", text: "60 km/u" },
@@ -2844,7 +2858,10 @@
         id: "q46",
         kind: "single",
         topic: "Gebruik van de weg",
-        scene: "signs",
+        scene: "residential",
+        image: "assets/generated/residential-30zone-child.jpg",
+        imageAlt: "AI-gegenereerde woonstraat met een rond 30 km/u-bord langs de weg",
+        imageLabel: "AI-gegenereerde situatie: 30-zone met snelheidsbord",
         prompt: "Je rijdt een 30-zone in. Tot wanneer geldt deze snelheid?",
         options: [
           { id: "a", text: "Tot het einde van de zone of een ander geldig verkeersteken" },
@@ -2984,7 +3001,7 @@
         id: "h4",
         kind: "single",
         topic: "Gebruik van de weg",
-        scene: "motorway",
+        scene: "none",
         prompt: "Je rijdt om 22:00 uur op een autoweg, niet op een autosnelweg. Er staat geen andere maximumsnelheid aangegeven. Hoe hard mag je maximaal?",
         options: [
           { id: "a", text: "80 km/u" },
@@ -3370,7 +3387,7 @@
         id: "h31",
         kind: "single",
         topic: "Veilig rijden en noodsituaties",
-        scene: "weather",
+        scene: "motorway",
         prompt: "Bij hevige regen is het zicht ongeveer 40 meter. Mag je het mistachterlicht gebruiken?",
         options: [
           { id: "a", text: "Nee, niet bij regen" },
@@ -3535,7 +3552,7 @@
         id: "h43",
         kind: "single",
         topic: "Gebruik van de weg",
-        scene: "city",
+        scene: "none",
         prompt: "Je rijdt buiten de bebouwde kom op een gewone weg, geen autoweg en geen autosnelweg. Er staan geen snelheidsborden. Wat is de maximumsnelheid?",
         options: [
           { id: "a", text: "60 km/u" },
@@ -3549,7 +3566,10 @@
         id: "h44",
         kind: "single",
         topic: "Verkeerstekens en aanwijzingen",
-        scene: "signs",
+        scene: "residential",
+        image: "assets/generated/residential-30zone-child.jpg",
+        imageAlt: "AI-gegenereerde woonstraat met een rond 30 km/u-bord langs de weg",
+        imageLabel: "AI-gegenereerde situatie: 30-zone met snelheidsbord",
         prompt: "Je rijdt een 30-zone in. Na een kruispunt zie je geen nieuw bord. Wat geldt?",
         options: [
           { id: "a", text: "De 30-zone blijft gelden tot het einde-zonebord of een ander geldig verkeersteken" },
@@ -3746,7 +3766,7 @@
         id: "e5",
         kind: "single",
         topic: "Voorrang en voor laten gaan",
-        scene: "city",
+        scene: "none",
         prompt: "Buiten de bebouwde kom wil een bus bij een halte wegrijden en geeft richting aan. Wat is juist?",
         options: [
           { id: "a", text: "Je bent niet verplicht de bus voor te laten gaan, maar je werkt mee als dat veilig kan" },
@@ -4059,7 +4079,7 @@
         id: "e27",
         kind: "single",
         topic: "Verkeerstekens en aanwijzingen",
-        scene: "signs",
+        scene: "city",
         prompt: "Je ziet een rond blauw bord met een fiets erop. Wat betekent dat voor jou als automobilist?",
         options: [
           { id: "a", text: "Dit is een verplicht fietspad; je rijdt daar niet met de auto" },
@@ -5517,8 +5537,9 @@
 
     function renderQuestionBody(q, store) {
       const hint = answerHint(q);
+      const visual = hasVisual(q);
       return `
-        <div class="question-body">
+        <div class="question-body${visual ? "" : " no-visual"}">
           <div class="question-copy">
             <div class="kicker">${escapeHtml(q.topic)}</div>
             <h2 tabindex="-1" data-question-heading>${escapeHtml(q.prompt)}</h2>
@@ -5527,11 +5548,15 @@
             ${renderAnswerControl(q, store)}
             ${answerLocked(q) ? `<p class="lock-note">Dit antwoord is nagekeken en staat vast. Ga verder naar de volgende vraag.</p>` : ""}
           </div>
-          <div class="visual-panel">
-            ${renderVisual(q, store)}
-          </div>
+          ${visual ? `<div class="visual-panel">${renderVisual(q, store)}</div>` : ""}
         </div>
       `;
+    }
+
+    // Sommige vragen krijgen bewust geen foto: geen van de beschikbare beelden
+    // past er dan bij, en een verkeerd bijschrift stuurt de kandidaat de fout in.
+    function hasVisual(q) {
+      return q.scene !== "none";
     }
 
     function answerHint(q) {
@@ -5665,7 +5690,7 @@
       ` : "";
 
       return `
-        <div class="scene photo-scene ${escapeHtml(q.scene || "city")}"${q.kind === "hotspot" ? ' role="radiogroup" aria-label="Kies een plek in de afbeelding"' : ""}>
+        <div class="scene photo-scene ${escapeHtml(q.scene || "city")}${q.kind === "hotspot" ? " hotspot-scene" : ""}"${q.kind === "hotspot" ? ' role="radiogroup" aria-label="Kies een plek in de afbeelding"' : ""}>
           ${renderSceneObjects(q.scene || "city", q)}
           ${hotspots}
         </div>
@@ -5712,8 +5737,8 @@
         },
         signs: {
           src: "assets/images/signs.jpg",
-          alt: "Foto van een zonebord in Rotterdam",
-          label: "Zonebord en verkeersborden"
+          alt: "Foto van een blauw parkeerzonebord met onderborden in Rotterdam",
+          label: "Parkeerzonebord met onderborden"
         },
         rail: {
           src: "assets/images/rail.jpg",

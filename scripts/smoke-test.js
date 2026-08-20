@@ -181,6 +181,70 @@ const assertions = `
     throw new Error("Scoring changed unexpectedly");
   }
 
+  // --- Foto's bij vragen ---
+
+  var allQuestions = practiceQuestions
+    .concat(examQuestions, hardExamQuestions, extraExamQuestions);
+
+  // De blauwe parkeerzonefoto mag niet terugkeren bij vragen over de 30 km/u-zone
+  // of over het ronde blauwe fietsbord: die tonen een heel ander bord.
+  allQuestions.forEach(function (q) {
+    if (q.scene !== "signs") return;
+    if (/30-zone|blauw bord/i.test(q.prompt)) {
+      throw new Error(q.id + ": bordvraag staat op de parkeerzonefoto");
+    }
+  });
+
+  // Een bijschrift mag de vraagtekst niet tegenspreken.
+  allQuestions.forEach(function (q) {
+    if (q.scene === "motorway" && /niet op een autosnelweg/i.test(q.prompt)) {
+      throw new Error(q.id + ": snelwegfoto bij een vraag die de snelweg uitsluit");
+    }
+    // Het mistachterlicht mag wel bij mist en niet bij regen. Staat de mistfoto
+    // boven een regenvraag daarover, dan bevestigt het beeld juist de afleider.
+    if (q.scene === "weather" && /regen/i.test(q.prompt) && /mistachterlicht/i.test(q.prompt)) {
+      throw new Error(q.id + ": mistfoto bij een regenvraag over het mistachterlicht");
+    }
+    if (q.scene === "city" && /buiten de bebouwde kom/i.test(q.prompt)) {
+      throw new Error(q.id + ": stadsfoto bij een vraag buiten de bebouwde kom");
+    }
+  });
+
+  // Alle hotspotbeelden hebben dezelfde verhouding, zodat de stippen kloppen.
+  allQuestions.forEach(function (q) {
+    if (q.kind !== "hotspot") return;
+    if (!q.image) {
+      throw new Error(q.id + ": hotspotvraag zonder eigen afbeelding");
+    }
+    q.hotspots.forEach(function (spot) {
+      if (spot.x < 3 || spot.x > 97 || spot.y < 3 || spot.y > 97) {
+        throw new Error(q.id + ": hotspot " + spot.id + " ligt te dicht op de rand");
+      }
+    });
+  });
+
+  startExam("normal");
+  var noPhoto = state.sessionQuestions.filter(function (q) { return q.scene === "none"; })[0];
+  if (noPhoto) {
+    state.index = state.sessionQuestions.indexOf(noPhoto);
+    render();
+    if (app.innerHTML.indexOf("no-visual") < 0) {
+      throw new Error("Vraag zonder foto moet de volle breedte krijgen");
+    }
+    if (app.innerHTML.indexOf("scene-photo") >= 0) {
+      throw new Error("Vraag met scene 'none' mag geen foto tonen");
+    }
+  }
+
+  var spot = state.sessionQuestions.filter(function (q) { return q.kind === "hotspot"; })[0];
+  if (spot) {
+    state.index = state.sessionQuestions.indexOf(spot);
+    render();
+    if (app.innerHTML.indexOf("hotspot-scene") < 0) {
+      throw new Error("Hotspotvraag mist de klasse die de beeldverhouding vastzet");
+    }
+  }
+
   // --- Thema ---
 
   if (state.theme !== "system") {

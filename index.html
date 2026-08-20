@@ -3390,6 +3390,272 @@
         ],
         correct: "a",
         explanation: "Pijlen in een voorsorteerstrook zijn geen advies: je bent verplicht de richting te volgen die de strook waarop je staat aangeeft (artikel 78 RVV 1990). Kies je rijstrook dus vóór de rotonde, want wisselen op de rotonde zelf levert gevaarlijke situaties op."
+      },
+      {
+        id: "q63",
+        kind: "single",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "none",
+        prompt: "Het is donker geworden en je rijdt nog steeds met alleen dagrijverlichting aan. Waarom is dat gevaarlijk?",
+        options: [
+          { id: "a", text: "Je achterlichten branden dan niet, waardoor bestuurders achter je jou nauwelijks opmerken." },
+          { id: "b", text: "Dagrijverlichting is feller dan dimlicht en verblindt daardoor tegenliggers." },
+          { id: "c", text: "Dagrijverlichting gaat bij duisternis automatisch uit, zodat je helemaal zonder licht rijdt." }
+        ],
+        correct: "a",
+        explanation: "Dagrijverlichting brandt alleen aan de voorzijde en verlicht de weg niet; je achterlichten en kentekenplaatverlichting blijven uit. Daarom is bij nacht dimlicht verplicht (artikel 32 RVV 1990), waarmee de verlichting achterop automatisch meebrandt."
+      },
+      {
+        id: "q64",
+        kind: "single",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "weather",
+        prompt: "Het is midden op de dag en dichte mist belemmert je zicht ernstig. Mag je nu groot licht voeren?",
+        options: [
+          { id: "a", text: "Ja, want je zicht is ernstig belemmerd en dan mag je meer licht gebruiken." },
+          { id: "b", text: "Nee, bij dag mag je geen groot licht voeren; je voert dimlicht." },
+          { id: "c", text: "Ja, mits je dimt zodra je een tegenligger ziet naderen." },
+          { id: "d", text: "Nee, want groot licht mag alleen op een autosnelweg worden gevoerd." }
+        ],
+        correct: "b",
+        explanation: "Groot licht is bij dag nooit toegestaan, ook niet bij slecht zicht (artikel 32 RVV 1990). Bij ernstig belemmerd zicht overdag voer je dimlicht; groot licht zou in de mist bovendien terugkaatsen en je juist minder laten zien."
+      },
+      {
+        id: "q65",
+        kind: "multi",
+        topic: "Voertuigkennis",
+        scene: "none",
+        prompt: "Welke voorzieningen zijn aan de achterzijde van een personenauto wettelijk verplicht? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Twee rode achterlichten." },
+          { id: "b", text: "Verlichting die de achterkentekenplaat verlicht." },
+          { id: "c", text: "Twee rode retroreflectoren." },
+          { id: "d", text: "Twee witte retroreflectoren naast de achterlichten." }
+        ],
+        correct: ["a", "b", "c"],
+        explanation: "Aan de achterzijde zijn twee rode achterlichten, verlichting van de achterkentekenplaat en twee rode retroreflectoren verplicht. Witte retroreflectoren horen niet aan de achterkant: naar achteren gericht reflecterend materiaal is rood, zodat andere bestuurders meteen zien dat ze tegen de achterkant van een voertuig aankijken."
+      },
+      {
+        id: "q67",
+        kind: "order",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "weather",
+        prompt: "Je rijdt overdag en de mist wordt onderweg steeds dichter. Zet deze drie soorten verlichting in de volgorde waarin ze aan de beurt komen, van goed zicht tot een zicht van minder dan 50 meter.",
+        help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
+        items: [
+          { id: "dagrijlicht", text: "Dagrijlicht" },
+          { id: "dimlicht", text: "Dimlicht" },
+          { id: "mistachterlicht", text: "Mistachterlicht" }
+        ],
+        correct: ["dagrijlicht", "dimlicht", "mistachterlicht"],
+        explanation: "Bij goed zicht overdag volstaat dagrijlicht. Zodra de mist het zicht ernstig belemmert, is dimlicht verplicht (artikel 32 RVV 1990). Pas als het zicht onder de 50 meter zakt, mag het mistachterlicht er ook bij (artikel 34 RVV 1990)."
+      },
+      {
+        id: "q68",
+        kind: "single",
+        topic: "Stilstaan en parkeren",
+        scene: "none",
+        prompt: "Je zet je auto bij nacht buiten de bebouwde kom stil op de rijbaan. Welke verlichting schrijft de wet dan voor?",
+        options: [
+          { id: "a", text: "Stadslicht en achterlicht." },
+          { id: "b", text: "Alleen achterlicht; stadslicht hoeft niet." },
+          { id: "c", text: "Alleen de alarmlichten." },
+          { id: "d", text: "Geen verlichting, want een stilstaande auto hoeft geen licht te voeren." }
+        ],
+        correct: "a",
+        explanation: "Buiten de bebouwde kom moet een stilstaand motorvoertuig bij nacht, en overdag bij ernstig belemmerd zicht, stadslicht en achterlicht voeren (artikel 38 RVV 1990). Binnen de bebouwde kom geldt die verplichting niet."
+      },
+      {
+        id: "q69",
+        kind: "single",
+        topic: "Voertuigkennis",
+        scene: "parking",
+        prompt: "Je zit in een moderne personenauto en schakelt naar de achteruit om een parkeervak uit te rijden. Wat is juist over het achteruitrijlicht?",
+        options: [
+          { id: "a", text: "Het straalt wit licht uit en gaat aan zodra je de achteruit inschakelt." },
+          { id: "b", text: "Het straalt rood licht uit, net als de andere lichten achterop." },
+          { id: "c", text: "Je mag het ook aanzetten om in het donker vooruit bij te lichten." },
+          { id: "d", text: "Het is op een personenauto niet verplicht en mag daarom uit blijven." }
+        ],
+        correct: "a",
+        explanation: "Het achteruitrijlicht straalt wit licht uit en werkt alleen als de achteruitversnelling is ingeschakeld. Zo zien andere weggebruikers dat je achteruit gaat; op personenauto's die na 31 december 1997 in gebruik zijn genomen is dit licht verplicht."
+      },
+      {
+        id: "q71",
+        kind: "multi",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "none",
+        prompt: "Wat is juist over dagrijverlichting (dagrijlicht)? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Bij dag mag je dagrijlicht voeren." },
+          { id: "b", text: "Dagrijlicht mag niet tegelijk met andere verlichting aan de voorzijde branden." },
+          { id: "c", text: "Wordt het zicht overdag ernstig belemmerd, dan volstaat dagrijlicht niet en moet je dimlicht voeren." },
+          { id: "d", text: "Bij nacht mag dagrijlicht het dimlicht vervangen zolang er straatverlichting is." }
+        ],
+        correct: ["a", "b", "c"],
+        explanation: "Dagrijlicht is uitsluitend een daglichtvoorziening en wordt niet samen met ander licht aan de voorzijde gevoerd (artikel 41 RVV 1990). Zodra het zicht overdag ernstig belemmerd raakt of het nacht wordt, is dimlicht verplicht (artikel 32 RVV 1990)."
+      },
+      {
+        id: "q72",
+        kind: "single",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "none",
+        prompt: "Waarom schakel je bij nacht van groot licht terug naar dimlicht als je op korte afstand achter een andere auto rijdt?",
+        options: [
+          { id: "a", text: "Je verblindt de bestuurder voor je, want zijn spiegels kaatsen jouw licht in zijn ogen." },
+          { id: "b", text: "Groot licht is alleen toegestaan op wegen zonder straatverlichting." },
+          { id: "c", text: "Groot licht mag pas boven een bepaalde snelheid worden gevoerd." },
+          { id: "d", text: "Groot licht is buiten de bebouwde kom altijd verboden." }
+        ],
+        correct: "a",
+        explanation: "De wet verbiedt groot licht bij het op korte afstand volgen van een ander voertuig (artikel 32 RVV 1990), omdat je voorligger via zijn binnen- en buitenspiegels vol in het licht kijkt. Datzelfde verblindingsgevaar is de reden dat je ook voor tegenliggers dimt."
+      },
+      {
+        id: "q93",
+        kind: "single",
+        topic: "Stilstaan en parkeren",
+        scene: "none",
+        prompt: "Je zet je auto langs de kant van de weg stil, laat je passagier direct uitstappen en rijdt meteen weer verder. Hoe heet dit volgens de wet?",
+        options: [
+          { id: "a", text: "Parkeren, want je voertuig staat stil." },
+          { id: "b", text: "Stilstaan, want het gaat om het onmiddellijk laten uitstappen van een passagier." },
+          { id: "c", text: "Parkeren, zodra je de motor hebt uitgezet." },
+          { id: "d", text: "Stilstaan, maar alleen als je binnen één minuut weer wegrijdt." }
+        ],
+        correct: "b",
+        explanation: "Parkeren is volgens artikel 1 RVV 1990 het laten stilstaan van een voertuig anders dan voor het onmiddellijk in- of uitstappen van passagiers of het onmiddellijk laden of lossen van goederen. Zolang je iemand alleen direct laat uitstappen, sta je stil en parkeer je niet. Of de motor draait en hoe lang je precies stilstaat, is voor die definitie niet bepalend."
+      },
+      {
+        id: "q94",
+        kind: "multi",
+        topic: "Stilstaan en parkeren",
+        scene: "none",
+        prompt: "Op welke van deze plaatsen mag je je auto ook niet kort laten stilstaan? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "In een tunnel." },
+          { id: "b", text: "Op een fietsstrook." },
+          { id: "c", text: "Buiten de bebouwde kom op de rijbaan van een voorrangsweg." },
+          { id: "d", text: "Vlak voor de inrit van een woning." }
+        ],
+        correct: ["a", "b"],
+        explanation: "Artikel 23 RVV 1990 verbiedt stilstaan onder meer in een tunnel en op een fietsstrook. Voor de rijbaan van een voorrangsweg buiten de bebouwde kom en voor een inrit geldt alleen een parkeerverbod uit artikel 24 RVV 1990, dus daar mag je wel kort stilstaan."
+      },
+      {
+        id: "q95",
+        kind: "number",
+        topic: "Stilstaan en parkeren",
+        scene: "city",
+        prompt: "Binnen welke afstand van een voetgangersoversteekplaats mag je je auto niet laten stilstaan?",
+        suffix: "meter",
+        accepted: ["5"],
+        counts: false,
+        explanation: "Volgens artikel 23 RVV 1990 mag je niet stilstaan op een oversteekplaats en ook niet binnen een afstand van vijf meter daarvan. Zo blijft het zicht op overstekende voetgangers voor iedereen vrij."
+      },
+      {
+        id: "q96",
+        kind: "single",
+        topic: "Stilstaan en parkeren",
+        scene: "parking",
+        prompt: "Je parkeert om 14.40 uur in een parkeerschijf-zone op een plaats met een blauwe streep. Welk tijdstip mag je op de parkeerschijf instellen?",
+        options: [
+          { id: "a", text: "14.30 uur" },
+          { id: "b", text: "14.40 uur" },
+          { id: "c", text: "15.00 uur" },
+          { id: "d", text: "15.30 uur" }
+        ],
+        correct: "c",
+        explanation: "Op de parkeerschijf zet je in hele of halve uren het tijdstip waarop je bent gaan parkeren, en bij het instellen mag je je aankomsttijd naar boven afronden op het eerstvolgende hele of halve uur (artikel 25 RVV 1990). Om 14.40 uur is dat 15.00 uur; verder vooruit zetten mag niet."
+      },
+      {
+        id: "q97",
+        kind: "single",
+        topic: "Stilstaan en parkeren",
+        scene: "city",
+        prompt: "Voor de ingang van een winkel is alleen een gehandicaptenparkeerplaats vrij. Je wilt je passagier daar direct laten uitstappen en meteen doorrijden. Wat is juist?",
+        options: [
+          { id: "a", text: "Dat mag: iemand onmiddellijk laten uitstappen is stilstaan, en de gehandicaptenparkeerkaart is alleen nodig om er te parkeren." },
+          { id: "b", text: "Dat mag niet; zonder gehandicaptenparkeerkaart mag je een gehandicaptenparkeerplaats op geen enkele manier gebruiken." },
+          { id: "c", text: "Dat mag, mits je je alarmlichten aanzet en zelf in de auto blijft zitten." },
+          { id: "d", text: "Dat mag maximaal tien minuten, ook als je passagier niet meteen uitstapt." }
+        ],
+        correct: "a",
+        explanation: "Artikel 26 RVV 1990 gaat uitsluitend over parkeren op een gehandicaptenparkeerplaats; daarvoor heb je onder meer een geldige gehandicaptenparkeerkaart nodig. Iemand onmiddellijk laten in- of uitstappen valt niet onder de definitie van parkeren, dus dat korte stilstaan is toegestaan. Alarmlichten of een zelfbedachte tijdslimiet van tien minuten veranderen daar niets aan."
+      },
+      {
+        id: "q98",
+        kind: "single",
+        topic: "Stilstaan en parkeren",
+        scene: "city",
+        prompt: "Bij een winkel staat bord E1, een parkeerverbod. Je wilt daar goederen uitladen en direct daarna wegrijden. Wat is juist?",
+        options: [
+          { id: "a", text: "Dat mag niet; het bord verbiedt ook kort stilstaan." },
+          { id: "b", text: "Dat mag: het onmiddellijk laden en lossen van goederen valt niet onder parkeren." },
+          { id: "c", text: "Dat mag alleen met een ontheffing van de gemeente." },
+          { id: "d", text: "Dat mag maximaal een kwartier; daarna moet je wegrijden." }
+        ],
+        correct: "b",
+        explanation: "De tijd die nodig is voor het onmiddellijk laden en lossen valt buiten de definitie van parkeren in artikel 1 RVV 1990, dus je staat dan stil. Een parkeerverbod raakt dat niet; alleen waar stilstaan verboden is, zoals in een tunnel of langs een gele doorgetrokken streep, mag je ook niet laden en lossen."
+      },
+      {
+        id: "q99",
+        kind: "single",
+        topic: "Stilstaan en parkeren",
+        scene: "motorway",
+        prompt: "Vlak voor een afrit ligt tussen de rijstroken een verdrijvingsvlak met schuine strepen. Mag je daar met je auto stilstaan?",
+        options: [
+          { id: "a", text: "Ja, zolang je niemand hindert." },
+          { id: "b", text: "Ja, heel kort, om iemand te laten in- of uitstappen." },
+          { id: "c", text: "Nee, je mag een verdrijvingsvlak niet gebruiken: er rijden mag niet en er stilstaan evenmin." },
+          { id: "d", text: "Ja, maar alleen met je alarmlichten aan." }
+        ],
+        correct: "c",
+        explanation: "Artikel 77 RVV 1990 verbiedt bestuurders het gebruik van verdrijvingsvlakken en puntstukken. Dat verbod gaat niet alleen over rijden: je mag er ook niet stilstaan of parkeren."
+      },
+      {
+        id: "q100",
+        kind: "single",
+        topic: "Stilstaan en parkeren",
+        scene: "residential",
+        prompt: "In een smalle woonstraat zet je je auto met twee wielen op het trottoir, zodat er genoeg ruimte overblijft op de rijbaan. Wat is juist?",
+        options: [
+          { id: "a", text: "Dat mag, want er blijft voldoende ruimte over voor het verkeer." },
+          { id: "b", text: "Dat mag zolang voetgangers er nog langs kunnen." },
+          { id: "c", text: "Dat mag niet: voor het parkeren mag je het trottoir niet gebruiken." },
+          { id: "d", text: "Dat mag, zolang er geen bord met een parkeerverbod staat." }
+        ],
+        correct: "c",
+        counts: false,
+        explanation: "Volgens artikel 10 RVV 1990 mag je voor het parkeren ook andere weggedeelten dan de rijbaan gebruiken, maar uitdrukkelijk niet het trottoir, het voetpad, het fietspad, het fiets/bromfietspad of het ruiterpad. In de berm parkeren mag daardoor vaak wel, half op de stoep niet, hoeveel ruimte er ook overblijft."
+      },
+      {
+        id: "q101",
+        kind: "order",
+        topic: "Stilstaan en parkeren",
+        scene: "parking",
+        prompt: "Je parkeert in een parkeerschijf-zone (blauwe zone). Zet de stappen in de juiste volgorde.",
+        help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
+        items: [
+          { id: "vak", text: "Je zet je auto in een parkeervak dat is voorzien van een blauwe streep." },
+          { id: "schijf", text: "Je stelt de parkeerschijf in op je aankomsttijd en legt hem duidelijk zichtbaar achter de voorruit." },
+          { id: "wegrijden", text: "Je rijdt weg voordat de toegestane parkeerduur is verstreken." }
+        ],
+        correct: ["vak", "schijf", "wegrijden"],
+        explanation: "In een parkeerschijf-zone mag je alleen parkeren op plaatsen met een blauwe streep of plaatsen die als parkeerplaats zijn aangeduid; daarna stel je de schijf in op je aankomsttijd en leg je hem zichtbaar achter de voorruit. Zorg dat je weg bent voordat de toegestane parkeerduur is verstreken (artikel 25 RVV 1990)."
+      },
+      {
+        id: "q102",
+        kind: "multi",
+        topic: "Stilstaan en parkeren",
+        scene: "parking",
+        prompt: "Je parkeert op een parkeerterrein dat is aangeduid met een bord parkeergelegenheid en waar parkeervakken zijn aangebracht. Wat is juist? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Je mag er alleen binnen de vakken parkeren." },
+          { id: "b", text: "Dubbel parkeren, dus naast een auto die al in een vak staat, is verboden." },
+          { id: "c", text: "Als alle vakken bezet zijn, mag je aan het einde van een rij buiten de vakken parkeren." },
+          { id: "d", text: "Buiten de aangegeven venstertijden mag je wel buiten de vakken parkeren." }
+        ],
+        correct: ["a", "b"],
+        explanation: "Op een parkeergelegenheid met parkeervakken mag je alleen in die vakken parkeren (artikel 24, vierde lid, RVV 1990) en dubbel parkeren is verboden (artikel 24, derde lid). Dat alle vakken bezet zijn of dat een venstertijd voorbij is, geeft geen recht om buiten de vakken te gaan staan."
       }
     ];
 
@@ -3625,13 +3891,18 @@
       },
       {
         id: "h17",
-        kind: "number",
+        kind: "single",
         topic: "Stilstaan en parkeren",
         scene: "intersection",
-        prompt: "Binnen hoeveel meter van een kruispunt mag je niet parkeren?",
-        suffix: "meter",
-        accepted: ["5"],
-        explanation: "Je mag niet parkeren binnen 5 meter van een kruispunt."
+        prompt: "Je stopt op ongeveer drie meter van een kruispunt om je passagier meteen te laten uitstappen en rijdt daarna direct weer verder. Wat is juist?",
+        options: [
+          { id: "a", text: "Dat mag: de vijfmetergrens geldt voor parkeren, en jij staat alleen stil" },
+          { id: "b", text: "Dat mag niet, want bij een kruispunt mag je je auto ook niet laten stilstaan" },
+          { id: "c", text: "Dat mag, zolang je je alarmlichten aanzet" },
+          { id: "d", text: "Dat mag alleen buiten de bebouwde kom" }
+        ],
+        correct: "b",
+        explanation: "Artikel 24 RVV 1990 verbiedt parkeren binnen vijf meter van een kruispunt, maar artikel 23 gaat verder: bij een kruispunt mag je helemaal niet stilstaan. Iemand laten uitstappen is stilstaan, dus de vijfmetermaat is geen vrijbrief om er even te stoppen."
       },
       {
         id: "h18",
@@ -3836,16 +4107,16 @@
         id: "h32",
         kind: "multi",
         topic: "Veilig rijden en noodsituaties",
-        scene: "weather",
-        prompt: "Wanneer moet je dimlicht gebruiken? Kies alle juiste antwoorden.",
+        scene: "motorway",
+        prompt: "Het regent zo hard dat je zicht ernstig wordt belemmerd. Welke verlichting mag je nu voeren? Kies alle juiste antwoorden.",
         options: [
-          { id: "a", text: "Bij nacht" },
-          { id: "b", text: "Overdag bij slecht zicht" },
-          { id: "c", text: "Alleen als je op de autosnelweg rijdt" },
-          { id: "d", text: "Om voorrang af te dwingen" }
+          { id: "a", text: "Dimlicht" },
+          { id: "b", text: "Mistlicht vóór" },
+          { id: "c", text: "Mistachterlicht" },
+          { id: "d", text: "Groot licht" }
         ],
         correct: ["a", "b"],
-        explanation: "Dimlicht gebruik je bij nacht en overdag bij slecht zicht."
+        explanation: "Mistlicht vóór mag bij mist, sneeuwval én regen die het zicht ernstig belemmeren (artikel 34 RVV 1990). Voor het mistachterlicht is de regel strenger: dat mag alleen bij mist of sneeuwval waarbij het zicht minder dan 50 meter is, dus niet bij regen. Groot licht kaatst terug in de regen en verblindt anderen."
       },
       {
         id: "h33",

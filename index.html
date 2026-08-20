@@ -4109,15 +4109,15 @@
         kind: "order",
         topic: "Voorrang en voor laten gaan",
         scene: "intersection",
-        prompt: "Zet de volgorde goed: jij slaat linksaf, een tegenligger rijdt rechtdoor en op het fietspad van de weg waar je in gaat nadert een fietser.",
+        prompt: "Zet de volgorde goed: jij wilt linksaf, er nadert een tegenligger die rechtdoor gaat en direct achter die tegenligger rijdt een motorrijder die ook rechtdoor gaat.",
         help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
         items: [
-          { id: "you", text: "Jij maakt het afslaan af" },
-          { id: "oncoming", text: "Tegenligger rechtdoor" },
-          { id: "bike", text: "Fietser op het fietspad dat je kruist" }
+          { id: "oncoming", text: "Tegenligger die rechtdoor gaat" },
+          { id: "motor", text: "Motorrijder direct achter die tegenligger" },
+          { id: "you", text: "Jij slaat linksaf" }
         ],
-        correct: ["oncoming", "bike", "you"],
-        explanation: "Eerst laat je de tegenligger die rechtdoor gaat voorgaan (artikel 18 RVV 1990). Daarna kruis je het fietspad van de nieuwe weg en laat je die fietser voorgaan. Pas daarna maak je het afslaan af."
+        correct: ["oncoming", "motor", "you"],
+        explanation: "Als afslaande bestuurder laat je al het tegemoetkomende verkeer dat rechtdoor gaat voorgaan (artikel 18 RVV 1990), dus ook de motorrijder achter die eerste auto. Een motor lijkt door zijn smalle silhouet verder weg en langzamer dan hij is. Ben je eenmaal de nieuwe weg in gedraaid, dan laat je daar ook de fietsers voorgaan op het fietspad dat je kruist."
       },
       {
         id: "h52",

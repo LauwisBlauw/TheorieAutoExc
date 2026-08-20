@@ -4830,6 +4830,9 @@
       const timer = document.querySelector("[data-timer]");
       if (timer) {
         timer.textContent = formatTime(state.remaining);
+        // Ook het label bijwerken: anders leest een schermlezer de tijd voor
+        // die bij de laatste hertekening gold, en die staat al minuten stil.
+        timer.setAttribute("aria-label", "Resterende tijd " + formatTime(state.remaining));
         timer.classList.toggle("low", state.remaining <= EXAM_CONFIG.lowTimeWarningSeconds);
       }
     }

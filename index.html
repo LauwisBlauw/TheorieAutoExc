@@ -2955,6 +2955,441 @@
         ],
         correct: ["bike", "you", "behind"],
         explanation: "Verkeer dat op dezelfde weg naast je rijdt en rechtdoor gaat, laat je als afslaande bestuurder voorgaan (artikel 18 RVV 1990). De auto achter jou kan pas nadat jij bent afgeslagen."
+      },
+      {
+        id: "q53",
+        kind: "single",
+        topic: "Wetgeving",
+        scene: "none",
+        prompt: "Je hebt alleen rijbewijs B en wilt een bestelauto met dieselmotor huren. Tot welke toegestane maximummassa mag je deze bestelauto besturen?",
+        options: [
+          { id: "a", text: "2500 kg" },
+          { id: "b", text: "3500 kg" },
+          { id: "c", text: "5000 kg" },
+          { id: "d", text: "7500 kg" }
+        ],
+        correct: "b",
+        explanation: "Met rijbewijs B bestuur je motorvoertuigen met een toegestane maximummassa van niet meer dan 3500 kg. De uitzondering tot 4250 kg geldt in Nederland alleen voor voertuigen die niet volledig op benzine of diesel rijden, en dus niet voor deze dieselbestelauto."
+      },
+      {
+        id: "q54",
+        kind: "single",
+        topic: "Wetgeving",
+        scene: "none",
+        prompt: "Je auto heeft een toegestane maximummassa van 2000 kg. Je wilt er met rijbewijs B een aanhangwagen achter hangen met een toegestane maximummassa van 1200 kg. Mag dat?",
+        options: [
+          { id: "a", text: "Nee, met rijbewijs B mag een aanhangwagen nooit zwaarder zijn dan 750 kg." },
+          { id: "b", text: "Ja, want auto en aanhangwagen samen blijven onder de 3500 kg." },
+          { id: "c", text: "Ja, maar alleen als je code 96 op je rijbewijs hebt laten bijschrijven." },
+          { id: "d", text: "Nee, voor elke aanhangwagen boven 750 kg heb je rijbewijs BE nodig." }
+        ],
+        correct: "b",
+        explanation: "Met rijbewijs B mag een aanhangwagen zwaarder zijn dan 750 kg, zolang auto en aanhangwagen samen niet boven de 3500 kg uitkomen. Hier is dat 3200 kg, dus je blijft binnen de grens; code 96 heb je pas nodig voor een combinatie boven 3500 kg tot maximaal 4250 kg."
+      },
+      {
+        id: "q55",
+        kind: "number",
+        topic: "Wetgeving",
+        scene: "none",
+        prompt: "Je bent 30 jaar en haalt je rijbewijs B. Hoeveel jaar is dit rijbewijs geldig?",
+        suffix: "jaar",
+        accepted: ["10"],
+        explanation: "Een rijbewijs B wordt in principe voor 10 jaar afgegeven, gerekend vanaf de datum van je aanvraag. Kortere termijnen komen pas veel later: vraag je een rijbewijs aan tussen je 65e en 70e, dan geldt het tot je 75e verjaardag en daarna telkens 5 jaar."
+      },
+      {
+        id: "q56",
+        kind: "single",
+        topic: "Wetgeving",
+        scene: "none",
+        prompt: "Je haalde op je 16e je AM-rijbewijs voor de bromfiets. Op je 18e haal je je rijbewijs B. Hoelang ben je in totaal beginnend bestuurder, gerekend vanaf je eerste rijbewijs?",
+        options: [
+          { id: "a", text: "2 jaar" },
+          { id: "b", text: "5 jaar" },
+          { id: "c", text: "7 jaar" },
+          { id: "d", text: "10 jaar" }
+        ],
+        correct: "c",
+        explanation: "De beginnersperiode telt vanaf je allereerste rijbewijs, hier dus vanaf het AM-rijbewijs op je 16e: dan ben je 7 jaar beginnend bestuurder. Wie zijn eerste rijbewijs pas op zijn 18e of later haalt, is 5 jaar beginnend bestuurder; je latere rijbewijs B start geen nieuwe termijn."
+      },
+      {
+        id: "q57",
+        kind: "single",
+        topic: "Wetgeving",
+        scene: "none",
+        prompt: "Bij een alcoholcontrole blaast een beginnend bestuurder 100 microgram alcohol per liter uitgeademde lucht. Wat is juist?",
+        options: [
+          { id: "a", text: "Dat mag, want de grens ligt bij 220 microgram per liter." },
+          { id: "b", text: "Dat is te veel, want voor een beginnend bestuurder ligt de grens bij 88 microgram per liter." },
+          { id: "c", text: "Dat mag, want deze bestuurder blijft ruim onder 0,5 promille." },
+          { id: "d", text: "Dat is te veel, want voor een beginnend bestuurder geldt een absoluut verbod van 0,0." }
+        ],
+        correct: "b",
+        explanation: "Voor een beginnend bestuurder is de grens 0,2 promille, wat neerkomt op 88 microgram alcohol per liter uitgeademde lucht; voor een ervaren bestuurder is dat 0,5 promille oftewel 220 microgram. Met 100 microgram zit een beginnend bestuurder er dus boven (artikel 8 Wegenverkeerswet 1994)."
+      },
+      {
+        id: "q58",
+        kind: "multi",
+        topic: "Wetgeving",
+        scene: "none",
+        prompt: "Wat is juist over de dekking van autoverzekeringen? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Een WA-verzekering vergoedt de schade die jij met je auto aan een ander toebrengt." },
+          { id: "b", text: "Met alleen WA krijg je ook schade aan je eigen auto vergoed als je zelf tegen een paaltje rijdt." },
+          { id: "c", text: "Bij een allriskverzekering is schade aan je eigen auto ook verzekerd als het je eigen fout is." },
+          { id: "d", text: "Beperkt casco (WA+) vergoedt schade aan je eigen auto door onder meer diefstal, brand, storm en ruitbreuk." }
+        ],
+        correct: ["a", "c", "d"],
+        explanation: "WA dekt alleen schade aan anderen, beperkt casco vult dat aan met een vaste lijst gebeurtenissen zoals diefstal, brand, storm en ruitbreuk, en allrisk dekt daarnaast schade aan je eigen auto door je eigen fout. Schade aan je eigen auto door eigen schuld krijg je met alleen WA dus nooit vergoed."
+      },
+      {
+        id: "q59",
+        kind: "single",
+        topic: "Wetgeving",
+        scene: "parking",
+        prompt: "Je auto staat een half jaar ongebruikt langs de openbare weg. Je rijdt er niet mee. Wat geldt voor de verzekering?",
+        options: [
+          { id: "a", text: "Zolang je niet rijdt, hoeft de auto niet verzekerd te zijn." },
+          { id: "b", text: "Zolang het kenteken op jouw naam staat, moet de auto WA-verzekerd zijn." },
+          { id: "c", text: "Een stilstaande auto heeft alleen een geldige APK nodig, geen verzekering." },
+          { id: "d", text: "De verzekeringsplicht begint pas weer op het moment dat je de auto in gebruik neemt." }
+        ],
+        correct: "b",
+        explanation: "De verzekeringsplicht hangt aan de tenaamstelling, niet aan het gebruik: staat het kenteken op jouw naam, dan moet er een WA-verzekering zijn en controleert de RDW daarop. Wil je die kosten niet, dan kun je het voertuig laten schorsen, maar dan mag het niet op de openbare weg staan of rijden."
+      },
+      {
+        id: "q60",
+        kind: "multi",
+        topic: "Wetgeving",
+        scene: "none",
+        prompt: "Wat is juist over de kentekencard en de voertuiggegevens daarop? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "De meldcode bestaat uit de laatste vier cijfers van het voertuigidentificatienummer." },
+          { id: "b", text: "Het voertuigidentificatienummer is uniek en staat zowel op de kentekencard als op het voertuig zelf." },
+          { id: "c", text: "Het kenteken en het voertuigidentificatienummer zijn twee namen voor hetzelfde nummer." },
+          { id: "d", text: "Als bestuurder moet je het kentekenbewijs bij je hebben tijdens het rijden." }
+        ],
+        correct: ["a", "b", "d"],
+        explanation: "Het voertuigidentificatienummer is het unieke nummer van het voertuig zelf; de meldcode is daarvan de laatste vier cijfers en heb je bijvoorbeeld nodig om de auto te verzekeren. Het kenteken hoort bij de registratie en kan veranderen, het voertuigidentificatienummer niet, en het kentekenbewijs moet je tijdens het rijden bij je hebben."
+      },
+      {
+        id: "q61",
+        kind: "single",
+        topic: "Wetgeving",
+        scene: "none",
+        prompt: "Je leent je auto uit aan een vriend. Hij veroorzaakt een aanrijding en beschadigt de auto van een ander. Wie vergoedt die schade aan de tegenpartij?",
+        options: [
+          { id: "a", text: "Zijn eigen autoverzekering, want hij was de bestuurder." },
+          { id: "b", text: "Jouw WA-verzekering, want de verzekering hoort bij het voertuig en niet bij de bestuurder." },
+          { id: "c", text: "Niemand, want jij reed niet en de auto staat op jouw naam." },
+          { id: "d", text: "Alleen jouw verzekering als je de vriend vooraf als bestuurder had aangemeld." }
+        ],
+        correct: "b",
+        explanation: "De verplichte WA-verzekering is gekoppeld aan het motorrijtuig en dekt de aansprakelijkheid van iedereen die met toestemming rijdt. De schade aan de tegenpartij wordt dus vergoed door de verzekering van jouw auto; schade aan je eigen auto valt daar niet onder."
+      },
+      {
+        id: "q62",
+        kind: "order",
+        topic: "Wetgeving",
+        scene: "none",
+        prompt: "Je rijbewijs verloopt binnenkort en je verlengt het aan de balie van de gemeente. Zet de stappen in de juiste volgorde.",
+        help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
+        items: [
+          { id: "aanvraag", text: "Je dient bij je gemeente de aanvraag in met een pasfoto en een geldig identiteitsbewijs." },
+          { id: "productie", text: "De aanvraag wordt door de RDW verwerkt en het nieuwe rijbewijs wordt gemaakt." },
+          { id: "ophalen", text: "Na ongeveer vijf werkdagen haal je het nieuwe rijbewijs op bij de gemeente." }
+        ],
+        correct: ["aanvraag", "productie", "ophalen"],
+        explanation: "Verlengen aan de balie begint met de aanvraag bij de gemeente waar je staat ingeschreven, met pasfoto en identiteitsbewijs. Daarna wordt het nieuwe rijbewijs aangemaakt en ligt het na ongeveer vijf werkdagen klaar; ophalen doe je altijd zelf bij de gemeente."
+      },
+      {
+        id: "q73",
+        kind: "single",
+        topic: "Voertuigkennis",
+        scene: "dashboard",
+        prompt: "Tijdens het rijden gaat het oranje lampje van het motormanagement branden. Het lampje knippert niet en de auto rijdt verder normaal. Wat doe je?",
+        options: [
+          { id: "a", text: "Meteen op de vluchtstrook of in de berm stoppen en de motor uitzetten, want elk brandend lampje betekent een noodstop." },
+          { id: "b", text: "Rustig doorrijden met aangepaste snelheid en de auto zo snel mogelijk laten controleren." },
+          { id: "c", text: "Niets doen, want oranje lampjes zijn alleen een herinnering voor de volgende onderhoudsbeurt." },
+          { id: "d", text: "Doorrijden tot je merkt dat de motor anders gaat lopen, want pas dan is er echt iets aan de hand." }
+        ],
+        correct: "b",
+        explanation: "De kleur van het lampje bepaalt hoe dringend het is: bij rood zet je de auto zo snel als het veilig kan aan de kant, bij oranje of geel kun je meestal nog rustig doorrijden. Je past dan wel je snelheid aan en laat de storing zo snel mogelijk nakijken; gaat zo'n lampje knipperen, dan is het probleem ernstiger en stop je alsnog."
+      },
+      {
+        id: "q74",
+        kind: "single",
+        topic: "Voertuigkennis",
+        scene: "none",
+        prompt: "Op de zijkant van een band staat de aanduiding M+S. Wat zegt die aanduiding?",
+        options: [
+          { id: "a", text: "De fabrikant geeft daarmee aan dat de band bedoeld is voor gebruik in modder en sneeuw." },
+          { id: "b", text: "De band is in een officiële remtest op sneeuw goedgekeurd voor winterse omstandigheden." },
+          { id: "c", text: "De band heeft nog minstens 4 millimeter profiel over." },
+          { id: "d", text: "De band mag alleen tussen november en april worden gebruikt." }
+        ],
+        correct: "a",
+        explanation: "M+S staat voor modder en sneeuw en is een aanduiding van de fabrikant zelf; er hoort geen verplichte test bij. Voor echt aangetoonde winterprestaties moet je kijken naar het sneeuwvloksymbool met de drie bergtoppen (3PMSF), want daarvoor is wel een remtest op sneeuw nodig."
+      },
+      {
+        id: "q75",
+        kind: "multi",
+        topic: "Voertuigkennis",
+        scene: "none",
+        prompt: "Wat is juist over winterbanden vergeleken met zomerbanden? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Het rubber van een winterband blijft bij kou soepel, waardoor je onder ongeveer 7 graden meer grip hebt." },
+          { id: "b", text: "Voor winterbanden geldt in Nederland een hoger wettelijk profielminimum dan voor zomerbanden." },
+          { id: "c", text: "Winterbanden verliezen hun winterse eigenschappen snel als het profiel onder ongeveer 4 millimeter komt; daarom wordt die diepte als praktische ondergrens aangeraden." },
+          { id: "d", text: "In de wintermaanden ben je in Nederland verplicht op winterbanden te rijden." }
+        ],
+        correct: ["a", "c"],
+        explanation: "Een winterband dankt zijn grip aan een zachter rubbermengsel en fijne lamellen, die onder ongeveer 7 graden beter werken dan een zomerband. Het wettelijk minimum van 1,6 millimeter geldt voor alle banden, maar de winterprestaties lopen al onder 4 millimeter sterk terug; een winterbandenplicht kent Nederland niet."
+      },
+      {
+        id: "q76",
+        kind: "single",
+        topic: "Voertuigkennis",
+        scene: "none",
+        prompt: "Je rijdt al maanden met een te lage bandenspanning. Wat is daarvan het gevolg?",
+        options: [
+          { id: "a", text: "De banden slijten vooral in het midden van het loopvlak." },
+          { id: "b", text: "De banden slijten vooral aan de randen van het loopvlak en je verbruikt meer brandstof." },
+          { id: "c", text: "De remweg wordt korter, omdat het contactvlak met de weg groter is." },
+          { id: "d", text: "De banden blijven koeler, omdat ze soepeler afrollen." }
+        ],
+        correct: "b",
+        explanation: "Bij te weinig spanning draagt vooral de rand van het loopvlak, die daardoor sneller slijt. De band vervormt meer, wordt warmer (kans op een klapband) en de hogere rolweerstand kost extra brandstof; bij een te hoge spanning slijt de band juist in het midden."
+      },
+      {
+        id: "q77",
+        kind: "multi",
+        topic: "Voertuigkennis",
+        scene: "none",
+        prompt: "Wat is juist over de spiegels van een personenauto? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Bij een personenauto die na 25 januari 2010 in gebruik is genomen, zijn zowel een linkerbuitenspiegel als een rechterbuitenspiegel verplicht." },
+          { id: "b", text: "Je stelt je spiegels af terwijl je al in je normale rijhouding achter het stuur zit." },
+          { id: "c", text: "Met goed afgestelde spiegels heb je helemaal geen dode hoek meer." },
+          { id: "d", text: "Een gebarsten spiegelglas is bij de APK alleen een adviespunt en nooit een reden tot afkeuring." }
+        ],
+        correct: ["a", "b"],
+        explanation: "Voor personenauto's die na 25 januari 2010 in gebruik zijn genomen, schrijft artikel 5.2.45 van de Regeling voertuigen een linker- én een rechterbuitenspiegel voor, en het glas van de verplichte spiegels mag geen barsten vertonen. Omdat je stoelpositie bepaalt wat je in de spiegels ziet, stel je eerst je zitpositie in en daarna pas de spiegels; een dode hoek blijft er altijd, dus kijken over je schouder blijft nodig."
+      },
+      {
+        id: "q78",
+        kind: "order",
+        topic: "Voertuigkennis",
+        scene: "none",
+        prompt: "Zet de stappen voor het controleren van je bandenspanning in de juiste volgorde.",
+        help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
+        items: [
+          { id: "meten", text: "Meet de spanning met een drukmeter terwijl de banden nog koud zijn." },
+          { id: "vergelijken", text: "Vergelijk de gemeten waarde met de spanning die de autofabrikant voorschrijft." },
+          { id: "corrigeren", text: "Pomp de band bij tot die waarde of laat lucht ontsnappen tot je erop uitkomt." }
+        ],
+        correct: ["meten", "vergelijken", "corrigeren"],
+        explanation: "Je meet bij koude banden, want door rijden loopt de druk op en meet je te hoog. Pas als je een meetwaarde hebt, kun je die vergelijken met het voorschrift van de fabrikant (vaak op de tankklep of in de deurstijl) en daarna corrigeer je de spanning; bij een zwaar beladen auto hoort een hogere waarde."
+      },
+      {
+        id: "q79",
+        kind: "number",
+        topic: "Wetgeving",
+        scene: "none",
+        prompt: "Je koopt een nieuwe personenauto die op benzine rijdt. Na hoeveel jaar moet die auto voor het eerst APK worden gekeurd?",
+        suffix: "jaar",
+        accepted: ["4"],
+        explanation: "Een nieuwe personenauto op benzine of elektriciteit gaat pas als het voertuig 4 jaar is voor het eerst naar de APK. Voor een diesel- of LPG-auto is die eerste keuring al na 3 jaar."
+      },
+      {
+        id: "q80",
+        kind: "single",
+        topic: "Wetgeving",
+        scene: "none",
+        prompt: "Je personenauto rijdt op benzine en is bij vier jaar voor het eerst APK-gekeurd. Wanneer moet hij daarna weer gekeurd worden?",
+        options: [
+          { id: "a", text: "Na 1 jaar." },
+          { id: "b", text: "Na 2 jaar." },
+          { id: "c", text: "Na 3 jaar." },
+          { id: "d", text: "Na 4 jaar." }
+        ],
+        correct: "b",
+        explanation: "Na de eerste keuring gaat een benzineauto twee keer met een tussenpoos van 2 jaar naar de APK, dus bij 6 en bij 8 jaar. Vanaf dat achtste jaar volgt elk jaar een keuring; een diesel gaat vanaf de eerste keuring al jaarlijks."
+      },
+      {
+        id: "q81",
+        kind: "single",
+        topic: "Wetgeving",
+        scene: "none",
+        prompt: "Je auto is vorige maand door de APK gekomen. Onderweg merk je dat een remlicht het niet meer doet. Wat is juist?",
+        options: [
+          { id: "a", text: "Zolang het keuringsbewijs geldig is, voldoet de auto aan de eisen en kun je hiervoor niet worden bekeurd." },
+          { id: "b", text: "Je moet er zelf voor zorgen dat de auto ook tussen twee keuringen aan de eisen voldoet; de APK is een momentopname." },
+          { id: "c", text: "Je mag hiermee doorrijden tot de volgende APK, zolang je het laat noteren bij de garage." },
+          { id: "d", text: "Het bedrijf dat de APK heeft uitgevoerd is hiervoor verantwoordelijk, niet jij." }
+        ],
+        correct: "b",
+        explanation: "Een voertuig moet altijd voldoen aan de permanente eisen uit hoofdstuk 5 van de Regeling voertuigen, niet alleen op de dag van de keuring. De APK zegt alleen iets over het moment van keuren; jij blijft zelf verantwoordelijk voor de technische staat van de auto waarin je rijdt."
+      },
+      {
+        id: "q82",
+        kind: "single",
+        topic: "Wetgeving",
+        scene: "none",
+        prompt: "Je wilt een baby in een naar achteren gericht kinderzitje vervoeren op de passagiersstoel voorin. Op die plaats zit een werkende voorairbag. Wat is juist?",
+        options: [
+          { id: "a", text: "Dat mag alleen als de airbag op die plaats is uitgeschakeld." },
+          { id: "b", text: "Dat mag gewoon, zolang het zitje goedgekeurd is en met de gordel vastzit." },
+          { id: "c", text: "Dat mag nooit; een naar achteren gericht zitje hoort altijd op de achterbank." },
+          { id: "d", text: "Dat mag zodra het kind ouder is dan één jaar." }
+        ],
+        correct: "a",
+        explanation: "Volgens artikel 59 RVV 1990 mag een kind niet worden vervoerd in een naar achteren gericht kinderbeveiligingssysteem op een passagiersplaats voorin met een voorairbag, tenzij die airbag is uitgeschakeld. Een klappende airbag komt anders met volle kracht tegen het hoofdje van het kind."
+      },
+      {
+        id: "q83",
+        kind: "single",
+        topic: "Gebruik van de weg",
+        scene: "motorway",
+        prompt: "Je rijdt op de rechterrijstrook van de autosnelweg en wilt de weg verlaten via de afrit. Wanneer geef je richting rechts aan?",
+        options: [
+          { id: "a", text: "Pas als je al op de uitrijstrook rijdt." },
+          { id: "b", text: "Op tijd voordat je naar de uitrijstrook stuurt, zodat het verkeer achter je weet wat je gaat doen." },
+          { id: "c", text: "Al bij het eerste bewegwijzeringsbord, ruim een kilometer voor de afrit." },
+          { id: "d", text: "Alleen als er verkeer vlak achter of naast je rijdt." }
+        ],
+        correct: "b",
+        explanation: "Je maakt je bedoeling kenbaar vóórdat je de manoeuvre uitvoert, dus vóór je de uitrijstrook opstuurt (artikel 17 RVV 1990). Aangeven als je er al op rijdt is te laat, en een kilometer van tevoren kan niemand aan jouw afrit koppelen."
+      },
+      {
+        id: "q84",
+        kind: "single",
+        topic: "Gebruik van de weg",
+        scene: "city",
+        prompt: "Je rijdt binnen de bebouwde kom en wilt rechtsaf een zijstraat in. Vlak vóór die zijstraat ligt nog een andere zijstraat. Wanneer geef je richting rechts aan?",
+        options: [
+          { id: "a", text: "Ruim voor de eerste zijstraat, want vroeg aangeven is altijd beter." },
+          { id: "b", text: "Nadat je de eerste zijstraat gepasseerd bent, maar nog op tijd voor het verkeer om je heen." },
+          { id: "c", text: "Pas op het moment dat je het stuur naar rechts draait." },
+          { id: "d", text: "Binnen de bebouwde kom hoef je bij afslaan geen richting aan te geven." }
+        ],
+        correct: "b",
+        explanation: "Vóór het afslaan moet je een teken geven met je richtingaanwijzer of met je arm (artikel 17 RVV 1990), maar wel op het juiste moment. Geef je al vóór de eerste zijstraat aan, dan denken anderen dat je daar afslaat; geef je pas aan tijdens het insturen, dan kan niemand er nog op reageren."
+      },
+      {
+        id: "q85",
+        kind: "single",
+        topic: "Gebruik van de weg",
+        scene: "none",
+        prompt: "Je rijdt op een weg met eenrichtingsverkeer en wilt bij het volgende kruispunt linksaf. Waar sorteer je voor?",
+        options: [
+          { id: "a", text: "Zo veel mogelijk links op de rijbaan." },
+          { id: "b", text: "Tegen de wegas, net als op een weg met verkeer in twee richtingen." },
+          { id: "c", text: "Zo veel mogelijk rechts, want rechts houden geldt ook hier." },
+          { id: "d", text: "Midden op de rijbaan, zodat je beide kanten nog op kunt." }
+        ],
+        correct: "a",
+        explanation: "Op een rijbaan die alleen voor verkeer in één richting is bestemd, ga je om linksaf te slaan tijdig zo veel mogelijk links rijden (artikel 17 RVV 1990). Er komt geen tegenliggend verkeer, dus die ruimte is daar van jou."
+      },
+      {
+        id: "q86",
+        kind: "single",
+        topic: "Gebruik van de weg",
+        scene: "none",
+        prompt: "Je rijdt op een weg waarvan de rijbanen gescheiden zijn door een middenberm. Wat is juist over je plaats op de weg?",
+        options: [
+          { id: "a", text: "Je gebruikt de rijbaan rechts van de middenberm en houdt daarop zo veel mogelijk rechts." },
+          { id: "b", text: "Je mag ook de andere rijbaan gebruiken, zolang daar geen verkeer rijdt." },
+          { id: "c", text: "Omdat het tegemoetkomende verkeer gescheiden is, hoef je niet meer rechts te houden." },
+          { id: "d", text: "Je blijft op de linkerrijstrook van jouw rijbaan, zodat er ruimte blijft voor invoegend verkeer." }
+        ],
+        correct: "a",
+        explanation: "Elke rijbaan van een weg met gescheiden rijbanen is bestemd voor één rijrichting, dus je rijdt op de rijbaan rechts van de scheiding. De verplichting om zo veel mogelijk rechts te houden (artikel 3 RVV 1990) blijft daar onverkort gelden."
+      },
+      {
+        id: "q87",
+        kind: "multi",
+        topic: "Gebruik van de weg",
+        scene: "none",
+        prompt: "Je nadert een rotonde met één rijstrook en je gaat rechtdoor, dus je neemt de tweede afslag. Wat is juist over richting aangeven? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Bij het oprijden gebruik je de richtingaanwijzer niet, want voor rechtdoor bestaat geen richtingaanwijzer." },
+          { id: "b", text: "Zodra je de eerste afslag voorbij bent, geef je richting rechts aan." },
+          { id: "c", text: "Bij het oprijden geef je richting links aan om te laten zien dat je niet de eerste afslag neemt." },
+          { id: "d", text: "Bij het verlaten hoef je geen richting aan te geven, omdat de rotonde maar één rijstrook heeft." }
+        ],
+        correct: ["a", "b"],
+        explanation: "Voor rechtdoor bestaat geen richtingaanwijzer, dus bij het oprijden geef je niets aan. Het verlaten van de rotonde is afslaan naar rechts en daarvoor is richting aangeven wél verplicht (artikel 17 RVV 1990)."
+      },
+      {
+        id: "q88",
+        kind: "single",
+        topic: "Verantwoorde verkeersdeelname",
+        scene: "none",
+        prompt: "De auto voor je rijdt naar jouw idee te langzaam. Je wilt met korte lichtsignalen (knipperen met je groot licht) duidelijk maken dat hij moet opschieten. Mag dat?",
+        options: [
+          { id: "a", text: "Ja, voor lichtsignalen gelden geen regels; alleen voor de claxon." },
+          { id: "b", text: "Nee, geluidssignalen en knippersignalen mag je alleen geven om dreigend gevaar af te wenden." },
+          { id: "c", text: "Ja, maar alleen buiten de bebouwde kom." },
+          { id: "d", text: "Ja, zolang de auto voor je duidelijk langzamer rijdt dan is toegestaan." }
+        ],
+        correct: "b",
+        explanation: "Artikel 28 RVV 1990 staat geluidssignalen en knippersignalen alleen toe om dreigend gevaar af te wenden. Iemand aansporen om harder te rijden valt daar niet onder en werkt bovendien agressie in de hand."
+      },
+      {
+        id: "q89",
+        kind: "multi",
+        topic: "Gebruik van de weg",
+        scene: "intersection",
+        prompt: "Wat is juist over voorsorteren en richting aangeven bij afslaan? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Voordat je afslaat moet je een teken geven met je richtingaanwijzer of met je arm." },
+          { id: "b", text: "Sorteer je voor om rechtsaf te slaan, dan doe je dat door tijdig zo veel mogelijk rechts te gaan rijden." },
+          { id: "c", text: "Voorsorteren is bij elk kruispunt wettelijk verplicht." },
+          { id: "d", text: "Heb je voorgesorteerd, dan hoef je geen richting meer aan te geven." }
+        ],
+        correct: ["a", "b"],
+        explanation: "De wet zegt dat je mág voorsorteren: rechtsaf zo veel mogelijk rechts, linksaf tegen de wegas (artikel 17 RVV 1990). Een teken geven vóór het afslaan is wél verplicht, dus voorsorteren vervangt de richtingaanwijzer niet."
+      },
+      {
+        id: "q90",
+        kind: "order",
+        topic: "Gebruik van de weg",
+        scene: "motorway",
+        prompt: "Zet in de juiste volgorde wat je doet als je de autosnelweg verlaat via de uitrijstrook.",
+        help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
+        items: [
+          { id: "spiegels", text: "In je binnenspiegel en rechterbuitenspiegel kijken" },
+          { id: "richting", text: "Richting rechts aangeven" },
+          { id: "uitrijstrook", text: "Na een blik in de dode hoek de uitrijstrook oprijden en daar snelheid minderen" }
+        ],
+        correct: ["spiegels", "richting", "uitrijstrook"],
+        explanation: "Eerst kijken, dan pas je bedoeling kenbaar maken en daarna sturen. Je remt af op de uitrijstrook en niet op de doorgaande rijbaan, waar het verkeer achter je met hoge snelheid nadert."
+      },
+      {
+        id: "q91",
+        kind: "number",
+        topic: "Bijzondere wegen en weggedeelten",
+        scene: "motorway",
+        prompt: "Je rijdt met een auto met aanhangwagen op een autosnelweg met drie rijstroken. Boven welke totale lengte van auto plus aanhangwagen mag je alleen de twee meest rechts gelegen rijstroken gebruiken?",
+        suffix: "meter",
+        accepted: ["7", "7,0", "7.0"],
+        explanation: "Op een autosnelweg met drie of meer rijstroken mogen vrachtauto's en samenstellen van voertuigen die langer zijn dan 7 meter alleen de twee meest rechts gelegen rijstroken gebruiken (artikel 43 RVV 1990). Alleen om voor te sorteren mag je die stroken tijdelijk verlaten."
+      },
+      {
+        id: "q92",
+        kind: "single",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "none",
+        prompt: "Je nadert een rotonde met twee rijstroken. In de voorsorteerstroken staan pijlen die aangeven welke strook voor welke richting is. Wat doe je?",
+        options: [
+          { id: "a", text: "Je kiest vóór de rotonde de rijstrook waarvan de pijl bij jouw afslag hoort en volgt die richting." },
+          { id: "b", text: "Je kiest zelf een rijstrook, want op een rotonde gelden pijlen alleen als advies." },
+          { id: "c", text: "Je gaat altijd op de rechterrijstrook staan, ongeacht de pijlen." },
+          { id: "d", text: "Je gaat altijd links staan als je verder gaat dan de eerste afslag." }
+        ],
+        correct: "a",
+        explanation: "Pijlen in een voorsorteerstrook zijn geen advies: je bent verplicht de richting te volgen die de strook waarop je staat aangeeft (artikel 78 RVV 1990). Kies je rijstrook dus vóór de rotonde, want wisselen op de rotonde zelf levert gevaarlijke situaties op."
       }
     ];
 

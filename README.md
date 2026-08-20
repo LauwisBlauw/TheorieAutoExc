@@ -9,7 +9,7 @@ Open `index.html` in je browser om te oefenen.
 - 2 oefenvragen om de bediening te leren.
 - 52 examenvragen, waarvan 50 meetellen en 2 testvragen niet meetellen.
 - Normale variant, moeilijke variant en willekeurige mix.
-- 156 vragen in de totale vragenbank.
+- 188 vragen in de totale vragenbank.
 - Timer van 30 minuten.
 - Slaaggrens van 44 goed op 50 meetellende vragen.
 - Vraagsoorten: meerkeuze, ja/nee-achtige meerkeuze, multiple response, invulvraag, hotspotvraag en sleepvraag-simulatie.
@@ -42,6 +42,8 @@ Zodra een vraag is nagekeken, ligt het antwoord vast. Je kunt het niet meer aanp
 ## Variatie
 
 Elke examensessie schudt de vraagvolgorde. Bij meerkeuze en multiple-response worden ook de antwoordopties per sessie geschud. Sleepvragen beginnen met een wisselende volgorde.
+
+De normale variant put uit 80 meetellende vragen, waarvan er per sessie 50 worden getrokken. Twee sessies achter elkaar leveren dus verschillende vragen op.
 
 De moeilijke variant gebruikt een aparte set van 52 vragen. Deze vragen zijn strenger geformuleerd en bevatten meer strikvragen, samengestelde voorrangssituaties, matrixbord-vragen, bijzondere manoeuvres en meerdere-antwoorden-vragen.
 

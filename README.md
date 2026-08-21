@@ -115,6 +115,10 @@ verkeerslichten, en die spreken een vraag over een gelijkwaardig kruispunt tegen
   tram, tegenligger en eigen auto.
 - `kruispunt-tram-linksaf.svg`: hetzelfde kruispunt, maar nu slaat de eigen auto linksaf en kruist daarbij
   zowel de trambaan als het pad van de tegenligger, zodat de volgorde eenduidig vastligt.
+- `kruispunt-tram-haaientanden.svg`: kruispunt waar de voorrang wel geregeld is. De eigen auto rijdt op de
+  voorrangsweg en op de kruisende weg liggen haaientanden, ook voor de tram.
+- `kruispunt-tram-voorrangsvoertuig.svg`: gelijkwaardig kruispunt met een ambulance met blauw zwaailicht en
+  sirene, die iedereen voorgaat, de tram inbegrepen.
 
 Gebaseerd op openbare bronnen:
 

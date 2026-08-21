@@ -3721,6 +3721,45 @@
         ],
         correct: ["tram", "tegenligger", "jij"],
         explanation: "Alle bestuurders verlenen voorrang aan een tram (artikel 15, tweede lid, RVV 1990), dus ook de tegenligger, die de trambaan moet kruisen. Daarna is de tegenligger aan de beurt: jij slaat linksaf en laat tegemoetkomend verkeer dat rechtdoor gaat voorgaan (artikel 18, eerste lid, RVV 1990). Jij kruist zowel de trambaan als het pad van de tegenligger en gaat dus als laatste."
+      },
+      {
+        id: "q105",
+        kind: "single",
+        difficulty: "moeilijk",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        diagram: true,
+        image: "assets/diagrams/kruispunt-tram-haaientanden.svg",
+        imageAlt: "Bovenaanzicht van een kruispunt waarbij jouw weg een voorrangsweg is en op de kruisende weg haaientanden liggen voor zowel een tram genummerd 1 als een auto genummerd 3",
+        imageLabel: "Jij rijdt op de voorrangsweg. Op de kruisende weg liggen haaientanden, voor de tram en voor de auto. Alle drie gaan rechtdoor.",
+        prompt: "Jij (2) rijdt op de voorrangsweg. Op de kruisende weg liggen haaientanden, ook voor de tram (1). Wie mag als eerste het kruispunt op?",
+        options: [
+          { id: "a", text: "2, jij, want de haaientanden gelden ook voor de tram" },
+          { id: "b", text: "1, de tram, want een tram heeft altijd voorrang" },
+          { id: "c", text: "1, de tram, want een tram kan niet snel genoeg remmen" }
+        ],
+        correct: "a",
+        explanation: "Een tram gaat alleen voor op een gelijkwaardig kruispunt, waar de voorrang niet met verkeerstekens is geregeld (artikel 15, tweede lid, RVV 1990). Liggen er haaientanden of staat er een voorrangsbord, dan bepalen die tekens de voorrang, en ze gelden net zo goed voor een trambestuurder. Tram 1 en auto 3 moeten jou dus allebei voor laten gaan. Dat een tram een lange remweg heeft, is een goede reden om alsnog op te letten, maar het geeft hem hier geen voorrang."
+      },
+      {
+        id: "q106",
+        kind: "order",
+        difficulty: "moeilijk",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        diagram: true,
+        image: "assets/diagrams/kruispunt-tram-voorrangsvoertuig.svg",
+        imageAlt: "Bovenaanzicht van een gelijkwaardig kruispunt met een tram van links genummerd 1, een ambulance met blauw zwaailicht en sirene van boven genummerd 2 en jouw auto van beneden genummerd 3",
+        imageLabel: "Gelijkwaardig kruispunt zonder borden of verkeerslichten. De ambulance voert blauw zwaailicht en sirene. Alle drie gaan rechtdoor.",
+        prompt: "Op dit gelijkwaardige kruispunt nadert een ambulance (2) met blauw zwaailicht en sirene. Verder komen er een tram (1) en jij (3). Zet ze in de volgorde waarin ze mogen gaan.",
+        help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
+        items: [
+          { id: "ambulance", text: "2, de ambulance met zwaailicht en sirene" },
+          { id: "tram", text: "1, de tram" },
+          { id: "jij", text: "3, jouw auto" }
+        ],
+        correct: ["ambulance", "tram", "jij"],
+        explanation: "Weggebruikers laten een voorrangsvoertuig voorgaan (artikel 50 RVV 1990). Een voorrangsvoertuig is een voertuig met blauw zwaai-, flits- of knipperlicht en een tweetonige hoorn; alleen een zwaailicht zonder sirene is dus niet genoeg. Een trambestuurder is ook gewoon een weggebruiker, dus de tram moet de ambulance net zo goed voor laten gaan. Daarna geldt op dit gelijkwaardige kruispunt de tramvoorrang van artikel 15, tweede lid, en ben jij als laatste aan de beurt."
       }
     ];
 

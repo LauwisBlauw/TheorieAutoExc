@@ -113,6 +113,8 @@ verkeerslichten, en die spreken een vraag over een gelijkwaardig kruispunt tegen
 
 - `kruispunt-tram-gelijkwaardig.svg`: gelijkwaardig kruispunt zonder borden of lichten, met een genummerde
   tram, tegenligger en eigen auto.
+- `kruispunt-tram-linksaf.svg`: hetzelfde kruispunt, maar nu slaat de eigen auto linksaf en kruist daarbij
+  zowel de trambaan als het pad van de tegenligger, zodat de volgorde eenduidig vastligt.
 
 Gebaseerd op openbare bronnen:
 

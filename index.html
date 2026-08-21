@@ -751,6 +751,13 @@
       object-fit: contain;
     }
 
+    .diagram-caption {
+      margin: 10px 0 0;
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
     /* Hotspotstippen zijn percentages van de container, terwijl object-fit:cover
        de foto bijsnijdt. Door de container dezelfde verhouding als de beelden
        (1586x992) te geven valt er niets weg en blijft elke stip op zijn plek. */
@@ -3694,6 +3701,26 @@
         ],
         correct: "a",
         explanation: "Op een kruispunt verlenen alle bestuurders voorrang aan een tram (artikel 15, tweede lid, RVV 1990). Die uitzondering gaat voor op de gewone voorrang van rechts, dus ook een tram die van links komt mag eerst. Daarna is auto 2 aan de beurt, want die komt van jouw rechterkant, en jij (3) gaat als laatste. Let op: het gaat om de tram zelf, niet om de trambaan. Ligt er wel een voorrangsbord of haaientanden, dan bepalen die de voorrang."
+      },
+      {
+        id: "q104",
+        kind: "order",
+        difficulty: "moeilijk",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        diagram: true,
+        image: "assets/diagrams/kruispunt-tram-linksaf.svg",
+        imageAlt: "Bovenaanzicht van een gelijkwaardig kruispunt met een tram van links genummerd 1, een tegenligger van boven genummerd 2 en jouw auto van beneden genummerd 3 die linksaf slaat",
+        imageLabel: "Gelijkwaardig kruispunt: geen borden, geen haaientanden en geen verkeerslichten. De tram en de tegenligger gaan rechtdoor, jij slaat linksaf.",
+        prompt: "Op dit gelijkwaardige kruispunt gaan de tram (1) en de tegenligger (2) rechtdoor, en sla jij (3) linksaf. Zet ze in de volgorde waarin ze mogen gaan.",
+        help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
+        items: [
+          { id: "tram", text: "1, de tram" },
+          { id: "tegenligger", text: "2, de tegenligger die rechtdoor gaat" },
+          { id: "jij", text: "3, jouw auto die linksaf slaat" }
+        ],
+        correct: ["tram", "tegenligger", "jij"],
+        explanation: "Alle bestuurders verlenen voorrang aan een tram (artikel 15, tweede lid, RVV 1990), dus ook de tegenligger, die de trambaan moet kruisen. Daarna is de tegenligger aan de beurt: jij slaat linksaf en laat tegemoetkomend verkeer dat rechtdoor gaat voorgaan (artikel 18, eerste lid, RVV 1990). Jij kruist zowel de trambaan als het pad van de tegenligger en gaat dus als laatste."
       }
     ];
 
@@ -6441,6 +6468,7 @@
           ${renderSceneObjects(q.scene || "city", q)}
           ${hotspots}
         </div>
+        ${q.diagram && sceneLabelText(q) ? `<p class="diagram-caption">${escapeHtml(sceneLabelText(q))}</p>` : ""}
         ${labels}
       `;
     }
@@ -6499,10 +6527,19 @@
         alt: q.imageAlt || data.alt,
         label: q.imageLabel || data.label
       } : data;
+      // Bij een schema staat het bijschrift eronder in plaats van eroverheen:
+      // een overlay dekt daar juist de weggebruikers af waar de vraag om draait.
+      const overlay = q && q.diagram
+        ? ""
+        : `<div class="scene-label">${escapeHtml(imageData.label)}</div>`;
       return `
         <img class="scene-photo" src="${escapeHtml(imageData.src)}" alt="${escapeHtml(imageData.alt)}">
-        <div class="scene-label">${escapeHtml(imageData.label)}</div>
+        ${overlay}
       `;
+    }
+
+    function sceneLabelText(q) {
+      return q && q.imageLabel ? q.imageLabel : "";
     }
 
     function renderResults() {

@@ -107,6 +107,13 @@ Vragen waarbij geen van de beschikbare foto's past, krijgen `scene: "none"` en w
 
 De smoke test bewaakt deze regel voor de gevallen die eerder misgingen.
 
+Voor situatievragen waarbij het om de verkeerssituatie zelf gaat, staan in `assets/diagrams` zelfgetekende
+SVG-schema's met een bovenaanzicht. Een foto voldoet daar niet: elk Nederlands tramkruispunt op foto heeft
+verkeerslichten, en die spreken een vraag over een gelijkwaardig kruispunt tegen.
+
+- `kruispunt-tram-gelijkwaardig.svg`: gelijkwaardig kruispunt zonder borden of lichten, met een genummerde
+  tram, tegenligger en eigen auto.
+
 Gebaseerd op openbare bronnen:
 
 - https://www.cbr.nl/nl/rijbewijs-halen/auto/theorie-examen-auto/hoe-gaat-het-theorie-examen-auto

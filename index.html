@@ -738,6 +738,19 @@
       overflow: hidden;
     }
 
+    /* Een schema verliest zijn betekenis zodra er iets wordt afgesneden: de
+       nummers moeten allemaal in beeld blijven. Vandaar contain plus een vaste
+       verhouding, met dezelfde achtergrond als de tekening zelf. */
+    .scene.diagram-scene {
+      aspect-ratio: 16 / 10;
+      min-height: 0;
+      background: #dbe4dc;
+    }
+
+    .scene.diagram-scene .scene-photo {
+      object-fit: contain;
+    }
+
     /* Hotspotstippen zijn percentages van de container, terwijl object-fit:cover
        de foto bijsnijdt. Door de container dezelfde verhouding als de beelden
        (1586x992) te geven valt er niets weg en blijft elke stip op zijn plek. */
@@ -1832,6 +1845,13 @@
       .question-body {
         grid-template-columns: 1fr;
       }
+
+      /* Zodra de kolommen onder elkaar vallen hoort de situatie boven de
+         antwoorden te staan: je kunt de vraag niet beantwoorden zonder hem. */
+      .visual-panel {
+        order: -1;
+      }
+
     }
 
     @media (max-width: 640px) {
@@ -1924,7 +1944,6 @@
       }
 
       .visual-panel {
-        order: -1;
         width: 100%;
       }
 
@@ -3656,6 +3675,25 @@
         ],
         correct: ["a", "b"],
         explanation: "Op een parkeergelegenheid met parkeervakken mag je alleen in die vakken parkeren (artikel 24, vierde lid, RVV 1990) en dubbel parkeren is verboden (artikel 24, derde lid). Dat alle vakken bezet zijn of dat een venstertijd voorbij is, geeft geen recht om buiten de vakken te gaan staan."
+      },
+      {
+        id: "q103",
+        kind: "single",
+        difficulty: "moeilijk",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        diagram: true,
+        image: "assets/diagrams/kruispunt-tram-gelijkwaardig.svg",
+        imageAlt: "Bovenaanzicht van een gelijkwaardig kruispunt met een tram van links genummerd 1, een auto van rechts genummerd 2 en jouw auto van beneden genummerd 3",
+        imageLabel: "Gelijkwaardig kruispunt: geen borden, geen haaientanden en geen verkeerslichten. Alle drie gaan rechtdoor.",
+        prompt: "Op dit gelijkwaardige kruispunt willen alle drie de weggebruikers rechtdoor. Wie mag als eerste het kruispunt op?",
+        options: [
+          { id: "a", text: "1, de tram" },
+          { id: "b", text: "2, de auto die van rechts komt" },
+          { id: "c", text: "3, jouw auto" }
+        ],
+        correct: "a",
+        explanation: "Op een kruispunt verlenen alle bestuurders voorrang aan een tram (artikel 15, tweede lid, RVV 1990). Die uitzondering gaat voor op de gewone voorrang van rechts, dus ook een tram die van links komt mag eerst. Daarna is auto 2 aan de beurt, want die komt van jouw rechterkant, en jij (3) gaat als laatste. Let op: het gaat om de tram zelf, niet om de trambaan. Ligt er wel een voorrangsbord of haaientanden, dan bepalen die de voorrang."
       }
     ];
 
@@ -6399,7 +6437,7 @@
       ` : "";
 
       return `
-        <div class="scene photo-scene ${escapeHtml(q.scene || "city")}${q.kind === "hotspot" ? " hotspot-scene" : ""}"${q.kind === "hotspot" ? ' role="radiogroup" aria-label="Kies een plek in de afbeelding"' : ""}>
+        <div class="scene photo-scene ${escapeHtml(q.scene || "city")}${q.kind === "hotspot" ? " hotspot-scene" : ""}${q.diagram ? " diagram-scene" : ""}"${q.kind === "hotspot" ? ' role="radiogroup" aria-label="Kies een plek in de afbeelding"' : ""}>
           ${renderSceneObjects(q.scene || "city", q)}
           ${hotspots}
         </div>

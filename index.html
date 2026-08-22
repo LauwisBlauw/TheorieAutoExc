@@ -3906,18 +3906,18 @@
       },
       {
         id: "h8",
-        kind: "order",
+        kind: "single",
+        difficulty: "moeilijk",
         topic: "Voorrang en voor laten gaan",
         scene: "intersection",
-        prompt: "Zet de volgorde goed op een gelijkwaardig kruispunt: een tram komt van links, een auto komt van rechts en jij rijdt rechtdoor.",
-        help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
-        items: [
-          { id: "you", text: "Jij rijdt rechtdoor" },
-          { id: "rightcar", text: "Auto van rechts" },
-          { id: "tram", text: "Tram van links" }
+        prompt: "Op een gelijkwaardig kruispunt komt een tram van links. Waarom gaat die toch voor jou?",
+        options: [
+          { id: "a", text: "Omdat de regel dat je een tram voor laat gaan boven de voorrang van rechts gaat" },
+          { id: "b", text: "Omdat een tram op rails rijdt en niet kan uitwijken" },
+          { id: "c", text: "Omdat een tram altijd voorrang heeft, ook bij borden en verkeerslichten" }
         ],
-        correct: ["tram", "rightcar", "you"],
-        explanation: "Een tram gaat op een gelijkwaardig kruispunt voor. Daarna verleen je voorrang aan de bestuurder van rechts."
+        correct: "a",
+        explanation: "Artikel 15 van het RVV geeft eerst de hoofdregel, voorrang van rechts, en noemt daarna de uitzonderingen. Voorrang verlenen aan een tram is zo'n uitzondering, en die gaat dus voor op de hoofdregel; de richting waaruit de tram komt doet er niet toe. Dat een tram slecht kan uitwijken is een goede reden om extra op te letten, maar het is niet de regel. En de tramvoorrang geldt alleen waar de voorrang niet met verkeerstekens is geregeld."
       },
       {
         id: "h9",
@@ -4014,16 +4014,17 @@
       {
         id: "h15",
         kind: "single",
+        difficulty: "moeilijk",
         topic: "Stilstaan en parkeren",
-        scene: "parking",
-        prompt: "Langs de rand van de rijbaan ligt een doorgetrokken gele streep. Wat betekent dit precies?",
+        scene: "city",
+        prompt: "Langs een doorgetrokken gele streep wil je heel even stoppen om een passagier te laten uitstappen. Mag dat?",
         options: [
-          { id: "a", text: "Niet stilstaan" },
-          { id: "b", text: "Wel stilstaan, maar niet parkeren" },
-          { id: "c", text: "Alleen parkeren met alarmlichten" }
+          { id: "a", text: "Nee, bij een doorgetrokken gele streep mag je ook niet kort stilstaan" },
+          { id: "b", text: "Ja, want iemand laten uitstappen is stilstaan en geen parkeren" },
+          { id: "c", text: "Ja, zolang je je alarmlichten aanzet" }
         ],
         correct: "a",
-        explanation: "Een doorgetrokken gele streep betekent een stopverbod: je mag daar niet stilstaan."
+        explanation: "Hier zit het verschil met veel andere verboden. Een parkeerverbod raakt het onmiddellijk in- en uit laten stappen niet, want dat telt als stilstaan. Maar de doorgetrokken gele streep is een stopverbod: daar mag je zelfs dat korte moment niet stilstaan. Bij een onderbroken gele streep, die alleen parkeren verbiedt, mag iemand er wel uitstappen. Alarmlichten maken een verbod nooit ongedaan."
       },
       {
         id: "h16",
@@ -4070,18 +4071,18 @@
       },
       {
         id: "h19",
-        kind: "multi",
+        kind: "single",
+        difficulty: "moeilijk",
         topic: "Gebruik van de weg",
-        scene: "city",
-        prompt: "Wanneer is inhalen niet toegestaan of niet verantwoord? Kies alle juiste antwoorden.",
+        scene: "motorway",
+        prompt: "Het staat vast op meerdere rijstroken. De rij links van je rijdt langzamer dan die van jou. Mag je er zo langs?",
         options: [
-          { id: "a", text: "Als je een doorgetrokken streep moet overschrijden" },
-          { id: "b", text: "Vlak voor of op een zebrapad" },
-          { id: "c", text: "Als je door het inhalen ander verkeer hindert of in gevaar brengt" },
-          { id: "d", text: "Rechts langs langzaam rijdend verkeer in een file op meerdere rijstroken" }
+          { id: "a", text: "Ja, want in een file langs een langzamere rij rijden geldt niet als inhalen" },
+          { id: "b", text: "Nee, rechts passeren is altijd verboden" },
+          { id: "c", text: "Alleen als je daarbij van rijstrook wisselt" }
         ],
-        correct: ["a", "b", "c"],
-        explanation: "Een doorgetrokken streep, een zebrapad en gevaar of hinder maken inhalen verboden of onverantwoord. Rechts passeren in een file op meerdere rijstroken kan een uitzondering zijn."
+        correct: "a",
+        explanation: "Inhalen is uit je rijstrook gaan om iemand voorbij te rijden en er daarna weer in te komen. Blijf je in je eigen rij rijden terwijl de rij naast je langzamer gaat, dan haal je niet in maar passeer je, en dat mag. Van rijstrook wisselen om sneller op te schieten is juist wel inhalen en dus niet toegestaan."
       },
       {
         id: "h20",
@@ -4157,16 +4158,17 @@
       {
         id: "h25",
         kind: "single",
+        difficulty: "moeilijk",
         topic: "Bijzondere weggebruikers en manoeuvres",
         scene: "city",
-        prompt: "Je komt bij een militaire colonne. Tussen twee voertuigen is een groot gat. Wat mag niet?",
+        prompt: "Een uitvaartstoet van auto's rijdt met de lichten aan over het kruispunt. Er valt een gat tussen twee auto's. Wat geldt?",
         options: [
-          { id: "a", text: "De colonne doorsnijden" },
-          { id: "b", text: "Afstand houden" },
-          { id: "c", text: "Een aanwijzing van politie opvolgen" }
+          { id: "a", text: "Je mag er niet tussendoor rijden; een uitvaartstoet doorsnijden mag net zomin als bij een militaire colonne" },
+          { id: "b", text: "Je mag er tussendoor, want een uitvaartstoet is een gewone rij auto's zonder bijzondere status" },
+          { id: "c", text: "Je mag er alleen tussendoor als je zelf voorrang hebt" }
         ],
         correct: "a",
-        explanation: "Een militaire colonne mag je niet doorsnijden, ook niet als er tijdelijk een gat lijkt te zijn."
+        explanation: "Artikel 16 van het RVV noemt de militaire colonne en de uitvaartstoet in een adem: weggebruikers mogen ze geen van beide doorsnijden. De stoet telt dus als een geheel, en een gat tussen twee auto's is geen uitnodiging. Of jij op dat moment voorrang zou hebben, verandert daar niets aan."
       },
       {
         id: "h26",
@@ -4334,33 +4336,34 @@
       },
       {
         id: "h38",
-        kind: "order",
+        kind: "multi",
         difficulty: "moeilijk",
         topic: "Veilig rijden en noodsituaties",
         scene: "motorway",
-        prompt: "Je krijgt pech op de autosnelweg en zet je auto op de vluchtstrook. Zet de handelingen in de juiste volgorde.",
-        help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
-        items: [
-          { id: "alarm", text: "Alarmlichten aanzetten" },
-          { id: "vangrail", text: "Met alle inzittenden achter de vangrail gaan staan" },
-          { id: "bellen", text: "Vanaf die veilige plek hulp bellen" }
+        prompt: "Je haalt met pech nog net de vluchtstrook. Wat is verstandig? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "De auto zo ver mogelijk rechts zetten, tot tegen de rand" },
+          { id: "b", text: "Uitstappen aan de kant van de vangrail, niet aan de rijbaanzijde" },
+          { id: "c", text: "Zelf even sleutelen, zodat je snel weer weg kunt" },
+          { id: "d", text: "De inzittenden in de auto laten; daar zitten ze het veiligst" }
         ],
-        correct: ["alarm", "vangrail", "bellen"],
-        explanation: "De volgorde is hier het punt. Je alarmlichten gaan meteen aan, want tot dat moment ziet naderend verkeer niet dat je stilstaat. Daarna breng je jezelf en je inzittenden achter de vangrail in veiligheid, want op en langs de vluchtstrook is het levensgevaarlijk. Pas vanaf die veilige plek bel je hulp; blijven bellen naast de auto kost tijd op precies de plek waar je niet wilt staan."
+        correct: ["a", "b"],
+        explanation: "De vluchtstrook is smal en het verkeer ernaast rijdt hard. Hoe verder naar rechts je staat, hoe meer marge er is als iemand de strook aantikt. Uitstappen doe je daarom aan de vangrailzijde, want de deur aan de rijbaankant opent precies in het verkeer. Sleutelen langs de weg is een slecht idee: je staat er langer en vaak met je rug naar het verkeer. En in de auto blijven zitten voelt veilig, maar juist een aanrijding van achteren op de vluchtstrook loopt slecht af."
       },
       {
         id: "h39",
         kind: "single",
-        topic: "Bijzondere wegen en weggedeelten",
+        difficulty: "moeilijk",
+        topic: "Gebruik van de weg",
         scene: "city",
-        prompt: "Rechts ligt een busbaan. Er staat niet dat personenauto's daar mogen rijden. Het is druk op jouw rijstrook. Wat doe je?",
+        prompt: "Naast je ligt een busbaan. Wanneer mag jij daar als personenauto wel op rijden?",
         options: [
-          { id: "a", text: "Niet op de busbaan rijden" },
-          { id: "b", text: "De busbaan gebruiken zolang er geen bus rijdt" },
-          { id: "c", text: "De busbaan alleen gebruiken om rechts in te halen" }
+          { id: "a", text: "Alleen als een onderbord onder het busbaanbord jouw voertuig toelaat" },
+          { id: "b", text: "Als het op jouw rijstrook vaststaat en de busbaan leeg is" },
+          { id: "c", text: "Als je er alleen overheen rijdt om rechts iemand te passeren" }
         ],
         correct: "a",
-        explanation: "Een busbaan is alleen voor verkeer dat daar volgens borden of regels mag rijden."
+        explanation: "Een busbaan is voorbehouden aan de voertuigen die op het bord of het onderbord staan. Vaak zie je daar bijvoorbeeld taxi's of hulpdiensten bij staan; staat jouw voertuig er niet bij, dan mag je er niet op. Dat het vaststaat op jouw strook of dat er even geen bus aankomt, geeft geen recht: juist dan is de bus afhankelijk van een vrije baan."
       },
       {
         id: "h40",
@@ -4408,16 +4411,17 @@
       {
         id: "h43",
         kind: "single",
+        difficulty: "moeilijk",
         topic: "Gebruik van de weg",
         scene: "none",
-        prompt: "Je rijdt buiten de bebouwde kom op een gewone weg, geen autoweg en geen autosnelweg. Er staan geen snelheidsborden. Wat is de maximumsnelheid?",
+        prompt: "Je rijdt buiten de bebouwde kom op een autoweg en komt op een gewone weg zonder borden. Wat verandert er aan je maximumsnelheid?",
         options: [
-          { id: "a", text: "60 km/u" },
-          { id: "b", text: "80 km/u" },
-          { id: "c", text: "100 km/u" }
+          { id: "a", text: "Die gaat van 100 naar 80 km/u" },
+          { id: "b", text: "Die blijft 100 km/u, want je blijft buiten de bebouwde kom" },
+          { id: "c", text: "Die gaat van 80 naar 100 km/u" }
         ],
-        correct: "b",
-        explanation: "Buiten de bebouwde kom geldt op gewone wegen normaal 80 km/u, tenzij borden of zones iets anders aangeven."
+        correct: "a",
+        explanation: "Buiten de bebouwde kom hangt de maximumsnelheid van het soort weg af, niet van de kom. Op een autoweg is dat 100 km/u, op een gewone weg buiten de bebouwde kom 80 km/u. Het einde van de autoweg is dus ook het einde van de 100, ook als er verder geen enkel bord staat."
       },
       {
         id: "h44",
@@ -5186,15 +5190,15 @@
         kind: "multi",
         topic: "Verantwoorde verkeersdeelname",
         scene: "motorway",
-        prompt: "Je wordt vermoeid tijdens een lange rit. Wat helpt echt? Kies alle juiste antwoorden.",
+        prompt: "Waaraan merk je dat je te moe wordt om nog veilig door te rijden? Kies alle juiste antwoorden.",
         options: [
-          { id: "a", text: "Stoppen op een veilige plek en rust nemen" },
-          { id: "b", text: "Bestuurder wisselen als dat kan" },
-          { id: "c", text: "Doorrijden met het raam open als enige maatregel" },
-          { id: "d", text: "Harder rijden zodat de rit sneller voorbij is" }
+          { id: "a", text: "Je merkt dat je binnen je rijstrook begint te zwerven" },
+          { id: "b", text: "Je kunt je de laatste kilometers nauwelijks herinneren" },
+          { id: "c", text: "Je betrapt je erop dat je borden en afritten mist" },
+          { id: "d", text: "Je gaat pas achteruit als je echt in slaap valt achter het stuur" }
         ],
-        correct: ["a", "b"],
-        explanation: "Bij vermoeidheid neem je rust of wissel je van bestuurder. Alleen frisse lucht is niet betrouwbaar genoeg."
+        correct: ["a", "b", "c"],
+        explanation: "Vermoeidheid sluipt erin voordat je er iets van merkt aan je ogen. De eerste signalen zitten in je rijgedrag: zwerven binnen de strook, borden en afritten missen, en het gat in je geheugen over de laatste kilometers. Dat laatste heet een microslaap en betekent dat je al even weg was. Wachten tot je echt indommelt is dus geen optie, want tegen die tijd heb je de weg al minuten niet meer gezien."
       },
       {
         id: "e42",
@@ -5216,17 +5220,17 @@
       {
         id: "e43",
         kind: "order",
-        topic: "Voorrang en voor laten gaan",
-        scene: "intersection",
-        prompt: "Zet de volgorde goed: jij slaat rechtsaf, een fietser naast je gaat rechtdoor en achter jou rijdt verkeer.",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "motorway",
+        prompt: "Op de autosnelweg klapt je rechter voorband. Zet de handelingen in de juiste volgorde.",
         help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
         items: [
-          { id: "bike", text: "Fietser rechtdoor op dezelfde weg" },
-          { id: "you", text: "Jij slaat rechtsaf" },
-          { id: "behind", text: "Achteropkomend verkeer wacht op jouw veilige manoeuvre" }
+          { id: "stuur", text: "Het stuur met beide handen stevig vasthouden en recht houden" },
+          { id: "gas", text: "Het gaspedaal loslaten en de auto laten uitrollen" },
+          { id: "berm", text: "Rustig naar de vluchtstrook sturen en daar pas afremmen" }
         ],
-        correct: ["bike", "you", "behind"],
-        explanation: "Rechtdoor op dezelfde weg gaat voor afslaand verkeer. Daarna sla jij pas af als dat veilig kan."
+        correct: ["stuur", "gas", "berm"],
+        explanation: "Een klapband trekt de auto met een ruk naar de kapotte kant, dus het stuur vasthouden is het eerste en het belangrijkste; laat je los, dan bepaalt de band waar je heen gaat. Daarna neem je gas terug in plaats van te remmen, want hard remmen op drie hele banden brengt je dwars. Pas als de snelheid eruit is stuur je rustig naar de vluchtstrook en rem je daar tot stilstand."
       },
       {
         id: "e44",
@@ -5407,17 +5411,18 @@
       },
       {
         id: "e56",
-        kind: "single",
-        topic: "Veilig rijden en noodsituaties",
-        scene: "motorway",
-        prompt: "Het regent zo hard dat je zicht minder dan 50 meter is. Mag je het mistachterlicht gebruiken?",
+        kind: "multi",
+        topic: "Gevaarherkenning",
+        scene: "city",
+        prompt: "Je staat met de auto naast een vrachtauto die rechts richting aangeeft. Wat is juist? Kies alle juiste antwoorden.",
         options: [
-          { id: "a", text: "Nee, het mistachterlicht is niet toegestaan bij regen" },
-          { id: "b", text: "Ja, want het zicht is minder dan 50 meter" },
-          { id: "c", text: "Ja, maar alleen buiten de bebouwde kom" }
+          { id: "a", text: "Naast een vrachtauto aan de rechterkant sta je in zijn slechtst zichtbare hoek" },
+          { id: "b", text: "Een vrachtauto zwenkt bij het rechts afslaan met de achterkant naar buiten" },
+          { id: "c", text: "Je blijft beter achter de vrachtauto tot hij is afgeslagen" },
+          { id: "d", text: "Als jij de spiegels van de vrachtauto ziet, ziet de chauffeur jou zeker ook" }
         ],
-        correct: "a",
-        explanation: "Het mistachterlicht mag alleen bij mist of sneeuwval als het zicht minder dan 50 meter is. Bij zware regen mag het niet, ook niet bij zeer slecht zicht."
+        correct: ["a", "b", "c"],
+        explanation: "Rechts naast een vrachtauto is de gevaarlijkste plek die je kunt kiezen. De chauffeur zit hoog en links, en juist die kant is het slechtst te overzien. Daar komt bij dat een lange vrachtauto bij het afslaan uitdraait: de achterkant gaat naar buiten en veegt de ruimte schoon waar jij staat. Achterblijven kost je een paar seconden en haalt je uit de klem. Dat je een spiegel ziet, zegt bovendien niets: kijken doet de chauffeur pas als hij die kant op kijkt, en dan nog niet in elke hoek."
       },
       {
         id: "e57",

@@ -43,7 +43,7 @@ Zodra een vraag is nagekeken, ligt het antwoord vast. Je kunt het niet meer aanp
 
 Elke examensessie schudt de vraagvolgorde. Bij meerkeuze en multiple-response worden ook de antwoordopties per sessie geschud. Sleepvragen beginnen met een wisselende volgorde.
 
-De normale variant put uit 96 meetellende vragen, waarvan er per sessie 50 worden getrokken. Twee sessies achter elkaar leveren dus verschillende vragen op.
+De normale variant put uit 100 meetellende vragen, waarvan er per sessie 50 worden getrokken. Twee sessies achter elkaar leveren dus verschillende vragen op.
 
 De moeilijke variant gebruikt een aparte set van 52 vragen. Deze vragen zijn strenger geformuleerd en bevatten meer strikvragen, samengestelde voorrangssituaties, matrixbord-vragen, bijzondere manoeuvres en meerdere-antwoorden-vragen.
 

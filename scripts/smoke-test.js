@@ -90,6 +90,28 @@ const assertions = `
     throw new Error("Timer reset failed");
   }
 
+  // Elke variant hoort een sessie van vaste lengte te leveren, ongeacht hoe groot
+  // de bank eronder wordt. Dit ging eerder mis: normaal en moeilijk gaven hun hele
+  // bank terug, wat pas opviel toen de normale bank tot boven een sessie groeide.
+  ["normal", "hard", "mix"].forEach(function (variant) {
+    var sessie = buildExamQuestions(variant);
+    if (sessie.length !== sessionQuestionCount()) {
+      throw new Error("Variant " + variant + " levert " + sessie.length + " vragen in plaats van " + sessionQuestionCount());
+    }
+    var meetellend = sessie.filter(function (q) { return q.counts !== false; }).length;
+    var test = sessie.filter(function (q) { return q.counts === false; }).length;
+    if (meetellend !== EXAM_CONFIG.scoredQuestionCount) {
+      throw new Error("Variant " + variant + " heeft " + meetellend + " meetellende vragen");
+    }
+    if (test !== EXAM_CONFIG.testQuestionCount) {
+      throw new Error("Variant " + variant + " heeft " + test + " testvragen");
+    }
+    var ids = sessie.map(function (q) { return q.id; });
+    if (new Set(ids).size !== ids.length) {
+      throw new Error("Variant " + variant + " zet dezelfde vraag twee keer in een sessie");
+    }
+  });
+
   startTraining("hard");
   if (state.phase !== "exam" || state.mode !== "training" || state.variant !== "hard") {
     throw new Error("Training state failed");

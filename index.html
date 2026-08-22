@@ -3983,10 +3983,11 @@
           { id: "a", text: "Voor een in- of uitrit" },
           { id: "b", text: "Binnen 5 meter van een kruispunt" },
           { id: "c", text: "Langs een onderbroken gele streep" },
-          { id: "d", text: "Langs een doorgetrokken gele streep" }
+          { id: "d", text: "Langs een doorgetrokken gele streep" },
+          { id: "e", text: "In een parkeervak met een blauwe streep, met je parkeerschijf goed ingesteld" }
         ],
         correct: ["a", "b", "c", "d"],
-        explanation: "Al deze plaatsen sluiten parkeren uit. Bij een doorgetrokken gele streep mag je zelfs niet stilstaan."
+        explanation: "De eerste vier plaatsen sluiten parkeren uit; bij een doorgetrokken gele streep mag je zelfs niet stilstaan. Een parkeervak met een blauwe streep is juist wel bedoeld om te parkeren, zolang je parkeerschijf de juiste tijd aangeeft."
       },
       {
         id: "h15",
@@ -6205,14 +6206,16 @@
       return clone;
     }
 
+    // Elke variant levert een sessie van vaste lengte. Dit gold eerder alleen voor
+    // de mix; normaal en moeilijk gaven simpelweg hun hele bank terug, wat toevallig
+    // klopte zolang die banken precies een sessie groot waren. Zodra een bank groeit,
+    // levert dat een examen van de verkeerde lengte op met een slaaggrens die niet
+    // meer bij het aantal vragen past.
     function buildExamQuestions(variant) {
       const source = sourceQuestionsForVariant(variant);
-      if (variant === "mix") {
-        const scored = shuffleCopy(source.filter(function (question) { return question.counts !== false; })).slice(0, EXAM_CONFIG.scoredQuestionCount);
-        const test = shuffleCopy(source.filter(function (question) { return question.counts === false; })).slice(0, EXAM_CONFIG.testQuestionCount);
-        return shuffleCopy(scored.concat(test)).map(cloneQuestionForSession);
-      }
-      return shuffleCopy(source).map(cloneQuestionForSession);
+      const scored = shuffleCopy(source.filter(function (question) { return question.counts !== false; })).slice(0, EXAM_CONFIG.scoredQuestionCount);
+      const test = shuffleCopy(source.filter(function (question) { return question.counts === false; })).slice(0, EXAM_CONFIG.testQuestionCount);
+      return shuffleCopy(scored.concat(test)).map(cloneQuestionForSession);
     }
 
     function activeQuestions() {

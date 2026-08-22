@@ -2751,14 +2751,17 @@
         kind: "single",
         topic: "Voorrang en voor laten gaan",
         scene: "intersection",
-        prompt: "Je wilt een rotonde oprijden. Voor je liggen haaientanden. Wie gaat eerst?",
+        image: "assets/images/rotonde-haaientanden-bord.jpg",
+        imageAlt: "Foto van een naderende rotonde met een omgekeerde driehoek, een blauw rond rotondebord en haaientanden op het wegdek",
+        imageLabel: "Nadering van een rotonde met bord en haaientanden",
+        prompt: "Je nadert deze rotonde. Voor je liggen haaientanden en er staat een omgekeerde driehoek. Wie gaat eerst?",
         options: [
           { id: "a", text: "Jij, want verkeer van rechts gaat voor" },
-          { id: "b", text: "Het verkeer op de rotonde" },
-          { id: "c", text: "Degene die het eerst toetert" }
+          { id: "b", text: "Het verkeer dat al op de rotonde rijdt" },
+          { id: "c", text: "Jij, want het blauwe rotondebord geeft jou voorrang" }
         ],
         correct: "b",
-        explanation: "Door de haaientanden verleen je voorrang aan verkeer op de rotonde."
+        explanation: "De haaientanden en de omgekeerde driehoek regelen hier de voorrang: verkeer dat al op de rotonde rijdt, gaat voor. Verkeerstekens gaan boven de gewone regels, dus voorrang van rechts speelt hier geen rol. Het blauwe ronde bord schrijft alleen de rijrichting op de rotonde voor en zegt niets over voorrang."
       },
       {
         id: "q36",
@@ -3787,6 +3790,24 @@
     ];
 
     const hardExamQuestions = [
+      {
+        id: "h54",
+        kind: "multi",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "intersection",
+        image: "assets/images/haaientanden-kruispunt.jpg",
+        imageAlt: "Foto van een kruispunt in een woonwijk met witte driehoeken op het wegdek waarvan de punten naar de kijker wijzen",
+        imageLabel: "Driehoeken op het wegdek, gezien vanuit de auto",
+        prompt: "Je nadert dit kruispunt en ziet deze driehoeken op het wegdek. Er staat geen verkeersbord. Wat is juist? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Je moet bestuurders op de kruisende weg voor laten gaan" },
+          { id: "b", text: "De punten wijzen naar de bestuurder die voorrang moet verlenen, dus naar jou" },
+          { id: "c", text: "Je moet hier volledig stoppen, ook als er niemand aankomt" },
+          { id: "d", text: "Zonder bijbehorend bord hebben deze driehoeken geen betekenis" }
+        ],
+        correct: ["a", "b"],
+        explanation: "Dit zijn haaientanden. De punten wijzen altijd naar het verkeer dat voorrang moet verlenen; zie jij de punten, dan ben jij aan de beurt om te wachten. Ze gelden ook zonder bord B6: de markering alleen is genoeg. Stoppen hoeft niet: je mindert vaart, kijkt, en rijdt door als de kruisende weg vrij is. Een volledige stopplicht heb je alleen bij een stopstreep met bord B7."
+      },
       {
         id: "h1",
         kind: "single",

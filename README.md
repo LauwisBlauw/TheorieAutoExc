@@ -9,7 +9,7 @@ Open `index.html` in je browser om te oefenen.
 - 2 oefenvragen om de bediening te leren.
 - 52 examenvragen, waarvan 50 meetellen en 2 testvragen niet meetellen.
 - Normale variant, moeilijke variant en willekeurige mix.
-- 250 vragen in de totale vragenbank, plus 2 oefenvragen om de bediening te leren.
+- 251 vragen in de totale vragenbank, plus 2 oefenvragen om de bediening te leren.
 - Timer van 30 minuten.
 - Slaaggrens van 44 goed op 50 meetellende vragen.
 - Vraagsoorten: meerkeuze, ja/nee-achtige meerkeuze, multiple response, invulvraag, hotspotvraag en sleepvraag-simulatie.
@@ -45,7 +45,7 @@ Elke examensessie schudt de vraagvolgorde. Bij meerkeuze en multiple-response wo
 
 De normale variant put uit 100 meetellende vragen, waarvan er per sessie 50 worden getrokken. Twee sessies achter elkaar leveren dus verschillende vragen op.
 
-De moeilijke variant gebruikt een aparte set van 53 vragen. Deze vragen zijn strenger geformuleerd en bevatten meer strikvragen, samengestelde voorrangssituaties, matrixbord-vragen, bijzondere manoeuvres en meerdere-antwoorden-vragen.
+De moeilijke variant gebruikt een aparte set van 54 vragen. Deze vragen zijn strenger geformuleerd en bevatten meer strikvragen, samengestelde voorrangssituaties, matrixbord-vragen, bijzondere manoeuvres en meerdere-antwoorden-vragen.
 
 De willekeurige mix trekt elke keer 52 vragen uit de normale, moeilijke en extra vragenbank samen. Ook in deze modus tellen 50 vragen mee, zijn 2 vragen testvragen, en is 44 goed geslaagd.
 
@@ -78,7 +78,7 @@ Antwoorden zijn met deze bronnen gespiegeld, maar blijven oefenmateriaal. Bij tw
 
 ### Sfeerfoto's van Wikimedia Commons
 
-Deze negen basisfoto's in `assets/images` komen van Wikimedia Commons en staan hier met hun licentie:
+Deze elf foto's in `assets/images` komen van Wikimedia Commons en staan hier met hun licentie:
 
 - `motorway.jpg`: Traffic jam in the Netherlands, Petra de Boevere, CC BY 2.0.
 - `city.jpg`: Hauptstrassenradweg in Amsterdam, W.-D. Haberland, CC BY-SA 4.0.
@@ -89,10 +89,12 @@ Deze negen basisfoto's in `assets/images` komen van Wikimedia Commons en staan h
 - `weather.jpg`: A12 mist, M.Minderhoud/Michiel1972, CC BY-SA 3.0 or GFDL.
 - `signs.jpg`: Parking zone 30 sign, Rotterdam, Donald Trung Quoc Don, CC BY-SA 4.0. Let op: dit is een blauw *parkeer*zonebord, geen snelheidsbord. Het wordt daarom alleen gebruikt bij vragen over onderborden, niet bij vragen over de 30 km/u-zone.
 - `rail.jpg`: HALI Amsterdam Houtrakpolder, Pbech, CC0.
+- `haaientanden-kruispunt.jpg`: Haaientanden (verkeer), Delft Tanthof, M.Minderhoud, CC BY-SA 3.0. Gebruikt bij h54, waar de punten van de haaientanden naar de kijker wijzen.
+- `rotonde-haaientanden-bord.jpg`: Oldenzaal, Denekamperstraat, Frans-Banja Mulder, CC BY 3.0. Gebruikt bij q35: nadering van een rotonde met bord B6, bord D1 en haaientanden.
 
 ### Situatiebeelden van derden, licentie niet geregeld
 
-Let op: de licenties hierboven gelden **alleen** voor die negen bestanden. In `assets/images` staan
+Let op: de licenties hierboven gelden **alleen** voor die elf bestanden. In `assets/images` staan
 daarnaast veertien situatierenders die afkomstig zijn van Nederlandse commerciele theorie-aanbieders. Drie
 daarvan dragen een zichtbaar merk van de maker:
 

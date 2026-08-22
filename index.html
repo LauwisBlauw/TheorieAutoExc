@@ -2554,14 +2554,14 @@
         kind: "single",
         topic: "Voertuigkennis",
         scene: "dashboard",
-        prompt: "Tijdens het rijden gaat het rode oliedruklampje branden. Wat doe je?",
+        prompt: "Het rode oliedruklampje ging branden en je hebt veilig stilgestaan met de motor uit. Je hebt olie in de kofferbak. Wat is verstandig?",
         options: [
-          { id: "a", text: "Doorrijden tot de volgende tankbeurt" },
-          { id: "b", text: "Zo snel mogelijk veilig stoppen en de motor uitzetten" },
-          { id: "c", text: "Harder rijden zodat de motor warmer wordt" }
+          { id: "a", text: "Het oliepeil controleren, maar niet doorrijden zolang je niet zeker weet dat de druk terug is" },
+          { id: "b", text: "Olie bijvullen en gewoon doorrijden; met het lampje uit is het probleem opgelost" },
+          { id: "c", text: "Doorrijden naar de dichtstbijzijnde garage, want stilstaan langs de weg is gevaarlijker" }
         ],
-        correct: "b",
-        explanation: "Een rood oliedruklampje kan ernstige motorschade betekenen. Stop veilig en zet de motor uit."
+        correct: "a",
+        explanation: "Het lampje waarschuwt voor te lage oliedruk, niet voor een te laag oliepeil. Te weinig olie is een mogelijke oorzaak, maar een defecte oliepomp of een lek geeft hetzelfde signaal, en dan verandert bijvullen er niets aan. Rijden zonder oliedruk kan een motor in enkele minuten onherstelbaar beschadigen, dus die paar kilometer naar de garage zijn het risico niet waard. Controleer het peil en laat de auto ophalen als je twijfelt."
       },
       {
         id: "q22",
@@ -4500,17 +4500,18 @@
       {
         id: "h49",
         kind: "multi",
+        difficulty: "moeilijk",
         topic: "Gevaarherkenning",
         scene: "residential",
-        prompt: "Een bal rolt tussen geparkeerde auto's de weg op. Wat doe je? Kies alle juiste antwoorden.",
+        prompt: "Een bal rolt tussen geparkeerde auto's de weg op. Je ziet nog niemand. Wat is juist? Kies alle juiste antwoorden.",
         options: [
-          { id: "a", text: "Snelheid verminderen" },
-          { id: "b", text: "Klaar zijn om te remmen" },
-          { id: "c", text: "Extra letten op kinderen of voetgangers" },
-          { id: "d", text: "Versnellen om de situatie snel voorbij te zijn" }
+          { id: "a", text: "Je mindert nu al vaart, want een kind kan er zonder te kijken achteraan komen" },
+          { id: "b", text: "Je let vooral op het gat tussen de auto's waar de bal vandaan kwam" },
+          { id: "c", text: "Is het eerste kind veilig overgestoken, dan hou je er rekening mee dat er nog een volgt" },
+          { id: "d", text: "Zolang je niemand ziet, kun je je snelheid gewoon aanhouden" }
         ],
         correct: ["a", "b", "c"],
-        explanation: "Een bal op de weg is een waarschuwing dat er iemand achteraan kan komen. Verminder snelheid en wees remklaar."
+        explanation: "Het gaat hier niet om de bal maar om wat die voorspelt. Een kind dat achter een bal aan rent kijkt niet naar het verkeer, en het komt uit precies dat gat tussen de auto's waar je het slechtst zicht hebt. Daarom mind je vaart voordat je iemand ziet, niet erna. En je bent er nog niet als het eerste kind voorbij is: kinderen spelen zelden alleen, dus reken op een tweede achter de eerste aan."
       },
       {
         id: "h50",

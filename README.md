@@ -9,7 +9,7 @@ Open `index.html` in je browser om te oefenen.
 - 2 oefenvragen om de bediening te leren.
 - 52 examenvragen, waarvan 50 meetellen en 2 testvragen niet meetellen.
 - Normale variant, moeilijke variant en willekeurige mix.
-- 249 vragen in de totale vragenbank.
+- 251 vragen in de totale vragenbank.
 - Timer van 30 minuten.
 - Slaaggrens van 44 goed op 50 meetellende vragen.
 - Vraagsoorten: meerkeuze, ja/nee-achtige meerkeuze, multiple response, invulvraag, hotspotvraag en sleepvraag-simulatie.
@@ -93,7 +93,7 @@ Deze negen basisfoto's in `assets/images` komen van Wikimedia Commons en staan h
 ### Situatiebeelden van derden, licentie niet geregeld
 
 Let op: de licenties hierboven gelden **alleen** voor die negen bestanden. In `assets/images` staan
-daarnaast dertien situatierenders die afkomstig zijn van Nederlandse commerciele theorie-aanbieders. Drie
+daarnaast veertien situatierenders die afkomstig zijn van Nederlandse commerciele theorie-aanbieders. Drie
 daarvan dragen een zichtbaar merk van de maker:
 
 - `1651240037-tt-36-watermerk-concept-01.webp`: watermerk "THEORIE TOPPERS" over het hele beeld.
@@ -103,13 +103,13 @@ daarvan dragen een zichtbaar merk van de maker:
 De overige tien zijn dezelfde soort renders in dezelfde stijl: `1648562081-bestand-20-kopie.webp`,
 `1651240230-tt-24-182.webp`, `1652716426-bestand-8-tram.webp`,
 `69fb20c070a96d525530e0fe_3176a336.png.webp`, `BM19_Auto_V1.png`, `BP11_Auto_V1.png`,
-`Motor-63a54e0cd13a4288.jpg`, `a.jpg`, `militaire-colonne-voorrangskruispunt.jpg` en
-`voorrang-rechtdoorgaand-jpg.jpg`.
+`Motor-63a54e0cd13a4288.jpg`, `a.jpg`, `militaire-colonne-voorrangskruispunt.jpg`,
+`voorrang-rechtdoorgaand-jpg.jpg` en `Auto-73f981a7b5c39ca2.webp`.
 
-Voor geen van deze dertien is toestemming of een licentie vastgelegd. Ze worden gebruikt door de vragen
-e54, e58, e59, e60, e61, e65, e66, e67, e68, e82, e83, e84 en e85. Wie deze repository hergebruikt of
+Voor geen van deze veertien is toestemming of een licentie vastgelegd. Ze worden gebruikt door de vragen
+q9, e54, e58, e59, e60, e61, e65, e66, e67, e68, e82, e83, e84 en e85. Wie deze repository hergebruikt of
 publiceert, moet dit eerst oplossen: vervangen door eigen beeld, of alsnog toestemming regelen. De overige
-236 vragen raken deze bestanden niet.
+237 vragen raken deze bestanden niet.
 
 ### Zelf gegenereerde hotspotbeelden
 
@@ -144,12 +144,13 @@ verkeerslichten, en die spreken een vraag over een gelijkwaardig kruispunt tegen
   voorrangsweg en op de kruisende weg liggen haaientanden, ook voor de tram.
 - `kruispunt-tram-voorrangsvoertuig.svg`: gelijkwaardig kruispunt met een ambulance met blauw zwaailicht en
   sirene, die iedereen voorgaat, de tram inbegrepen.
+- `kruispunt-colonne-gelijkwaardig.svg`: militaire colonne van rechts, met de blauwe vlag voorop en de groene
+  vlag achteraan, en een gemarkeerd gat tussen twee voertuigen.
 
 De waarschuwingslampjes op het dashboard zijn PNG-symbolen in `assets/images`, gebruikt door e86 tot en
 met e91: `1037_olie_rood.png`, `1038_Remmen_rood.png`, `1031_accu_rood.png`, `1035_koeling_rood.png`,
-`1036_motor_geel.png` en `bandenspanning-waarschuwingslampje.png`. Ook voor deze zeven symbolen
-(inclusief het nog ongebruikte `airbag-waarschuwingslampje.png`) is geen herkomst of licentie vastgelegd;
-ze vallen in dezelfde categorie als de situatierenders hierboven.
+`1036_motor_geel.png` en `bandenspanning-waarschuwingslampje.png`. Daarnaast hoort `airbag-waarschuwingslampje.png` bij e92. Ook voor deze zeven symbolen is geen herkomst
+of licentie vastgelegd; ze vallen in dezelfde categorie als de situatierenders hierboven.
 
 Elk symbool is 86 bij 85 pixels. Uitrekken over de volle paneelbreedte zou ze wazig maken, dus `.symbol-scene`
 zet ze op 128 pixels gecentreerd op een donker paneel dat een instrumentenpaneel nabootst. De eerder

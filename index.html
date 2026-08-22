@@ -2382,7 +2382,10 @@
         kind: "single",
         topic: "Voorrang en voor laten gaan",
         scene: "city",
-        prompt: "Je slaat rechtsaf. Naast je rijdt een fietser rechtdoor op dezelfde weg. Wat doe je?",
+        image: "assets/images/Auto-73f981a7b5c39ca2.webp",
+        imageAlt: "Witte auto met rechter richtingaanwijzer aan, met rechts daarnaast een fietser op het fietspad",
+        imageLabel: "Auto slaat rechtsaf, fietser rijdt rechts naast de auto",
+        prompt: "Je rijdt in de witte auto en slaat rechtsaf. Naast je rijdt een fietser rechtdoor op dezelfde weg. Wat doe je?",
         options: [
           { id: "a", text: "De fietser voor laten gaan" },
           { id: "b", text: "Toeteren en eerst afslaan" },
@@ -4534,6 +4537,43 @@
     ];
 
     const extraExamQuestions = [
+      {
+        id: "e93",
+        kind: "single",
+        difficulty: "moeilijk",
+        topic: "Bijzondere weggebruikers en manoeuvres",
+        scene: "intersection",
+        diagram: true,
+        image: "assets/diagrams/kruispunt-colonne-gelijkwaardig.svg",
+        imageAlt: "Bovenaanzicht van een gelijkwaardig kruispunt met een militaire colonne van drie voertuigen die van rechts komt. Voertuig 1 voert een blauwe vlag en rijdt al over het kruispunt, het laatste voertuig 2 voert een groene vlag. Jouw auto 3 komt van beneden en wil rechtdoor.",
+        imageLabel: "Gelijkwaardig kruispunt. De colonne komt van rechts en het voorste voertuig rijdt al over het kruispunt. Tussen twee voertuigen valt een gat.",
+        prompt: "Je staat met auto 3 te wachten. Wanneer mag je optrekken en het kruispunt oversteken?",
+        options: [
+          { id: "a", text: "Pas als voertuig 2 met de groene vlag voorbij is" },
+          { id: "b", text: "Zodra voertuig 1 met de blauwe vlag voorbij is" },
+          { id: "c", text: "Zodra het gat tussen twee voertuigen groot genoeg is" }
+        ],
+        correct: "a",
+        explanation: "Weggebruikers mogen een militaire colonne niet doorsnijden (artikel 16 RVV 1990). De colonne telt daarbij als een geheel, dus het gat tussen twee voertuigen is geen uitnodiging om over te steken. De blauwe vlag markeert juist het begin van de colonne en de groene vlag het einde: pas als het voertuig met de groene vlag voorbij is, is de colonne compleet gepasseerd en mag jij."
+      },
+      {
+        id: "e92",
+        kind: "single",
+        topic: "Voertuigkennis",
+        scene: "dashboard",
+        image: "assets/images/airbag-waarschuwingslampje.png",
+        symbol: true,
+        imageAlt: "Waarschuwingslampje van het airbagsysteem: een zittende inzittende met een opgeblazen airbag ervoor",
+        imageLabel: "Airbaglampje",
+        prompt: "Dit lampje bleef na het starten branden en brandt tijdens het rijden nog steeds. Wat betekent dat?",
+        options: [
+          { id: "a", text: "Het airbagsysteem heeft een storing; bij een botsing kan de airbag uitblijven" },
+          { id: "b", text: "De airbag is ingeschakeld en werkt naar behoren" },
+          { id: "c", text: "Er moet een passagier voorin plaatsnemen voordat het lampje dooft" }
+        ],
+        correct: "a",
+        explanation: "Dit lampje hoort bij het starten kort te branden en daarna te doven. Blijft het branden, dan heeft het systeem zelf een storing gevonden en kan de airbag bij een aanrijding uitblijven. Ook de gordelspanners horen bij dit systeem, dus je mist meer dan alleen de airbag. Rijden kan meestal nog wel, maar de bescherming is er niet: laat het snel nakijken."
+      },
       {
         id: "e1",
         kind: "single",

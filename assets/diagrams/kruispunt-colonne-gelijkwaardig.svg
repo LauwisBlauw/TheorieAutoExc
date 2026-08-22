@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Bovenaanzicht van een gelijkwaardig kruispunt zonder verkeersborden of verkeerslichten. Van rechts nadert een militaire colonne van drie voertuigen. Voertuig 1 voert links vooraan een blauwe vlag en rijdt het kruispunt al op. Daarachter rijdt een voertuig zonder vlag en als laatste voertuig 2 met een groene vlag links. Weggebruiker 3 is jouw auto, die van beneden komt en rechtdoor wil.">
+  <defs>
+    <marker id="pijl" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#f5b301"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="1000" fill="#dbe4dc"/>
+
+  <g fill="#c3cfc6">
+    <rect x="60" y="60" width="530" height="240" rx="10"/>
+    <rect x="1010" y="60" width="530" height="240" rx="10"/>
+    <rect x="60" y="700" width="530" height="240" rx="10"/>
+    <rect x="1010" y="700" width="530" height="240" rx="10"/>
+  </g>
+
+  <rect x="0" y="380" width="1600" height="240" fill="#4a555c"/>
+  <rect x="660" y="0" width="280" height="1000" fill="#4a555c"/>
+
+  <g stroke="#eef0d8" stroke-width="6" stroke-dasharray="46 38">
+    <line x1="0" y1="500" x2="640" y2="500"/>
+    <line x1="960" y1="500" x2="1600" y2="500"/>
+    <line x1="800" y1="0" x2="800" y2="360"/>
+    <line x1="800" y1="640" x2="800" y2="1000"/>
+  </g>
+
+  <!-- militaire colonne, westwaarts in de bovenste rijstrook; vlaggen aan de linkerzijde -->
+  <!-- eerste voertuig, blauwe vlag, staat al op het kruispunt -->
+  <g>
+    <rect x="700" y="396" width="176" height="92" rx="12" fill="#5c6a4a" stroke="#3f4a33" stroke-width="4"/>
+    <rect x="716" y="414" width="64" height="56" rx="8" fill="#c8d0bb"/>
+    <rect x="704" y="406" width="16" height="68" rx="5" fill="#ffe9b0"/>
+    <rect x="796" y="360" width="8" height="40" fill="#7d8a66"/>
+    <polygon points="804,360 862,374 804,388" fill="#2f7fd8" stroke="#ffffff" stroke-width="4"/>
+  </g>
+  <!-- middelste voertuig, geen vlag -->
+  <g>
+    <rect x="990" y="396" width="176" height="92" rx="12" fill="#5c6a4a" stroke="#3f4a33" stroke-width="4"/>
+    <rect x="1006" y="414" width="64" height="56" rx="8" fill="#c8d0bb"/>
+    <rect x="994" y="406" width="16" height="68" rx="5" fill="#ffe9b0"/>
+  </g>
+  <!-- laatste voertuig, groene vlag -->
+  <g>
+    <rect x="1280" y="396" width="176" height="92" rx="12" fill="#5c6a4a" stroke="#3f4a33" stroke-width="4"/>
+    <rect x="1296" y="414" width="64" height="56" rx="8" fill="#c8d0bb"/>
+    <rect x="1284" y="406" width="16" height="68" rx="5" fill="#ffe9b0"/>
+    <rect x="1376" y="360" width="8" height="40" fill="#7d8a66"/>
+    <polygon points="1384,360 1442,374 1384,388" fill="#1f8a4c" stroke="#ffffff" stroke-width="4"/>
+  </g>
+  <line x1="676" y1="442" x2="596" y2="442" stroke="#f5b301" stroke-width="10" marker-end="url(#pijl)"/>
+
+  <!-- het gat tussen twee colonnevoertuigen, waar je niet in mag -->
+  <g>
+    <rect x="884" y="404" width="98" height="76" rx="10" fill="none" stroke="#f5b301" stroke-width="6" stroke-dasharray="16 12"/>
+  </g>
+
+  <!-- 3 - jouw auto van beneden -->
+  <g>
+    <rect x="822" y="752" width="96" height="180" rx="18" fill="#1b6f92" stroke="#124b63" stroke-width="4"/>
+    <rect x="840" y="800" width="60" height="86" rx="10" fill="#d4e6ee"/>
+    <rect x="834" y="756" width="72" height="18" rx="6" fill="#ffe9b0"/>
+    <line x1="870" y1="722" x2="870" y2="640" stroke="#f5b301" stroke-width="10" marker-end="url(#pijl)"/>
+  </g>
+
+  <g font-family="Verdana, Geneva, sans-serif" font-size="62" font-weight="bold" text-anchor="middle">
+    <circle cx="788" cy="196" r="52" fill="#10202a" stroke="#ffffff" stroke-width="7"/>
+    <text x="788" y="218" fill="#ffffff">1</text>
+
+    <circle cx="1368" cy="196" r="52" fill="#10202a" stroke="#ffffff" stroke-width="7"/>
+    <text x="1368" y="218" fill="#ffffff">2</text>
+
+    <circle cx="1042" cy="842" r="52" fill="#10202a" stroke="#ffffff" stroke-width="7"/>
+    <text x="1042" y="864" fill="#ffffff">3</text>
+  </g>
+</svg>

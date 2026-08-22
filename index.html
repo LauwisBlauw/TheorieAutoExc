@@ -3791,6 +3791,25 @@
 
     const hardExamQuestions = [
       {
+        id: "h55",
+        kind: "multi",
+        difficulty: "moeilijk",
+        topic: "Voorrang en voor laten gaan",
+        scene: "city",
+        image: "assets/images/kruispunt-linksaf-bromfiets-voetganger.jpg",
+        imageAlt: "Situatiebeeld van een kruispunt in een 30-zone waarop de witte auto linksaf slaat, van rechts een bromfietser rechtdoor nadert en links een voetganger oversteekt",
+        imageLabel: "Gelijkwaardig kruispunt in een 30-zone: jij slaat linksaf, van rechts komt een bromfietser en links steekt een voetganger over.",
+        prompt: "Je rijdt in de witte auto en slaat linksaf. Van rechts nadert een bromfietser die rechtdoor gaat, en links steekt een voetganger de weg over waar jij in draait. Er staan geen voorrangsborden of haaientanden. Wat is juist? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Je laat de bromfietser voorgaan, want die komt van rechts" },
+          { id: "b", text: "Je laat de overstekende voetganger voorgaan voordat je de bocht afmaakt" },
+          { id: "c", text: "De voetganger moet wachten, want voorrang van rechts geldt niet voor voetgangers" },
+          { id: "d", text: "De bromfietser moet wachten, want jij was eerder bij het kruispunt" }
+        ],
+        correct: ["a", "b"],
+        explanation: "Twee verschillende regels lopen hier door elkaar. Een bromfietser is wel een bestuurder, dus die komt van rechts en gaat voor; wie er het eerst was maakt daarbij niets uit. Voor de voetganger klopt het dat de voorrang van rechts niet voor hem geldt, want dat artikel gaat alleen over bestuurders. Maar daar mag je niet de conclusie uit trekken dat hij moet wachten: jij voert een manoeuvre uit en draait de weg in waar hij al oversteekt, dus je laat hem eerst gaan. Half gelijk hebben is hier het gevaarlijkst."
+      },
+      {
         id: "h54",
         kind: "multi",
         topic: "Verkeerstekens en aanwijzingen",
@@ -4823,7 +4842,10 @@
         kind: "single",
         topic: "Voorrang en voor laten gaan",
         scene: "city",
-        prompt: "Een voetganger komt van rechts op een gelijkwaardig kruispunt zonder zebrapad. Geldt de regel 'bestuurders van rechts gaan voor' voor deze voetganger?",
+        image: "assets/images/voetganger-van-rechts-1.jpg",
+        imageAlt: "Situatietekening van een kruispunt waarop een auto rechtdoor gaat en rechts een voetganger de weg oversteekt",
+        imageLabel: "Jij gaat rechtdoor, rechts steekt een voetganger over",
+        prompt: "Je gaat rechtdoor. Van rechts steekt een voetganger de weg over, er is geen zebrapad. Geldt de regel dat verkeer van rechts voorgaat ook voor deze voetganger?",
         options: [
           { id: "a", text: "Nee, voetgangers zijn geen bestuurders" },
           { id: "b", text: "Ja, elke weggebruiker van rechts gaat voor" },

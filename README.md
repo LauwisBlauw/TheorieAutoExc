@@ -9,7 +9,7 @@ Open `index.html` in je browser om te oefenen.
 - 2 oefenvragen om de bediening te leren.
 - 52 examenvragen, waarvan 50 meetellen en 2 testvragen niet meetellen.
 - Normale variant, moeilijke variant en willekeurige mix.
-- 251 vragen in de totale vragenbank, plus 2 oefenvragen om de bediening te leren.
+- 252 vragen in de totale vragenbank, plus 2 oefenvragen om de bediening te leren.
 - Timer van 30 minuten.
 - Slaaggrens van 44 goed op 50 meetellende vragen.
 - Vraagsoorten: meerkeuze, ja/nee-achtige meerkeuze, multiple response, invulvraag, hotspotvraag en sleepvraag-simulatie.
@@ -45,7 +45,7 @@ Elke examensessie schudt de vraagvolgorde. Bij meerkeuze en multiple-response wo
 
 De normale variant put uit 100 meetellende vragen, waarvan er per sessie 50 worden getrokken. Twee sessies achter elkaar leveren dus verschillende vragen op.
 
-De moeilijke variant gebruikt een aparte set van 54 vragen. Deze vragen zijn strenger geformuleerd en bevatten meer strikvragen, samengestelde voorrangssituaties, matrixbord-vragen, bijzondere manoeuvres en meerdere-antwoorden-vragen.
+De moeilijke variant gebruikt een aparte set van 55 vragen. Deze vragen zijn strenger geformuleerd en bevatten meer strikvragen, samengestelde voorrangssituaties, matrixbord-vragen, bijzondere manoeuvres en meerdere-antwoorden-vragen.
 
 De willekeurige mix trekt elke keer 52 vragen uit de normale, moeilijke en extra vragenbank samen. Ook in deze modus tellen 50 vragen mee, zijn 2 vragen testvragen, en is 44 goed geslaagd.
 
@@ -95,7 +95,7 @@ Deze elf foto's in `assets/images` komen van Wikimedia Commons en staan hier met
 ### Situatiebeelden van derden, licentie niet geregeld
 
 Let op: de licenties hierboven gelden **alleen** voor die elf bestanden. In `assets/images` staan
-daarnaast veertien situatierenders die afkomstig zijn van Nederlandse commerciele theorie-aanbieders. Drie
+daarnaast zestien situatierenders die afkomstig zijn van Nederlandse commerciele theorie-aanbieders. Drie
 daarvan dragen een zichtbaar merk van de maker:
 
 - `1651240037-tt-36-watermerk-concept-01.webp`: watermerk "THEORIE TOPPERS" over het hele beeld.
@@ -106,12 +106,14 @@ De overige tien zijn dezelfde soort renders in dezelfde stijl: `1648562081-besta
 `1651240230-tt-24-182.webp`, `1652716426-bestand-8-tram.webp`,
 `69fb20c070a96d525530e0fe_3176a336.png.webp`, `BM19_Auto_V1.png`, `BP11_Auto_V1.png`,
 `Motor-63a54e0cd13a4288.jpg`, `a.jpg`, `militaire-colonne-voorrangskruispunt.jpg`,
-`voorrang-rechtdoorgaand-jpg.jpg` en `Auto-73f981a7b5c39ca2.webp`.
+`voorrang-rechtdoorgaand-jpg.jpg`, `Auto-73f981a7b5c39ca2.webp`, `voetganger-van-rechts-1.jpg` en
+`kruispunt-linksaf-bromfiets-voetganger.jpg`. Die laatste is een schermafdruk die tot 1600 pixels breed is
+teruggebracht; als PNG woog hij 5,5 MB.
 
-Voor geen van deze veertien is toestemming of een licentie vastgelegd. Ze worden gebruikt door de vragen
-q9, e54, e58, e59, e60, e61, e65, e66, e67, e68, e82, e83, e84 en e85. Wie deze repository hergebruikt of
+Voor geen van deze zestien is toestemming of een licentie vastgelegd. Ze worden gebruikt door de vragen
+q9, e15, e54, e58, e59, e60, e61, e65, e66, e67, e68, e82, e83, e84, e85 en h55. Wie deze repository hergebruikt of
 publiceert, moet dit eerst oplossen: vervangen door eigen beeld, of alsnog toestemming regelen. De overige
-237 vragen raken deze bestanden niet.
+238 vragen raken deze bestanden niet.
 
 ### Zelf gegenereerde hotspotbeelden
 

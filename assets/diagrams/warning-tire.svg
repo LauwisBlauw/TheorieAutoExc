@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="title desc">
-  <title id="title">Oranje bandenspanningslampje</title><desc id="desc">Een oranje open cirkel met een uitroepteken.</desc>
-  <rect width="800" height="450" rx="32" fill="#17202b"/><circle cx="400" cy="225" r="150" fill="#493817"/>
-  <path d="M255 320c18-91 57-140 145-140s127 49 145 140" fill="none" stroke="#ffb327" stroke-width="32" stroke-linecap="round"/>
-  <path d="M400 214v57m0 38v2" fill="none" stroke="#ffb327" stroke-width="30" stroke-linecap="round"/>
-</svg>

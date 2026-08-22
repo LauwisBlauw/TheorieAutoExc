@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="title desc">
-  <title id="title">Oranje motorlampje</title><desc id="desc">Een oranje symbool in de vorm van een motorblok.</desc>
-  <rect width="800" height="450" rx="32" fill="#17202b"/><circle cx="400" cy="225" r="150" fill="#493817"/>
-  <path d="M230 183h102l35-46h119l30 46h60l45 47v84H230z" fill="none" stroke="#ffb327" stroke-width="30" stroke-linejoin="round"/>
-  <path d="M286 266h59m150-84v72" fill="none" stroke="#ffb327" stroke-width="26" stroke-linecap="round"/>
-</svg>

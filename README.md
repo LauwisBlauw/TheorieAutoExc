@@ -145,9 +145,16 @@ verkeerslichten, en die spreken een vraag over een gelijkwaardig kruispunt tegen
 - `kruispunt-tram-voorrangsvoertuig.svg`: gelijkwaardig kruispunt met een ambulance met blauw zwaailicht en
   sirene, die iedereen voorgaat, de tram inbegrepen.
 
-Ook de waarschuwingslampjes op het dashboard zijn zelfgetekend, zodat er geen lampjesplaatjes van derden
-nodig zijn: `warning-oil.svg`, `warning-brakes.svg`, `warning-battery.svg`, `warning-coolant.svg`,
-`warning-engine.svg` en `warning-tire.svg`, gebruikt door e86 tot en met e91.
+De waarschuwingslampjes op het dashboard zijn PNG-symbolen in `assets/images`, gebruikt door e86 tot en
+met e91: `1037_olie_rood.png`, `1038_Remmen_rood.png`, `1031_accu_rood.png`, `1035_koeling_rood.png`,
+`1036_motor_geel.png` en `bandenspanning-waarschuwingslampje.png`. Ook voor deze zeven symbolen
+(inclusief het nog ongebruikte `airbag-waarschuwingslampje.png`) is geen herkomst of licentie vastgelegd;
+ze vallen in dezelfde categorie als de situatierenders hierboven.
+
+Elk symbool is 86 bij 85 pixels. Uitrekken over de volle paneelbreedte zou ze wazig maken, dus `.symbol-scene`
+zet ze op 128 pixels gecentreerd op een donker paneel dat een instrumentenpaneel nabootst. De eerder
+zelfgetekende `warning-*.svg` zijn hiermee vervallen en uit `assets/diagrams` verwijderd; ze staan nog wel
+in de git-historie.
 
 Gebaseerd op openbare bronnen:
 

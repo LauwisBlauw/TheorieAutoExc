@@ -751,6 +751,26 @@
       object-fit: contain;
     }
 
+    /* Een dashboardsymbool is een klein icoon van 86 bij 85 pixels. Uitrekken
+       tot de volle paneelbreedte maakt het wazig, dus het staat gecentreerd op
+       een donker paneel dat een instrumentenpaneel nabootst, hooguit twee keer
+       zo groot als het origineel. */
+    .scene.symbol-scene {
+      aspect-ratio: 16 / 6;
+      min-height: 0;
+      background: #17202b;
+      display: grid;
+      place-items: center;
+    }
+
+    .scene.symbol-scene .scene-photo {
+      position: static;
+      width: 128px;
+      height: 128px;
+      object-fit: contain;
+      border-radius: 14px;
+    }
+
     .diagram-caption {
       margin: 10px 0 0;
       font-size: 13px;
@@ -5770,7 +5790,8 @@
         kind: "single",
         topic: "Voertuigkennis",
         scene: "dashboard",
-        image: "assets/diagrams/warning-oil.svg",
+        image: "assets/images/1037_olie_rood.png",
+        symbol: true,
         imageAlt: "Rood dashboardlampje van een oliekannetje met een druppel",
         imageLabel: "Rood oliedruklampje",
         prompt: "Dit rode waarschuwingslampje gaat tijdens het rijden branden. Wat doe je?",
@@ -5787,7 +5808,8 @@
         kind: "single",
         topic: "Voertuigkennis",
         scene: "dashboard",
-        image: "assets/diagrams/warning-brakes.svg",
+        image: "assets/images/1038_Remmen_rood.png",
+        symbol: true,
         imageAlt: "Rood dashboardlampje met een uitroepteken in een cirkel tussen twee haakjes",
         imageLabel: "Rood remlampje",
         prompt: "Wat is de veiligste reactie als dit rode remlampje tijdens het rijden blijft branden?",
@@ -5804,7 +5826,8 @@
         kind: "single",
         topic: "Voertuigkennis",
         scene: "dashboard",
-        image: "assets/diagrams/warning-battery.svg",
+        image: "assets/images/1031_accu_rood.png",
+        symbol: true,
         imageAlt: "Rood dashboardlampje in de vorm van een accu met plus- en minteken",
         imageLabel: "Rood acculampje",
         prompt: "Dit rode acculampje blijft na het starten branden. Wat is verstandig?",
@@ -5821,7 +5844,8 @@
         kind: "single",
         topic: "Voertuigkennis",
         scene: "dashboard",
-        image: "assets/diagrams/warning-coolant.svg",
+        image: "assets/images/1035_koeling_rood.png",
+        symbol: true,
         imageAlt: "Rood dashboardlampje van een thermometer boven golvend water",
         imageLabel: "Rood koelvloeistoflampje",
         prompt: "Dit rode lampje voor de koeling brandt. Wat doe je?",
@@ -5838,7 +5862,8 @@
         kind: "single",
         topic: "Voertuigkennis",
         scene: "dashboard",
-        image: "assets/diagrams/warning-engine.svg",
+        image: "assets/images/1036_motor_geel.png",
+        symbol: true,
         imageAlt: "Oranje dashboardlampje in de vorm van een motorblok",
         imageLabel: "Oranje motorlampje",
         prompt: "Het oranje motorlampje brandt continu en de auto rijdt verder normaal. Wat is verstandig?",
@@ -5855,7 +5880,8 @@
         kind: "single",
         topic: "Voertuigkennis",
         scene: "dashboard",
-        image: "assets/diagrams/warning-tire.svg",
+        image: "assets/images/bandenspanning-waarschuwingslampje.png",
+        symbol: true,
         imageAlt: "Oranje dashboardlampje van een open cirkel met een uitroepteken",
         imageLabel: "Oranje bandenspanningslampje",
         prompt: "Dit oranje bandenspanningslampje brandt. Wat doe je?",
@@ -7110,11 +7136,11 @@
       ` : "";
 
       return `
-        <div class="scene photo-scene ${escapeHtml(q.scene || "city")}${q.kind === "hotspot" ? " hotspot-scene" : ""}${q.diagram ? " diagram-scene" : ""}"${q.kind === "hotspot" ? ' role="radiogroup" aria-label="Kies een plek in de afbeelding"' : ""}>
+        <div class="scene photo-scene ${escapeHtml(q.scene || "city")}${q.kind === "hotspot" ? " hotspot-scene" : ""}${q.diagram ? " diagram-scene" : ""}${q.symbol ? " symbol-scene" : ""}"${q.kind === "hotspot" ? ' role="radiogroup" aria-label="Kies een plek in de afbeelding"' : ""}>
           ${renderSceneObjects(q.scene || "city", q)}
           ${hotspots}
         </div>
-        ${q.diagram && sceneLabelText(q) ? `<p class="diagram-caption">${escapeHtml(sceneLabelText(q))}</p>` : ""}
+        ${(q.diagram || q.symbol) && sceneLabelText(q) ? `<p class="diagram-caption">${escapeHtml(sceneLabelText(q))}</p>` : ""}
         ${labels}
       `;
     }
@@ -7175,7 +7201,7 @@
       } : data;
       // Bij een schema staat het bijschrift eronder in plaats van eroverheen:
       // een overlay dekt daar juist de weggebruikers af waar de vraag om draait.
-      const overlay = q && q.diagram
+      const overlay = q && (q.diagram || q.symbol)
         ? ""
         : `<div class="scene-label">${escapeHtml(imageData.label)}</div>`;
       return `

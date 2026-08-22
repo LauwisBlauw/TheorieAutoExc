@@ -9,7 +9,7 @@ Open `index.html` in je browser om te oefenen.
 - 2 oefenvragen om de bediening te leren.
 - 52 examenvragen, waarvan 50 meetellen en 2 testvragen niet meetellen.
 - Normale variant, moeilijke variant en willekeurige mix.
-- 252 vragen in de totale vragenbank, plus 2 oefenvragen om de bediening te leren.
+- 255 vragen in de totale vragenbank, plus 2 oefenvragen om de bediening te leren.
 - Timer van 30 minuten.
 - Slaaggrens van 44 goed op 50 meetellende vragen.
 - Vraagsoorten: meerkeuze, ja/nee-achtige meerkeuze, multiple response, invulvraag, hotspotvraag en sleepvraag-simulatie.
@@ -45,7 +45,7 @@ Elke examensessie schudt de vraagvolgorde. Bij meerkeuze en multiple-response wo
 
 De normale variant put uit 100 meetellende vragen, waarvan er per sessie 50 worden getrokken. Twee sessies achter elkaar leveren dus verschillende vragen op.
 
-De moeilijke variant gebruikt een aparte set van 55 vragen. Deze vragen zijn strenger geformuleerd en bevatten meer strikvragen, samengestelde voorrangssituaties, matrixbord-vragen, bijzondere manoeuvres en meerdere-antwoorden-vragen.
+De moeilijke variant gebruikt een aparte set van 58 vragen. Deze vragen zijn strenger geformuleerd en bevatten meer strikvragen, samengestelde voorrangssituaties, matrixbord-vragen, bijzondere manoeuvres en meerdere-antwoorden-vragen.
 
 De willekeurige mix trekt elke keer 52 vragen uit de normale, moeilijke en extra vragenbank samen. Ook in deze modus tellen 50 vragen mee, zijn 2 vragen testvragen, en is 44 goed geslaagd.
 
@@ -150,6 +150,16 @@ verkeerslichten, en die spreken een vraag over een gelijkwaardig kruispunt tegen
   sirene, die iedereen voorgaat, de tram inbegrepen.
 - `kruispunt-colonne-gelijkwaardig.svg`: militaire colonne van rechts, met de blauwe vlag voorop en de groene
   vlag achteraan, en een gemarkeerd gat tussen twee voertuigen.
+- `kruispunt-voorrangsvoertuig-voorrangsweg.svg`: eigen auto op de voorrangsweg, ambulance en gewone auto op
+  de kruisende weg met haaientanden.
+- `kruispunt-tram-links-tegenligger-linksaf.svg`: tram van links, eigen auto rechtdoor, tegenligger die
+  linksaf slaat en daarbij zowel de trambaan als het eigen pad kruist.
+- `kruispunt-rechtsaf-fietser-auto-links.svg`: eigen auto slaat rechtsaf over een fietspad, fietser rechtdoor
+  ernaast, auto van links.
+
+Bij een volgordevraag moet elke stap afgedwongen zijn, anders zijn er meerdere goede antwoorden. Twee
+weggebruikers die elkaars pad niet kruisen leggen niets vast; daarom kruist in elk van deze schema's elke
+volgende weggebruiker het pad van de vorige.
 
 De waarschuwingslampjes op het dashboard zijn PNG-symbolen in `assets/images`, gebruikt door e86 tot en
 met e91: `1037_olie_rood.png`, `1038_Remmen_rood.png`, `1031_accu_rood.png`, `1035_koeling_rood.png`,

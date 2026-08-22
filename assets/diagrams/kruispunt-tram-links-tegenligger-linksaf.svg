@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Bovenaanzicht van een gelijkwaardig kruispunt zonder borden of haaientanden. Weggebruiker 1 is een tram die van links komt en rechtdoor gaat. Weggebruiker 2 is jouw auto die van beneden komt en rechtdoor gaat. Weggebruiker 3 is een tegenligger die van boven komt en linksaf slaat, waarbij hij zowel de trambaan als jouw pad kruist.">
+  <defs>
+    <marker id="pijl" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#f5b301"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="1000" fill="#dbe4dc"/>
+  <g fill="#c3cfc6">
+    <rect x="60" y="60" width="530" height="240" rx="10"/>
+    <rect x="1010" y="60" width="530" height="240" rx="10"/>
+    <rect x="60" y="700" width="530" height="240" rx="10"/>
+    <rect x="1010" y="700" width="530" height="240" rx="10"/>
+  </g>
+  <rect x="0" y="380" width="1600" height="240" fill="#4a555c"/>
+  <rect x="660" y="0" width="280" height="1000" fill="#4a555c"/>
+  <g stroke="#9aa7ad" stroke-width="7">
+    <line x1="0" y1="533" x2="1600" y2="533"/><line x1="0" y1="587" x2="1600" y2="587"/>
+  </g>
+  <g stroke="#eef0d8" stroke-width="6" stroke-dasharray="46 38">
+    <line x1="0" y1="500" x2="640" y2="500"/><line x1="960" y1="500" x2="1600" y2="500"/>
+    <line x1="800" y1="0" x2="800" y2="360"/><line x1="800" y1="640" x2="800" y2="1000"/>
+  </g>
+    <rect x="120" y="512" width="360" height="96" rx="16" fill="#7f8c94" stroke="#5d6970" stroke-width="4"/>
+    <rect x="140" y="528" width="60" height="64" rx="8" fill="#cfd8dc"/>
+    <rect x="220" y="528" width="70" height="64" rx="8" fill="#cfd8dc"/>
+    <rect x="305" y="528" width="70" height="64" rx="8" fill="#cfd8dc"/>
+    <rect x="428" y="524" width="44" height="72" rx="8" fill="#eaf2f5"/>
+    <line x1="500" y1="560" x2="600" y2="560" stroke="#f5b301" stroke-width="10" marker-end="url(#pijl)"/>
+    <rect x="682" y="120" width="96" height="180" rx="18" fill="#b8322a" stroke="#7d211b" stroke-width="4"/>
+    <rect x="700" y="166" width="60" height="86" rx="10" fill="#f0d6d3"/>
+    <rect x="694" y="278" width="72" height="18" rx="6" fill="#ffe9b0"/>
+    <path d="M 730 330 L 730 470 Q 730 560 820 560 L 980 560" fill="none" stroke="#f5b301" stroke-width="10" stroke-linecap="round" marker-end="url(#pijl)"/>
+    <rect x="822" y="752" width="96" height="180" rx="18" fill="#1b6f92" stroke="#124b63" stroke-width="4"/>
+    <rect x="840" y="800" width="60" height="86" rx="10" fill="#d4e6ee"/>
+    <rect x="834" y="756" width="72" height="18" rx="6" fill="#ffe9b0"/>
+    <line x1="870" y1="722" x2="870" y2="640" stroke="#f5b301" stroke-width="10" marker-end="url(#pijl)"/>
+  <g font-family="Verdana, Geneva, sans-serif" font-size="62" font-weight="bold" text-anchor="middle">
+    <circle cx="300" cy="688" r="52" fill="#10202a" stroke="#ffffff" stroke-width="7"/>
+    <text x="300" y="710" fill="#ffffff">1</text>
+    <circle cx="1042" cy="842" r="52" fill="#10202a" stroke="#ffffff" stroke-width="7"/>
+    <text x="1042" y="864" fill="#ffffff">2</text>
+    <circle cx="588" cy="200" r="52" fill="#10202a" stroke="#ffffff" stroke-width="7"/>
+    <text x="588" y="222" fill="#ffffff">3</text>
+  </g>
+</svg>

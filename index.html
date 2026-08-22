@@ -3791,6 +3791,66 @@
 
     const hardExamQuestions = [
       {
+        id: "h56",
+        kind: "order",
+        difficulty: "moeilijk",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        diagram: true,
+        image: "assets/diagrams/kruispunt-voorrangsvoertuig-voorrangsweg.svg",
+        imageAlt: "Bovenaanzicht van een kruispunt waarbij jouw weg een voorrangsweg is en op de kruisende weg haaientanden liggen. Een ambulance met zwaailicht en sirene nadert over de weg met haaientanden.",
+        imageLabel: "Jij rijdt op de voorrangsweg. Op de kruisende weg liggen haaientanden. Daar nadert een ambulance met blauw zwaailicht en sirene.",
+        prompt: "Jij (2) rijdt op de voorrangsweg. Over de kruisende weg met haaientanden nadert een ambulance (1) met zwaailicht en sirene, en van de andere kant een gewone auto (3). Zet ze in de volgorde waarin ze mogen gaan.",
+        help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
+        items: [
+          { id: "ambulance", text: "1, de ambulance met zwaailicht en sirene" },
+          { id: "jij", text: "2, jouw auto op de voorrangsweg" },
+          { id: "auto", text: "3, de auto op de weg met haaientanden" }
+        ],
+        correct: ["ambulance", "jij", "auto"],
+        explanation: "Hier stapelen twee regels zich op elkaar. Weggebruikers laten een voorrangsvoertuig voorgaan (artikel 50 RVV 1990), en die plicht geldt voor iedereen, ook voor jou op de voorrangsweg; verkeerstekens veranderen daar niets aan. Daarna telt wel weer wat er op het wegdek staat: auto 3 heeft haaientanden voor zich en laat jou dus gaan. Dat de ambulance zelf ook haaientanden voor zich heeft, doet niet ter zake."
+      },
+      {
+        id: "h57",
+        kind: "order",
+        difficulty: "moeilijk",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        diagram: true,
+        image: "assets/diagrams/kruispunt-tram-links-tegenligger-linksaf.svg",
+        imageAlt: "Bovenaanzicht van een gelijkwaardig kruispunt met een tram die van links komt, jouw auto die rechtdoor gaat en een tegenligger die linksaf slaat.",
+        imageLabel: "Gelijkwaardig kruispunt zonder borden of haaientanden. De tram komt van links, jij gaat rechtdoor en de tegenligger slaat linksaf.",
+        prompt: "Op dit gelijkwaardige kruispunt komt een tram (1) van links, ga jij (2) rechtdoor en slaat de tegenligger (3) linksaf. Zet ze in de volgorde waarin ze mogen gaan.",
+        help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
+        items: [
+          { id: "tram", text: "1, de tram die van links komt" },
+          { id: "jij", text: "2, jouw auto die rechtdoor gaat" },
+          { id: "tegenligger", text: "3, de tegenligger die linksaf slaat" }
+        ],
+        correct: ["tram", "jij", "tegenligger"],
+        explanation: "De tram gaat voor, ook al komt hij van links: die uitzondering staat boven de voorrang van rechts, en de tegenligger moet de trambaan kruisen en laat hem dus ook gaan. Daarna sla jij niet af maar rijd je rechtdoor, terwijl de tegenligger wel afslaat; wie afslaat laat het tegemoetkomende verkeer dat rechtdoor gaat voorgaan. Jij gaat dus voor hem, ook al kwam hij misschien eerder aan."
+      },
+      {
+        id: "h58",
+        kind: "order",
+        difficulty: "moeilijk",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        diagram: true,
+        image: "assets/diagrams/kruispunt-rechtsaf-fietser-auto-links.svg",
+        imageAlt: "Bovenaanzicht van een gelijkwaardig kruispunt waarbij jouw auto rechtsaf slaat over een fietspad, een fietser rechts naast je rechtdoor gaat en een auto van links nadert.",
+        imageLabel: "Gelijkwaardig kruispunt. Jij slaat rechtsaf en kruist daarbij het fietspad; van links nadert een auto.",
+        prompt: "Jij (2) slaat rechtsaf en kruist het fietspad. Rechts naast je gaat een fietser (1) rechtdoor en van links nadert een auto (3). Zet ze in de volgorde waarin ze mogen gaan.",
+        help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
+        items: [
+          { id: "fietser", text: "1, de fietser die rechtdoor gaat" },
+          { id: "jij", text: "2, jouw auto die rechtsaf slaat" },
+          { id: "auto", text: "3, de auto die van links komt" }
+        ],
+        correct: ["fietser", "jij", "auto"],
+        explanation: "Jij bent hier degene die afslaat, dus de fietser die naast je rechtdoor gaat over hetzelfde stuk weg laat je voorgaan. Daarna komt de auto van jouw linkerkant, en op een gelijkwaardig kruispunt gaat verkeer van rechts voor: vanaf die auto gezien kom jij van rechts, dus hij wacht op jou. Dat hij een auto is en de fietser maar een fiets verandert de volgorde niet; het gaat om de richting en om wie er afslaat."
+      },
+      {
         id: "h55",
         kind: "multi",
         difficulty: "moeilijk",

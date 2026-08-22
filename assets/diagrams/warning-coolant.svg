@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="title desc">
+  <title id="title">Rood koelvloeistoflampje</title><desc id="desc">Een rode thermometer boven golvend water.</desc>
+  <rect width="800" height="450" rx="32" fill="#17202b"/><circle cx="400" cy="225" r="150" fill="#3d171d"/>
+  <g fill="none" stroke="#f34343" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"><path d="M385 132v126a55 55 0 1 0 30 0V132a15 15 0 0 0-30 0z"/><path d="M245 330c35-35 70 35 105 0s70 35 105 0 70 35 105 0"/></g>
+  <circle cx="400" cy="300" r="22" fill="#f34343"/>
+</svg>

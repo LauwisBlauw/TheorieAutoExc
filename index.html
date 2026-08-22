@@ -5259,6 +5259,613 @@
         correct: ["a", "b", "c"],
         counts: false,
         explanation: "Defensief rijden betekent anticiperen, ruimte houden en rekening houden met onverwachte fouten van anderen."
+      },
+      {
+        id: "e53",
+        kind: "single",
+        topic: "Voorrang en voor laten gaan",
+        scene: "city",
+        prompt: "Moet je altijd stoppen voor een voetganger bij een zebrapad?",
+        options: [
+          { id: "a", text: "Ja, zodra een voetganger bij het zebrapad staat" },
+          { id: "b", text: "Nee, alleen als de voetganger duidelijk wil oversteken of al op het zebrapad loopt" },
+          { id: "c", text: "Nee, alleen als het donker is" }
+        ],
+        correct: "b",
+        explanation: "Je laat voetgangers die op een zebrapad lopen of duidelijk willen oversteken voorgaan. Een voetganger die alleen langs het zebrapad loopt, hoef je niet onnodig op te houden."
+      },
+      {
+        id: "e54",
+        kind: "single",
+        topic: "Bijzondere weggebruikers en manoeuvres",
+        scene: "intersection",
+        image: "assets/images/militaire-colonne-voorrangskruispunt.jpg",
+        imageAlt: "Bovenaanzicht van een kruispunt met een militaire colonne en een wachtende witte auto",
+        imageLabel: "Militaire colonne op een kruispunt",
+        prompt: "De militaire colonne op de afbeelding rijdt al over het kruispunt. Tussen twee voertuigen ontstaat een gat. Wat doe je?",
+        options: [
+          { id: "a", text: "Wachten tot de hele colonne voorbij is" },
+          { id: "b", text: "Door het gat rijden, want elk voertuig is een aparte bestuurder" },
+          { id: "c", text: "Alleen doorrijden als het gat groot genoeg lijkt" }
+        ],
+        correct: "a",
+        explanation: "Weggebruikers mogen een militaire colonne niet doorsnijden (artikel 16 RVV 1990). Je wacht dus tot het laatste voertuig voorbij is, ook als er tussendoor ruimte valt. Dat verbod staat los van de voorrang: ook als jij voorrang zou hebben of je verkeerslicht op groen springt, rijd je niet tussen twee colonnevoertuigen door."
+      },
+      {
+        id: "e55",
+        kind: "single",
+        topic: "Wetgeving",
+        scene: "city",
+        prompt: "Vanaf welke lengte mag een kind op de voorstoel zonder kinderzitje met de autogordel zitten?",
+        options: [
+          { id: "a", text: "Vanaf 1,20 meter" },
+          { id: "b", text: "Vanaf 1,35 meter" },
+          { id: "c", text: "Vanaf 12 jaar, ongeacht de lengte" }
+        ],
+        correct: "b",
+        explanation: "Kinderen kleiner dan 1,35 meter moeten in principe een passend en goedgekeurd kinderbeveiligingssysteem gebruiken. Vanaf 1,35 meter mag de gewone autogordel worden gebruikt."
+      },
+      {
+        id: "e56",
+        kind: "single",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "motorway",
+        prompt: "Het regent zo hard dat je zicht minder dan 50 meter is. Mag je het mistachterlicht gebruiken?",
+        options: [
+          { id: "a", text: "Nee, het mistachterlicht is niet toegestaan bij regen" },
+          { id: "b", text: "Ja, want het zicht is minder dan 50 meter" },
+          { id: "c", text: "Ja, maar alleen buiten de bebouwde kom" }
+        ],
+        correct: "a",
+        explanation: "Het mistachterlicht mag alleen bij mist of sneeuwval als het zicht minder dan 50 meter is. Bij zware regen mag het niet, ook niet bij zeer slecht zicht."
+      },
+      {
+        id: "e57",
+        kind: "multi",
+        topic: "Verantwoorde verkeersdeelname",
+        scene: "motorway",
+        prompt: "Wat is polderblindheid en hoe voorkom je die? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Verminderde oplettendheid door een lange, eentonige weg" },
+          { id: "b", text: "Regelmatig pauzeren" },
+          { id: "c", text: "Actief en regelmatig van kijkrichting veranderen" },
+          { id: "d", text: "De snelheid verhogen zodat de eentonige rit sneller voorbij is" }
+        ],
+        correct: ["a", "b", "c"],
+        explanation: "Polderblindheid is verminderde oplettendheid op lange, eentonige wegen. Blijf actief kijken en neem op tijd pauze; harder rijden maakt het risico juist groter."
+      },
+      {
+        id: "e58",
+        kind: "single",
+        topic: "Bijzondere weggebruikers en manoeuvres",
+        scene: "city",
+        image: "assets/images/BP02_Auto_V1.png",
+        imageAlt: "Drie militaire vrachtwagens, met blauwe vlaggen aan de voorzijde en een groene vlag aan het laatste voertuig",
+        imageLabel: "Markering van een militaire colonne",
+        prompt: "De voertuigen op de afbeelding vormen één militaire colonne. Wat geven de blauwe en groene vlaggen aan?",
+        options: [
+          { id: "a", text: "De blauwe vlag markeert de voorzijde en de groene vlag de achterzijde van de colonne" },
+          { id: "b", text: "De vlaggen geven aan dat de voertuigen gevaarlijke stoffen vervoeren" },
+          { id: "c", text: "De vlaggen zijn alleen versiering en hebben geen verkeersbetekenis" }
+        ],
+        correct: "a",
+        explanation: "Een militaire colonne is herkenbaar aan een blauwe vlag op het eerste voertuig en een groene vlag op het laatste voertuig. De voertuigen horen als groep bij elkaar; je mag de colonne niet doorsnijden."
+      },
+      {
+        id: "e59",
+        kind: "single",
+        topic: "Bijzondere weggebruikers en manoeuvres",
+        scene: "intersection",
+        image: "assets/images/BP11_Auto_V1.png",
+        imageAlt: "Witte auto bij een kruispunt waar een militaire colonne langs rijdt",
+        imageLabel: "Militaire colonne steekt een kruispunt over",
+        prompt: "Je rijdt in de witte auto op de afbeelding en wilt rechtdoor. Wat doe je?",
+        options: [
+          { id: "a", text: "Wachten tot de hele militaire colonne voorbij is" },
+          { id: "b", text: "Tussen de voertuigen doorrijden als er genoeg ruimte lijkt" },
+          { id: "c", text: "Direct voor het eerste voertuig invoegen" }
+        ],
+        correct: "a",
+        explanation: "Je mag een militaire colonne niet doorsnijden. Wacht tot het laatste voertuig voorbij is, ook als er tijdelijk ruimte tussen twee voertuigen ontstaat."
+      },
+      {
+        id: "e60",
+        kind: "single",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        image: "assets/images/Motor-63a54e0cd13a4288.jpg",
+        imageAlt: "Kruispunt met brandweer, politie en ambulance die blauw licht voeren",
+        imageLabel: "Hulpdiensten op een kruispunt",
+        prompt: "Wanneer is een ambulance, brandweerauto of politieauto een voorrangsvoertuig dat je moet laten voorgaan?",
+        options: [
+          { id: "a", text: "Bij blauw zwaai-, flits- of knipperlicht én een tweetonige hoorn" },
+          { id: "b", text: "Bij alleen blauw licht" },
+          { id: "c", text: "Alleen als er een rood kruis boven de rijstrook staat" }
+        ],
+        correct: "a",
+        explanation: "Een voorrangsvoertuig voert blauw zwaai-, flits- of knipperlicht én een tweetonige hoorn. Dan moet je het voor laten gaan, maar je blijft daarbij voorspelbaar en rijdt niet zomaar door rood."
+      },
+      {
+        id: "e61",
+        kind: "single",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        image: "assets/images/BM19_Auto_V1.png",
+        imageAlt: "Landelijk gelijkwaardig kruispunt met een witte auto, een personenauto en een tractor",
+        imageLabel: "Gelijkwaardig kruispunt buiten de bebouwde kom",
+        prompt: "Op dit kruispunt staan geen borden, haaientanden of verkeerslichten. Welke regel geldt voor jou in de witte auto?",
+        options: [
+          { id: "a", text: "Bestuurders van rechts voorrang verlenen" },
+          { id: "b", text: "De tractor moet altijd voor jou wachten omdat hij langzaam rijdt" },
+          { id: "c", text: "Alleen rekening houden met de grootste of zwaarste voertuigen" }
+        ],
+        correct: "a",
+        explanation: "Op een gelijkwaardig kruispunt verleen je voorrang aan bestuurders van rechts. Een tractor is ook een bestuurder; zijn snelheid of grootte verandert deze hoofdregel niet."
+      },
+      {
+        id: "e62",
+        kind: "single",
+        topic: "Milieu en verantwoord rijden",
+        scene: "none",
+        prompt: "Wat betekent een milieuzonebord voor jouw voertuig?",
+        options: [
+          { id: "a", text: "Je controleert of jouw voertuig met zijn brandstofsoort en emissieklasse de zone in mag" },
+          { id: "b", text: "Alleen elektrische auto's mogen de zone in" },
+          { id: "c", text: "Alle personenauto's mogen er altijd in; milieuzones gelden alleen voor vrachtauto's" }
+        ],
+        correct: "a",
+        explanation: "Een milieuzone kan bepaalde voertuigen weren, vaak oudere diesels met een lage emissieklasse. Op het bord of onderbord staat voor welke voertuigen en emissieklassen de beperking geldt."
+      },
+      {
+        id: "e63",
+        kind: "single",
+        topic: "Milieu en verantwoord rijden",
+        scene: "none",
+        prompt: "Wat zegt een hogere emissieklasse in het algemeen over een voertuig?",
+        options: [
+          { id: "a", text: "De motor stoot minder schadelijke stoffen uit en wordt vaker toegelaten in milieuzones" },
+          { id: "b", text: "Het voertuig mag alleen buiten de bebouwde kom rijden" },
+          { id: "c", text: "De motor gebruikt altijd meer brandstof" }
+        ],
+        correct: "a",
+        explanation: "De emissieklasse geeft aan aan welke uitstootnorm een voertuig voldoet. Hoe hoger de klasse, hoe schoner de motor in het algemeen is en hoe groter de kans dat het voertuig een milieuzone in mag."
+      },
+      {
+        id: "e64",
+        kind: "multi",
+        topic: "Milieu en verantwoord rijden",
+        scene: "motorway",
+        prompt: "Wat hoort bij Het Nieuwe Rijden? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Op tijd opschakelen" },
+          { id: "b", text: "Rustig en gelijkmatig optrekken" },
+          { id: "c", text: "De motor uitzetten bij een langere stilstand als dat veilig kan" },
+          { id: "d", text: "Lang in een lage versnelling blijven rijden om sneller te kunnen optrekken" }
+        ],
+        correct: ["a", "b", "c"],
+        explanation: "Het Nieuwe Rijden is zuinig en milieubewust rijden. Je schakelt op tijd op, trekt rustig op en voorkomt onnodig stationair draaien, bijvoorbeeld bij een langere veilige stilstand."
+      },
+      {
+        id: "e65",
+        kind: "single",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        image: "assets/images/19-20SEPPPT12.jpg",
+        imageAlt: "Lesauto bij een kruispunt met een voorrangsbord, een fietser en een motorfiets",
+        imageLabel: "Voorrangsweg op een kruispunt",
+        prompt: "De lesauto nadert het kruispunt en ziet het voorrangsbord op de afbeelding. Wat betekent dit?",
+        options: [
+          { id: "a", text: "De lesauto rijdt op een voorrangsweg en heeft voorrang op verkeer van de zijwegen" },
+          { id: "b", text: "De lesauto moet voorrang verlenen aan al het verkeer, omdat er een kruispunt komt" },
+          { id: "c", text: "De lesauto heeft alleen voorrang op personenauto's, niet op motoren of fietsen" }
+        ],
+        correct: "a",
+        explanation: "Het gele ruitvormige bord geeft een voorrangsweg aan. Verkeer dat vanaf de zijwegen komt en haaientanden heeft, moet voorrang verlenen. Ook met voorrang moet je een afslag natuurlijk veilig uitvoeren."
+      },
+      {
+        id: "e66",
+        kind: "single",
+        topic: "Bijzondere weggebruikers en manoeuvres",
+        scene: "residential",
+        image: "assets/images/69fb20c070a96d525530e0fe_3176a336.png.webp",
+        imageAlt: "Lesauto die vanaf een onverharde uitrit een weg oprijdt, met een weggebruiker op een elektrische step",
+        imageLabel: "Vanuit een uitrit de weg oprijden",
+        prompt: "Je wilt vanuit een uitrit de weg oprijden, zoals op de afbeelding. Wat doe je?",
+        options: [
+          { id: "a", text: "Alle weggebruikers voor laten gaan" },
+          { id: "b", text: "Alleen auto's op de rijbaan voor laten gaan" },
+          { id: "c", text: "Doorrijden, omdat verkeer op het fietspad altijd moet stoppen" }
+        ],
+        correct: "a",
+        explanation: "Een uitrit verlaten is een bijzondere manoeuvre. Je moet daarbij alle weggebruikers voor laten gaan, dus ook fietsers, voetgangers en bestuurders van bijvoorbeeld een toegestane elektrische step."
+      },
+      {
+        id: "e67",
+        kind: "single",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        image: "assets/images/a.jpg",
+        imageAlt: "Lesauto die rechts afslaat terwijl een voetganger de straat oversteekt",
+        imageLabel: "Afslaan bij een voetganger",
+        prompt: "De lesauto wil rechts afslaan. Wat moet de bestuurder doen?",
+        options: [
+          { id: "a", text: "De voetganger voor laten gaan voordat hij afslaat" },
+          { id: "b", text: "Eerst afslaan, want een voetganger heeft nooit voorrang" },
+          { id: "c", text: "Alleen stoppen als de voetganger al midden op de rijbaan loopt" }
+        ],
+        correct: "a",
+        explanation: "Als je afslaat, laat je voetgangers die de weg oversteken waar je naartoe gaat voorgaan. Kijk dus goed naar de stoep, het zebrapad en de rijbaan voordat je afslaat."
+      },
+      {
+        id: "e68",
+        kind: "single",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        image: "assets/images/voorrang-rechtdoorgaand-jpg.jpg",
+        imageAlt: "Lesauto die links af wil slaan terwijl een motor op dezelfde weg rechtdoor rijdt",
+        imageLabel: "Rechtdoorgaand verkeer op dezelfde weg",
+        prompt: "De lesauto wil links afslaan. De motor rijdt op dezelfde weg rechtdoor. Wie gaat eerst?",
+        options: [
+          { id: "a", text: "De motor gaat eerst" },
+          { id: "b", text: "De lesauto gaat eerst, omdat hij groter is" },
+          { id: "c", text: "De lesauto gaat eerst, omdat hij al richting aangeeft" }
+        ],
+        correct: "a",
+        explanation: "Rechtdoorgaand verkeer op dezelfde weg gaat voor afslaand verkeer. De lesauto wacht dus op de motor voordat hij links afslaat."
+      },
+      {
+        id: "e69",
+        kind: "single",
+        topic: "Voertuigkennis",
+        scene: "dashboard",
+        prompt: "Je voorruit is vuil en de ruitensproeiers geven geen vloeistof meer. Wat doe je voordat je verder rijdt?",
+        options: [
+          { id: "a", text: "Het reservoir met geschikte ruitensproeiervloeistof bijvullen en zorgen dat je weer goed zicht hebt" },
+          { id: "b", text: "Alleen de ruitenwissers sneller laten wissen" },
+          { id: "c", text: "Doorrijden; een vuile voorruit is alleen vervelend" }
+        ],
+        correct: "a",
+        explanation: "Een schone voorruit is nodig voor goed zicht. Vul het reservoir met geschikte ruitensproeiervloeistof bij voordat je met beperkt zicht verder rijdt."
+      },
+      {
+        id: "e70",
+        kind: "single",
+        topic: "Voertuigkennis",
+        scene: "weather",
+        prompt: "Je ruitenwissers trekken strepen en laten het zicht bij regen duidelijk verslechteren. Wat is verstandig?",
+        options: [
+          { id: "a", text: "De wisserbladen laten controleren of vervangen en pas rijden als je voldoende zicht hebt" },
+          { id: "b", text: "De ruitenwissers alleen op de hoogste stand zetten" },
+          { id: "c", text: "Achter een andere auto gaan rijden zodat die het water voor je weghoudt" }
+        ],
+        correct: "a",
+        explanation: "Versleten ruitenwissers kunnen strepen trekken en je zicht ernstig beperken. Zorg dat de ruiten en wissers goed werken voordat je in regen rijdt."
+      },
+      {
+        id: "e71",
+        kind: "single",
+        topic: "Veilig rijden en noodsituaties",
+        scene: "none",
+        prompt: "Je nadert een scherpe, onoverzichtelijke bocht op een natte weg. Wat doe je?",
+        options: [
+          { id: "a", text: "Vóór de bocht snelheid verminderen, zodat je de bocht beheerst kunt rijden" },
+          { id: "b", text: "Met dezelfde snelheid de bocht inrijden en pas in de bocht hard remmen" },
+          { id: "c", text: "Versnellen in de bocht om sneller weer rechtuit te rijden" }
+        ],
+        correct: "a",
+        explanation: "Pas je snelheid vóór een bocht aan op zicht, scherpte en wegdek. Op een nat wegdek is de grip minder en heb je meer ruimte nodig om veilig te reageren."
+      },
+      {
+        id: "e72",
+        kind: "single",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "none",
+        prompt: "Welk soort verkeersbord is in de regel driehoekig met een rode rand en waarschuwt voor een mogelijk gevaar?",
+        options: [
+          { id: "a", text: "Een waarschuwingsbord" },
+          { id: "b", text: "Een verbodsbord" },
+          { id: "c", text: "Een gebodsbord" }
+        ],
+        correct: "a",
+        explanation: "Waarschuwingsborden maken je attent op een mogelijk gevaar, zoals een scherpe bocht, oversteekplaats of wegversmalling. Pas je gedrag daarop aan."
+      },
+      {
+        id: "e73",
+        kind: "single",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "none",
+        prompt: "Welk soort verkeersbord is doorgaans rond met een rode rand en geeft aan wat niet mag?",
+        options: [
+          { id: "a", text: "Een verbodsbord" },
+          { id: "b", text: "Een waarschuwingsbord" },
+          { id: "c", text: "Een gebodsbord" }
+        ],
+        correct: "a",
+        explanation: "Een verbodsbord geeft een handeling of toegang aan die niet is toegestaan. Lees ook eventuele onderborden, want die kunnen de werking beperken of toelichten."
+      },
+      {
+        id: "e74",
+        kind: "single",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "none",
+        prompt: "Welk soort verkeersbord is doorgaans rond en blauw en schrijft voor wat je moet doen?",
+        options: [
+          { id: "a", text: "Een gebodsbord" },
+          { id: "b", text: "Een verbodsbord" },
+          { id: "c", text: "Een waarschuwingsbord" }
+        ],
+        correct: "a",
+        explanation: "Een gebodsbord geeft aan welk gedrag of welke richting verplicht is, bijvoorbeeld een verplichte rijrichting of een verplicht fietspad."
+      },
+      {
+        id: "e75",
+        kind: "single",
+        topic: "Verkeerstekens en aanwijzingen",
+        scene: "motorway",
+        prompt: "Bij wegwerkzaamheden staat tijdelijk een lagere maximumsnelheid aangegeven dan normaal. Wat volg je?",
+        options: [
+          { id: "a", text: "De tijdelijk aangegeven lagere maximumsnelheid" },
+          { id: "b", text: "De normale maximumsnelheid, omdat de werkzaamheden tijdelijk zijn" },
+          { id: "c", text: "Alleen de snelheid die je zelf veilig vindt" }
+        ],
+        correct: "a",
+        explanation: "Ook tijdelijke verkeersborden gelden. Bij wegwerkzaamheden kan een lagere snelheid nodig zijn door een gewijzigde weginrichting, personeel of versmalde rijstroken."
+      },
+      {
+        id: "e76",
+        kind: "single",
+        topic: "Bijzondere weggebruikers en manoeuvres",
+        scene: "residential",
+        prompt: "Een oudere voetganger staat zichtbaar onzeker bij een oversteekplaats. Wat is het veiligst?",
+        options: [
+          { id: "a", text: "Snelheid verminderen, ruim anticiperen en zo nodig veilig stoppen" },
+          { id: "b", text: "Doorrijden zolang de voetganger nog niet op de rijbaan staat" },
+          { id: "c", text: "Dicht langs de voetganger rijden om duidelijk te maken dat je voorrang hebt" }
+        ],
+        correct: "a",
+        explanation: "Kwetsbare weggebruikers kunnen onverwacht oversteken of meer tijd nodig hebben. Anticipeer ruim, houd voldoende afstand en wees bereid veilig te stoppen."
+      },
+      {
+        id: "e77",
+        kind: "single",
+        topic: "Bijzondere weggebruikers en manoeuvres",
+        scene: "city",
+        prompt: "Je wilt rechts afslaan en ziet een scooter in je rechterspiegel dichterbij komen. Wat doe je?",
+        options: [
+          { id: "a", text: "Richting aangeven, spiegels én dode hoek controleren en de scooter zo nodig voor laten gaan" },
+          { id: "b", text: "Meteen afslaan, want de scooter had niet naast je mogen rijden" },
+          { id: "c", text: "Alleen in de binnenspiegel kijken en daarna afslaan" }
+        ],
+        correct: "a",
+        explanation: "Een scooter kan in je dode hoek zitten of je rechts inhalen. Kijk daarom altijd in de spiegels en over je schouder voordat je afslaat, en laat verkeer dat rechtdoor gaat veilig voorgaan."
+      },
+      {
+        id: "e78",
+        kind: "single",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        prompt: "Je nadert een kruispunt met haaientanden op het wegdek en een officieel stopbord (B7). Er is geen ander verkeer te zien. Wat moet je verplicht doen?",
+        options: [
+          { id: "a", text: "Volledig stoppen vóór de stopstreep en daarna pas verder rijden als dat veilig kan" },
+          { id: "b", text: "Alleen snelheid minderen, omdat er geen ander verkeer is" },
+          { id: "c", text: "De haaientanden volgen en zonder stoppen doorrijden als de weg vrij is" }
+        ],
+        correct: "a",
+        explanation: "Bord B7 verplicht je te stoppen vóór de stopstreep. Die stopverplichting geldt ook als je geen ander verkeer ziet; daarna verleen je voorrang aan verkeer op de kruisende weg."
+      },
+      {
+        id: "e79",
+        kind: "single",
+        topic: "Voorrang en voor laten gaan",
+        scene: "city",
+        prompt: "Je nadert binnen de bebouwde kom een zebrapad op een weg met twee rijstroken in dezelfde richting. De auto vóór je mindert sterk vaart of stopt om een voetganger voor te laten gaan. Mag je deze auto vlak vóór of op het zebrapad inhalen?",
+        options: [
+          { id: "a", text: "Nee, je mag vlak vóór of op een zebrapad niet inhalen; houd afstand en wees bereid te stoppen" },
+          { id: "b", text: "Ja, als je de voetganger zelf nog niet ziet" },
+          { id: "c", text: "Ja, als je op de andere rijstrook voldoende ruimte hebt" }
+        ],
+        correct: "a",
+        explanation: "Het is verboden een voertuig vlak vóór of op een voetgangersoversteekplaats in te halen. De stoppende auto kan het zicht op een voetganger wegnemen, dus houd afstand en stop zo nodig zelf."
+      },
+      {
+        id: "e80",
+        kind: "multi",
+        topic: "Gebruik van de weg",
+        scene: "none",
+        prompt: "In welke situaties mag je niet inhalen of is inhalen niet verantwoord? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Vlak vóór of op een zebrapad" },
+          { id: "b", text: "Als je voor het inhalen over een doorgetrokken middenstreep moet rijden" },
+          { id: "c", text: "Als je onvoldoende zicht of ruimte hebt om veilig terug te keren" },
+          { id: "d", text: "Als de voorligger langzamer rijdt dan de maximumsnelheid" }
+        ],
+        correct: ["a", "b", "c"],
+        explanation: "Je haalt niet in vlak vóór of op een zebrapad en je mag een doorgetrokken middenstreep niet overschrijden. Ook zonder expliciet verbod haal je alleen in als zicht, ruimte en snelheid het veilig toelaten."
+      },
+      {
+        id: "e81",
+        kind: "multi",
+        topic: "Gebruik van de weg",
+        scene: "motorway",
+        prompt: "Wanneer mag je een langzaam rijdende auto vóór je links inhalen? Kies alle juiste antwoorden.",
+        options: [
+          { id: "a", text: "Als je voldoende zicht en ruimte hebt en veilig kunt terugkeren" },
+          { id: "b", text: "Als je niemand hindert en je de maximumsnelheid niet overschrijdt" },
+          { id: "c", text: "Als je eerst goed kijkt, richting aangeeft en de dode hoek controleert" },
+          { id: "d", text: "Ook als je daardoor vlak vóór een zebrapad uitkomt" }
+        ],
+        correct: ["a", "b", "c"],
+        explanation: "Inhalen gebeurt normaal links. Doe het alleen als het overzichtelijk en veilig is: kijk goed, geef richting aan, houd voldoende ruimte en snelheid, en keer pas terug als dat veilig kan."
+      },
+      {
+        id: "e82",
+        kind: "single",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        image: "assets/images/1648562081-bestand-20-kopie.webp",
+        imageAlt: "Witte auto bij een zijweg met haaientanden en een bord voorrangsweg",
+        imageLabel: "Voorrangsweg bij een zijweg",
+        prompt: "Je rijdt in de witte auto en ziet het gele ruitvormige bord. Wat betekent dit voor het verkeer dat vanaf de zijweg komt?",
+        options: [
+          { id: "a", text: "Je rijdt op een voorrangsweg; verkeer vanaf de zijweg moet jou voorrang verlenen" },
+          { id: "b", text: "Je moet altijd stoppen voor verkeer uit de zijweg" },
+          { id: "c", text: "Het bord betekent alleen dat je maximaal 30 km/u mag rijden" }
+        ],
+        correct: "a",
+        explanation: "Het gele ruitvormige bord is bord B1: voorrangsweg. Verkeer vanaf een zijweg met haaientanden moet bestuurders op de voorrangsweg voorrang verlenen. Blijf wel alert op voetgangers en onverwachte situaties."
+      },
+      {
+        id: "e83",
+        kind: "single",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        image: "assets/images/1651240037-tt-36-watermerk-concept-01.webp",
+        imageAlt: "Witte auto op een voorrangsweg die links wil afslaan, met tegemoetkomende auto's",
+        imageLabel: "Links afslaan op een voorrangsweg",
+        prompt: "De witte auto wil links afslaan. Tegemoetkomend verkeer op dezelfde weg rijdt rechtdoor. Wie gaat eerst?",
+        options: [
+          { id: "a", text: "Het tegemoetkomende verkeer gaat eerst" },
+          { id: "b", text: "De witte auto gaat eerst, omdat hij op een voorrangsweg rijdt" },
+          { id: "c", text: "De witte auto gaat eerst als hij als eerste richting aangeeft" }
+        ],
+        correct: "a",
+        explanation: "Rechtdoorgaand verkeer op dezelfde weg gaat voor afslaand verkeer. Ook op een voorrangsweg wacht je bij links afslaan op tegemoetkomend verkeer dat rechtdoor gaat."
+      },
+      {
+        id: "e84",
+        kind: "single",
+        topic: "Gebruik van de weg",
+        scene: "intersection",
+        image: "assets/images/1651240230-tt-24-182.webp",
+        imageAlt: "Witte auto bij een kruispunt met haaientanden, een voorrang-verlenenbord en een bord einde 30-zone",
+        imageLabel: "Einde 30-zone bij een kruispunt",
+        prompt: "Je passeert het bord 'einde zone 30' op de afbeelding. Wat geldt daarna voor de 30-km-zone?",
+        options: [
+          { id: "a", text: "De 30-km-zone eindigt; daarna geldt de ter plaatse geldende snelheid" },
+          { id: "b", text: "De 30-km-zone blijft gelden tot aan het volgende kruispunt" },
+          { id: "c", text: "Je mag vanaf dit bord altijd 80 km/u rijden" }
+        ],
+        correct: "a",
+        explanation: "Een einde-zonebord beëindigt de aangegeven zone. Let daarna op nieuwe borden en de algemene maximumsnelheid die voor de weg geldt. De haaientanden en het voorrang-verlenenbord blijven afzonderlijk van kracht."
+      },
+      {
+        id: "e85",
+        kind: "single",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        image: "assets/images/1652716426-bestand-8-tram.webp",
+        imageAlt: "Witte auto bij een complex kruispunt met een tram, motor en voorrangsbord",
+        imageLabel: "Complex kruispunt met tram en motor",
+        prompt: "Je nadert dit complexe kruispunt met een tram en een motor. Wat is de veiligste aanpak voordat je de kruising oprijdt?",
+        options: [
+          { id: "a", text: "Snelheid verminderen, borden en haaientanden controleren en de voorrangssituatie volledig beoordelen" },
+          { id: "b", text: "Alleen naar de auto vóór je kijken en daarna doorrijden" },
+          { id: "c", text: "Altijd versnellen, zodat je vóór de tram en motor de kruising over bent" }
+        ],
+        correct: "a",
+        explanation: "Bij een complexe kruising kunnen borden, haaientanden, rijrichtingen en verschillende weggebruikers samenkomen. Minder snelheid, kijk goed en bepaal eerst wie voorrang heeft voordat je oprijdt."
+      },
+      {
+        id: "e86",
+        kind: "single",
+        topic: "Voertuigkennis",
+        scene: "dashboard",
+        image: "assets/diagrams/warning-oil.svg",
+        imageAlt: "Rood dashboardlampje van een oliekannetje met een druppel",
+        imageLabel: "Rood oliedruklampje",
+        prompt: "Dit rode waarschuwingslampje gaat tijdens het rijden branden. Wat doe je?",
+        options: [
+          { id: "a", text: "Zo snel mogelijk veilig stoppen en de motor uitzetten" },
+          { id: "b", text: "Doorrijden tot de volgende tankbeurt" },
+          { id: "c", text: "Alleen sneller rijden zodat de motor warmer wordt" }
+        ],
+        correct: "a",
+        explanation: "Dit is het oliedruklampje. Te lage oliedruk kan ernstige motorschade veroorzaken. Stop daarom veilig, zet de motor uit en controleer pas daarna volgens de instructies van de auto wat nodig is."
+      },
+      {
+        id: "e87",
+        kind: "single",
+        topic: "Voertuigkennis",
+        scene: "dashboard",
+        image: "assets/diagrams/warning-brakes.svg",
+        imageAlt: "Rood dashboardlampje met een uitroepteken in een cirkel tussen twee haakjes",
+        imageLabel: "Rood remlampje",
+        prompt: "Wat is de veiligste reactie als dit rode remlampje tijdens het rijden blijft branden?",
+        options: [
+          { id: "a", text: "Veilig stoppen en het remsysteem laten controleren" },
+          { id: "b", text: "Doorrijden als de remmen nog enigszins werken" },
+          { id: "c", text: "Alleen de handrem gebruiken en verder rijden" }
+        ],
+        correct: "a",
+        explanation: "Een rood remlampje kan op een probleem met het remsysteem wijzen. Doorrijden kan gevaarlijk zijn; stop veilig en laat de oorzaak controleren."
+      },
+      {
+        id: "e88",
+        kind: "single",
+        topic: "Voertuigkennis",
+        scene: "dashboard",
+        image: "assets/diagrams/warning-battery.svg",
+        imageAlt: "Rood dashboardlampje in de vorm van een accu met plus- en minteken",
+        imageLabel: "Rood acculampje",
+        prompt: "Dit rode acculampje blijft na het starten branden. Wat is verstandig?",
+        options: [
+          { id: "a", text: "Op een veilige plaats stoppen en advies of hulp inschakelen" },
+          { id: "b", text: "Het lampje negeren; de accu laadt vanzelf altijd bij" },
+          { id: "c", text: "Extra elektrische apparaten inschakelen om de accu te testen" }
+        ],
+        correct: "a",
+        explanation: "Een blijvend acculampje kan wijzen op een storing in het laadsysteem, bijvoorbeeld de dynamo. Stop veilig en laat de oorzaak beoordelen voordat je verder rijdt."
+      },
+      {
+        id: "e89",
+        kind: "single",
+        topic: "Voertuigkennis",
+        scene: "dashboard",
+        image: "assets/diagrams/warning-coolant.svg",
+        imageAlt: "Rood dashboardlampje van een thermometer boven golvend water",
+        imageLabel: "Rood koelvloeistoflampje",
+        prompt: "Dit rode lampje voor de koeling brandt. Wat doe je?",
+        options: [
+          { id: "a", text: "Veilig stoppen en de motor laten afkoelen; open een heet koelsysteem niet" },
+          { id: "b", text: "Doorrijden om de motor met rijwind af te koelen" },
+          { id: "c", text: "Direct de dop van het koelvloeistofreservoir openen" }
+        ],
+        correct: "a",
+        explanation: "Dit lampje kan betekenen dat de motor oververhit raakt of dat er een probleem met de koeling is. Stop veilig en wees voorzichtig met hete vloeistof en stoom."
+      },
+      {
+        id: "e90",
+        kind: "single",
+        topic: "Voertuigkennis",
+        scene: "dashboard",
+        image: "assets/diagrams/warning-engine.svg",
+        imageAlt: "Oranje dashboardlampje in de vorm van een motorblok",
+        imageLabel: "Oranje motorlampje",
+        prompt: "Het oranje motorlampje brandt continu en de auto rijdt verder normaal. Wat is verstandig?",
+        options: [
+          { id: "a", text: "Rustig doorrijden naar een veilige plaats en de auto zo snel mogelijk laten controleren" },
+          { id: "b", text: "Het lampje altijd negeren" },
+          { id: "c", text: "Direct hard remmen midden op de rijbaan" }
+        ],
+        correct: "a",
+        explanation: "Een continu brandend oranje motorlampje vraagt aandacht. Pas je snelheid aan, stop op een veilige plaats en laat de storing op korte termijn controleren. Knipperen wijst op een ernstiger probleem."
+      },
+      {
+        id: "e91",
+        kind: "single",
+        topic: "Voertuigkennis",
+        scene: "dashboard",
+        image: "assets/diagrams/warning-tire.svg",
+        imageAlt: "Oranje dashboardlampje van een open cirkel met een uitroepteken",
+        imageLabel: "Oranje bandenspanningslampje",
+        prompt: "Dit oranje bandenspanningslampje brandt. Wat doe je?",
+        options: [
+          { id: "a", text: "Op een veilige plaats stoppen en de banden op spanning, schade en een eventuele lekke band controleren" },
+          { id: "b", text: "Ongeveer 20 km/u harder rijden om de band weer op druk te krijgen" },
+          { id: "c", text: "Doorrijden tot de volgende onderhoudsbeurt" }
+        ],
+        correct: "a",
+        explanation: "Dit lampje wijst vaak op een te lage bandenspanning of een lekke band. Controleer de banden veilig en herstel de oorzaak voordat je verder rijdt."
       }
     ];
 

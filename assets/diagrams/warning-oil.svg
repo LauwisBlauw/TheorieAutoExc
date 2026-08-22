@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="title desc">
+  <title id="title">Rood oliedruklampje</title><desc id="desc">Een rood oliekannetje met een oliedruppel.</desc>
+  <rect width="800" height="450" rx="32" fill="#17202b"/><circle cx="400" cy="225" r="150" fill="#3d171d"/>
+  <g fill="none" stroke="#f34343" stroke-width="30" stroke-linejoin="round" stroke-linecap="round"><path d="M246 245h195l43-54 63 2 28 58h-61l-32 44H246z"/><path d="M302 189h119v56H302z"/></g>
+  <path d="M610 286c0 27-22 49-49 49s-49-22-49-49c0-34 49-87 49-87s49 53 49 87z" fill="#f34343"/>
+</svg>

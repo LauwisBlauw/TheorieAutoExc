@@ -9,7 +9,7 @@ Open `index.html` in je browser om te oefenen.
 - 2 oefenvragen om de bediening te leren.
 - 52 examenvragen, waarvan 50 meetellen en 2 testvragen niet meetellen.
 - Normale variant, moeilijke variant en willekeurige mix.
-- 206 vragen in de totale vragenbank.
+- 249 vragen in de totale vragenbank.
 - Timer van 30 minuten.
 - Slaaggrens van 44 goed op 50 meetellende vragen.
 - Vraagsoorten: meerkeuze, ja/nee-achtige meerkeuze, multiple response, invulvraag, hotspotvraag en sleepvraag-simulatie.
@@ -76,7 +76,9 @@ Antwoorden zijn met deze bronnen gespiegeld, maar blijven oefenmateriaal. Bij tw
 
 ## Afbeeldingen
 
-De basisfoto's staan lokaal in `assets/images` en komen van Wikimedia Commons:
+### Sfeerfoto's van Wikimedia Commons
+
+Deze negen basisfoto's in `assets/images` komen van Wikimedia Commons en staan hier met hun licentie:
 
 - `motorway.jpg`: Traffic jam in the Netherlands, Petra de Boevere, CC BY 2.0.
 - `city.jpg`: Hauptstrassenradweg in Amsterdam, W.-D. Haberland, CC BY-SA 4.0.
@@ -88,7 +90,30 @@ De basisfoto's staan lokaal in `assets/images` en komen van Wikimedia Commons:
 - `signs.jpg`: Parking zone 30 sign, Rotterdam, Donald Trung Quoc Don, CC BY-SA 4.0. Let op: dit is een blauw *parkeer*zonebord, geen snelheidsbord. Het wordt daarom alleen gebruikt bij vragen over onderborden, niet bij vragen over de 30 km/u-zone.
 - `rail.jpg`: HALI Amsterdam Houtrakpolder, Pbech, CC0.
 
-De hotspotvragen gebruiken daarnaast zelf gegenereerde oefenbeelden in `assets/generated`:
+### Situatiebeelden van derden, licentie niet geregeld
+
+Let op: de licenties hierboven gelden **alleen** voor die negen bestanden. In `assets/images` staan
+daarnaast dertien situatierenders die afkomstig zijn van Nederlandse commerciele theorie-aanbieders. Drie
+daarvan dragen een zichtbaar merk van de maker:
+
+- `1651240037-tt-36-watermerk-concept-01.webp`: watermerk "THEORIE TOPPERS" over het hele beeld.
+- `BP02_Auto_V1.png`: copyrightvermelding "(c) Theorie.nl" linksonder.
+- `19-20SEPPPT12.jpg`: lesauto met TSH-logo en kenteken 12-TSH-1.
+
+De overige tien zijn dezelfde soort renders in dezelfde stijl: `1648562081-bestand-20-kopie.webp`,
+`1651240230-tt-24-182.webp`, `1652716426-bestand-8-tram.webp`,
+`69fb20c070a96d525530e0fe_3176a336.png.webp`, `BM19_Auto_V1.png`, `BP11_Auto_V1.png`,
+`Motor-63a54e0cd13a4288.jpg`, `a.jpg`, `militaire-colonne-voorrangskruispunt.jpg` en
+`voorrang-rechtdoorgaand-jpg.jpg`.
+
+Voor geen van deze dertien is toestemming of een licentie vastgelegd. Ze worden gebruikt door de vragen
+e54, e58, e59, e60, e61, e65, e66, e67, e68, e82, e83, e84 en e85. Wie deze repository hergebruikt of
+publiceert, moet dit eerst oplossen: vervangen door eigen beeld, of alsnog toestemming regelen. De overige
+236 vragen raken deze bestanden niet.
+
+### Zelf gegenereerde hotspotbeelden
+
+De hotspotvragen gebruiken zelf gegenereerde oefenbeelden in `assets/generated`:
 
 - `p2-child-ball.jpg`: woonstraat met kind en bal tussen geparkeerde auto's.
 - `residential-30zone-child.jpg`: 30-zone met kind tussen geparkeerde auto's.
@@ -101,7 +126,7 @@ Alle beelden in `assets/generated` zijn 1586x992. De hotspotstippen zijn percent
 
 ## Foto's bij vragen
 
-Met negen sfeerfoto's voor 158 vragen zijn de foto's bewust illustratief, niet letterlijk. Eén regel geldt wel hard: het zichtbare bijschrift mag de vraagtekst niet tegenspreken en de kandidaat niet naar een fout antwoord duwen.
+Met negen sfeerfoto's voor het merendeel van de vragen zijn die foto's bewust illustratief, niet letterlijk. Eén regel geldt wel hard: het zichtbare bijschrift mag de vraagtekst niet tegenspreken en de kandidaat niet naar een fout antwoord duwen.
 
 Vragen waarbij geen van de beschikbare foto's past, krijgen `scene: "none"` en worden zonder beeld getoond over de volle breedte. Dat is beter dan een bijschrift dat de vraag onderuithaalt: bij een vraag over een autoweg is "Autosnelweg met meerdere rijstroken" niet neutraal maar misleidend.
 
@@ -119,6 +144,10 @@ verkeerslichten, en die spreken een vraag over een gelijkwaardig kruispunt tegen
   voorrangsweg en op de kruisende weg liggen haaientanden, ook voor de tram.
 - `kruispunt-tram-voorrangsvoertuig.svg`: gelijkwaardig kruispunt met een ambulance met blauw zwaailicht en
   sirene, die iedereen voorgaat, de tram inbegrepen.
+
+Ook de waarschuwingslampjes op het dashboard zijn zelfgetekend, zodat er geen lampjesplaatjes van derden
+nodig zijn: `warning-oil.svg`, `warning-brakes.svg`, `warning-battery.svg`, `warning-coolant.svg`,
+`warning-engine.svg` en `warning-tire.svg`, gebruikt door e86 tot en met e91.
 
 Gebaseerd op openbare bronnen:
 

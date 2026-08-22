@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="title desc">
+  <title id="title">Rood remlampje</title><desc id="desc">Een rode cirkel met een uitroepteken en haakjes eromheen.</desc>
+  <rect width="800" height="450" rx="32" fill="#17202b"/><circle cx="400" cy="225" r="150" fill="#3d171d"/>
+  <g fill="none" stroke="#f34343" stroke-width="30" stroke-linecap="round"><circle cx="400" cy="225" r="90"/><path d="M222 146c-39 41-55 94-42 144M578 146c39 41 55 94 42 144"/></g>
+  <path d="M400 163v100m0 48v2" fill="none" stroke="#f34343" stroke-width="32" stroke-linecap="round"/>
+</svg>

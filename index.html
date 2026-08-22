@@ -4334,18 +4334,19 @@
       },
       {
         id: "h38",
-        kind: "multi",
+        kind: "order",
+        difficulty: "moeilijk",
         topic: "Veilig rijden en noodsituaties",
         scene: "motorway",
-        prompt: "Je krijgt pech op de autosnelweg. Wat is juist? Kies alle juiste antwoorden.",
-        options: [
-          { id: "a", text: "Alarmlichten aanzetten" },
-          { id: "b", text: "Met inzittenden achter de vangrail gaan als dat veilig kan" },
-          { id: "c", text: "Op de rijbaan blijven staan om te waarschuwen" },
-          { id: "d", text: "Hulp bellen vanaf een veilige plek" }
+        prompt: "Je krijgt pech op de autosnelweg en zet je auto op de vluchtstrook. Zet de handelingen in de juiste volgorde.",
+        help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
+        items: [
+          { id: "alarm", text: "Alarmlichten aanzetten" },
+          { id: "vangrail", text: "Met alle inzittenden achter de vangrail gaan staan" },
+          { id: "bellen", text: "Vanaf die veilige plek hulp bellen" }
         ],
-        correct: ["a", "b", "d"],
-        explanation: "Maak het voertuig zichtbaar, breng jezelf en inzittenden in veiligheid en regel hulp vanaf een veilige plek."
+        correct: ["alarm", "vangrail", "bellen"],
+        explanation: "De volgorde is hier het punt. Je alarmlichten gaan meteen aan, want tot dat moment ziet naderend verkeer niet dat je stilstaat. Daarna breng je jezelf en je inzittenden achter de vangrail in veiligheid, want op en langs de vluchtstrook is het levensgevaarlijk. Pas vanaf die veilige plek bel je hulp; blijven bellen naast de auto kost tijd op precies de plek waar je niet wilt staan."
       },
       {
         id: "h39",
@@ -4377,18 +4378,18 @@
       },
       {
         id: "h41",
-        kind: "multi",
+        kind: "single",
+        difficulty: "moeilijk",
         topic: "Verantwoorde verkeersdeelname",
         scene: "motorway",
-        prompt: "Bij een wegversmalling moet verkeer ritsen. Wat doe je? Kies alle juiste antwoorden.",
+        prompt: "Voor je versmalt de weg van twee rijstroken naar een. Op welk moment voeg je in?",
         options: [
-          { id: "a", text: "Beide rijstroken benutten tot kort voor de versmalling" },
-          { id: "b", text: "Om en om invoegen met aangepaste snelheid" },
-          { id: "c", text: "Het gat dichtrijden zodat niemand kan invoegen" },
-          { id: "d", text: "Richting aangeven en rekening houden met elkaar" }
+          { id: "a", text: "Vlak voor de versmalling, om en om, nadat beide rijstroken tot dat punt zijn gebruikt" },
+          { id: "b", text: "Zo vroeg mogelijk, ruim voor de versmalling, zodat er op tijd een rij ontstaat" },
+          { id: "c", text: "Zodra er een gat valt; wie het eerst bij de versmalling is, gaat het eerst" }
         ],
-        correct: ["a", "b", "d"],
-        explanation: "Ritsen werkt door beide rijstroken te benutten, rustig om en om in te voegen en elkaar ruimte te geven."
+        correct: "a",
+        explanation: "Ritsen is er juist op gericht de weg tot het laatste stuk te blijven gebruiken. Voeg je ruim van tevoren in, dan blijft een halve rijstrook leeg terwijl de file achter je langer wordt. Dat is de fout die de meesten maken, omdat vroeg invoegen beleefd voelt. Bij de versmalling zelf laat het verkeer op de doorgaande strook om en om iemand voor, dus het is geen wedstrijd wie er het eerst is."
       },
       {
         id: "h42",

@@ -160,6 +160,17 @@ const assertions = `
       }
     });
 
+  // De weather-scene is een mistfoto met het bijschrift "Slecht zicht door mist".
+  // Een vraag over regen of water op de weg hoort daar niet op: het bijschrift
+  // spreekt de vraag dan tegen, en bij verlichtingsvragen scheelt mist of regen
+  // het antwoord.
+  practiceQuestions.concat(examQuestions, hardExamQuestions, extraExamQuestions)
+    .forEach(function (q) {
+      if (q.scene === "weather" && !q.image && /regen|waterlaag|water op de weg|nat wegdek/i.test(q.prompt)) {
+        throw new Error("Vraag " + q.id + " gaat over regen maar draagt het mistbijschrift");
+      }
+    });
+
   startTraining("hard");
   if (state.phase !== "exam" || state.mode !== "training" || state.variant !== "hard") {
     throw new Error("Training state failed");

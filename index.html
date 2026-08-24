@@ -2367,15 +2367,19 @@
         kind: "order",
         topic: "Voorrang en voor laten gaan",
         scene: "intersection",
-        prompt: "Zet de volgorde goed op een gelijkwaardig kruispunt.",
+        diagram: true,
+        image: "assets/diagrams/kruispunt-tram-links-fietser-rechts.svg",
+        imageAlt: "Bovenaanzicht van een gelijkwaardig kruispunt met een tram van links die rechtdoor gaat, een fietser van rechts die linksaf slaat en daarbij de trambaan kruist, en jouw auto van beneden die rechtdoor gaat.",
+        imageLabel: "Gelijkwaardig kruispunt zonder borden of haaientanden. De tram komt van links, de fietser van rechts slaat linksaf en jij gaat rechtdoor.",
+        prompt: "Op dit gelijkwaardige kruispunt komt een tram (1) van links en gaat rechtdoor. Van rechts komt een fietser (2) die linksaf slaat en daarbij de trambaan kruist. Jij (3) gaat rechtdoor. Zet ze in de volgorde waarin ze mogen gaan.",
         help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
         items: [
-          { id: "you", text: "Jij" },
-          { id: "bike", text: "Fietser van rechts" },
-          { id: "tram", text: "Tram van links" }
+          { id: "you", text: "3, jouw auto die rechtdoor gaat" },
+          { id: "bike", text: "2, de fietser van rechts die linksaf slaat" },
+          { id: "tram", text: "1, de tram die van links komt" }
         ],
         correct: ["tram", "bike", "you"],
-        explanation: "Een tram gaat op een gelijkwaardig kruispunt voor. Daarna gaat de bestuurder van rechts voor jou."
+        explanation: "De tram gaat voor, ook al komt hij van links: die uitzondering staat boven de voorrang van rechts. De fietser moet de trambaan kruisen om linksaf te kunnen en laat de tram dus ook gaan. Daarna is de fietser aan de beurt, want een fietser is een bestuurder en komt hier van jouw rechterkant. Jij gaat als laatste."
       },
       {
         id: "q9",
@@ -2998,6 +3002,10 @@
         kind: "order",
         topic: "Voorrang en voor laten gaan",
         scene: "intersection",
+        diagram: true,
+        image: "assets/diagrams/kruispunt-linksaf-fietser-naast-auto-achter.svg",
+        imageAlt: "Bovenaanzicht van een kruispunt met een fietspad rechts naast de rijbaan. Jouw auto slaat linksaf, rechts naast je gaat een fietser rechtdoor en achter jou wacht een auto die ook linksaf wil.",
+        imageLabel: "Jij slaat linksaf; rechts naast je gaat een fietser rechtdoor over het fietspad en achter jou wacht een auto die ook linksaf wil.",
         prompt: "Zet de volgorde goed: jij slaat linksaf, een fietser rechts naast je rijdt rechtdoor op dezelfde weg en achter jou wacht een auto die ook linksaf slaat.",
         help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
         items: [
@@ -4675,6 +4683,10 @@
         kind: "order",
         topic: "Voorrang en voor laten gaan",
         scene: "intersection",
+        diagram: true,
+        image: "assets/diagrams/kruispunt-linksaf-tegenligger-motor.svg",
+        imageAlt: "Bovenaanzicht van een kruispunt waarop jouw auto linksaf slaat terwijl van boven een tegenligger nadert met daar direct achter een motorrijder, beide rechtdoor.",
+        imageLabel: "Jij wilt linksaf; er nadert een tegenligger die rechtdoor gaat en daar direct achter een motorrijder.",
         prompt: "Zet de volgorde goed: jij wilt linksaf, er nadert een tegenligger die rechtdoor gaat en direct achter die tegenligger rijdt een motorrijder die ook rechtdoor gaat.",
         help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
         items: [

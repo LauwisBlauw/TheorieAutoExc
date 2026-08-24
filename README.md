@@ -162,6 +162,14 @@ verkeerslichten, en die spreken een vraag over een gelijkwaardig kruispunt tegen
   overstekende voetganger en een auto van links die hetzelfde zebrapad nadert.
 - `uitrit-auto-bromfiets.svg`: eigen auto in een uitrit met doorlopende stoeprand, auto en bromfietser op de
   doorgaande weg.
+- `kruispunt-tram-links-fietser-rechts.svg`: tram van links, fietser van rechts die linksaf slaat over de
+  trambaan, eigen auto rechtdoor.
+- `kruispunt-linksaf-fietser-naast-auto-achter.svg`: eigen auto slaat linksaf, fietser rechtdoor op het
+  fietspad ernaast, auto erachter die ook linksaf wil.
+- `kruispunt-linksaf-tegenligger-motor.svg`: eigen auto slaat linksaf, tegenligger rechtdoor met een
+  motorrijder er direct achter.
+
+Alle volgordevragen over voorrang dragen een schema; de smoke test bewaakt dat.
 
 Bij een volgordevraag moet elke stap afgedwongen zijn, anders zijn er meerdere goede antwoorden. Twee
 weggebruikers die elkaars pad niet kruisen leggen niets vast; daarom kruist in elk van deze schema's elke

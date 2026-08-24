@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Bovenaanzicht van een kruispunt met een fietspad rechts naast de rijbaan. Jouw auto komt van beneden en slaat linksaf. Rechts naast je gaat een fietser rechtdoor over het fietspad. Achter jou staat een auto die ook linksaf wil.">
+  <defs>
+    <marker id="pijl" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#f5b301"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="1000" fill="#dbe4dc"/>
+  <g fill="#c3cfc6">
+    <rect x="60" y="60" width="530" height="240" rx="10"/>
+    <rect x="1060" y="60" width="480" height="240" rx="10"/>
+    <rect x="60" y="700" width="530" height="240" rx="10"/>
+    <rect x="1060" y="700" width="480" height="240" rx="10"/>
+  </g>
+  <rect x="0" y="380" width="1600" height="240" fill="#4a555c"/>
+  <rect x="660" y="0" width="280" height="1000" fill="#4a555c"/>
+  <rect x="940" y="0" width="70" height="1000" fill="#8d3a1c" opacity="0.35"/>
+  <g stroke="#eef0d8" stroke-width="6" stroke-dasharray="46 38">
+    <line x1="0" y1="500" x2="640" y2="500"/><line x1="960" y1="500" x2="1600" y2="500"/>
+    <line x1="800" y1="0" x2="800" y2="360"/><line x1="800" y1="640" x2="800" y2="1000"/>
+  </g>
+    <rect x="952" y="690" width="46" height="96" rx="20" fill="#c8562a" stroke="#8d3a1c" stroke-width="4"/>
+    <circle cx="975" cy="716" r="13" fill="#f0d6c8"/>
+    <line x1="975" y1="672" x2="975" y2="580" stroke="#f5b301" stroke-width="10" marker-end="url(#pijl)"/>
+    <rect x="822" y="660" width="96" height="150" rx="18" fill="#1b6f92" stroke="#124b63" stroke-width="4"/>
+    <rect x="840" y="700.5" width="60" height="72" rx="10" fill="#d4e6ee"/>
+    <rect x="834" y="664" width="72" height="18" rx="6" fill="#ffe9b0"/>
+    <path d="M 870 636 L 870 520 Q 870 440 790 440 L 630 440" fill="none" stroke="#f5b301" stroke-width="10" stroke-linecap="round" marker-end="url(#pijl)"/>
+    <rect x="822" y="845" width="96" height="150" rx="18" fill="#8a7a4a" stroke="#5f5330" stroke-width="4"/>
+    <rect x="840" y="885.5" width="60" height="72" rx="10" fill="#d4e6ee"/>
+    <rect x="834" y="849" width="72" height="18" rx="6" fill="#ffe9b0"/>
+  <g font-family="Verdana, Geneva, sans-serif" font-size="62" font-weight="bold" text-anchor="middle">
+    <circle cx="1090" cy="700" r="52" fill="#10202a" stroke="#ffffff" stroke-width="7"/>
+    <text x="1090" y="722" fill="#ffffff">1</text>
+    <circle cx="742" cy="700" r="52" fill="#10202a" stroke="#ffffff" stroke-width="7"/>
+    <text x="742" y="722" fill="#ffffff">2</text>
+    <circle cx="742" cy="900" r="52" fill="#10202a" stroke="#ffffff" stroke-width="7"/>
+    <text x="742" y="922" fill="#ffffff">3</text>
+  </g>
+</svg>

@@ -146,6 +146,20 @@ const assertions = `
     }
   }
 
+  // Elke volgordevraag over voorrang hoort een schema te dragen: zonder plaatje
+  // moet de kandidaat de situatie uit de tekst reconstrueren, en juist daar gaat
+  // het bij een voorrangsvolgorde mis.
+  practiceQuestions.concat(examQuestions, hardExamQuestions, extraExamQuestions)
+    .filter(function (q) {
+      return q.kind === "order" &&
+        (q.topic === "Voorrang en voor laten gaan" || q.topic === "Bijzondere weggebruikers en manoeuvres");
+    })
+    .forEach(function (q) {
+      if (!q.image || !q.diagram) {
+        throw new Error("Volgordevraag " + q.id + " over voorrang heeft geen schema");
+      }
+    });
+
   startTraining("hard");
   if (state.phase !== "exam" || state.mode !== "training" || state.variant !== "hard") {
     throw new Error("Training state failed");

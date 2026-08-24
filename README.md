@@ -9,7 +9,7 @@ Open `index.html` in je browser om te oefenen.
 - 2 oefenvragen om de bediening te leren.
 - 52 examenvragen, waarvan 50 meetellen en 2 testvragen niet meetellen.
 - Normale variant, moeilijke variant en willekeurige mix.
-- 255 vragen in de totale vragenbank, plus 2 oefenvragen om de bediening te leren.
+- 258 vragen in de totale vragenbank, plus 2 oefenvragen om de bediening te leren.
 - Timer van 30 minuten.
 - Slaaggrens van 44 goed op 50 meetellende vragen.
 - Vraagsoorten: meerkeuze, ja/nee-achtige meerkeuze, multiple response, invulvraag, hotspotvraag en sleepvraag-simulatie.
@@ -45,7 +45,7 @@ Elke examensessie schudt de vraagvolgorde. Bij meerkeuze en multiple-response wo
 
 De normale variant put uit 100 meetellende vragen, waarvan er per sessie 50 worden getrokken. Twee sessies achter elkaar leveren dus verschillende vragen op.
 
-De moeilijke variant gebruikt een aparte set van 58 vragen. Deze vragen zijn strenger geformuleerd en bevatten meer strikvragen, samengestelde voorrangssituaties, matrixbord-vragen, bijzondere manoeuvres en meerdere-antwoorden-vragen.
+De moeilijke variant gebruikt een aparte set van 61 vragen. Deze vragen zijn strenger geformuleerd en bevatten meer strikvragen, samengestelde voorrangssituaties, matrixbord-vragen, bijzondere manoeuvres en meerdere-antwoorden-vragen.
 
 De willekeurige mix trekt elke keer 52 vragen uit de normale, moeilijke en extra vragenbank samen. Ook in deze modus tellen 50 vragen mee, zijn 2 vragen testvragen, en is 44 goed geslaagd.
 
@@ -156,6 +156,12 @@ verkeerslichten, en die spreken een vraag over een gelijkwaardig kruispunt tegen
   linksaf slaat en daarbij zowel de trambaan als het eigen pad kruist.
 - `kruispunt-rechtsaf-fietser-auto-links.svg`: eigen auto slaat rechtsaf over een fietspad, fietser rechtdoor
   ernaast, auto van links.
+- `kruispunt-fietser-rechts-auto-erachter.svg`: fietser van rechts met een auto erachter op dezelfde weg,
+  eigen auto slaat linksaf.
+- `kruispunt-zebra-rechtsaf-auto-links.svg`: zebrapad op de weg waar de eigen auto in draait, met een
+  overstekende voetganger en een auto van links die hetzelfde zebrapad nadert.
+- `uitrit-auto-bromfiets.svg`: eigen auto in een uitrit met doorlopende stoeprand, auto en bromfietser op de
+  doorgaande weg.
 
 Bij een volgordevraag moet elke stap afgedwongen zijn, anders zijn er meerdere goede antwoorden. Twee
 weggebruikers die elkaars pad niet kruisen leggen niets vast; daarom kruist in elk van deze schema's elke

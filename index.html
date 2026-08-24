@@ -3791,6 +3791,66 @@
 
     const hardExamQuestions = [
       {
+        id: "h59",
+        kind: "order",
+        difficulty: "moeilijk",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        diagram: true,
+        image: "assets/diagrams/kruispunt-fietser-rechts-auto-erachter.svg",
+        imageAlt: "Bovenaanzicht van een gelijkwaardig kruispunt met van rechts eerst een fietser en daarachter een auto, en jouw auto die van beneden komt en linksaf slaat.",
+        imageLabel: "Gelijkwaardig kruispunt zonder borden of haaientanden. Van rechts komen een fietser en daarachter een auto; jij slaat linksaf.",
+        prompt: "Van rechts komt een fietser (1) en daarachter op dezelfde weg een auto (2). Jij (3) slaat linksaf. Zet ze in de volgorde waarin ze mogen gaan.",
+        help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
+        items: [
+          { id: "fietser", text: "1, de fietser van rechts" },
+          { id: "auto", text: "2, de auto achter de fietser" },
+          { id: "jij", text: "3, jouw auto die linksaf slaat" }
+        ],
+        correct: ["fietser", "auto", "jij"],
+        explanation: "Een fietser is een bestuurder, dus de voorrang van rechts geldt voor hem net zo goed als voor een auto. Dat is precies het verschil met een voetganger, die geen bestuurder is en dus geen voorrang van rechts heeft. Beide komen hier van jouw rechterkant en jij slaat bovendien af, dus jij gaat als laatste. Tussen die twee bepaalt hun plek op de weg de volgorde: de auto rijdt achter de fietser en komt dus na hem."
+      },
+      {
+        id: "h60",
+        kind: "order",
+        difficulty: "moeilijk",
+        topic: "Voorrang en voor laten gaan",
+        scene: "intersection",
+        diagram: true,
+        image: "assets/diagrams/kruispunt-zebra-rechtsaf-auto-links.svg",
+        imageAlt: "Bovenaanzicht van een kruispunt met een zebrapad op de weg rechts, waarop een voetganger oversteekt. Jouw auto slaat rechtsaf over dat zebrapad en van links nadert een auto die er ook overheen moet.",
+        imageLabel: "Op de weg waar jij in draait ligt een zebrapad met een overstekende voetganger. Van links nadert een auto die rechtdoor gaat.",
+        prompt: "Je slaat rechtsaf (2) en kruist daarbij een zebrapad waarop een voetganger (1) oversteekt. Van links nadert een auto (3) die rechtdoor gaat. Zet ze in de volgorde waarin ze mogen gaan.",
+        help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
+        items: [
+          { id: "voetganger", text: "1, de voetganger op het zebrapad" },
+          { id: "jij", text: "2, jouw auto die rechtsaf slaat" },
+          { id: "auto", text: "3, de auto die van links komt" }
+        ],
+        correct: ["voetganger", "jij", "auto"],
+        explanation: "Op een zebrapad laten bestuurders overstekende voetgangers voorgaan (artikel 49 RVV 1990). Dat bindt jou en de auto van links allebei, want die moet even verderop hetzelfde zebrapad over. Daarna geldt tussen jullie de gewone regel: vanaf die auto gezien kom jij van rechts, dus hij wacht op jou. Let op het verschil met een voetganger zonder zebrapad: dan heeft hij geen voorrang, maar hier wel."
+      },
+      {
+        id: "h61",
+        kind: "order",
+        difficulty: "moeilijk",
+        topic: "Bijzondere weggebruikers en manoeuvres",
+        scene: "residential",
+        diagram: true,
+        image: "assets/diagrams/uitrit-auto-bromfiets.svg",
+        imageAlt: "Bovenaanzicht van een doorgaande weg met een uitrit waarin jouw auto staat. Over de weg komen van rechts eerst een auto en daarachter een bromfietser. De stoeprand loopt door over de uitrit.",
+        imageLabel: "Jij staat in een uitrit; de stoeprand loopt eroverheen door. Op de weg naderen een auto en daarachter een bromfietser.",
+        prompt: "Jij (3) wilt vanuit de uitrit de weg oprijden. Over die weg komen een auto (1) en daarachter een bromfietser (2). Zet ze in de volgorde waarin ze mogen gaan.",
+        help: "Sleepvraag-simulatie: gebruik omhoog en omlaag.",
+        items: [
+          { id: "auto", text: "1, de auto op de doorgaande weg" },
+          { id: "bromfiets", text: "2, de bromfietser achter die auto" },
+          { id: "jij", text: "3, jouw auto die de uitrit verlaat" }
+        ],
+        correct: ["auto", "bromfiets", "jij"],
+        explanation: "Uit een uitrit de weg oprijden is een bijzondere manoeuvre, en wie zo'n manoeuvre uitvoert laat al het overige verkeer voorgaan (artikel 54 RVV 1990). Het maakt dus niet uit uit welke richting ze komen of dat het maar een bromfiets is: jij gaat hoe dan ook als laatste. Aan de doorlopende stoeprand zie je dat het een uitrit is en geen zijweg; bij een zijweg zou de voorrang van rechts wel gelden. Tussen de twee anderen bepaalt hun plek op de weg de volgorde."
+      },
+      {
         id: "h56",
         kind: "order",
         difficulty: "moeilijk",

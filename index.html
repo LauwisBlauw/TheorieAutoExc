@@ -6096,6 +6096,7 @@
       answers: {},
       flagged: {},
       revealed: {},
+      orderTouched: {},
       instantFeedback: loadInstantFeedback(),
       theme: loadTheme(),
       reports: loadReports(),
@@ -6365,6 +6366,7 @@
       state.practiceIndex = 0;
       state.practiceAnswers = {};
       state.revealed = {};
+      state.orderTouched = {};
       state.reportTarget = null;
       render();
       scrollToPageTop();
@@ -6380,21 +6382,28 @@
       state.answers = {};
       state.flagged = {};
       state.revealed = {};
+      state.orderTouched = {};
       state.reportTarget = null;
       state.remaining = EXAM_CONFIG.durationSeconds;
       state.filterMisses = false;
     }
 
+    // Tikken tellen loopt achter zodra de browser het tabblad afknijpt, en dan
+    // duurt een examen van 30 minuten in werkelijkheid langer. Daarom rekenen we
+    // terug vanaf een vast eindtijdstip: staat het tabblad even weg, dan klopt de
+    // klok bij terugkomst nog steeds.
     function startExamTimer() {
-      state.timerId = setInterval(function () {
-        state.remaining -= 1;
-        if (state.remaining <= 0) {
-          state.remaining = 0;
-          finishExam();
-          return;
-        }
-        updateTimerOnly();
-      }, 1000);
+      state.deadline = Date.now() + state.remaining * 1000;
+      state.timerId = setInterval(tickExamTimer, 1000);
+    }
+
+    function tickExamTimer() {
+      state.remaining = Math.max(0, Math.round((state.deadline - Date.now()) / 1000));
+      if (state.remaining <= 0) {
+        finishExam();
+        return;
+      }
+      updateTimerOnly();
     }
 
     function startExam(variant) {
@@ -6510,7 +6519,13 @@
 
     function hasAnswer(q, store) {
       const answer = store[q.id];
-      if (q.kind === "multi" || q.kind === "order") {
+      // Een sleepvraag krijgt zijn beginvolgorde al bij het tekenen, anders valt er
+      // niets te tonen. Die beginvolgorde is nooit het juiste antwoord, dus pas als
+      // de kandidaat zelf iets verschoven heeft telt de vraag als beantwoord.
+      if (q.kind === "order") {
+        return Array.isArray(answer) && answer.length > 0 && Boolean(state.orderTouched[q.id]);
+      }
+      if (q.kind === "multi") {
         return Array.isArray(answer) && answer.length > 0;
       }
       return answer !== undefined && answer !== null && String(answer).trim() !== "";
@@ -6674,6 +6689,7 @@
       const q = currentVisibleQuestion();
       if (answerLocked(q)) return;
       ensureOrderAnswer(q);
+      state.orderTouched[questionId] = true;
       const current = store[questionId].slice();
       const target = index + direction;
       if (target < 0 || target >= current.length) return;
@@ -7434,12 +7450,15 @@
       const answer = state.answers[q.id];
       const correct = isCorrect(q, answer);
       const test = q.counts === false;
+      // Een sleepvraag draagt altijd een volgorde, ook als de kandidaat hem nooit
+      // heeft aangeraakt; die beginvolgorde is geen antwoord.
+      const gegeven = hasAnswer(q, state.answers) ? answerToText(q, answer) : "Geen antwoord";
       return `
         <section class="review-item ${test ? "test" : (correct ? "good" : "miss")}">
           <div class="review-meta">Vraag ${originalIndex + 1} - ${escapeHtml(q.topic)} - ${escapeHtml(questionTypeLabel(q))} - ${escapeHtml(difficultyInfo(q).label)}${test ? " - testvraag, niet meegeteld" : ""}</div>
           <h3>${escapeHtml(q.prompt)}</h3>
           <div class="answer-line">
-            <span><strong>Jouw antwoord:</strong> ${escapeHtml(answerToText(q, answer))}</span>
+            <span><strong>Jouw antwoord:</strong> ${escapeHtml(gegeven)}</span>
             <span><strong>Juiste antwoord:</strong> ${escapeHtml(correctToText(q))}</span>
           </div>
           <p class="explanation">${escapeHtml(q.explanation)}</p>

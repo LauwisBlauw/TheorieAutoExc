@@ -112,6 +112,40 @@ const assertions = `
     }
   });
 
+  // De examentimer rekent terug vanaf een eindtijdstip in plaats van tikken te
+  // tellen, zodat een afgeknepen achtergrondtab geen gratis tijd oplevert.
+  startExam("normal");
+  if (typeof state.deadline !== "number") {
+    throw new Error("Timer zet geen eindtijdstip");
+  }
+  state.deadline = Date.now() + 90 * 1000;
+  tickExamTimer();
+  if (state.remaining < 88 || state.remaining > 92) {
+    throw new Error("Timer rekent niet terug vanaf de klok: " + state.remaining);
+  }
+
+  // Een sleepvraag krijgt zijn beginvolgorde bij het tekenen; die telt niet als
+  // antwoord zolang de kandidaat niets heeft verschoven.
+  startExam("normal");
+  var slepen = state.sessionQuestions.filter(function (q) { return q.kind === "order"; })[0];
+  if (slepen) {
+    state.index = state.sessionQuestions.indexOf(slepen);
+    render();
+    if (hasAnswer(slepen, state.answers)) {
+      throw new Error("Onaangeraakte sleepvraag telt al als beantwoord");
+    }
+    if (answerToText(slepen, state.answers[slepen.id]) === correctToText(slepen)) {
+      throw new Error("Beginvolgorde is gelijk aan het juiste antwoord");
+    }
+    moveOrder(slepen.id, -1, 1);
+    if (!hasAnswer(slepen, state.answers)) {
+      throw new Error("Sleepvraag telt na een verplaatsing nog niet als beantwoord");
+    }
+    if (correctToText(slepen) === "Geen antwoord") {
+      throw new Error("Het juiste antwoord van een sleepvraag wordt niet meer getoond");
+    }
+  }
+
   startTraining("hard");
   if (state.phase !== "exam" || state.mode !== "training" || state.variant !== "hard") {
     throw new Error("Training state failed");
